@@ -41,7 +41,7 @@
       "phone": "+33-219-999-3648",
       "email": "jfearnall1@europa.eu"
     },
-    "type": "discount",
+    "type": "cinema",
     "discount": 27,
     "locations": [{
       "id": 1,
@@ -100,7 +100,7 @@
       "phone": "+86-467-269-3955",
       "email": "ahuws3@bbc.co.uk"
     },
-    "type": "discount",
+    "type": "restaurant",
     "discount": 42,
     "locations": [{
       "id": 4,
@@ -124,7 +124,7 @@
       "phone": "+55-538-685-5858",
       "email": "ajills4@tripod.com"
     },
-    "type": "additional product for free",
+    "type": "restaurant",
     "locations": [{
       "id": 1,
       "coordinates": {
@@ -147,7 +147,7 @@
       "phone": "+86-141-913-2249",
       "email": "jsafe5@51.la"
     },
-    "type": "discount",
+    "type": "store",
     "discount": 15,
     "locations": [{
       "id": 5,
@@ -189,7 +189,7 @@
       "phone": "+55-369-669-8279",
       "email": "cthorns6@delicious.com"
     },
-    "type": "discount",
+    "type": "store",
     "discount": 20,
     "locations": [{
       "id": 5,
@@ -210,7 +210,7 @@
       "country": "Poland",
       "address": "2009 Monica Point"
     }],
-    "tags": ["ultrices", "libero", "non", "mattis", "pulvinar"]
+    "tags": ["ultrices", "lib", "non", "mattis", "pulvinar"]
   },
   {
     "id": 8,
@@ -222,7 +222,7 @@
       "phone": "+55-846-898-5427",
       "email": "tmarzella7@ft.com"
     },
-    "type": "discount",
+    "type": "store",
     "discount": 49,
     "locations": [{
       "id": 5,
@@ -264,7 +264,7 @@
       "phone": "+48-374-688-0680",
       "email": "sbagworth8@princeton.edu"
     },
-    "type": "discount",
+    "type": "store",
     "discount": 20,
     "locations": [{
       "id": 1,
@@ -297,7 +297,7 @@
       "phone": "+420-817-722-8369",
       "email": "tbraunston9@hibu.com"
     },
-    "type": "discount",
+    "type": "store",
     "discount": 22,
     "locations": [{
       "id": 5,
