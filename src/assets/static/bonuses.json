@@ -8,9 +8,27 @@
       "phone": "+62-314-279-2102",
       "email": "zwhitlaw0@craigslist.org"
     },
-    "type": "discount",
+    "type": "hotel",
     "discount": 4,
-    "location": [1, 7, 9],
+    "locations": [{
+      "id": 1,
+      "coordinates": {
+        "latitude  ": 53.8930095,
+        "longitude ": 27.5674444
+      },
+      "city ": "Minsk",
+      "country": "Belarus",
+      "address": "st. Petra Glebki 5"
+    }, {
+      "id": 7,
+      "coordinates": {
+        "latitude  ": 53.2856154,
+        "longitude ": 15.2926343
+      },
+      "city ": "Suchań",
+      "country": "Poland",
+      "address": "2009 Monica Point"
+    }],
     "tags": ["pizza", "food"]
   },
   {
@@ -19,14 +37,23 @@
     "dateEnd": "29.08.2020",
     "description": "enim in tempor turpis nec euismod",
     "company": {
-      "name": "mi sit",
+      "name": "Cinema+",
       "phone": "+33-219-999-3648",
       "email": "jfearnall1@europa.eu"
     },
     "type": "discount",
     "discount": 27,
-    "location": [1],
-    "tags": ["tickets"]
+    "locations": [{
+      "id": 1,
+      "coordinates": {
+        "latitude  ": 53.8930095,
+        "longitude ": 27.5674444
+      },
+      "city ": "Minsk",
+      "country": "Belarus",
+      "address": "st. Petra Glebki 5"
+    }],
+    "tags": ["tickets", "cinema"]
   },
   {
     "id": 3,
@@ -38,9 +65,29 @@
       "phone": "+86-410-930-6520",
       "email": "lmiddlemass2@elpais.com"
     },
-    "type": "discount",
+    "type": "gas station",
     "discount": 4,
-    "location": [2, 3, 0],
+    "locations": [{
+        "id": 3,
+        "coordinates": {
+          "latitude  ": 48.9420658,
+          "longitude ": 25.7464148
+        },
+        "city ": "Yahil’nytsya",
+        "country": "Ukraine",
+        "address": "82 Main Avenue"
+      },
+      {
+        "id": 2,
+        "coordinates": {
+          "latitude  ": 53.904743,
+          "longitude ": 27.55522
+        },
+        "city ": "Minsk",
+        "country": "Belarus",
+        "address": "Svobody 5"
+      }
+    ],
     "tags": ["cars", "oil"]
   },
   {
@@ -55,7 +102,16 @@
     },
     "type": "discount",
     "discount": 42,
-    "location": [4, 3],
+    "locations": [{
+      "id": 4,
+      "coordinates": {
+        "latitude  ": 55.1872225,
+        "longitude ": 30.2051165
+      },
+      "city ": "Vitsyebsk",
+      "country": "Belarus",
+      "address": "0191 Gina Road"
+    }],
     "tags": ["scelerisque", "food", "quam", "turpis", "adipiscing", "lorem", "vitae"]
   },
   {
@@ -69,7 +125,16 @@
       "email": "ajills4@tripod.com"
     },
     "type": "additional product for free",
-    "location": [6, 1],
+    "locations": [{
+      "id": 1,
+      "coordinates": {
+        "latitude  ": 53.8930095,
+        "longitude ": 27.5674444
+      },
+      "city ": "Minsk",
+      "country": "Belarus",
+      "address": "st. Petra Glebki 5"
+    }],
     "tags": ["pizza", "food"]
   },
   {
@@ -84,7 +149,34 @@
     },
     "type": "discount",
     "discount": 15,
-    "location": [7, 5, 1, 3],
+    "locations": [{
+      "id": 5,
+      "coordinates": {
+        "latitude  ": 45.1973827,
+        "longitude ": 33.2979082
+      },
+      "city ": "Uyutne",
+      "country": "Ukraine",
+      "address": "999 Mosinee Point"
+    }, {
+      "id": 7,
+      "coordinates": {
+        "latitude  ": 53.2856154,
+        "longitude ": 15.2926343
+      },
+      "city ": "Suchań",
+      "country": "Poland",
+      "address": "2009 Monica Point"
+    }, {
+      "id": 1,
+      "coordinates": {
+        "latitude  ": 53.8930095,
+        "longitude ": 27.5674444
+      },
+      "city ": "Minsk",
+      "country": "Belarus",
+      "address": "st. Petra Glebki 5"
+    }, 3],
     "tags": ["Minsk", "hall", "hotel"]
   },
   {
@@ -99,7 +191,25 @@
     },
     "type": "discount",
     "discount": 20,
-    "location": [5, 7],
+    "locations": [{
+      "id": 5,
+      "coordinates": {
+        "latitude  ": 45.1973827,
+        "longitude ": 33.2979082
+      },
+      "city ": "Uyutne",
+      "country": "Ukraine",
+      "address": "999 Mosinee Point"
+    }, {
+      "id": 7,
+      "coordinates": {
+        "latitude  ": 53.2856154,
+        "longitude ": 15.2926343
+      },
+      "city ": "Suchań",
+      "country": "Poland",
+      "address": "2009 Monica Point"
+    }],
     "tags": ["ultrices", "libero", "non", "mattis", "pulvinar"]
   },
   {
@@ -114,7 +224,34 @@
     },
     "type": "discount",
     "discount": 49,
-    "location": [9, 2, 5],
+    "locations": [{
+      "id": 5,
+      "coordinates": {
+        "latitude  ": 45.1973827,
+        "longitude ": 33.2979082
+      },
+      "city ": "Uyutne",
+      "country": "Ukraine",
+      "address": "999 Mosinee Point"
+    }, {
+      "id": 2,
+      "coordinates": {
+        "latitude  ": 52.00577,
+        "longitude ": 33.2615
+      },
+      "city ": "Novhorod-Sivers’kyy",
+      "country": "Ukraine",
+      "address": "1 Monterey Parkway"
+    }, {
+      "id": 5,
+      "coordinates": {
+        "latitude  ": 45.1973827,
+        "longitude ": 33.2979082
+      },
+      "city ": "Uyutne",
+      "country": "Ukraine",
+      "address": "999 Mosinee Point"
+    }],
     "tags": ["food"]
   },
   {
@@ -129,7 +266,25 @@
     },
     "type": "discount",
     "discount": 20,
-    "location": [1, 4],
+    "locations": [{
+      "id": 1,
+      "coordinates": {
+        "latitude  ": 53.8930095,
+        "longitude ": 27.5674444
+      },
+      "city ": "Minsk",
+      "country": "Belarus",
+      "address": "st. Petra Glebki 5"
+    }, {
+      "id": 4,
+      "coordinates": {
+        "latitude  ": 55.1872225,
+        "longitude ": 30.2051165
+      },
+      "city ": "Vitsyebsk",
+      "country": "Belarus",
+      "address": "0191 Gina Road"
+    }],
     "tags": ["food", "Minsk", "Vitsyebsk"]
   },
   {
@@ -144,7 +299,25 @@
     },
     "type": "discount",
     "discount": 22,
-    "location": [3, 5],
-    "tags": ["food"]
+    "locations": [{
+      "id": 5,
+      "coordinates": {
+        "latitude  ": 45.1973827,
+        "longitude ": 33.2979082
+      },
+      "city ": "Uyutne",
+      "country": "Ukraine",
+      "address": "999 Mosinee Point"
+    }, {
+      "id": 5,
+      "coordinates": {
+        "latitude  ": 45.1973827,
+        "longitude ": 33.2979082
+      },
+      "city ": "Uyutne",
+      "country": "Ukraine",
+      "address": "999 Mosinee Point"
+    }],
+    "tags": ["food", "pizza"]
   }
 ]
