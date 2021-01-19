@@ -1,0 +1,121 @@
+[{
+    "id": 1,
+    "location": {
+      "coordinates": {
+        "latitude  ": 53.8930095,
+        "longitude ": 27.5674444
+      }
+    },
+    "city ": "Minsk",
+    "country": "Belarus",
+    "address": "st. Petra Glebki 5"
+  },
+  {
+    "id": 4,
+    "location": {
+      "coordinates": {
+        "latitude  ": 55.1872225,
+        "longitude ": 30.2051165
+      }
+    },
+    "city ": "Vitsyebsk",
+    "country": "Belarus",
+    "address": "0191 Gina Road"
+  },
+  {
+    "id": 3,
+    "location": {
+      "coordinates": {
+        "latitude  ": 48.9420658,
+        "longitude ": 25.7464148
+      }
+    },
+    "city ": "Yahil’nytsya",
+    "country": "Ukraine",
+    "address": "82 Main Avenue"
+  },
+  {
+    "id": 2,
+    "location": {
+      "coordinates": {
+        "latitude  ": 52.00577,
+        "longitude ": 33.2615
+      }
+    },
+    "city ": "Novhorod-Sivers’kyy",
+    "country": "Ukraine",
+    "address": "1 Monterey Parkway"
+  },
+  {
+    "id": 5,
+    "location": {
+      "coordinates": {
+        "latitude  ": 45.1973827,
+        "longitude ": 33.2979082
+      }
+    },
+    "city ": "Uyutne",
+    "country": "Ukraine",
+    "address": "999 Mosinee Point"
+  },
+  {
+    "id": 6,
+    "location": {
+      "coordinates": {
+        "latitude  ": 39.0345609,
+        "longitude ": -94.5521274
+      }
+    },
+    "city ": "Kansas City",
+    "country": "United States",
+    "address": "07 Jenna Pass"
+  },
+  {
+    "id": 7,
+    "location": {
+      "coordinates": {
+        "latitude  ": 53.2856154,
+        "longitude ": 15.2926343
+      }
+    },
+    "city ": "Suchań",
+    "country": "Poland",
+    "address": "2009 Monica Point"
+  },
+  {
+    "id": 8,
+    "location": {
+      "coordinates": {
+        "latitude  ": 47.3292629,
+        "longitude ": 36.6901351
+      }
+    },
+    "city ": "Komysh-Zorya",
+    "country": "Ukraine",
+    "address": "96727 Blaine Plaza"
+  },
+  {
+    "id": 9,
+    "location": {
+      "coordinates": {
+        "latitude  ": 50.756497,
+        "longitude ": 21.8951181
+      }
+    },
+    "city ": "Chwałowice",
+    "country": "Poland",
+    "address": "67 Northport Place"
+  },
+  {
+    "id": 10,
+    "location": {
+      "coordinates": {
+        "latitude  ": 44.903044,
+        "longitude ": -93.2332244
+      }
+    },
+    "city ": "Minneapolis",
+    "country": "United States",
+    "address": "32637 Linden Road"
+  }
+]

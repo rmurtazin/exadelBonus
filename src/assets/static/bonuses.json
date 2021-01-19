@@ -1,0 +1,150 @@
+[{
+    "id": 1,
+    "dateStart": "10.12.2020",
+    "dateEnd": "31.12.2020",
+    "description": "ac neque duis",
+    "company": {
+      "name": "Mcdonalds",
+      "phone": "+62-314-279-2102",
+      "email": "zwhitlaw0@craigslist.org"
+    },
+    "type": "discount",
+    "discount": 4,
+    "location": [1, 7, 9],
+    "tags": ["pizza", "food"]
+  },
+  {
+    "id": 2,
+    "dateStart": "19.11.2020",
+    "dateEnd": "29.08.2020",
+    "description": "enim in tempor turpis nec euismod",
+    "company": {
+      "name": "mi sit",
+      "phone": "+33-219-999-3648",
+      "email": "jfearnall1@europa.eu"
+    },
+    "type": "discount",
+    "discount": 27,
+    "location": [1],
+    "tags": ["tickets"]
+  },
+  {
+    "id": 3,
+    "dateStart": "06.04.2020",
+    "dateEnd": "28.03.2020",
+    "description": "volutpat convallis morbi odio odio elementum",
+    "company": {
+      "name": "in",
+      "phone": "+86-410-930-6520",
+      "email": "lmiddlemass2@elpais.com"
+    },
+    "type": "discount",
+    "discount": 4,
+    "location": [2, 3, 0],
+    "tags": ["cars", "oil"]
+  },
+  {
+    "id": 4,
+    "dateStart": "12.01.2021",
+    "dateEnd": "09.12.2020",
+    "description": "faucibus cursus urna ut",
+    "company": {
+      "name": "primis",
+      "phone": "+86-467-269-3955",
+      "email": "ahuws3@bbc.co.uk"
+    },
+    "type": "discount",
+    "discount": 42,
+    "location": [4, 3],
+    "tags": ["scelerisque", "food", "quam", "turpis", "adipiscing", "lorem", "vitae"]
+  },
+  {
+    "id": 5,
+    "dateStart": "04.11.2020",
+    "dateEnd": "15.02.2021",
+    "description": "The third pizza for free",
+    "company": {
+      "name": "mauris morbi",
+      "phone": "+55-538-685-5858",
+      "email": "ajills4@tripod.com"
+    },
+    "type": "additional product for free",
+    "location": [6, 1],
+    "tags": ["pizza", "food"]
+  },
+  {
+    "id": 6,
+    "dateStart": "16.02.2021",
+    "dateEnd": "17.10.2020",
+    "description": "nibh in hac habitasse platea dictumst aliquam augue",
+    "company": {
+      "name": "imperdiet et commodo",
+      "phone": "+86-141-913-2249",
+      "email": "jsafe5@51.la"
+    },
+    "type": "discount",
+    "discount": 15,
+    "location": [7, 5, 1, 3],
+    "tags": ["Minsk", "hall", "hotel"]
+  },
+  {
+    "id": 7,
+    "dateStart": "20.10.2020",
+    "dateEnd": "20.01.2021",
+    "description": "cras in purus",
+    "company": {
+      "name": "Mcdonalds",
+      "phone": "+55-369-669-8279",
+      "email": "cthorns6@delicious.com"
+    },
+    "type": "discount",
+    "discount": 20,
+    "location": [5, 7],
+    "tags": ["ultrices", "libero", "non", "mattis", "pulvinar"]
+  },
+  {
+    "id": 8,
+    "dateStart": "17.01.2021",
+    "dateEnd": "13.01.2021",
+    "description": "ipsum dolor sit amet consectetuer",
+    "company": {
+      "name": "donec vitae",
+      "phone": "+55-846-898-5427",
+      "email": "tmarzella7@ft.com"
+    },
+    "type": "discount",
+    "discount": 49,
+    "location": [9, 2, 5],
+    "tags": ["food"]
+  },
+  {
+    "id": 9,
+    "dateStart": "11.06.2020",
+    "dateEnd": "02.06.2020",
+    "description": "lacinia eget tincidunt eget tempus vel pede",
+    "company": {
+      "name": "adipiscing lorem",
+      "phone": "+48-374-688-0680",
+      "email": "sbagworth8@princeton.edu"
+    },
+    "type": "discount",
+    "discount": 20,
+    "location": [1, 4],
+    "tags": ["food", "Minsk", "Vitsyebsk"]
+  },
+  {
+    "id": 10,
+    "dateStart": "07.07.2020",
+    "dateEnd": "27.04.2021",
+    "description": "turpis a pede posuere nonummy",
+    "company": {
+      "name": "quis tortor id",
+      "phone": "+420-817-722-8369",
+      "email": "tbraunston9@hibu.com"
+    },
+    "type": "discount",
+    "discount": 22,
+    "location": [3, 5],
+    "tags": ["food"]
+  }
+]
