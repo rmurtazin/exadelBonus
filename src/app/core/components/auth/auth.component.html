@@ -1,0 +1,11 @@
+<div class="container">
+  <form [formGroup]="myForm" class="login-form" (ngSubmit)="onSubmit() ">
+    <mdc-text-field label="Login" name="txt-field-standard" required helperPersistent class="login-input" type="text"
+      formControlName="userLogin" autocomplete="off"></mdc-text-field>
+    <mdc-text-field label="Password" name="txt-field-standard" required helperPersistent class="login-input"
+      type="password" formControlName="userPassword" autocomplete="off"></mdc-text-field>
+    <div class="login-button-container">
+      <button mdc-button unelevated class="btn btn-default login-button" [disabled]="myForm.invalid">Sign in</button>
+    </div>
+  </form>
+</div>

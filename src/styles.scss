@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@material/theme' with (
+  $primary: #0082CA,
+  $secondary: #03527c,
+  $background: #fff,
+);
+
+// MDC Typography
+@use '@material/typography/mdc-typography';
+
+// Angular MDC
+@use '@angular-mdc/theme/material';
+
+// use for textField;
+@use '@material/textfield/mdc-text-field';
+@use '@material/textfield/_index' as textfield;
+@use '@material/form-field/_index' as form-field;
+
+// use for button
+@use '@material/button/mdc-button';
+@use '@material/button';
+
+// use for toggle-button icons
+@use '@material/icon-button/mdc-icon-button';
+@use '@material/icon-button/_index' as icon-button;
+
+// common styles
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+*,
+*::before *::after {
+  box-sizing: inherit;
+}
+
+// styles for adaptive screen
+.container {
+  width: 280px;
+  margin: 0 auto;
+}
+
