@@ -1,6 +1,7 @@
 {
   "name": "exadel-bonus",
   "version": "0.0.0",
+  "author": "Team3 Internship",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,6 +10,20 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "bugs": {
+    "url": "https://github.com/rmurtazin/exadelBonus/issues"
+  },
+  "homepage": "https://github.com/rmurtazin/exadelBonus#readme",
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmurtazin/exadelBonus.git"
+  },
+  "keywords": [
+    "exadel"
+  ],
+  "license": "ISC",
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.0.9",
@@ -25,11 +40,24 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.7",
+    "@angular-eslint/builder": "1.1.0",
+    "@angular-eslint/eslint-plugin": "1.1.0",
+    "@angular-eslint/eslint-plugin-template": "1.1.0",
+    "@angular-eslint/schematics": "1.1.0",
+    "@angular-eslint/template-parser": "1.1.0",
     "@angular/cli": "~11.0.7",
     "@angular/compiler-cli": "~11.0.9",
+    "@nrwl/eslint-plugin-nx": "^11.1.5",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "4.3.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^4.13.0",
+    "@typescript-eslint/parser": "4.3.0",
     "codelyzer": "^6.0.0",
+    "eslint": "^7.6.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^31.0.5",
+    "eslint-plugin-prefer-arrow": "^1.2.2",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.1.0",
