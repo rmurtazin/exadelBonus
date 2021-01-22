@@ -12,6 +12,7 @@ import { AuthServices } from '../../services/auth.service';
 export class AuthComponent implements OnInit, OnDestroy {
   myForm: FormGroup;
   aSub: Subscription;
+  hide: boolean = true;
 
   constructor(private authServices: AuthServices) {}
 
@@ -36,6 +37,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.aSub = this.authServices.onLogin(this.myForm.value).subscribe(
       (user) => {
         console.log('Login Succses', user);
+        // here will be redirected to Home Page
       },
       (error) => {
         console.log({ error: error });

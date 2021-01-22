@@ -16,7 +16,8 @@ export class AuthServices {
     this.user = this.userSubject.asObservable();
   }
 
-  public getUserValue(): IUserActive {
+  // get object with current user info
+  public getUser(): IUserActive {
     return this.userSubject.getValue();
   }
 
@@ -29,6 +30,7 @@ export class AuthServices {
   }
 
   public onLogin(userInput: ILoginValues): Observable<any> {
+    // here will be function like this.http.post('authApiUrl', userInput)...
     return this.http.get('../../../assets/static/activeUser.json').pipe(
       tap((user) => {
         localStorage.setItem('user', JSON.stringify(user));
