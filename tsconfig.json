@@ -2,8 +2,20 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "components/*" : ["src/app/core/components/*"],
+      "interfaces/*" : ["src/app/core/interfaces/*"],
+      "services/*": ["src/app/core/services/*"],
+      "shared/*": ["src/app/*"],
+      "guard/*": ["src/app/core/guard/*"],
+      "constants/*": ["src/app/core/constants/*"]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -16,5 +28,11 @@
       "es2018",
       "dom"
     ]
+  },
+  "angularCompilerOptions": {
+    "strictPropertyInitialization": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
   }
 }

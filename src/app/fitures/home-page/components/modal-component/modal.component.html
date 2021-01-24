@@ -1,0 +1,11 @@
+<div class="modal-content">
+<h3>type: {{bonus.type}}</h3>    
+<h3>name: {{bonus.company.name}}</h3>
+<h3>phone {{bonus.company.phone}}</h3>
+<h3>email {{bonus.company.email}}</h3>
+<h3>{{bonus.dateStart}} - {{bonus.dateEnd}}</h3>
+<div class="tag-container">
+    <h3 *ngFor="let tag of bonus.tags">{{tag}}</h3>
+</div>
+<button mat-flat-button color="primary">Заказать</button>
+</div>

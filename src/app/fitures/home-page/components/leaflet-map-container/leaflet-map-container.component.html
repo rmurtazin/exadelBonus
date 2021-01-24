@@ -1,0 +1,9 @@
+<div *ngIf="center">
+     <div style="height: 100vh;"
+          leaflet 
+          [leafletOptions]="options"
+          [leafletLayers]="layers"
+          (leafletMapReady)="onMapReady($event)"
+     ></div>
+</div>
+<div *ngIf="center"></div>

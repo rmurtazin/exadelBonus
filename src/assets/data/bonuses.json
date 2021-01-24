@@ -1,0 +1,53 @@
+{
+"data": [{
+ "id": 1,
+ "dateStart":"10.12.2020",
+ "dateEnd":"31.12.2020",
+ "description":"ac neque duis",
+ "company": {
+   "name":"Mcdonalds",
+   "phone":"+62-314-279-2102",
+   "email":"zwhitlaw0@craigslist.org"
+    },
+ "type":"hotel",
+ "discount": 4,
+ "locations": [{
+     "id": 1,
+     "latitude": 53.8930095,
+     "longitude": 27.5674444,
+     "city":"Minsk",
+     "country":"Belarus",
+     "address":"st. Petra Glebki 5"
+    }, {
+     "id": 7,
+     "latitude": 53.2856154,
+     "longitude": 15.2926343,
+     "city":"Suchań",
+     "country":"Poland",
+     "address":"2009 Monica Point"
+    }],
+ "tags": ["pizza","food"]
+  },
+  {
+ "id": 2,
+ "dateStart":"19.11.2020",
+ "dateEnd":"29.08.2020",
+ "description":"enim in tempor turpis nec euismod",
+ "company": {
+   "name":"Cinema+",
+   "phone":"+33-219-999-3648",
+   "email":"jfearnall1@europa.eu"
+    },
+ "type":"cinema",
+ "discount": 27,
+ "locations": [{
+     "id": 1,
+     "latitude": 48.6473728,
+     "longitude": 29.7402368,
+     "city":"Minsk",
+     "country":"Belarus",
+     "address":"st. Petra Glebki 5"
+    }],
+ "tags": ["tickets","cinema"]
+  }]
+}
