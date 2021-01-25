@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="form-login-view">
+    <form (ngSubmit)="submit()" [formGroup]="loginForm" class="form-login">
+      <div class="input">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" name="email" formControlName="email" type="text">
+          <mat-error *ngIf="loginForm.controls['email'].touched">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="input">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input matInput name="password" formControlName="password" type="password">
+          <mat-error *ngIf="loginForm.controls['password'].touched">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <button class="login-submit" mat-raised-button color="primary">Log In</button>
+
+    </form>
+  </div>
+</div>

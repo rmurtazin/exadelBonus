@@ -1,0 +1,19 @@
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+.form-login-view {
+  display: flex;
+  margin-top:10%;
+  justify-content: center;
+  
+  .form-login {
+    .input {
+      margin: 5px 0;
+    }
+    .login-submit{
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+}

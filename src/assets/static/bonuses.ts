@@ -1,4 +1,4 @@
-[{
+export const BONUSES = [{
     "id": 1,
     "dateStart": "10.12.2020",
     "dateEnd": "31.12.2020",
