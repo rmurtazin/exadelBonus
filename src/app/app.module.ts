@@ -11,8 +11,6 @@ import { MaterialModule } from './shared/modules/material.module';
 import { HeaderComponent } from './core/components/header/header.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { LoginComponent } from './core/components/login/login.component';
-import { AddBonusComponent } from './core/features/add-bonus/add-bonus.component';
-import { StatisticsComponent } from './core/features/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +18,6 @@ import { StatisticsComponent } from './core/features/statistics/statistics.compo
     HeaderComponent,
     HomeComponent,
     LoginComponent,
-    AddBonusComponent,
-    StatisticsComponent,
   ],
   imports: [
     HttpClientModule,

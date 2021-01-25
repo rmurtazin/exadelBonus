@@ -3,8 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './core/components/login/login.component';
 import { HomeComponent } from './shared/components/home/home.component';
-import { AddBonusComponent } from './core/features/add-bonus/add-bonus.component';
-import { StatisticsComponent } from './core/features/statistics/statistics.component';
 
 import { AuthGuard } from './core/guards/auth.guard';
 
@@ -14,9 +12,7 @@ const routes: Routes = [
   { path: 'home',
     canActivate: [AuthGuard],
     children : [
-      { path: '', component: HomeComponent},
-      { path: 'add-bonus', component: AddBonusComponent},
-      { path: 'statistics', component: StatisticsComponent}
+      { path: '', component: HomeComponent}
     ]
   },
   {path: '**', redirectTo: 'login'}
