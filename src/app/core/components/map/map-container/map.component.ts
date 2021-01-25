@@ -1,8 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ApiService , MarkersService } from 'services/.';
-import { Observable, Subscription } from 'rxjs';
-import { IBonus, IOffice } from 'interfaces/.';
-import * as L from 'leaflet';
+import { MarkersService } from '@services/markers.service';
+import { Subscription } from 'rxjs';
+import { IOffice } from '@interfaces/office.interface';
+import { IBonus } from '@interfaces/bonus.interface';
+import { Map, Marker, layerGroup} from 'leaflet';
+import { BonusesService } from '@services/bonuses.service';
+import { OfficesService } from '@services/offices.service';
 
 @Component({
   selector: 'app-map',
@@ -10,43 +13,42 @@ import * as L from 'leaflet';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit, OnDestroy {
-  private officesSubscription: Subscription;
-  private bonusesSubscription: Subscription;
-  private map: L.Map;
+  private subscription = new Subscription();
+  private map: Map;
 
   constructor(
-    private api: ApiService,
+    private officeService: OfficesService,
+    private bonusesService: BonusesService,
     private markers: MarkersService
   ) {}
 
-  ngOnInit(): void {}
+  public ngOnInit(): void {}
 
-  mapReadyEvent(map: L.Map): void {
+  public mapReadyEvent(map: Map): void {
     this.map = map;
     this.displayOfficesMarkers();
     this.displayBonusesMarkers();
   }
 
-  displayOfficesMarkers(): void {
-    this.officesSubscription = this.api.getOffices()
-      .subscribe((offices: IOffice[]) => {
-        const bonusesMarkers: L.Marker[] = this.markers.createOfficesMarkers(offices);
-        L.layerGroup(bonusesMarkers).addTo(this.map);
-      });
+  private displayOfficesMarkers(): void {
+    this.subscription.add(
+      this.officeService.getOffices().subscribe((offices: IOffice[]) => {
+        const bonusesMarkers: Marker[] = this.markers.createOfficesMarkers(offices);
+        layerGroup(bonusesMarkers).addTo(this.map);
+      })
+    );
   }
 
-  displayBonusesMarkers(): void {
-    this.bonusesSubscription = this.api.getBonuses()
-      .subscribe((bonuses: IBonus[]) => {
-        const bonusesMarkers: L.Marker[] = this.markers.createBonusesMarkers(bonuses);
-        L.layerGroup(bonusesMarkers).addTo(this.map);
-      });
+  private displayBonusesMarkers(): void {
+    this.subscription.add(
+      this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
+        const bonusesMarkers: Marker[] = this.markers.createBonusesMarkers(bonuses);
+        layerGroup(bonusesMarkers).addTo(this.map);
+      })
+    );
   }
 
-  ngOnDestroy(): void {
-    this.officesSubscription.unsubscribe();
-    this.bonusesSubscription.unsubscribe();
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
-
-
 }

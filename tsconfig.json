@@ -3,9 +3,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "interfaces/*": ["src/app/core/interfaces/*"],
-      "components/*": ["src/app/core/components/*"],
-      "services/*": ["src/app/core/services/*"]
+      "@interfaces/*": ["src/app/core/interfaces/*"],
+      "@components/*": ["src/app/core/components/*"],
+      "@services/*": ["src/app/core/services/*"]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

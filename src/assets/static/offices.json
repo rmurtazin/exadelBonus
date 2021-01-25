@@ -1,202 +1,200 @@
-{
-    "offices" : [
-        {
-            "id": "1",
-            "country": "USA",
-            "city": "Walnut Creek",
-            "address": "1340 Treat Blvd. Suite 375, Walnut Creek CA 94597",
-            "latitude": 37.92557996786679, 
-            "longitude": -122.0584078680293,
-            "number": "+1 (925) 363 9510"
-        },
-        {
-            "id": "2",
-            "country": "USA",
-            "city": "Boulder",
-            "address": "1995 57th Court North Suite 200, Boulder CO 80301",
-            "latitude": 40.02161103237348, 
-            "longitude": -105.2215395529247,
-            "number": "+1 (866) 213 7162"
-        },
-        {
-            "id": "3",
-            "country": "BELARUS",
-            "city": "Brest",
-            "address": "prospekt Mašerova 6a,Brest 224030",
-            "latitude": 52.08635668336722, 
-            "longitude": 23.67894326097369,
-            "number": "+375 16 228 59 79"
-        },
-        {
-            "id": "4",
-            "country": "BELARUS",
-            "city": "Brest",
-            "address": "ul. Pushkina 2-9,Gomel 246050",
-            "latitude": 52.43372430867304, 
-            "longitude": 31.010150276332023,
-            "number": "+375 23 222 93 19"
-        },
-        {
-            "id": "5",
-            "country": "BELARUS",
-            "city": "Grodno",
-            "address": "ul. Maxima Gorkogo 1/1,Grodno 230023",
-            "latitude": 53.68657681897926, 
-            "longitude": 23.83109042056094,
-            "number": "+375 15 268 58 00"
-        },
-        {
-            "id": "6",
-            "country": "BELARUS",
-            "city": "Minsk",
-            "address": "ul. Naturalistov 3,Minsk 220012",
-            "latitude": 53.92769187864267,  
-            "longitude": 27.61733899121872,
-            "number": "+375 29 193 30 43"
-        },
-        {
-            "id": "7",
-            "country": "BELARUS",
-            "city": "Minsk",
-            "address": "ul. Pritytskogo 156, Minsk 220017",
-            "latitude": 53.90899468115062,  
-            "longitude": 27.430754978242142,
-            "number": "+375 29 193 30 43"
-        },
-        {
-            "id": "8",
-            "country": "BELARUS",
-            "city": "Vitebsk",
-            "address": "ul. Kommunisticheskaya 16, Vitebsk 210026",
-            "latitude": 55.202507425639986,  
-            "longitude": 30.20993797458248,
-            "number": "+375 21 248 63 42"
-        },
-        {
-            "id": "9",
-            "country": "LITHUANIA",
-            "city": "Klaipėda",
-            "address": "Danės g. 6-401, LT-92109 Klaipėda",
-            "latitude": 55.71292808029691,   
-            "longitude": 21.140297534129502,
-            "number": "+370 698 51232"
-        },
-        {
-            "id": "10",
-            "country": "LITHUANIA",
-            "city": "Vilnius",
-            "address": "Žalgirio g. 90C, LT-09303 Vilnius",
-            "latitude": 54.70382276440894,   
-            "longitude": 25.27813080525425,
-            "number": "+370 698 51232"
-        },
-        {
-            "id": "11",
-            "country": "POLAND",
-            "city": "Bialystock",
-            "address": "Białostocki Park Naukowo-Technologiczny ul. Żurawia 71, 15-540 Białystok",
-            "latitude": 53.10706899901733,    
-            "longitude": 23.193421278211837,
-            "number": "+48 22 630 32 30"
-        },
-        {
-            "id": "12",
-            "country": "POLAND",
-            "city": "Szczecin",
-            "address": "ul. Cyfrowa 6, 71-441 Szczecin",
-            "latitude": 53.45059172382235,
-            "longitude": 14.536673232188344,
-            "number": "+48 22 630 32 30"
-        },
-        {
-            "id": "13",
-            "country": "POLAND",
-            "city": "Warsaw",
-            "address": "Warsaw Corporate Center ul. Emilii Plater 28, 00-688 Warszawa",
-            "latitude": 52.227863771456086,
-            "longitude": 21.00600620516076,
-            "number": "+48 22 630 32 30"
-        },
-        {
-            "id": "14",
-            "country": "POLAND",
-            "city": "Poznan",
-            "address": "ul. Ogrodowa 18/1, 61-821 Poznan",
-            "latitude": 52.40428358705591, 
-            "longitude": 16.928501564527817,
-            "number": "+48 22 630 32 30"
-        },
-        {
-            "id": "15",
-            "country": "RUSSIA",
-            "city": "Chelyabinsk",
-            "address": "ul. Lenina 55a, Chelyabinsk 454091",
-            "latitude": 55.15539855937418, 
-            "longitude": 61.2962663899261,
-            "number": "+7 351 729 97 41"
-        },
-        {
-            "id": "16",
-            "country": "RUSSIA",
-            "city": "Yekaterinburg",
-            "address": "ul. Chkalova 3, Yekaterinburg 620102",
-            "latitude": 56.81409992127123, 
-            "longitude": 60.58454544951805,
-            "number": "+7 343 345 03 44"
-        },
-        {
-            "id": "17",
-            "country": "UKRAINE",
-            "city": "Kharkiv",
-            "address": "prospekt Nauky 27b, Kharkiv 61072",
-            "latitude": 50.026750755606756, 
-            "longitude": 36.22037876275294,
-            "number": "+380 57 766 45 94"
-        },
-        {
-            "id": "18",
-            "country": "UKRAINE",
-            "city": "Kyiv",
-            "address": "Moscow vul. 8, Kyiv 01029",
-            "latitude": 50.44049923608724, 
-            "longitude": 30.544346591604253,
-            "number": "+380 67 533 82 44"
-        },
-        {
-            "id": "18",
-            "country": "UKRAINE",
-            "city": "Lviv",
-            "address": "vul. Maksyma Zalizniaka 16, Lviv 79057",
-            "latitude": 49.82955286167607, 
-            "longitude": 23.99813010321859,
-            "number": "+380 67 632 33 45"
-        },
-        {
-            "id": "19",
-            "country": "UKRAINE",
-            "city": "Odesa",
-            "address": "vul. Zhukovskogo 9, Odesa 65014",
-            "latitude": 46.47927864512445,  
-            "longitude": 30.74512584047647,
-            "number": "+380 67 939 17 04"
-        },
-        {
-            "id": "20",
-            "country": "UKRAINE",
-            "city": "Vinnytsia",
-            "address": "vul. Bratslavska 103, Vinnytsia 21001",
-            "latitude": 49.23468243441238,  
-            "longitude": 28.48856709824466,
-            "number": "+380 67 533 82 44"
-        },
-        {
-            "id": "21",
-            "country": "UKRAINE",
-            "city": "Tashkent",
-            "address": "Mirzo Ulugbek District Tamara Khanun str. 20, 100000 Tashkent",
-            "latitude": 41.34818746409392,  
-            "longitude": 69.34947784030926,
-            "number": "+998 (71) 2300533"
-        }
-    ]
-} 
+[
+    {
+        "id": "1",
+        "country": "USA",
+        "city": "Walnut Creek",
+        "address": "1340 Treat Blvd. Suite 375, Walnut Creek CA 94597",
+        "latitude": 37.92557996786679, 
+        "longitude": -122.0584078680293,
+        "number": "+1 (925) 363 9510"
+    },
+    {
+        "id": "2",
+        "country": "USA",
+        "city": "Boulder",
+        "address": "1995 57th Court North Suite 200, Boulder CO 80301",
+        "latitude": 40.02161103237348, 
+        "longitude": -105.2215395529247,
+        "number": "+1 (866) 213 7162"
+    },
+    {
+        "id": "3",
+        "country": "BELARUS",
+        "city": "Brest",
+        "address": "prospekt Mašerova 6a,Brest 224030",
+        "latitude": 52.08635668336722, 
+        "longitude": 23.67894326097369,
+        "number": "+375 16 228 59 79"
+    },
+    {
+        "id": "4",
+        "country": "BELARUS",
+        "city": "Brest",
+        "address": "ul. Pushkina 2-9,Gomel 246050",
+        "latitude": 52.43372430867304, 
+        "longitude": 31.010150276332023,
+        "number": "+375 23 222 93 19"
+    },
+    {
+        "id": "5",
+        "country": "BELARUS",
+        "city": "Grodno",
+        "address": "ul. Maxima Gorkogo 1/1,Grodno 230023",
+        "latitude": 53.68657681897926, 
+        "longitude": 23.83109042056094,
+        "number": "+375 15 268 58 00"
+    },
+    {
+        "id": "6",
+        "country": "BELARUS",
+        "city": "Minsk",
+        "address": "ul. Naturalistov 3,Minsk 220012",
+        "latitude": 53.92769187864267,  
+        "longitude": 27.61733899121872,
+        "number": "+375 29 193 30 43"
+    },
+    {
+        "id": "7",
+        "country": "BELARUS",
+        "city": "Minsk",
+        "address": "ul. Pritytskogo 156, Minsk 220017",
+        "latitude": 53.90899468115062,  
+        "longitude": 27.430754978242142,
+        "number": "+375 29 193 30 43"
+    },
+    {
+        "id": "8",
+        "country": "BELARUS",
+        "city": "Vitebsk",
+        "address": "ul. Kommunisticheskaya 16, Vitebsk 210026",
+        "latitude": 55.202507425639986,  
+        "longitude": 30.20993797458248,
+        "number": "+375 21 248 63 42"
+    },
+    {
+        "id": "9",
+        "country": "LITHUANIA",
+        "city": "Klaipėda",
+        "address": "Danės g. 6-401, LT-92109 Klaipėda",
+        "latitude": 55.71292808029691,   
+        "longitude": 21.140297534129502,
+        "number": "+370 698 51232"
+    },
+    {
+        "id": "10",
+        "country": "LITHUANIA",
+        "city": "Vilnius",
+        "address": "Žalgirio g. 90C, LT-09303 Vilnius",
+        "latitude": 54.70382276440894,   
+        "longitude": 25.27813080525425,
+        "number": "+370 698 51232"
+    },
+    {
+        "id": "11",
+        "country": "POLAND",
+        "city": "Bialystock",
+        "address": "Białostocki Park Naukowo-Technologiczny ul. Żurawia 71, 15-540 Białystok",
+        "latitude": 53.10706899901733,    
+        "longitude": 23.193421278211837,
+        "number": "+48 22 630 32 30"
+    },
+    {
+        "id": "12",
+        "country": "POLAND",
+        "city": "Szczecin",
+        "address": "ul. Cyfrowa 6, 71-441 Szczecin",
+        "latitude": 53.45059172382235,
+        "longitude": 14.536673232188344,
+        "number": "+48 22 630 32 30"
+    },
+    {
+        "id": "13",
+        "country": "POLAND",
+        "city": "Warsaw",
+        "address": "Warsaw Corporate Center ul. Emilii Plater 28, 00-688 Warszawa",
+        "latitude": 52.227863771456086,
+        "longitude": 21.00600620516076,
+        "number": "+48 22 630 32 30"
+    },
+    {
+        "id": "14",
+        "country": "POLAND",
+        "city": "Poznan",
+        "address": "ul. Ogrodowa 18/1, 61-821 Poznan",
+        "latitude": 52.40428358705591, 
+        "longitude": 16.928501564527817,
+        "number": "+48 22 630 32 30"
+    },
+    {
+        "id": "15",
+        "country": "RUSSIA",
+        "city": "Chelyabinsk",
+        "address": "ul. Lenina 55a, Chelyabinsk 454091",
+        "latitude": 55.15539855937418, 
+        "longitude": 61.2962663899261,
+        "number": "+7 351 729 97 41"
+    },
+    {
+        "id": "16",
+        "country": "RUSSIA",
+        "city": "Yekaterinburg",
+        "address": "ul. Chkalova 3, Yekaterinburg 620102",
+        "latitude": 56.81409992127123, 
+        "longitude": 60.58454544951805,
+        "number": "+7 343 345 03 44"
+    },
+    {
+        "id": "17",
+        "country": "UKRAINE",
+        "city": "Kharkiv",
+        "address": "prospekt Nauky 27b, Kharkiv 61072",
+        "latitude": 50.026750755606756, 
+        "longitude": 36.22037876275294,
+        "number": "+380 57 766 45 94"
+    },
+    {
+        "id": "18",
+        "country": "UKRAINE",
+        "city": "Kyiv",
+        "address": "Moscow vul. 8, Kyiv 01029",
+        "latitude": 50.44049923608724, 
+        "longitude": 30.544346591604253,
+        "number": "+380 67 533 82 44"
+    },
+    {
+        "id": "18",
+        "country": "UKRAINE",
+        "city": "Lviv",
+        "address": "vul. Maksyma Zalizniaka 16, Lviv 79057",
+        "latitude": 49.82955286167607, 
+        "longitude": 23.99813010321859,
+        "number": "+380 67 632 33 45"
+    },
+    {
+        "id": "19",
+        "country": "UKRAINE",
+        "city": "Odesa",
+        "address": "vul. Zhukovskogo 9, Odesa 65014",
+        "latitude": 46.47927864512445,  
+        "longitude": 30.74512584047647,
+        "number": "+380 67 939 17 04"
+    },
+    {
+        "id": "20",
+        "country": "UKRAINE",
+        "city": "Vinnytsia",
+        "address": "vul. Bratslavska 103, Vinnytsia 21001",
+        "latitude": 49.23468243441238,  
+        "longitude": 28.48856709824466,
+        "number": "+380 67 533 82 44"
+    },
+    {
+        "id": "21",
+        "country": "UKRAINE",
+        "city": "Tashkent",
+        "address": "Mirzo Ulugbek District Tamara Khanun str. 20, 100000 Tashkent",
+        "latitude": 41.34818746409392,  
+        "longitude": 69.34947784030926,
+        "number": "+998 (71) 2300533"
+    }
+]
