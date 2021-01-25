@@ -1,4 +1,4 @@
-import { IBonus } from './bonuse.interface';
+import { IBonus } from './bonus.interface';
 import { IOffice } from './office.interface';
 
 export {

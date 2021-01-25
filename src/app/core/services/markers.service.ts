@@ -22,7 +22,7 @@ export class MarkersService{
         popupAnchor: this.popupAnchor
     });
 
-    createOffocesMarkers(offices: IOffice[]): L.Marker[]{
+    createOfficesMarkers(offices: IOffice[]): L.Marker[]{
         const markers: L.Marker[] = offices.map((office: IOffice) => {
             return new L.Marker(
                 [office.latitude, office.longitude],

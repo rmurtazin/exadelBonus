@@ -23,19 +23,19 @@ export class MapComponent implements OnInit, OnDestroy {
 
   mapReadyEvent(map: L.Map): void {
     this.map = map;
-    this.dispayOfficesMarkers();
-    this.dispayBonusesMarkers();
+    this.displayOfficesMarkers();
+    this.displayBonusesMarkers();
   }
 
-  dispayOfficesMarkers(): void {
+  displayOfficesMarkers(): void {
     this.officesSubscription = this.api.getOffices()
       .subscribe((offices: IOffice[]) => {
-        const bonusesMarkers: L.Marker[] = this.markers.createOffocesMarkers(offices);
+        const bonusesMarkers: L.Marker[] = this.markers.createOfficesMarkers(offices);
         L.layerGroup(bonusesMarkers).addTo(this.map);
       });
   }
 
-  dispayBonusesMarkers(): void {
+  displayBonusesMarkers(): void {
     this.bonusesSubscription = this.api.getBonuses()
       .subscribe((bonuses: IBonus[]) => {
         const bonusesMarkers: L.Marker[] = this.markers.createBonusesMarkers(bonuses);
