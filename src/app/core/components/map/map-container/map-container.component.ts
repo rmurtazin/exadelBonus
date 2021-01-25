@@ -8,9 +8,9 @@ import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  selector: 'app-map-container',
+  templateUrl: './map-container.component.html',
+  styleUrls: ['./map-container.component.scss']
 })
 export class MapComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
