@@ -13,19 +13,19 @@
     "locations": [{
       "id": 1,
       "coordinates": {
-        "latitude  ": 53.8930095,
-        "longitude ": 27.5674444
+        "latitude": 53.8930095,
+        "longitude": 27.5674444
       },
-      "city ": "Minsk",
+      "city": "Minsk",
       "country": "Belarus",
       "address": "st. Petra Glebki 5"
     }, {
       "id": 7,
       "coordinates": {
-        "latitude  ": 53.2856154,
-        "longitude ": 15.2926343
+        "latitude": 53.2856154,
+        "longitude": 15.2926343
       },
-      "city ": "Suchań",
+      "city": "Suchań",
       "country": "Poland",
       "address": "2009 Monica Point"
     }],
@@ -46,10 +46,10 @@
     "locations": [{
       "id": 1,
       "coordinates": {
-        "latitude  ": 53.8930095,
-        "longitude ": 27.5674444
+        "latitude": 53.8930095,
+        "longitude": 27.5674444
       },
-      "city ": "Minsk",
+      "city": "Minsk",
       "country": "Belarus",
       "address": "st. Petra Glebki 5"
     }],
@@ -70,20 +70,20 @@
     "locations": [{
         "id": 3,
         "coordinates": {
-          "latitude  ": 48.9420658,
-          "longitude ": 25.7464148
+          "latitude": 48.9420658,
+          "longitude": 25.7464148
         },
-        "city ": "Yahil’nytsya",
+        "city": "Yahil’nytsya",
         "country": "Ukraine",
         "address": "82 Main Avenue"
       },
       {
         "id": 2,
         "coordinates": {
-          "latitude  ": 53.904743,
-          "longitude ": 27.55522
+          "latitude": 53.904743,
+          "longitude": 27.55522
         },
-        "city ": "Minsk",
+        "city": "Minsk",
         "country": "Belarus",
         "address": "Svobody 5"
       }
@@ -105,10 +105,10 @@
     "locations": [{
       "id": 4,
       "coordinates": {
-        "latitude  ": 55.1872225,
-        "longitude ": 30.2051165
+        "latitude": 55.1872225,
+        "longitude": 30.2051165
       },
-      "city ": "Vitsyebsk",
+      "city": "Vitsyebsk",
       "country": "Belarus",
       "address": "0191 Gina Road"
     }],
@@ -128,10 +128,10 @@
     "locations": [{
       "id": 1,
       "coordinates": {
-        "latitude  ": 53.8930095,
-        "longitude ": 27.5674444
+        "latitude": 53.8930095,
+        "longitude": 27.5674444
       },
-      "city ": "Minsk",
+      "city": "Minsk",
       "country": "Belarus",
       "address": "st. Petra Glebki 5"
     }],
@@ -152,31 +152,31 @@
     "locations": [{
       "id": 5,
       "coordinates": {
-        "latitude  ": 45.1973827,
-        "longitude ": 33.2979082
+        "latitude": 45.1973827,
+        "longitude": 33.2979082
       },
-      "city ": "Uyutne",
+      "city": "Uyutne",
       "country": "Ukraine",
       "address": "999 Mosinee Point"
     }, {
       "id": 7,
       "coordinates": {
-        "latitude  ": 53.2856154,
-        "longitude ": 15.2926343
+        "latitude": 53.2856154,
+        "longitude": 15.2926343
       },
-      "city ": "Suchań",
+      "city": "Suchań",
       "country": "Poland",
       "address": "2009 Monica Point"
     }, {
       "id": 1,
       "coordinates": {
-        "latitude  ": 53.8930095,
-        "longitude ": 27.5674444
+        "latitude": 53.8930095,
+        "longitude": 27.5674444
       },
-      "city ": "Minsk",
+      "city": "Minsk",
       "country": "Belarus",
       "address": "st. Petra Glebki 5"
-    }, 3],
+    }],
     "tags": ["Minsk", "hall", "hotel"]
   },
   {
@@ -194,19 +194,19 @@
     "locations": [{
       "id": 5,
       "coordinates": {
-        "latitude  ": 45.1973827,
-        "longitude ": 33.2979082
+        "latitude": 45.1973827,
+        "longitude": 33.2979082
       },
-      "city ": "Uyutne",
+      "city": "Uyutne",
       "country": "Ukraine",
       "address": "999 Mosinee Point"
     }, {
       "id": 7,
       "coordinates": {
-        "latitude  ": 53.2856154,
-        "longitude ": 15.2926343
+        "latitude": 53.2856154,
+        "longitude": 15.2926343
       },
-      "city ": "Suchań",
+      "city": "Suchań",
       "country": "Poland",
       "address": "2009 Monica Point"
     }],
@@ -227,28 +227,28 @@
     "locations": [{
       "id": 5,
       "coordinates": {
-        "latitude  ": 45.1973827,
-        "longitude ": 33.2979082
+        "latitude": 45.1973827,
+        "longitude": 33.2979082
       },
-      "city ": "Uyutne",
+      "city": "Uyutne",
       "country": "Ukraine",
       "address": "999 Mosinee Point"
     }, {
       "id": 2,
       "coordinates": {
-        "latitude  ": 52.00577,
-        "longitude ": 33.2615
+        "latitude": 52.00577,
+        "longitude": 33.2615
       },
-      "city ": "Novhorod-Sivers’kyy",
+      "city": "Novhorod-Sivers’kyy",
       "country": "Ukraine",
       "address": "1 Monterey Parkway"
     }, {
       "id": 5,
       "coordinates": {
-        "latitude  ": 45.1973827,
-        "longitude ": 33.2979082
+        "latitude": 45.1973827,
+        "longitude": 33.2979082
       },
-      "city ": "Uyutne",
+      "city": "Uyutne",
       "country": "Ukraine",
       "address": "999 Mosinee Point"
     }],
@@ -269,19 +269,19 @@
     "locations": [{
       "id": 1,
       "coordinates": {
-        "latitude  ": 53.8930095,
-        "longitude ": 27.5674444
+        "latitude": 53.8930095,
+        "longitude": 27.5674444
       },
-      "city ": "Minsk",
+      "city": "Minsk",
       "country": "Belarus",
       "address": "st. Petra Glebki 5"
     }, {
       "id": 4,
       "coordinates": {
-        "latitude  ": 55.1872225,
-        "longitude ": 30.2051165
+        "latitude": 55.1872225,
+        "longitude": 30.2051165
       },
-      "city ": "Vitsyebsk",
+      "city": "Vitsyebsk",
       "country": "Belarus",
       "address": "0191 Gina Road"
     }],
@@ -302,19 +302,19 @@
     "locations": [{
       "id": 5,
       "coordinates": {
-        "latitude  ": 45.1973827,
-        "longitude ": 33.2979082
+        "latitude": 45.1973827,
+        "longitude": 33.2979082
       },
-      "city ": "Uyutne",
+      "city": "Uyutne",
       "country": "Ukraine",
       "address": "999 Mosinee Point"
     }, {
       "id": 5,
       "coordinates": {
-        "latitude  ": 45.1973827,
-        "longitude ": 33.2979082
+        "latitude": 45.1973827,
+        "longitude": 33.2979082
       },
-      "city ": "Uyutne",
+      "city": "Uyutne",
       "country": "Ukraine",
       "address": "999 Mosinee Point"
     }],
