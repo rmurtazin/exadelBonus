@@ -5,8 +5,7 @@
         <input 
           matInput 
           formControlName="userLogin" 
-          autocomplete="off" 
-          required>
+          autocomplete="off">
       </mat-form-field>
       <mat-form-field class="login-input" 
         appearance="fill"  
@@ -15,8 +14,7 @@
         <input 
           matInput 
           formControlName="userPassword"
-          [type]="hide ? 'password' : 'text'" 
-          required>
+          [type]="hide ? 'password' : 'text'">
         <button (click)="onToggleClickPasswordIcon()"
           mat-icon-button 
           matSuffix 

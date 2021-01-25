@@ -1,18 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit, OnDestroy {
   public myForm: FormGroup;
   public subscription: Subscription = new Subscription();
   public hide = true;
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.onInitForm();
@@ -36,9 +38,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
-    this.subscription = this.authServices.onLogin(this.myForm.value).subscribe(
-      (user) => {
+    this.subscription = this.loginService.onLogin(this.myForm.value).subscribe(
+      (token) => {
         //here will be like this.router.navigateByUrl('/home');
+        console.log('token', token);
       },
       (error) => {
         //here will be service like ngx-toastr
