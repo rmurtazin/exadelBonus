@@ -10,7 +10,7 @@ export class MapViewComponent implements OnInit {
 
   @Output() mapReady = new EventEmitter<L.Map>();
 
-  options = {
+  public options = {
     layers: [
       L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -21,7 +21,9 @@ export class MapViewComponent implements OnInit {
     center: L.latLng(46.879966, -121.726909)
   };
 
-  onMapReady = (map: L.Map) => this.mapReady.emit(map);
+  onMapReady(map: L.Map): void {
+    this.mapReady.emit(map);
+  }
 
   ngOnInit(): void { }
 

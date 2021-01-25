@@ -4,18 +4,18 @@ import { IOffice, IBonus } from 'interfaces/.';
 
 @Injectable()
 export class MarkersService{
-    iconSize: L.PointExpression = [32, 32];
-    iconAnchor: L.PointExpression = [32, 32];
-    popupAnchor: L.PointExpression = [-15, -35];
+    private iconSize: L.PointExpression = [32, 32];
+    private iconAnchor: L.PointExpression = [32, 32];
+    private popupAnchor: L.PointExpression = [-15, -35];
 
-    bonusMarkerIco = new L.Icon({
+    private bonusMarkerIco = new L.Icon({
         iconUrl: '/assets/icons/marker.png',
         iconSize: this.iconSize,
         iconAnchor: this.iconAnchor,
         popupAnchor: this.popupAnchor
     });
 
-    officeMarkerIco = new L.Icon({
+    private officeMarkerIco = new L.Icon({
         iconUrl: '/assets/icons/office.png',
         iconSize: this.iconSize,
         iconAnchor: this.iconAnchor,
