@@ -5,31 +5,31 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  TOKEN_KEY = "token_key";
-  isAuthenticated : boolean = false; 
+  TOKEN_KEY = 'token_key';
+  isAuthenticated = false;
   constructor(private router: Router) { }
 
-  whatRole() : string{
-    return 'admin' 
-  } 
+  whatRole(): string{
+    return 'admin';
+  }
 
-  saveToken(token: string) {
+  saveToken(token: string): void{
     window.localStorage.removeItem(this.TOKEN_KEY);
     window.localStorage.setItem(this.TOKEN_KEY, token);
   }
 
-  getToken(): string {
+  getToken(): string{
     return localStorage.getItem(this.TOKEN_KEY);
   }
 
   checkAuthentication(): boolean{
-    if(this.getToken() === 'test') {
+    if (this.getToken() === 'test') {
       this.isAuthenticated = true;
     }
     return this.isAuthenticated;
   }
 
-  logout() {
+  logout(): void{
     this.isAuthenticated = false;
     window.localStorage.clear();
     this.router.navigate(['']);

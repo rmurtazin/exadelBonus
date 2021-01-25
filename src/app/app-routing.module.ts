@@ -9,9 +9,9 @@ import { StatisticsComponent } from './core/features/statistics/statistics.compo
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '',   redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent}, 
-  { path: 'home',  
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent},
+  { path: 'home',
     canActivate: [AuthGuard],
     children : [
       { path: '', component: HomeComponent},

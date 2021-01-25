@@ -22,7 +22,6 @@ import { StatisticsComponent } from './core/features/statistics/statistics.compo
     LoginComponent,
     AddBonusComponent,
     StatisticsComponent,
-   
   ],
   imports: [
     HttpClientModule,
@@ -33,7 +32,6 @@ import { StatisticsComponent } from './core/features/statistics/statistics.compo
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-  
   ],
   providers: [],
   bootstrap: [AppComponent]
