@@ -1,0 +1,34 @@
+<header>
+  <nav>
+    <section class="logo">
+      <span class="logo-img">e</span><span class="logo-text">exadel bonus+</span>
+    </section>
+    <ul [ngClass]="{'menu': true, 'hide': isMenuHide}">
+      <li class="menu-item">
+        <span class="login-as-label">You're login as:</span>
+        <span class="login-as-text">{{name}} {{surname}} </span>
+      </li>
+      <li class="menu-item">
+        <a>Find place</a>
+      </li>
+      <li class="menu-item">
+        <a>History</a>
+      </li>
+      <li class="menu-item">
+        <a>Add bonus</a>
+      </li>
+      <li class="menu-item">
+        <a>Bonuses</a>
+      </li>
+      <li class="menu-item">
+        <a>Users</a>
+      </li>
+      <li class="menu-item">
+        <a>Sign out</a>
+      </li>
+    </ul>
+    <button mat-icon-button class="menu-icon" aria-label="Menu icon" (click)="this.toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </nav>
+</header>

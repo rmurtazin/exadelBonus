@@ -1,0 +1,94 @@
+$theme-color: #0082CA;
+header {
+  width: 100vw;
+  box-shadow: 0 5px 4px rgba(66, 66, 66, 0.25);
+  nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+    position: relative;
+  }
+}
+
+.menu {
+  transition: .5s ease-out;
+  margin: 14px;
+  padding-inline-start: 0;
+  .menu-item {
+    list-style: none;
+    display: inline-block;
+    font-size: 20px;
+    a {
+      padding: 0 15px;
+      width: 100%;
+      height: 100%;
+      opacity: 85%;
+      &:hover {
+        color: $theme-color;
+      }
+    }
+  }
+}
+
+.logo {
+  height: 100%;
+  color: $theme-color;
+  display: flex;
+  .logo-img {
+    display: inline-block;
+    line-height: 100%;
+    font-size: 50px;
+    color: inherit;
+    transform: rotate(-45deg);
+    font-weight: 300;
+  }
+  .logo-text {
+    display: inline-block;
+    font-size: 25px;
+    color: inherit;
+    margin: auto 10px;
+  }
+}
+
+@media (min-width: 900px), (min-device-width: 900px) {
+  .menu-icon {
+    display: none;
+  }
+  .login-as-label, .login-as-text {
+    display: none;
+  }
+}
+
+@media (max-width: 899px), (max-device-width: 899px) {
+  .menu-icon {
+    display: block;
+    margin: auto 10px;
+  }
+  .menu {
+    position: absolute;
+    width: 300px;
+    height: 100vh;
+    background-color: #FFF;
+    right: -10px;
+    margin: 0;
+    padding-top: 40px;
+    .menu-item {
+      display: block;
+      margin: 20px auto;
+    }
+    &.hide {
+      right: -310px;
+    }
+    &:not(.hide) {
+      box-shadow: 0 0 20px -5px #000;
+    }
+  }
+  .login-as-label, .login-as-text {
+    text-align: center;
+    display: block;
+  }
+  .login-as-label {
+    opacity: 80%;
+    font-size: 16px;
+  }
+}
