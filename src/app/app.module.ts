@@ -27,7 +27,6 @@ import { HomeComponent } from './shared/components/home/home.component';
     HomeComponent,
   ],
   imports: [
-    HttpClient,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

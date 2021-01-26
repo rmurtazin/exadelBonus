@@ -12,10 +12,10 @@ const routes: Routes = [
   { path: 'home',
     canActivate: [AuthGuard],
     children : [
-      { path: '', component: HomeComponent}
+      { path: '', component: HomeComponent},
+      {path: 'map', component: MapComponent}
     ]
   },
-  {path: 'map', component: MapComponent},
   {path: '**', redirectTo: 'login'}
 ];
 
