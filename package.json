@@ -36,6 +36,8 @@
     "@angular/platform-browser": "~11.0.9",
     "@angular/platform-browser-dynamic": "~11.0.9",
     "@angular/router": "~11.0.9",
+    "@asymmetrik/ngx-leaflet": "^8.1.0",
+    "leaflet": "^1.7.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -51,6 +53,7 @@
     "@angular/compiler-cli": "~11.0.9",
     "@nrwl/eslint-plugin-nx": "^11.1.5",
     "@types/jasmine": "~3.6.0",
+    "@types/leaflet": "^1.5.21",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/eslint-plugin-tslint": "^4.13.0",
