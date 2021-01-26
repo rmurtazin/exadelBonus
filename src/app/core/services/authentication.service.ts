@@ -8,25 +8,25 @@ export class AuthenticationService {
   TOKEN_KEY = 'token_key';
   constructor(private router: Router) { }
 
-  whatRole(): string{
+  public whatRole(): string{
     return 'admin';
   }
 
-  saveToken(token: string): void{
-    window.localStorage.removeItem(this.TOKEN_KEY);
-    window.localStorage.setItem(this.TOKEN_KEY, token);
+  public saveToken(token: string): void{
+    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.setItem(this.TOKEN_KEY, token);
   }
 
-  getToken(): string{
+  public getToken(): string{
     return localStorage.getItem(this.TOKEN_KEY);
   }
 
-  checkAuthentication(): boolean{
+  public checkAuthentication(): boolean{
     return this.getToken() === 'test';
   }
 
-  logout(): void{
-    window.localStorage.clear();
+  public logout(): void{
+    localStorage.clear();
     this.router.navigate(['']);
   }
 

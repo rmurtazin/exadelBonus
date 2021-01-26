@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MapComponent } from './core/components/map/map-container/map-container.component';
 
 import { HomeComponent } from './shared/components/home/home.component';
 
@@ -12,8 +11,7 @@ const routes: Routes = [
   { path: 'home',
     canActivate: [AuthGuard],
     children : [
-      { path: '', component: HomeComponent},
-      {path: 'map', component: MapComponent}
+      { path: '', component: HomeComponent}
     ]
   },
   {path: '**', redirectTo: 'login'}
