@@ -6,15 +6,14 @@ import { LoginService } from './services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-
 export class LoginComponent implements OnInit, OnDestroy {
   public myForm: FormGroup;
   public subscription: Subscription = new Subscription();
   public hide = true;
 
-  constructor(private loginService: LoginService) { }
+  constructor(public loginService: LoginService) {}
 
   ngOnInit(): void {
     this.onInitForm();
@@ -38,17 +37,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
-    this.subscription = this.loginService.onLogin(this.myForm.value).subscribe(
-      (token) => {
-        //here will be like this.router.navigateByUrl('/home');
-        console.log('token', token);
-      },
-      (error) => {
-        //here will be service like ngx-toastr
-        console.log({ error });
-      }
+    this.subscription.add(
+      this.loginService.onLogin(this.myForm.value).subscribe(() => {
+       // here will be like this.router.navigateByUrl('/home');
+      })
     );
-    console.log(this.myForm.value)
   }
-
 }

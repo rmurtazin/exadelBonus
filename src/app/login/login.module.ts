@@ -24,4 +24,5 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   exports: [LoginComponent],
 })
+
 export class LoginModule {}

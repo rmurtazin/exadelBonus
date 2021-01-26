@@ -1,34 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ILoginValues, IToken } from '../interfaces/loginInterface';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { ILogin, IUser } from '../interfaces/loginInterface';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  private tokenSubject: BehaviorSubject<any> = new BehaviorSubject<IToken>(JSON.parse(localStorage.getItem('token')));
-  private token: Observable<IToken> = this.tokenSubject.asObservable(); //must return token
+  private currentUser: IUser = JSON.parse(localStorage.getItem('user'));
 
   constructor(private http: HttpClient) {}
 
-  // get current token
-  public getToken(): boolean {
-    return this.tokenSubject.getValue();
+  public getUser(): IUser | null {
+    return this.currentUser;
   }
 
-  public onLogin(userInput: ILoginValues): Observable<any> {
+  public getToken(): string | null {
+    if (this.currentUser) {
+      return JSON.parse(localStorage.getItem('user')).token;
+    }
+    return null;
+  }
+
+  public onLogin(userInput: ILogin): Observable<any> {
     // here will be function like this.http.post('authApiUrl', userInput)...
-    return this.http.get('../../../assets/static/activeUserToken.json').pipe(
-      map((token) => {
-        localStorage.setItem('token', JSON.stringify(token));
-        this.tokenSubject.next(token);
-        return token;
+    return this.http.get('../../../assets/static/currentUser.json').pipe(
+      tap((user) => {
+        this.currentUser = user;
+        localStorage.setItem('user', JSON.stringify(user));
+        return user;
       })
     );
   }
 
   public onlogout(): void {
-    localStorage.removeItem('token');
-    this.tokenSubject.next(null);
+    localStorage.removeItem('user');
+    this.currentUser = null;
   }
 }
