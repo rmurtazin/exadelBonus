@@ -12,9 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HeaderComponent} from '@components/header/header.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { HeaderComponent } from '@components/header/header.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
