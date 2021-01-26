@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isMenuHide = true;
-  name = 'Ivan';
-  surname = 'Ivanov';
+  firstName = 'Ivan';
+  lastName = 'Ivanov';
   constructor() { }
 
   ngOnInit(): void {
@@ -16,5 +16,8 @@ export class HeaderComponent implements OnInit {
 
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
+  }
+  public hideMenu(): void {
+    this.isMenuHide = true;
   }
 }

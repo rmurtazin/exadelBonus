@@ -1,4 +1,5 @@
-$theme-color: #0082CA;
+@import 'src/styles/variables.scss';
+
 header {
   width: 100vw;
   box-shadow: 0 5px 4px rgba(66, 66, 66, 0.25);
@@ -7,11 +8,23 @@ header {
     justify-content: space-between;
     margin: 0 10px;
     position: relative;
+    min-height: 40px;
   }
 }
 
+a.active {
+  color: $theme-color;
+}
+
+a:not(.active) {
+  color: black;
+}
+
+.menu-container {
+  transition: .3s ease-in-out;
+}
+
 .menu {
-  transition: .5s ease-out;
   margin: 14px;
   padding-inline-start: 0;
   .menu-item {
@@ -19,6 +32,7 @@ header {
     display: inline-block;
     font-size: 20px;
     a {
+      text-decoration: none;
       padding: 0 15px;
       width: 100%;
       height: 100%;
@@ -36,51 +50,62 @@ header {
   display: flex;
   .logo-img {
     display: inline-block;
-    line-height: 100%;
-    font-size: 50px;
-    color: inherit;
-    transform: rotate(-45deg);
-    font-weight: 300;
+    margin: auto 5px;
   }
   .logo-text {
     display: inline-block;
     font-size: 25px;
     color: inherit;
     margin: auto 10px;
+    white-space: nowrap;
   }
 }
 
-@media (min-width: 900px), (min-device-width: 900px) {
+@media (min-width: 940px), (min-device-width: 940px) {
   .menu-icon {
     display: none;
   }
   .login-as-label, .login-as-text {
     display: none;
   }
+  .logo {
+    margin: auto 10px;
+    .logo-img {
+      height: 40px;
+    }
+  }
 }
 
-@media (max-width: 899px), (max-device-width: 899px) {
+@media (max-width: 939px), (max-device-width: 939px) {
   .menu-icon {
     display: block;
-    margin: auto 10px;
-  }
-  .menu {
-    position: absolute;
-    width: 300px;
-    height: 100vh;
-    background-color: #FFF;
-    right: -10px;
-    margin: 0;
-    padding-top: 40px;
-    .menu-item {
-      display: block;
-      margin: 20px auto;
+    margin: auto 0;
+    &.fixed {
+      position: fixed;
+      right: 10px;
     }
+  }
+  .menu-container {
+    position: fixed;
+    padding-top: 40px;
+    height: 100vh;
+    right: -14px;
+    width: 300px;
+    background-color: #FFF;
+    overflow-y: scroll;
     &.hide {
       right: -310px;
     }
     &:not(.hide) {
       box-shadow: 0 0 20px -5px #000;
+    }
+  }
+  .menu {
+    margin: 0 0 15px 0;
+    height: 100%;
+    .menu-item {
+      display: block;
+      margin: 20px auto;
     }
   }
   .login-as-label, .login-as-text {
@@ -90,5 +115,11 @@ header {
   .login-as-label {
     opacity: 80%;
     font-size: 16px;
+  }
+  .logo {
+    margin: auto 0;
+    .logo-img {
+      height: 30px;
+    }
   }
 }
