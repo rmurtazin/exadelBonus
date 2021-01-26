@@ -10,14 +10,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/modules/material.module';
 import { HeaderComponent } from './core/components/header/header.component';
 import { HomeComponent } from './shared/components/home/home.component';
-import { LoginComponent } from './core/components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    LoginComponent,
   ],
   imports: [
     HttpClientModule,

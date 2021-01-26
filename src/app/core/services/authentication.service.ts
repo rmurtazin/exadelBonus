@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationService {
   TOKEN_KEY = 'token_key';
-  isAuthenticated = false;
   constructor(private router: Router) { }
 
   whatRole(): string{
@@ -23,14 +22,10 @@ export class AuthenticationService {
   }
 
   checkAuthentication(): boolean{
-    if (this.getToken() === 'test') {
-      this.isAuthenticated = true;
-    }
-    return this.isAuthenticated;
+    return this.getToken() === 'test';
   }
 
   logout(): void{
-    this.isAuthenticated = false;
     window.localStorage.clear();
     this.router.navigate(['']);
   }
