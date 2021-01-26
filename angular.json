@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": []
           },
@@ -124,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "exadelBonus"
+  "defaultProject": "exadelBonus",
+  "cli": {
+    "analytics": "d23eef30-b318-4252-8ac6-8a5098e489c1"
+  }
 }
