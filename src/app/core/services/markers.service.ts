@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
+import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
 import { Marker, Icon, PointExpression } from 'leaflet';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
+import { MarkerEventsService } from './marker-events.service';
+import { OfficePopupComponent } from '@components/map/office-popup/office-popup.component';
+import { PopupService } from './popup.service';
 
 @Injectable()
 export class MarkersService{
@@ -22,11 +25,22 @@ export class MarkersService{
         popupAnchor: this.popupAnchor
     });
 
+    constructor(
+        private popupService: PopupService,
+        private injector: Injector,
+        private resolver: ComponentFactoryResolver
+        ){}
+
     public createOfficesMarkers(offices: IOffice[]): Marker[]{
         return offices.map((office: IOffice) => {
+            const component = this.resolver.resolveComponentFactory(OfficePopupComponent).create(this.injector);
+            component.instance.data = office;
             return new Marker(
                 [office.latitude, office.longitude],
-                {icon: this.officeMarkerIco});
+                {icon: this.officeMarkerIco}
+            ).bindPopup(
+                component.location.nativeElement
+            );
         });
     }
 
@@ -35,6 +49,8 @@ export class MarkersService{
             return new Marker(
                 [location.coordinates.latitude, location.coordinates.longitude],
                 {icon: this.bonusMarkerIco}
+            ).bindPopup(
+                'component.location.nativeElement'
             );
         });
     }

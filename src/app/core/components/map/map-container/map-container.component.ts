@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ComponentFactoryResolver } from '@angular/core';
 import { MarkersService } from '@services/markers.service';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
@@ -6,6 +6,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { Map, Marker, layerGroup} from 'leaflet';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
+import { MarkerEventsService } from '@services/marker-events.service';
 
 @Component({
   selector: 'app-map-container',
@@ -19,7 +20,8 @@ export class MapComponent implements OnInit, OnDestroy {
   constructor(
     private officeService: OfficesService,
     private bonusesService: BonusesService,
-    private markers: MarkersService
+    private markers: MarkersService,
+    private markerEvents: MarkerEventsService,
   ) {}
 
   public ngOnInit(): void {}
