@@ -23,7 +23,6 @@ import { BonusesService } from '@services/bonuses.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpClient,
     LeafletModule
   ],
   providers: [
