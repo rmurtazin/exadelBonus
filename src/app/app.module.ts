@@ -11,19 +11,25 @@ import { MarkersService } from '@services/markers.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
+import { LanguageSwitcherComponent } from './core/components/language-switcher/language-switcher.component';
+import { LanguageSwitcherDirective } from './shared/directives/language-switcher.directive';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    MapViewComponent
+    MapViewComponent,
+    LanguageSwitcherDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    LeafletModule
+    LeafletModule,
+    MatButtonModule,
   ],
   providers: [
     ApiService,

@@ -1,0 +1,18 @@
+.toggleButton {
+  width: 25px;
+  height: 25px;
+  padding: 0px;
+  border-radius: 50% 50% 50% 50%;
+  border: 2px solid #0082CA;
+  color: #0082CA;
+  outline: none;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+
+  @media screen and(min-width: 768px) {
+    width: 35px;
+    height: 35px;
+    font-size: 15px;
+  }
+}
