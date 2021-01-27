@@ -30,13 +30,9 @@ import { HomeComponent } from './shared/components/home/home.component';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-<<<<<<< HEAD
     BrowserAnimationsModule,
     HttpClientModule,
     LeafletModule
-=======
-    LeafletModule,
->>>>>>> routing-for-merge
   ],
   providers: [
     ApiService,
