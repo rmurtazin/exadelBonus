@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,9 +8,16 @@ import { MapViewComponent } from '@components/map/map-view/map-view.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ApiService} from '@services/api.service';
 import { MarkersService } from '@services/markers.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
+import { AuthInterceptor } from '@services/auth.interceptor';
+
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor
+}
 
 @NgModule({
   declarations: [
@@ -28,7 +35,8 @@ import { BonusesService } from '@services/bonuses.service';
     ApiService,
     OfficesService,
     BonusesService,
-    MarkersService
+    MarkersService,
+    INTERCEPTOR_PROVIDER
   ],
   bootstrap: [AppComponent]
 })
