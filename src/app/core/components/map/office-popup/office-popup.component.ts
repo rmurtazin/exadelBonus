@@ -10,13 +10,13 @@ import { MarkerEventsService } from '@services/markers-events.service';
 })
 export class OfficePopupComponent implements OnInit {
 
-  @Input() public data: IOffice;
+  @Input() public office: IOffice;
 
   constructor( private markerEvents: MarkerEventsService) { }
 
   public ngOnInit(): void {}
 
   public clickTrigger(): void{
-    this.markerEvents.officeMarkerClick(this.data);
+    this.markerEvents.officeMarkerClick(this.office);
   }
 }

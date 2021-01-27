@@ -8,7 +8,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 })
 export class BonusPopupComponent implements OnInit {
 
-  @Input() public data: IBonus;
+  @Input() public bonus: IBonus;
 
   public ngOnInit(): void {}
 

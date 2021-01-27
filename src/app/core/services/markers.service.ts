@@ -33,7 +33,7 @@ export class MarkersService{
     public createOfficesMarkers(offices: IOffice[]): Marker[]{
         return offices.map((office: IOffice) => {
             const component = this.resolver.resolveComponentFactory(OfficePopupComponent).create(this.injector);
-            component.instance.data = office;
+            component.instance.office = office;
             component.changeDetectorRef.detectChanges();
             return new Marker(
                 [office.latitude, office.longitude],
@@ -47,7 +47,7 @@ export class MarkersService{
     private nestedBonusLocationsMarkerGenerator(bonus: IBonus): Marker[]{
         return bonus.locations.map( location => {
             const component = this.resolver.resolveComponentFactory(BonusPopupComponent).create(this.injector);
-            component.instance.data = bonus;
+            component.instance.bonus = bonus;
             component.changeDetectorRef.detectChanges();
             return new Marker(
                 [location.coordinates.latitude, location.coordinates.longitude],

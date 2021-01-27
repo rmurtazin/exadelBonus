@@ -55,10 +55,9 @@ export class MapComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.markerEvents.officeMarkerClickObserver().subscribe(
         (office: IOffice) => {
-          this.map.setView(
-            latLng(office.latitude, office.longitude),
-            11
-          );
+          const location = latLng(office.latitude, office.longitude);
+          const zoom = 11;
+          this.map.setView( location, zoom );
           this.map.closePopup();
         }
       )
