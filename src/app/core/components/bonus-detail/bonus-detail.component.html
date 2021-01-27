@@ -1,0 +1,16 @@
+<div *ngIf="bonus">
+  <h2>Bonus Details</h2>
+  <h2>{{ bonus.type | uppercase }}</h2>
+  <div><span>id: </span>{{ bonus.id }}</div>
+  <h3><strong>company: {{ bonus.company.name }}</strong> <span>Discount:{{ bonus.discount }}</span></h3>
+  <div>
+    <p>{{ bonus.description }}</p>
+    <ul>
+      <li>Date Start: {{ bonus.dateStart }}</li>  
+      <li>Date End: {{ bonus.dateEnd }}</li> 
+    </ul>
+  </div>
+  <p>Contacts: {{bonus.company.phone}} {{bonus.company.email}}</p>
+
+  <button (click)="onUse()">Want to use</button>
+</div>

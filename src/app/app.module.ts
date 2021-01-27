@@ -13,6 +13,7 @@ import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
 import { MarkerEventsService } from '@services/markers-events.service';
+import { BonusDetailComponent } from './core/components/bonus-detail/bonus-detail.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MarkerEventsService } from '@services/markers-events.service';
     AppComponent,
     MapComponent,
     MapViewComponent,
-    OfficePopupComponent
+    OfficePopupComponent,
+    BonusDetailComponent
   ],
   imports: [
     BrowserModule,
