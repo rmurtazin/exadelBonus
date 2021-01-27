@@ -14,7 +14,7 @@ export class OfficePopupComponent implements OnInit {
 
   constructor( private markerEvents: MarkerEventsService) { }
 
-  ngOnInit(): void {}
+  public ngOnInit(): void {}
 
   public clickTrigger(): void{
     this.markerEvents.officeMarkerClick(this.data);
