@@ -1,8 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MapComponent } from './core/components/map/map-container/map-container.component';
+import { HomeComponent } from './shared/components/home/home.component';
+import { LoginComponent } from '@components/login/login.component';
+import { LoginModule } from '@components/login/login.module';
 
-const routes: Routes = [{path: 'map', component: MapComponent}];
+const routes: Routes = [
+  {path: 'home', component: HomeComponent},
+  { path: 'history', redirectTo: 'home'},
+  { path: 'add-bonus', redirectTo: 'home'},
+  { path: 'bonuses', redirectTo: 'home'},
+  { path: 'users', redirectTo: 'home'},
+  { path: 'logout', component: LoginComponent},
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
