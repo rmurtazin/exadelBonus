@@ -1,4 +1,4 @@
-import { Directive, HostListener, ElementRef, Renderer2 } from '@angular/core';
+import { Directive, HostListener, ElementRef, Renderer2, OnChanges } from '@angular/core';
 
 @Directive({
   selector: '[appLanguageSwitcher]',
@@ -12,12 +12,8 @@ export class LanguageSwitcherDirective {
 
   @HostListener('click', ['$event'])
   clickEvent(): void {
-    this.currentLanguage = this.elementRef.nativeElement.value;
+    this.currentLanguage = this.elementRef.nativeElement.textContent;
     this.changedLanguage = this.currentLanguage === 'EN' ? 'RU' : 'EN';
-    this.renderer.setAttribute(
-      this.elementRef.nativeElement,
-      'value',
-      this.changedLanguage
-    );
+    this.elementRef.nativeElement.textContent = this.changedLanguage;
   }
 }
