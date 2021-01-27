@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IOffice } from '@interfaces/office.interface';
+import { MarkerEventsService } from '@services/markers-events.service';
+
 
 @Component({
   selector: 'app-office-popup',
@@ -10,12 +12,11 @@ export class OfficePopupComponent implements OnInit {
 
   @Input() public data: IOffice;
 
-  constructor() { }
+  constructor( private markerEvents: MarkerEventsService) { }
 
   ngOnInit(): void {}
 
-  public log(): void{
-    console.log(this.data);
+  public clickTrigger(): void{
+    this.markerEvents.officeMarkerClick(this.data);
   }
-
 }

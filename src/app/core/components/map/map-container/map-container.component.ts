@@ -3,10 +3,10 @@ import { MarkersService } from '@services/markers.service';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Map, Marker, layerGroup} from 'leaflet';
+import { Map, Marker, layerGroup, latLng} from 'leaflet';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
-import { MarkerEventsService } from '@services/marker-events.service';
+import { MarkerEventsService } from '@services/markers-events.service';
 
 @Component({
   selector: 'app-map-container',
@@ -20,7 +20,7 @@ export class MapComponent implements OnInit, OnDestroy {
   constructor(
     private officeService: OfficesService,
     private bonusesService: BonusesService,
-    private markers: MarkersService,
+    private markersService: MarkersService,
     private markerEvents: MarkerEventsService,
   ) {}
 
@@ -30,12 +30,13 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map = map;
     this.displayOfficesMarkers();
     this.displayBonusesMarkers();
+    this.officeMarkerClickObserver();
   }
 
   private displayOfficesMarkers(): void {
     this.subscription.add(
       this.officeService.getOffices().subscribe((offices: IOffice[]) => {
-        const bonusesMarkers: Marker[] = this.markers.createOfficesMarkers(offices);
+        const bonusesMarkers: Marker[] = this.markersService.createOfficesMarkers(offices);
         layerGroup(bonusesMarkers).addTo(this.map);
       })
     );
@@ -44,9 +45,23 @@ export class MapComponent implements OnInit, OnDestroy {
   private displayBonusesMarkers(): void {
     this.subscription.add(
       this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
-        const bonusesMarkers: Marker[] = this.markers.createBonusesMarkers(bonuses);
+        const bonusesMarkers: Marker[] = this.markersService.createBonusesMarkers(bonuses);
         layerGroup(bonusesMarkers).addTo(this.map);
       })
+    );
+  }
+
+  private officeMarkerClickObserver(): void {
+    this.subscription.add(
+      this.markerEvents.officeMarkerClickObserver().subscribe(
+        (office: IOffice) => {
+          this.map.setView(
+            latLng(office.latitude, office.longitude),
+            11
+          );
+          this.map.closePopup();
+        }
+      )
     );
   }
 

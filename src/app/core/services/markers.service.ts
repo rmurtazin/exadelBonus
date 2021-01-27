@@ -2,15 +2,15 @@ import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
 import { Marker, Icon, PointExpression } from 'leaflet';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import { MarkerEventsService } from './marker-events.service';
 import { OfficePopupComponent } from '@components/map/office-popup/office-popup.component';
-import { PopupService } from './popup.service';
+import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 
 @Injectable()
 export class MarkersService{
     private iconSize: PointExpression = [32, 32];
     private iconAnchor: PointExpression = [32, 32];
     private popupAnchor: PointExpression = [-15, -35];
+
     private bonusMarkerIco = new Icon({
         iconUrl: '/assets/icons/marker.png',
         iconSize: this.iconSize,
@@ -26,7 +26,6 @@ export class MarkersService{
     });
 
     constructor(
-        private popupService: PopupService,
         private injector: Injector,
         private resolver: ComponentFactoryResolver
         ){}
@@ -35,6 +34,7 @@ export class MarkersService{
         return offices.map((office: IOffice) => {
             const component = this.resolver.resolveComponentFactory(OfficePopupComponent).create(this.injector);
             component.instance.data = office;
+            component.changeDetectorRef.detectChanges();
             return new Marker(
                 [office.latitude, office.longitude],
                 {icon: this.officeMarkerIco}
@@ -46,11 +46,14 @@ export class MarkersService{
 
     private nestedBonusLocationsMarkerGenerator(bonus: IBonus): Marker[]{
         return bonus.locations.map( location => {
+            const component = this.resolver.resolveComponentFactory(BonusPopupComponent).create(this.injector);
+            component.instance.data = bonus;
+            component.changeDetectorRef.detectChanges();
             return new Marker(
                 [location.coordinates.latitude, location.coordinates.longitude],
                 {icon: this.bonusMarkerIco}
             ).bindPopup(
-                'component.location.nativeElement'
+                component.location.nativeElement
             );
         });
     }
