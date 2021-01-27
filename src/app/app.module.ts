@@ -8,15 +8,19 @@ import { MapViewComponent } from '@components/map/map-view/map-view.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ApiService} from '@services/api.service';
 import { MarkersService } from '@services/markers.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
+import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
+import { MarkerEventsService } from '@services/markers-events.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    MapViewComponent
+    MapViewComponent,
+    OfficePopupComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { BonusesService } from '@services/bonuses.service';
     ApiService,
     OfficesService,
     BonusesService,
-    MarkersService
+    MarkersService,
+    MarkerEventsService,
+    OfficePopupComponent,
   ],
   bootstrap: [AppComponent]
 })
