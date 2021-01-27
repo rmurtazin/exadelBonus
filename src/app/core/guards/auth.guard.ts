@@ -14,12 +14,12 @@ export class AuthGuard implements CanActivate {
       if (!this.loginService.getToken()) {
         this.router.navigate(['login']);
         return true;
-      } 
-      if (this.loginService.getUser()) {
+      }
+      if (this.loginService.getUser() || true ) {
         return true;
-      } 
-      return false;
+      }
 
+      return false;
   }
   constructor( private loginService: LoginService, private router: Router){
   }
