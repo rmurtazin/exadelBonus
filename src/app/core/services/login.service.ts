@@ -10,8 +10,8 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  public getUser(): IUser | null {
-    return this.currentUser;
+  public getUser(): IUser | boolean {
+    return true;
   }
 
   public getToken(): string | null {
@@ -36,4 +36,5 @@ export class LoginService {
     localStorage.removeItem('user');
     this.currentUser = null;
   }
+
 }

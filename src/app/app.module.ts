@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from '@components/map/map-container/map-container.component';
 import { MapViewComponent } from '@components/map/map-view/map-view.component';
@@ -14,20 +12,33 @@ import { BonusesService } from '@services/bonuses.service';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
 import { MarkerEventsService } from '@services/markers-events.service';
 
+import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import { HeaderComponent } from './core/components/header/header.component';
+import { HomeComponent } from './shared/components/home/home.component';
+import { LoginModule } from '@components/login/login.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     MapViewComponent,
-    OfficePopupComponent
+    OfficePopupComponent,
+    HeaderComponent,
+    HomeComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    LeafletModule
+    LeafletModule,
+    LoginModule,
   ],
   providers: [
     ApiService,
@@ -36,6 +47,10 @@ import { MarkerEventsService } from '@services/markers-events.service';
     MarkersService,
     MarkerEventsService,
     OfficePopupComponent,
+    BrowserAnimationsModule,
+    LayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent]
 })

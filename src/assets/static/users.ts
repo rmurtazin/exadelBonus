@@ -1,14 +1,14 @@
-[{
+export const USERS = [{
     "id": "0",
-    "email": "grosengarten0@tumblr.com",
-    "password": "xrBk4YMULxd",
+    "email": "test@test.com",
+    "password": "test",
     "token": "5pchY2PC",
     "first_name": "Gerri",
     "last_name": "Rosengarten",
     "phone": "+260-441-702-7948",
     "city": "Minsk",
-    "isActive": false,
-    "role": "user"
+    "isActive": true,
+    "role": "admin"
   },
   {
     "id": "1",
