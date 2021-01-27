@@ -1,9 +1,6 @@
-import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
-import { Marker, Icon, PointExpression } from 'leaflet';
+import {  Injectable } from '@angular/core';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import { OfficePopupComponent } from '@components/map/office-popup/office-popup.component';
-import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { Subject, Observable } from 'rxjs';
 
 @Injectable()
