@@ -14,9 +14,9 @@ import { BonusesService } from '@services/bonuses.service';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MaterialModule } from './shared/modules/material.module';
 import { HeaderComponent } from './core/components/header/header.component';
 import { HomeComponent } from './shared/components/home/home.component';
+import { LoginComponent } from './core/components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { HomeComponent } from './shared/components/home/home.component';
     MapViewComponent,
     HeaderComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     HttpClientModule,
@@ -41,7 +42,6 @@ import { HomeComponent } from './shared/components/home/home.component';
     MarkersService,
     BrowserAnimationsModule,
     LayoutModule,
-    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
   ],
