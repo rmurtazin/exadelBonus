@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from '@components/map/map-container/map-container.component';
 import { MapViewComponent } from '@components/map/map-view/map-view.component';
@@ -19,6 +17,13 @@ import { HeaderComponent } from '@components/header/header.component';
 import { CloseMenuDirective } from './shared/directives/close-menu.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './shared/components/home/home.component';
+
+import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
 import { LoginModule } from '@components/login/login.module';
 
 @NgModule({
@@ -33,6 +38,7 @@ import { LoginModule } from '@components/login/login.module';
     HomeComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -40,6 +46,7 @@ import { LoginModule } from '@components/login/login.module';
     LeafletModule,
     MatButtonModule,
     MatIconModule,
+    LoginModule,
   ],
   providers: [
     ApiService,
@@ -48,6 +55,10 @@ import { LoginModule } from '@components/login/login.module';
     MarkersService,
     MarkerEventsService,
     OfficePopupComponent,
+    BrowserAnimationsModule,
+    LayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent],
 })
