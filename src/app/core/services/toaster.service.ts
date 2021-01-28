@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ToasterService {
 
-  constructor(private toastr: ToastrService) { }
+  constructor(public toastr: ToastrService) { }
 
   showSuccess(message: string, title: string){
     this.toastr.success(message, title, {

@@ -15,7 +15,10 @@ export class AuthInterceptor {
   ) {
   }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
 
     // add check authentication to AuthService
     request = request.clone({
