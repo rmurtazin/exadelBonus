@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   public onSubmit(): void {
     this.subscription.add(
       this.loginService.onLogin(this.myForm.value).subscribe(() => {
-        this.router.navigate(['home']);
+        // this.router.navigate(['home']);
+        this.router.navigateByUrl('/home');
       })
     );
   }
