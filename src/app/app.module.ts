@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from '@components/map/map-container/map-container.component';
 import { MapViewComponent } from '@components/map/map-view/map-view.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { ApiService} from '@services/api.service';
+import { ApiService } from '@services/api.service';
 import { MarkersService } from '@services/markers.service';
 import { HttpClientModule } from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
@@ -15,6 +15,10 @@ import { LanguageSwitcherDirective } from './shared/directives/language-switcher
 import { MatButtonModule } from '@angular/material/button';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
 import { MarkerEventsService } from '@services/markers-events.service';
+import { HeaderComponent } from '@components/header/header.component';
+import { CloseMenuDirective } from './shared/directives/close-menu.directive';
+import { MatIconModule } from '@angular/material/icon';
+import { HomeComponent } from './shared/components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { MarkerEventsService } from '@services/markers-events.service';
     MapComponent,
     MapViewComponent,
     LanguageSwitcherDirective,
-    OfficePopupComponent
+    OfficePopupComponent,
+    HeaderComponent,
+    CloseMenuDirective,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +38,7 @@ import { MarkerEventsService } from '@services/markers-events.service';
     HttpClientModule,
     LeafletModule,
     MatButtonModule,
+    MatIconModule,
   ],
   providers: [
     ApiService,
@@ -40,6 +48,6 @@ import { MarkerEventsService } from '@services/markers-events.service';
     MarkerEventsService,
     OfficePopupComponent,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

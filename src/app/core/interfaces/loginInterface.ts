@@ -5,8 +5,8 @@ export interface ILogin {
 
 export interface IUser {
     id: string;
-    firstName: string;
-    lastName: string;
+    first_name: string;
+    last_name: string;
     city: string;
     role: string;
     token: string;
