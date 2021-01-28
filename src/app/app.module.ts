@@ -13,17 +13,15 @@ import { LanguageSwitcherDirective } from './shared/directives/language-switcher
 import { MatButtonModule } from '@angular/material/button';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
 import { MarkerEventsService } from '@services/markers-events.service';
-<<<<<<< HEAD
 import { BonusDetailComponent } from './core/components/bonus-detail/bonus-detail.component';
-=======
 import { HeaderComponent } from '@components/header/header.component';
 import { CloseMenuDirective } from './shared/directives/close-menu.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './shared/components/home/home.component';
+import { MatCardModule } from '@angular/material/card';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
->>>>>>> develop
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,16 +33,13 @@ import { LoginModule } from '@components/login/login.module';
     AppComponent,
     MapComponent,
     MapViewComponent,
-<<<<<<< HEAD
     OfficePopupComponent,
-    BonusDetailComponent
-=======
+    BonusDetailComponent,
     LanguageSwitcherDirective,
     OfficePopupComponent,
     HeaderComponent,
     CloseMenuDirective,
     HomeComponent,
->>>>>>> develop
   ],
   imports: [
     HttpClientModule,
@@ -56,6 +51,7 @@ import { LoginModule } from '@components/login/login.module';
     MatButtonModule,
     MatIconModule,
     LoginModule,
+    MatCardModule,
   ],
   providers: [
     ApiService,

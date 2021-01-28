@@ -7,9 +7,9 @@ import { IBonus } from '@interfaces/bonus.interface';
   styleUrls: ['./bonus-detail.component.scss']
 })
 export class BonusDetailComponent implements OnInit {
-  @Input() 
+  @Input()
   public bonus: IBonus;
-  
+
   constructor() { }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class BonusDetailComponent implements OnInit {
     return true;
   }
 
-  onUse(): void { 
+  onApply(): void {
     console.log('Button "Want to use" clicked');
     this.onWriteEmail();
     // and write to UserBonusesHistory
