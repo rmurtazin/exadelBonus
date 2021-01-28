@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {LoginService} from '@services/login.service';
+import { IUser } from '@interfaces/loginInterface';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,10 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   isMenuHide = true;
-  firstName = 'Ivan';
-  lastName = 'Ivanov';
-  constructor() { }
+  user: IUser;
+  constructor(private loginService: LoginService) {
+    this.user = this.loginService.getUser();
+  }
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
   }
