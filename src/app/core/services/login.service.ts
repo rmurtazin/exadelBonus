@@ -15,7 +15,7 @@ export class LoginService {
   }
 
   public getToken(): string | null {
-    return JSON.parse(localStorage.getItem('user')).token;
+    return localStorage.getItem('token');
   }
 
   public onLogin(userInput: ILogin): Observable<any> {
@@ -23,7 +23,7 @@ export class LoginService {
     return this.http.get('../../../assets/static/currentUser.json').pipe(
       tap((user) => {
         this.currentUser = user;
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('token', this.currentUser.token);
         return user;
       })
     );
