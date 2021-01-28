@@ -1,4 +1,4 @@
-import { Directive, HostListener, ElementRef, Renderer2, OnChanges } from '@angular/core';
+import { Directive, HostListener, ElementRef, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appLanguageSwitcher]',
