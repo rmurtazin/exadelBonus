@@ -27,6 +27,10 @@ a:not(.active) {
 
 .menu-container {
   transition: .3s ease-in-out;
+  @media screen and (min-width: 1279.5px){
+  display: flex;
+  align-items: center;
+  }
 }
 
 .menu {
@@ -66,7 +70,29 @@ a:not(.active) {
   }
 }
 
-@media (min-width: 960px), (min-device-width: 960px) {
+.language-switcher {
+  display: inline-block;
+
+  &-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    font-size: 13px;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and(max-width: 1279.5px) {
+      top: 10px;
+      left: 10px;
+      position: absolute;
+    }
+
+  }
+}
+
+@media (min-width: 1280px), (min-device-width: 1280px) {
   .menu-icon {
     display: none;
   }
@@ -81,7 +107,7 @@ a:not(.active) {
   }
 }
 
-@media (max-width: 959px), (max-device-width: 959px) {
+@media (max-width: 1279px), (max-device-width: 1279px) {
   .menu-icon {
     display: block;
     margin: auto 0;
