@@ -10,7 +10,7 @@ import { Languages } from '../../enums/languages.enum';
 })
 
 export class HeaderComponent implements OnInit {
-  public language = Languages.english;
+  public language = Languages.English;
   isMenuHide = true;
   user: IUser;
   constructor(private loginService: LoginService) { }
