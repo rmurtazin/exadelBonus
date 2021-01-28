@@ -5,6 +5,7 @@ import { LoginComponent } from '@components/login/login.component';
 import { LoginModule } from '@components/login/login.module';
 
 const routes: Routes = [
+  { path: '', component: LoginComponent },
   {path: 'home', component: HomeComponent},
   { path: 'history', redirectTo: 'home'},
   { path: 'add-bonus', redirectTo: 'home'},

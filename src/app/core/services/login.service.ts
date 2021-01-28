@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ILogin, IUser } from '../interfaces/loginInterface';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
   private currentUser: IUser = JSON.parse(localStorage.getItem('user'));
-
-  constructor(private http: HttpClient) {}
+  public loginEvent = new EventEmitter<any>();
+  constructor(private http: HttpClient, private router: Router) {}
 
   public getUser(): IUser | null {
     return this.currentUser;
@@ -27,6 +28,8 @@ export class LoginService {
       tap((user) => {
         this.currentUser = user;
         localStorage.setItem('user', JSON.stringify(user));
+        this.loginEvent.emit();
+        this.router.navigateByUrl('/home');
         return user;
       })
     );

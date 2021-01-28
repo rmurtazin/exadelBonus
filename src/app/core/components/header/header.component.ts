@@ -12,7 +12,9 @@ export class HeaderComponent implements OnInit {
   user: IUser;
   constructor(private loginService: LoginService) { }
   ngOnInit(): void {
-    this.user = this.loginService.getUser();
+    this.loginService.loginEvent.subscribe(() => {
+      this.user = this.loginService.getUser();
+    });
   }
 
   public toggleMenu(): void {

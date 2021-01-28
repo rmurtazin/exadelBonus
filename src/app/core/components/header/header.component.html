@@ -5,7 +5,7 @@
       <span class="logo-text">exadel bonus+</span>
     </section>
     <section class="menu-container" [ngClass]="{'hide': isMenuHide}">
-      <ul class="menu" appCloseMenu (clickMenuItem)="toggleMenu()">
+      <ul class="menu" appCloseMenu (clickMenuItem)="toggleMenu()" *ngIf="user">
         <li>
           <span class="login-as-label">You're login as:</span>
           <span class="login-as-text">{{user.first_name}} {{user.last_name}} </span>
@@ -30,7 +30,10 @@
         </li>
       </ul>
     </section>
-      <button mat-icon-button aria-label="Menu icon" class="menu-icon" [ngClass]="{'fixed': !isMenuHide}" (click)="this.toggleMenu()">
+      <button mat-icon-button aria-label="Menu icon" class="menu-icon"
+              [ngClass]="{'fixed': !isMenuHide}"
+              (click)="this.toggleMenu()"
+              *ngIf="user">
         <mat-icon>menu</mat-icon>
       </button>
   </nav>
