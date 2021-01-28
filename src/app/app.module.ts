@@ -8,12 +8,13 @@ import { MapViewComponent } from '@components/map/map-view/map-view.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ApiService} from '@services/api.service';
 import { MarkersService } from '@services/markers.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { LanguageSwitcherDirective } from './shared/directives/language-switcher.directive';
 import { MatButtonModule } from '@angular/material/button';
-
+import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
+import { MarkerEventsService } from '@services/markers-events.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
     MapComponent,
     MapViewComponent,
     LanguageSwitcherDirective,
+    OfficePopupComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,9 @@ import { MatButtonModule } from '@angular/material/button';
     ApiService,
     OfficesService,
     BonusesService,
-    MarkersService
+    MarkersService,
+    MarkerEventsService,
+    OfficePopupComponent,
   ],
   bootstrap: [AppComponent]
 })
