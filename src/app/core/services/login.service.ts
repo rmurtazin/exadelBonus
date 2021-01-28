@@ -15,10 +15,7 @@ export class LoginService {
   }
 
   public getToken(): string | null {
-    if (this.currentUser) {
-      return JSON.parse(localStorage.getItem('user')).token;
-    }
-    return null;
+    return JSON.parse(localStorage.getItem('user')).token;
   }
 
   public onLogin(userInput: ILogin): Observable<any> {

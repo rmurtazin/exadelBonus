@@ -7,7 +7,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { RoleGuard } from './core/guards/role.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'home',
     canActivate: [AuthGuard],
@@ -19,8 +19,7 @@ const routes: Routes = [
       { path: 'bonuses', redirectTo: 'home'},
       { path: 'users', redirectTo: 'home'},
     ]
-  },
-  {path: '**', redirectTo: 'login'}
+  }
 ];
 
 @NgModule({
