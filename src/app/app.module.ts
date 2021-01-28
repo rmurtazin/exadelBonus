@@ -19,6 +19,7 @@ import { HeaderComponent } from '@components/header/header.component';
 import { CloseMenuDirective } from './shared/directives/close-menu.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './shared/components/home/home.component';
+import { LoginModule } from '@components/login/login.module';
 
 @NgModule({
   declarations: [

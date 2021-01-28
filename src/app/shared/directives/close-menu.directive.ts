@@ -9,7 +9,7 @@ export class CloseMenuDirective {
   }
   @HostListener('click', ['$event'])
   public onClick(e): void {
-    if (e.target.parentElement.classList.value === 'menu-item') {
+    if (e.target.parentElement && e.target.parentElement.classList.value === 'menu-item') {
       this.clickMenuItem.emit();
     }
   }

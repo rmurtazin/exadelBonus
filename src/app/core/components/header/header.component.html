@@ -28,6 +28,9 @@
         <li class="menu-item">
           <a [routerLink]="['/logout']">Sign out</a>
         </li>
+        <li class="language-switcher">
+          <button class="language-switcher-button" mat-mini-fab appLanguageSwitcher color="primary">{{language}}</button>
+        </li>
       </ul>
     </section>
       <button mat-icon-button aria-label="Menu icon" class="menu-icon" [ngClass]="{'fixed': !isMenuHide}" (click)="this.toggleMenu()">
