@@ -28,6 +28,7 @@ import { LoginModule } from '@components/login/login.module';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,6 +41,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     MapViewComponent,
     LanguageSwitcherDirective,
     OfficePopupComponent,
+    BonusPopupComponent,
     HeaderComponent,
     CloseMenuDirective,
     HomeComponent,
@@ -55,7 +57,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     MatIconModule,
     LoginModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'en',
+      defaultLanguage: 'EN',
       loader: {
           provide: TranslateLoader,
           useFactory: (createTranslateLoader),

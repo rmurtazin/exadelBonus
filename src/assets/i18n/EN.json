@@ -1,0 +1,15 @@
+{
+    "HEADER": {
+        "FINDE_PLACE": "Finde plce",
+        "HISTORY": "History",
+        "ADD_BONUS": "Add bonus",
+        "BONUSES": "Bonuses",
+        "USER": "Users",
+        "LOGINED_AS": "You're login as:",
+        "SIGN_OUT": "Sign out"
+    },
+    "POPUP": {
+        "GO": "Go",
+        "DETAIL": "Detail"
+    }
+}
