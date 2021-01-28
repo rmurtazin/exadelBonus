@@ -13,21 +13,30 @@ import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
 import { MarkerEventsService } from '@services/markers-events.service';
-
+import {HeaderComponent} from '@components/header/header.component';
+import {CloseMenuDirective} from './shared/directives/close-menu.directive';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { HomeComponent } from './shared/components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     MapViewComponent,
-    OfficePopupComponent
+    OfficePopupComponent,
+    HeaderComponent,
+    CloseMenuDirective,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    LeafletModule
+    LeafletModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     ApiService,
