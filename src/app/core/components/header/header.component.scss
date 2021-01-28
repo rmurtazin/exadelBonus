@@ -1,0 +1,164 @@
+@import 'src/styles/variables.scss';
+
+header {
+  width: 100vw;
+  box-shadow: 0 5px 4px rgba(66, 66, 66, 0.25);
+  margin-bottom: 15px;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+    position: relative;
+    min-height: 40px;
+  }
+}
+
+li {
+  display: block;
+}
+
+a.active {
+  color: $theme-color;
+}
+
+a:not(.active) {
+  color: black;
+}
+
+.menu-container {
+  transition: .3s ease-in-out;
+  @media screen and (min-width: 1279.5px){
+  display: flex;
+  align-items: center;
+  }
+}
+
+.menu {
+  margin: 14px;
+  padding-inline-start: 0;
+  .menu-item {
+    list-style: none;
+    display: inline-block;
+    font-size: 20px;
+    a {
+      text-decoration: none;
+      padding: 0 15px;
+      width: 100%;
+      height: 100%;
+      opacity: 85%;
+      &:hover {
+        color: $theme-color;
+      }
+    }
+  }
+}
+
+.logo {
+  height: 100%;
+  color: $theme-color;
+  display: flex;
+  .logo-img {
+    display: inline-block;
+    margin: auto 5px;
+  }
+  .logo-text {
+    display: inline-block;
+    font-size: 25px;
+    color: inherit;
+    margin: auto 10px;
+    white-space: nowrap;
+  }
+}
+
+.language-switcher {
+  display: inline-block;
+
+  &-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    font-size: 13px;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and(max-width: 1279.5px) {
+      top: 10px;
+      left: 10px;
+      position: absolute;
+    }
+
+  }
+}
+
+@media (min-width: 1280px), (min-device-width: 1280px) {
+  .menu-icon {
+    display: none;
+  }
+  .login-as-label, .login-as-text {
+    display: none;
+  }
+  .logo {
+    margin: auto 10px;
+    .logo-img {
+      height: 40px;
+    }
+  }
+}
+
+@media (max-width: 1279px), (max-device-width: 1279px) {
+  .menu-icon {
+    display: block;
+    margin: auto 0;
+    &.fixed {
+      z-index: 10000;
+      position: fixed;
+      right: 10px;
+    }
+  }
+  .menu-container {
+    z-index: 10000;
+    position: fixed;
+    padding-top: 40px;
+    height: 100vh;
+    right: -14px;
+    width: 300px;
+    background-color: #FFF;
+    overflow-y: scroll;
+    &.hide {
+      right: -310px;
+    }
+    &:not(.hide) {
+      box-shadow: 0 0 20px -5px #000;
+    }
+  }
+  .menu {
+    overflow-y: scroll;
+    padding: 0 0 15px 0;
+    .menu-item {
+      display: block;
+      margin: 20px auto;
+      padding: 5px 15px;
+      a {
+        display: block;
+        width: 100%;
+        padding: 0;
+      }
+    }
+  }
+  .login-as-label, .login-as-text {
+    text-align: center;
+    display: block;
+  }
+  .login-as-label {
+    opacity: 80%;
+    font-size: 16px;
+  }
+  .logo {
+    margin: auto 0;
+    .logo-img {
+      height: 30px;
+    }
+  }
+}
