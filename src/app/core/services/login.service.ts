@@ -36,4 +36,5 @@ export class LoginService {
     localStorage.removeItem('user');
     this.currentUser = null;
   }
+
 }

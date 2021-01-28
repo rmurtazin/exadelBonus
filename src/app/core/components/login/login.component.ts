@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
   public hide = true;
 
-  constructor(public loginService: LoginService) {}
+  constructor(public loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {
     this.onInitForm();
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public onSubmit(): void {
     this.subscription.add(
       this.loginService.onLogin(this.myForm.value).subscribe(() => {
-       // here will be like this.router.navigateByUrl('/home');
+        this.router.navigate(['home']);
       })
     );
   }
