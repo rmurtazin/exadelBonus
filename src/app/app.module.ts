@@ -13,6 +13,12 @@ import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
 import { MarkerEventsService } from '@services/markers-events.service';
+import { DatepickerComponent } from './shared/components/datepicker/datepicker.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,14 +26,20 @@ import { MarkerEventsService } from '@services/markers-events.service';
     AppComponent,
     MapComponent,
     MapViewComponent,
-    OfficePopupComponent
+    OfficePopupComponent,
+    DatepickerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    LeafletModule
+    LeafletModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   providers: [
     ApiService,
