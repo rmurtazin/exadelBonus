@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginService} from '@services/login.service';
 import { IUser } from '@interfaces/loginInterface';
 
@@ -7,12 +7,14 @@ import { IUser } from '@interfaces/loginInterface';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   isMenuHide = true;
   user: IUser;
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService) { }
+  ngOnInit(): void {
     this.user = this.loginService.getUser();
   }
+
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
   }
