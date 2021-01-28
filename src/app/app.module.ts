@@ -6,7 +6,7 @@ import { MapViewComponent } from '@components/map/map-view/map-view.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ApiService} from '@services/api.service';
 import { MarkersService } from '@services/markers.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
@@ -24,6 +24,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LoginModule } from '@components/login/login.module';
+
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -45,6 +52,14 @@ import { LoginModule } from '@components/login/login.module';
     MatButtonModule,
     MatIconModule,
     LoginModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
+  }),
   ],
   providers: [
     ApiService,
