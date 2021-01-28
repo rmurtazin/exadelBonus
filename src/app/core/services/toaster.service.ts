@@ -6,21 +6,21 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ToasterService {
 
-  constructor(public toastr: ToastrService) { }
+  constructor(private toastr: ToastrService) { }
 
-  showSuccess(message: string, title: string){
+  public showSuccess(message: string, title: string){
     this.toastr.success(message, title, {
       positionClass: 'toast-top-center'
     })
   }
 
-  showError(message: string, title: string){
+  public showError(message: string, title: string){
     this.toastr.error(message, title, {
       positionClass: 'toast-top-center'
     })
   }
 
-  showShow(message: string, title: string){
+  public showShow(message: string, title: string){
     this.toastr.show(message, title, {
       positionClass: 'toast-top-center'
     })
