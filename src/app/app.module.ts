@@ -31,12 +31,17 @@ const INTERCEPTOR_PROVIDER: Provider = {
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
 import { LoginModule } from '@components/login/login.module';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
 import { FooterComponent } from '@components/footer/footer.component';
+
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
+
+export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -45,6 +50,7 @@ import { FooterComponent } from '@components/footer/footer.component';
     MapViewComponent,
     LanguageSwitcherDirective,
     OfficePopupComponent,
+    BonusPopupComponent,
     HeaderComponent,
     CloseMenuDirective,
     HomeComponent,
@@ -62,6 +68,14 @@ import { FooterComponent } from '@components/footer/footer.component';
     MatButtonModule,
     MatIconModule,
     LoginModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'EN',
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
+  }),
   ],
   providers: [
     ApiService,
