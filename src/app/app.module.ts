@@ -31,7 +31,6 @@ const INTERCEPTOR_PROVIDER: Provider = {
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 import { LoginModule } from '@components/login/login.module';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
 import { FooterComponent } from '@components/footer/footer.component';
