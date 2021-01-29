@@ -5,7 +5,7 @@
       <span class="logo-text">exadel bonus+</span>
     </section>
     <section class="menu-container" [ngClass]="{'hide': isMenuHide}">
-      <ul class="menu" appCloseMenu (clickMenuItem)="toggleMenu()">
+      <ul class="menu" appCloseMenu (clickMenuItem)="toggleMenu()" *ngIf = onCheckRoute()>
         <li>
           <span class="login-as-label">{{'header.loginAs' | translate}}</span>
           <span class="login-as-text">{{user?.first_name}} {{user?.last_name}} </span>
