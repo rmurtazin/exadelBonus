@@ -25,7 +25,7 @@ export class LoginService {
         this.currentUser = user;
         localStorage.setItem('token', this.currentUser.token);
         return user;
-      })
+      }),
     );
   }
 
@@ -33,5 +33,4 @@ export class LoginService {
     localStorage.removeItem('user');
     this.currentUser = null;
   }
-
 }

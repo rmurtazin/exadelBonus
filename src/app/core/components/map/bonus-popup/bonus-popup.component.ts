@@ -5,16 +5,14 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-bonus-popup',
   templateUrl: './bonus-popup.component.html',
-  styleUrls: ['./bonus-popup.component.scss']
+  styleUrls: ['./bonus-popup.component.scss'],
 })
 export class BonusPopupComponent implements OnInit {
-
   @Input() public bonus: IBonus;
 
   public ngOnInit(): void {}
 
-  public log($event): void{
+  public log($event): void {
     console.log($event);
   }
-
 }
