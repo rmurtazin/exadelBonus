@@ -25,7 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LoginModule } from '@components/login/login.module';
-import { FooterComponent } from './core/components/footer/footer.component';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { FooterComponent } from './core/components/footer/footer.component';
     HeaderComponent,
     CloseMenuDirective,
     HomeComponent,
-    FooterComponent,
+    NotFoundComponent,
   ],
   imports: [
     HttpClientModule,
