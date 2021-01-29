@@ -11,6 +11,8 @@ import { MarkersService } from '@services/markers.service';
 import { HttpClientModule } from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
+import { LanguageSwitcherDirective } from './shared/directives/language-switcher.directive';
+import { MatButtonModule } from '@angular/material/button';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
 import { MarkerEventsService } from '@services/markers-events.service';
 import { DatepickerComponent } from './shared/components/datepicker/datepicker.component';
@@ -19,7 +21,34 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from '@components/header/header.component';
+import { CloseMenuDirective } from './shared/directives/close-menu.directive';
+import { MatIconModule } from '@angular/material/icon';
+import { HomeComponent } from './shared/components/home/home.component';
+import { AuthInterceptor } from '@services/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor
+};
+
+import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { LoginModule } from '@components/login/login.module';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
+import { FooterComponent } from '@components/footer/footer.component';
+
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
+
+export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -30,10 +59,24 @@ import { ReactiveFormsModule } from '@angular/forms';
     DatepickerComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    LeafletModule,
+    ToastrModule.forRoot(),
+    MatButtonModule,
+    MatIconModule,
+    LoginModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'EN',
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
+  }),
     LeafletModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -48,7 +91,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MarkersService,
     MarkerEventsService,
     OfficePopupComponent,
+    BrowserAnimationsModule,
+    LayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    INTERCEPTOR_PROVIDER,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
