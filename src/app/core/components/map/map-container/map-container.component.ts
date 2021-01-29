@@ -20,7 +20,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   private map: Map;
   private queryLatitude: string;
   private queryLongitude: string;
-  private bonusesMarkers: Marker[]; 
+
   constructor(
     private officeService: OfficesService,
     private bonusesService: BonusesService,
@@ -65,9 +65,9 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
         const isRequestedLocation = (markerShell: IMarkerShell) =>  {
           return markerShell.longitude === +this.queryLongitude &&
             markerShell.latitude === +this.queryLatitude;
-        }
+        };
         const [targetMarker] = bonusesMarkers.filter(isRequestedLocation);
-        if(targetMarker){
+        if (targetMarker){
           const zoom = 11;
           const location = latLng(targetMarker.latitude, targetMarker.longitude);
           targetMarker.marker.openPopup();
