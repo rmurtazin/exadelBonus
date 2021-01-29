@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-bonus-popup',
@@ -10,8 +9,14 @@ import { TranslateService } from '@ngx-translate/core';
 export class BonusPopupComponent implements OnInit {
 
   @Input() public bonus: IBonus;
+  @Input() public latitude: number;
+  @Input() public longitude: number;
+  public markerLink: string;
 
-  public ngOnInit(): void {}
+
+  public ngOnInit(): void {
+    this.markerLink = `http://localhost:4200/home/?lat=${this.latitude}&lon=${this.longitude}`;
+  }
 
   public log($event): void{
     console.log($event);

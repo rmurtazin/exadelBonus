@@ -4,6 +4,7 @@ import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
 import { OfficePopupComponent } from '@components/map/office-popup/office-popup.component';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
+import { IMarkerShell } from '@interfaces/marker-shell.interface';
 
 @Injectable()
 export class MarkersService{
@@ -44,16 +45,18 @@ export class MarkersService{
         });
     }
 
-    private nestedBonusLocationsMarkerGenerator(bonus: IBonus): {marker: Marker, latitude: number,  longitude: number}[] {
+    private nestedBonusLocationsMarkerGenerator(bonus: IBonus): IMarkerShell[] {
         return bonus.locations.map( location => {
             const component = this.resolver.resolveComponentFactory(BonusPopupComponent).create(this.injector);
-            component.instance.bonus = bonus;
-            component.changeDetectorRef.detectChanges();
             const latitude = location.coordinates.latitude;
             const longitude = location.coordinates.longitude;
+            component.instance.bonus = bonus;
+            component.instance.latitude = latitude;
+            component.instance.longitude = longitude;
+            component.changeDetectorRef.detectChanges();
             const marker = new Marker(
                 [latitude, longitude],
-                {icon: this.bonusMarkerIco, attribution: `${latitude}-${longitude}`}
+                {icon: this.bonusMarkerIco}
             ).bindPopup(
                 component.location.nativeElement
             );
@@ -61,12 +64,12 @@ export class MarkersService{
                 marker,
                 latitude,
                 longitude
-            }
+            };
         });
     }
 
-    public createBonusesMarkers(bonuses: IBonus[]): {marker: Marker, latitude: number,  longitude: number}[]{
-        let markers: {marker: Marker, latitude: number,  longitude: number}[] = [];
+    public createBonusesMarkers(bonuses: IBonus[]): IMarkerShell[]{
+        let markers: IMarkerShell[] = [];
         bonuses.forEach((bonus: IBonus) => {
             const bonusLocationsMarkers = this.nestedBonusLocationsMarkerGenerator(bonus);
             markers = [...markers, ...bonusLocationsMarkers];

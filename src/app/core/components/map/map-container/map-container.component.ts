@@ -3,11 +3,12 @@ import { MarkersService } from '@services/markers.service';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Map, Marker, layerGroup, latLng, Layer, marker} from 'leaflet';
+import { Map, Marker, layerGroup, latLng} from 'leaflet';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
 import { MarkerEventsService } from '@services/markers-events.service';
 import { ActivatedRoute } from '@angular/router';
+import { IMarkerShell } from '@interfaces/marker-shell.interface';
 
 @Component({
   selector: 'app-map-container',
@@ -25,7 +26,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
     private bonusesService: BonusesService,
     private markersService: MarkersService,
     private markerEvents: MarkerEventsService,
-    private router: ActivatedRoute
+    private activateRouter: ActivatedRoute,
   ) {}
 
   ngAfterViewInit(): void {}
@@ -41,8 +42,8 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private getQueryParams(): void{
-    this.router?.queryParams.subscribe(params => {
-      this.queryLatitude = params?.lan;
+    this.activateRouter?.queryParams.subscribe(params => {
+      this.queryLatitude = params?.lat;
       this.queryLongitude = params?.lon;
     });
   }
@@ -51,11 +52,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
     this.subscription.add(
       this.officeService.getOffices().subscribe((offices: IOffice[]) => {
         const bonusesMarkers = this.markersService.createOfficesMarkers(offices);
-        const group = layerGroup(bonusesMarkers).addTo(this.map);
-        group.eachLayer((layer: Layer) => {
-          console.log(layer)
-          layer.openPopup();
-        })
+        layerGroup(bonusesMarkers).addTo(this.map);
       })
     );
   }
@@ -63,12 +60,19 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   private displayBonusesMarkers(): void {
     this.subscription.add(
       this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
-        const bonusesMarkers: {marker: Marker, latitude: number,  longitude: number}[] = this.markersService.createBonusesMarkers(bonuses);
+        const bonusesMarkers: IMarkerShell[] = this.markersService.createBonusesMarkers(bonuses);
         layerGroup(bonusesMarkers.map(elem => elem.marker)).addTo(this.map);
-        let [targetMarker] = bonusesMarkers.filter(marker => marker.longitude == +this.queryLongitude && marker.latitude === +this.queryLatitude );
-        console.log(targetMarker.marker);
-        targetMarker.marker.openPopup();
-        this.map.setView(latLng(targetMarker.latitude,targetMarker.longitude),11)
+        const isRequestedLocation = (markerShell: IMarkerShell) =>  {
+          return markerShell.longitude === +this.queryLongitude &&
+            markerShell.latitude === +this.queryLatitude;
+        }
+        const [targetMarker] = bonusesMarkers.filter(isRequestedLocation);
+        if(targetMarker){
+          const zoom = 11;
+          const location = latLng(targetMarker.latitude, targetMarker.longitude);
+          targetMarker.marker.openPopup();
+          this.map.setView(location, zoom);
+        }
       })
     );
   }
