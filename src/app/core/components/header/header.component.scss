@@ -45,7 +45,7 @@ a:not(.active) {
       padding: 0 15px;
       width: 100%;
       height: 100%;
-      opacity: 85%;
+      opacity: 0.85;
       &:hover {
         color: $theme-color;
       }
@@ -152,7 +152,7 @@ a:not(.active) {
     display: block;
   }
   .login-as-label {
-    opacity: 80%;
+    opacity: 0.8;
     font-size: 16px;
   }
   .logo {

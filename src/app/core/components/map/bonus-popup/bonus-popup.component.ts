@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-bonus-popup',

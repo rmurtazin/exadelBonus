@@ -5,6 +5,7 @@ import { LoginComponent } from '@components/login/login.component';
 
 import { AuthGuard } from './core/guards/auth.guard';
 import { RoleGuard } from './core/guards/role.guard';
+import { NotFoundComponent } from '@components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes = [
       { path: 'bonuses', redirectTo: 'home'},
       { path: 'users', redirectTo: 'home'},
     ]
-  }
+  },
+  { path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
