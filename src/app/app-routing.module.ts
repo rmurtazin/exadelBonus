@@ -15,10 +15,10 @@ const routes: Routes = [
     canActivateChild: [RoleGuard],
     children : [
       { path: '', component: HomeComponent},
-      { path: 'history', redirectTo: 'home'},
-      { path: 'add-bonus', redirectTo: 'home'},
-      { path: 'bonuses', redirectTo: 'home'},
-      { path: 'users', redirectTo: 'home'},
+      { path: 'history', redirectTo: ''},
+      { path: 'add-bonus', redirectTo: ''},
+      { path: 'bonuses', redirectTo: ''},
+      { path: 'users', redirectTo: ''},
     ]
   },
   { path: '**', component: NotFoundComponent}
