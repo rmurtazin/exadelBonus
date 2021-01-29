@@ -25,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LoginModule } from '@components/login/login.module';
+import { FooterComponent } from './core/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LoginModule } from '@components/login/login.module';
     HeaderComponent,
     CloseMenuDirective,
     HomeComponent,
+    FooterComponent,
   ],
   imports: [
     HttpClientModule,
