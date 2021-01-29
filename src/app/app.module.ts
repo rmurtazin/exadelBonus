@@ -26,6 +26,7 @@ import { AppComponent } from './app.component';
 
 import { LoginModule } from '@components/login/login.module';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
+import { FooterComponent } from '@components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NotFoundComponent } from './core/components/not-found/not-found.compone
     CloseMenuDirective,
     HomeComponent,
     NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     HttpClientModule,
