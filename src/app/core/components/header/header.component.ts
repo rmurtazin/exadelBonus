@@ -18,11 +18,11 @@ export class HeaderComponent implements OnInit {
   user: IUser;
   constructor(private loginService: LoginService, private route: Router) {
     route.events.pipe(
-      filter((event: Event): event is RouterEvent => event instanceof RouterEvent)
-   ).subscribe((event: RouterEvent) => {
-     console.log(event.url);
-     this.currentRoute = event.url;
-   });
+      filter((event: Event): event is RouterEvent => event instanceof RouterEvent))
+      .subscribe((event: RouterEvent) => {
+        this.currentRoute = event.url;
+      }
+    );
   }
   ngOnInit(): void {
     this.user = this.loginService.getUser();
@@ -33,9 +33,8 @@ export class HeaderComponent implements OnInit {
   }
 
   public onCheckRoute(): boolean{
-    console.log(this.currentRoute);
-    const checkRoutes: String[] = ['/home', '/add-bonus', '/history', '/bonuses', '/users']
+    const checkRoutes: string[] = ['/home', '/add-bonus', '/history', '/bonuses', '/users'];
     return checkRoutes.includes(this.currentRoute);
-  } 
+  }
 
 }
