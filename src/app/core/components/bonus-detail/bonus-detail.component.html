@@ -4,7 +4,9 @@
   <mat-card-title class="type">{{ bonus.type | uppercase }}</mat-card-title>
   <mat-card-content class="discription-wrapper">
     <p class="discription">{{ bonus.description }}</p>
-    <div class="rating-discount-wrapper"  fxLayout="row" fxLayoutAlign="space-between center">
+    <p>Expiration date: {{ bonus.dateEnd }}</p>
+    <div class="rating-discount-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+      <!-- TODO: change icons to component with rating -->
       <span class="stars">
       <mat-icon>star</mat-icon>
       <mat-icon>star</mat-icon>

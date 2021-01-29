@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 
 @Component({
@@ -6,23 +6,25 @@ import { IBonus } from '@interfaces/bonus.interface';
   templateUrl: './bonus-detail.component.html',
   styleUrls: ['./bonus-detail.component.scss']
 })
-export class BonusDetailComponent implements OnInit {
-  @Input()
-  public bonus: IBonus;
+export class BonusDetailComponent{
+  @Input() public bonus: IBonus;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  onWriteEmail(): boolean {
+  public onWriteEmail(): boolean {
+     // TODO: create email and send to user and vendor
     return true;
   }
 
-  onApply(): void {
-    console.log('Button "Want to use" clicked');
+  public onWriteToUserHistory(): boolean{
+     // TODO: save bonus to user history
+    return true;
+  }
+
+  public onApply(): void {
+    console.log('Button "Apply" clicked');
     this.onWriteEmail();
-    // and write to UserBonusesHistory
+    this.onWriteToUserHistory();
   }
 
 }
