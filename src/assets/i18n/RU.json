@@ -1,16 +1,17 @@
 {
     "header": {
-        "finde_place": "Найти место",
+        "findePlace": "Найти место",
         "history": "История",
-        "add_bonus": "Добавить бонус",
+        "addBonus": "Добавить бонус",
         "bonuses": "Бонусы",
         "user": "Пользователь",
-        "login_as": "Вы вошли как:",
-        "sign_out": "Выход"
+        "loginAs": "Вы вошли как:",
+        "signOut": "Выход"
     },
     "popup": {
         "go": "Перейти",
         "detail": "Детали"
-    }
+    },
+    "notFound": "Не найдено"
 
 }

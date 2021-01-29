@@ -1,15 +1,16 @@
 {
     "header": {
-        "finde_place": "Finde plce",
+        "findePlace": "Finde plce",
         "history": "History",
-        "add_bonus": "Add bonus",
+        "addBonus": "Add bonus",
         "bonuses": "Bonuses",
         "user": "Users",
-        "login_as": "You're login as:",
-        "sign_out": "Sign out"
+        "loginAs": "You're login as:",
+        "signOut": "Sign out"
     },
     "popup": {
         "go": "Go",
         "detail": "Detail"
-    }
+    },
+    "notFound": "Not found"
 }
