@@ -1,4 +1,5 @@
 <div>
     <h1>{{bonus.type}}</h1>
+    <a href="http://localhost:4200/home?lan={{bonus.locations[0].coordinates.latitude}}&lon={{bonus.locations[0].coordinates.longitude}}" target="_blank">link</a>
     <button (click)="log($event)">{{'popup.detail' | translate}}</button>
 </div>

@@ -30,7 +30,7 @@ export class MarkersService{
         private resolver: ComponentFactoryResolver
         ){}
 
-    public createOfficesMarkers(offices: IOffice[]): Marker[]{
+    public createOfficesMarkers(offices: IOffice[]): Marker[] {
         return offices.map((office: IOffice) => {
             const component = this.resolver.resolveComponentFactory(OfficePopupComponent).create(this.injector);
             component.instance.office = office;
@@ -44,22 +44,29 @@ export class MarkersService{
         });
     }
 
-    private nestedBonusLocationsMarkerGenerator(bonus: IBonus): Marker[]{
+    private nestedBonusLocationsMarkerGenerator(bonus: IBonus): {marker: Marker, latitude: number,  longitude: number}[] {
         return bonus.locations.map( location => {
             const component = this.resolver.resolveComponentFactory(BonusPopupComponent).create(this.injector);
             component.instance.bonus = bonus;
             component.changeDetectorRef.detectChanges();
-            return new Marker(
-                [location.coordinates.latitude, location.coordinates.longitude],
-                {icon: this.bonusMarkerIco}
+            const latitude = location.coordinates.latitude;
+            const longitude = location.coordinates.longitude;
+            const marker = new Marker(
+                [latitude, longitude],
+                {icon: this.bonusMarkerIco, attribution: `${latitude}-${longitude}`}
             ).bindPopup(
                 component.location.nativeElement
             );
+            return {
+                marker,
+                latitude,
+                longitude
+            }
         });
     }
 
-    public createBonusesMarkers(bonuses: IBonus[]): Marker[]{
-        let markers: Marker[] = [];
+    public createBonusesMarkers(bonuses: IBonus[]): {marker: Marker, latitude: number,  longitude: number}[]{
+        let markers: {marker: Marker, latitude: number,  longitude: number}[] = [];
         bonuses.forEach((bonus: IBonus) => {
             const bonusLocationsMarkers = this.nestedBonusLocationsMarkerGenerator(bonus);
             markers = [...markers, ...bonusLocationsMarkers];
