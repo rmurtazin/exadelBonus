@@ -1,6 +1,6 @@
 <form>
 <section class="datepicker-container" [formGroup]="range">
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="datepicker-field">
     <mat-label>Start date</mat-label>
     <input matInput
            [matDatepicker]="pickerStart" (dateChange)="onDateChange()"
@@ -9,8 +9,8 @@
     <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
     <mat-datepicker #pickerStart></mat-datepicker>
   </mat-form-field>
-  &#8212;
-  <mat-form-field appearance="fill">
+  <span class="wide-dash">&#8212;</span>
+  <mat-form-field appearance="fill" class="datepicker-field">
     <mat-label>End date</mat-label>
     <input matInput (dateChange)="onDateChange()"
            [matDatepicker]="pickerEnd"

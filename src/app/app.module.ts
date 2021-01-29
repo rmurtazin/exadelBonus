@@ -1,26 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from '@components/map/map-container/map-container.component';
 import { MapViewComponent } from '@components/map/map-view/map-view.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { ApiService} from '@services/api.service';
+import { ApiService } from '@services/api.service';
 import { MarkersService } from '@services/markers.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { LanguageSwitcherDirective } from './shared/directives/language-switcher.directive';
 import { MatButtonModule } from '@angular/material/button';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
 import { MarkerEventsService } from '@services/markers-events.service';
-import { DatepickerComponent } from './shared/components/datepicker/datepicker.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from '@components/header/header.component';
 import { CloseMenuDirective } from './shared/directives/close-menu.directive';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,6 +21,8 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { AuthInterceptor } from '@services/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { DatepickerComponent } from './shared/components/datepicker/datepicker.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -45,6 +40,8 @@ import { FooterComponent } from '@components/footer/footer.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -55,8 +52,15 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     AppComponent,
     MapComponent,
     MapViewComponent,
+    LanguageSwitcherDirective,
     OfficePopupComponent,
-    DatepickerComponent,
+    BonusPopupComponent,
+    HeaderComponent,
+    CloseMenuDirective,
+    HomeComponent,
+    NotFoundComponent,
+    FooterComponent,
+    DatepickerComponent
   ],
   imports: [
     HttpClientModule,
@@ -72,17 +76,15 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
       loader: {
-          provide: TranslateLoader,
-          useFactory: (createTranslateLoader),
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
       }
-  }),
-    LeafletModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
+    }),
     MatInputModule,
-    MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     ApiService,
