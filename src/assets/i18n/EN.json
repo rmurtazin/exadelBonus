@@ -1,15 +1,15 @@
 {
-    "HEADER": {
-        "FINDE_PLACE": "Finde plce",
-        "HISTORY": "History",
-        "ADD_BONUS": "Add bonus",
-        "BONUSES": "Bonuses",
-        "USER": "Users",
-        "LOGINED_AS": "You're login as:",
-        "SIGN_OUT": "Sign out"
+    "header": {
+        "finde_place": "Finde plce",
+        "history": "History",
+        "add_bonus": "Add bonus",
+        "bonuses": "Bonuses",
+        "user": "Users",
+        "login_as": "You're login as:",
+        "sign_out": "Sign out"
     },
     "POPUP": {
-        "GO": "Go",
-        "DETAIL": "Detail"
+        "go": "Go",
+        "detail": "Detail"
     }
 }

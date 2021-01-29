@@ -7,26 +7,26 @@
     <section class="menu-container" [ngClass]="{'hide': isMenuHide}">
       <ul class="menu" appCloseMenu (clickMenuItem)="toggleMenu()">
         <li>
-          <span class="login-as-label">{{'HEADER.LOGINED_AS' | translate}}</span>
+          <span class="login-as-label">{{'header.login_as' | translate}}</span>
           <span class="login-as-text">{{user?.first_name}} {{user?.last_name}} </span>
         </li>
         <li class="menu-item">
-          <a [routerLink]="['/home']" [routerLinkActive]="'active'">{{'HEADER.FINDE_PLACE' | translate}}</a>
+          <a [routerLink]="['/home']" [routerLinkActive]="'active'">{{'header.finde_place' | translate}}</a>
         </li>
         <li class="menu-item">
-          <a [routerLink]="['history']" [routerLinkActive]="'active'">{{'HEADER.HISTORY' | translate}}</a>
+          <a [routerLink]="['history']" [routerLinkActive]="'active'">{{'header.history' | translate}}</a>
         </li>
         <li class="menu-item">
-          <a [routerLink]="['add-bonus']" [routerLinkActive]="'active'">{{'HEADER.ADD_BONUS' | translate}}</a>
+          <a [routerLink]="['add-bonus']" [routerLinkActive]="'active'">{{'header.add_bonus' | translate}}</a>
         </li>
         <li class="menu-item">
-          <a [routerLink]="['bonuses']" [routerLinkActive]="'active'">{{'HEADER.BONUSES' | translate}}</a>
+          <a [routerLink]="['bonuses']" [routerLinkActive]="'active'">{{'header.bonuses' | translate}}</a>
         </li>
         <li class="menu-item">
-          <a [routerLink]="['users']" [routerLinkActive]="'active'">{{'HEADER.USER' | translate}}</a>
+          <a [routerLink]="['users']" [routerLinkActive]="'active'">{{'header.user' | translate}}</a>
         </li>
         <li class="menu-item">
-          <a>{{'HEADER.SIGN_OUT' | translate}}</a>
+          <a>{{'header.sign_out' | translate}}</a>
         </li>
       </ul>
       <div class="language-switcher">
