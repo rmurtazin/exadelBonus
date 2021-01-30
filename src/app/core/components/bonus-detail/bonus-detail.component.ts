@@ -4,27 +4,26 @@ import { IBonus } from '@interfaces/bonus.interface';
 @Component({
   selector: 'app-bonus-detail',
   templateUrl: './bonus-detail.component.html',
-  styleUrls: ['./bonus-detail.component.scss']
+  styleUrls: ['./bonus-detail.component.scss'],
 })
-export class BonusDetailComponent{
+export class BonusDetailComponent {
   @Input() public bonus: IBonus;
 
-  constructor() { }
+  constructor() {}
 
-  public onWriteEmail(): boolean {
-     // TODO: create email and send to user and vendor
+  public writeEmail(): boolean {
+    // TODO: create email and send to user and vendor
     return true;
   }
 
-  public onWriteToUserHistory(): boolean{
-     // TODO: save bonus to user history
+  public writeToUserHistory(): boolean {
+    // TODO: save bonus to user history
     return true;
   }
 
-  public onApply(): void {
+  public apply(): void {
     console.log('Button "Apply" clicked');
-    this.onWriteEmail();
-    this.onWriteToUserHistory();
+    this.writeEmail();
+    this.writeToUserHistory();
   }
-
 }
