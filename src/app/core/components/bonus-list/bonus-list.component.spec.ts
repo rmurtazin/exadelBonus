@@ -8,9 +8,8 @@ describe('BonusListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BonusListComponent ]
-    })
-    .compileComponents();
+      declarations: [BonusListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
