@@ -12,11 +12,11 @@ export class BonusListComponent implements OnInit {
   public bonuses: IBonus[];
   constructor(public bonusesService: BonusesService) {}
 
-  ngOnInit() {
+  ngOnInit(): void{
     this.getBonuses();
   }
 
-  public getBonuses() {
+  public getBonuses(): void{
     this.bonusesService.getBonuses().subscribe(
       (data) => {
         if (data) {
