@@ -1,5 +1,22 @@
+<<<<<<< HEAD
 [
   {
+=======
+[{
+  "id": 1,
+  "dateStart": "10.12.2020",
+  "dateEnd": "31.12.2020",
+  "description": "ac neque duis",
+  "company": {
+    "name": "Mcdonalds",
+    "phone": "+62-314-279-2102",
+    "email": "zwhitlaw0@craigslist.org"
+  },
+  "type": "hotel",
+  "rating": 3, 
+  "discount": 4,
+  "locations": [{
+>>>>>>> 8b9b7be417f27f0f43a8af64f81d0f6824f93169
     "id": 1,
     "dateStart": "10.12.2020",
     "dateEnd": "31.12.2020",
@@ -35,6 +52,7 @@
     ],
     "tags": ["pizza", "food"]
   },
+<<<<<<< HEAD
   {
     "id": 2,
     "dateStart": "19.11.2020",
@@ -44,6 +62,16 @@
       "name": "Cinema+",
       "phone": "+33-219-999-3648",
       "email": "jfearnall1@europa.eu"
+=======
+  "type": "cinema",
+  "rating": 3, 
+  "discount": 27,
+  "locations": [{
+    "id": 1,
+    "coordinates": {
+      "latitude": 53.8930095,
+      "longitude": 27.5674444
+>>>>>>> 8b9b7be417f27f0f43a8af64f81d0f6824f93169
     },
     "type": "cinema",
     "discount": 27,
@@ -61,6 +89,7 @@
     ],
     "tags": ["tickets", "cinema"]
   },
+<<<<<<< HEAD
   {
     "id": 3,
     "dateStart": "06.04.2020",
@@ -70,6 +99,20 @@
       "name": "in",
       "phone": "+86-410-930-6520",
       "email": "lmiddlemass2@elpais.com"
+=======
+  "type": "gas station",
+  "rating": 3, 
+  "discount": 4,
+  "locations": [{
+      "id": 3,
+      "coordinates": {
+        "latitude": 48.9420658,
+        "longitude": 25.7464148
+      },
+      "city": "Yahil’nytsya",
+      "country": "Ukraine",
+      "address": "82 Main Avenue"
+>>>>>>> 8b9b7be417f27f0f43a8af64f81d0f6824f93169
     },
     "type": "gas station",
     "discount": 4,
@@ -97,7 +140,14 @@
     ],
     "tags": ["cars", "oil"]
   },
+<<<<<<< HEAD
   {
+=======
+  "type": "restaurant",
+  "rating": 3, 
+  "discount": 42,
+  "locations": [{
+>>>>>>> 8b9b7be417f27f0f43a8af64f81d0f6824f93169
     "id": 4,
     "dateStart": "12.01.2021",
     "dateEnd": "09.12.2020",
@@ -123,7 +173,38 @@
     ],
     "tags": ["scelerisque", "food", "quam", "turpis", "adipiscing", "lorem", "vitae"]
   },
+<<<<<<< HEAD
   {
+=======
+  "type": "restaurant",
+  "rating": 2.5, 
+  "locations": [{
+    "id": 1,
+    "coordinates": {
+      "latitude": 53.8930095,
+      "longitude": 27.5674444
+    },
+    "city": "Minsk",
+    "country": "Belarus",
+    "address": "st. Petra Glebki 5"
+  }],
+  "tags": ["pizza", "food"]
+},
+{
+  "id": 6,
+  "dateStart": "16.02.2021",
+  "dateEnd": "17.10.2020",
+  "description": "nibh in hac habitasse platea dictumst aliquam augue",
+  "company": {
+    "name": "imperdiet et commodo",
+    "phone": "+86-141-913-2249",
+    "email": "jsafe5@51.la"
+  },
+  "type": "store",
+  "rating": 3, 
+  "discount": 15,
+  "locations": [{
+>>>>>>> 8b9b7be417f27f0f43a8af64f81d0f6824f93169
     "id": 5,
     "dateStart": "04.11.2020",
     "dateEnd": "15.02.2021",
@@ -148,6 +229,7 @@
     ],
     "tags": ["pizza", "food"]
   },
+<<<<<<< HEAD
   {
     "id": 6,
     "dateStart": "16.02.2021",
@@ -157,6 +239,16 @@
       "name": "imperdiet et commodo",
       "phone": "+86-141-913-2249",
       "email": "jsafe5@51.la"
+=======
+  "type": "store",
+  "rating": 3, 
+  "discount": 20,
+  "locations": [{
+    "id": 5,
+    "coordinates": {
+      "latitude": 45.1973827,
+      "longitude": 33.2979082
+>>>>>>> 8b9b7be417f27f0f43a8af64f81d0f6824f93169
     },
     "type": "store",
     "discount": 15,
@@ -230,6 +322,7 @@
     ],
     "tags": ["ultrices", "lib", "non", "mattis", "pulvinar"]
   },
+<<<<<<< HEAD
   {
     "id": 8,
     "dateStart": "17.01.2021",
@@ -239,6 +332,25 @@
       "name": "donec vitae",
       "phone": "+55-846-898-5427",
       "email": "tmarzella7@ft.com"
+=======
+  "type": "store",
+  "rating": 3, 
+  "discount": 49,
+  "locations": [{
+    "id": 5,
+    "coordinates": {
+      "latitude": 45.1973827,
+      "longitude": 33.2979082
+    },
+    "city": "Uyutne",
+    "country": "Ukraine",
+    "address": "999 Mosinee Point"
+  }, {
+    "id": 2,
+    "coordinates": {
+      "latitude": 52.00577,
+      "longitude": 33.2615
+>>>>>>> 8b9b7be417f27f0f43a8af64f81d0f6824f93169
     },
     "type": "store",
     "discount": 49,
@@ -276,6 +388,7 @@
     ],
     "tags": ["food"]
   },
+<<<<<<< HEAD
   {
     "id": 9,
     "dateStart": "11.06.2020",
@@ -285,6 +398,25 @@
       "name": "adipiscing lorem",
       "phone": "+48-374-688-0680",
       "email": "sbagworth8@princeton.edu"
+=======
+  "type": "store",
+  "rating": 3, 
+  "discount": 20,
+  "locations": [{
+    "id": 1,
+    "coordinates": {
+      "latitude": 53.8930095,
+      "longitude": 27.5674444
+    },
+    "city": "Minsk",
+    "country": "Belarus",
+    "address": "st. Petra Glebki 5"
+  }, {
+    "id": 4,
+    "coordinates": {
+      "latitude": 55.1872225,
+      "longitude": 30.2051165
+>>>>>>> 8b9b7be417f27f0f43a8af64f81d0f6824f93169
     },
     "type": "store",
     "discount": 20,
@@ -312,6 +444,7 @@
     ],
     "tags": ["food", "Minsk", "Vitsyebsk"]
   },
+<<<<<<< HEAD
   {
     "id": 10,
     "dateStart": "07.07.2020",
@@ -321,6 +454,25 @@
       "name": "quis tortor id",
       "phone": "+420-817-722-8369",
       "email": "tbraunston9@hibu.com"
+=======
+  "type": "store",
+  "rating": 3, 
+  "discount": 22,
+  "locations": [{
+    "id": 5,
+    "coordinates": {
+      "latitude": 45.1973827,
+      "longitude": 33.2979082
+    },
+    "city": "Uyutne",
+    "country": "Ukraine",
+    "address": "999 Mosinee Point"
+  }, {
+    "id": 5,
+    "coordinates": {
+      "latitude": 45.1973827,
+      "longitude": 33.2979082
+>>>>>>> 8b9b7be417f27f0f43a8af64f81d0f6824f93169
     },
     "type": "store",
     "discount": 22,

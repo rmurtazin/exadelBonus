@@ -14,10 +14,12 @@ import { LanguageSwitcherDirective } from './shared/directives/language-switcher
 import { MatButtonModule } from '@angular/material/button';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
 import { MarkerEventsService } from '@services/markers-events.service';
+import { BonusDetailComponent } from './core/components/bonus-detail/bonus-detail.component';
 import { HeaderComponent } from '@components/header/header.component';
 import { CloseMenuDirective } from './shared/directives/close-menu.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './shared/components/home/home.component';
+import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from '@services/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -48,6 +50,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     AppComponent,
     MapComponent,
     MapViewComponent,
+    OfficePopupComponent,
+    BonusDetailComponent,
     LanguageSwitcherDirective,
     OfficePopupComponent,
     BonusPopupComponent,
@@ -68,6 +72,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     MatButtonModule,
     MatIconModule,
     LoginModule,
+    MatCardModule,
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
       loader: {
