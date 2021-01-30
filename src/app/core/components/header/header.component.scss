@@ -1,4 +1,4 @@
-@import 'src/styles/variables.scss';
+@import "src/styles/variables.scss";
 
 header {
   width: 100vw;
@@ -26,10 +26,10 @@ a:not(.active) {
 }
 
 .menu-container {
-  transition: .3s ease-in-out;
-  @media screen and (min-width: 1279.5px){
-  display: flex;
-  align-items: center;
+  transition: 0.3s ease-in-out;
+  @media screen and (min-width: 1279.5px) {
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -88,7 +88,6 @@ a:not(.active) {
       left: 10px;
       position: absolute;
     }
-
   }
 }
 
@@ -96,7 +95,8 @@ a:not(.active) {
   .menu-icon {
     display: none;
   }
-  .login-as-label, .login-as-text {
+  .login-as-label,
+  .login-as-text {
     display: none;
   }
   .logo {
@@ -124,7 +124,7 @@ a:not(.active) {
     height: 100vh;
     right: -14px;
     width: 300px;
-    background-color: #FFF;
+    background-color: #fff;
     overflow-y: scroll;
     &.hide {
       right: -310px;
@@ -147,7 +147,8 @@ a:not(.active) {
       }
     }
   }
-  .login-as-label, .login-as-text {
+  .login-as-label,
+  .login-as-text {
     text-align: center;
     display: block;
   }
