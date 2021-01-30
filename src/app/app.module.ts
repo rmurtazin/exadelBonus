@@ -41,7 +41,6 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
-import { MatCardModule } from '@angular/material/card';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
