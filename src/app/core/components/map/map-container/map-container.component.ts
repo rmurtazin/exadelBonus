@@ -67,7 +67,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
         if (this.queryLatitude && this.queryLongitude){
           navigationSuccess = this.navigateToMarker(bonusesMarkers);
         }
-        if(!navigationSuccess){
+        if (!navigationSuccess){
           this.toaster.showError('Bonus not available', 'Error');
         }
       })
