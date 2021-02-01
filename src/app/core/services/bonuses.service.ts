@@ -21,17 +21,17 @@ export class BonusesService{
       return this.api.delete(`${this.url}/${id}`);
     }
 
-    public changeBonus(chBonus: IBonus): Observable<IBonus> {
-      return this.api.put(`${this.url}/${chBonus.id}`, {
-        dateStart: chBonus.dateStart,
-        dateEnd: chBonus.dateEnd,
-        description: chBonus.description,
-        company: chBonus.company,
-        type: chBonus.type,
-        rating: chBonus.rating,
-        discount: chBonus.discount,
-        locations: chBonus.locations,
-        tags: chBonus.tags
+    public updateBonus(modifiedBonus: IBonus): Observable<IBonus> {
+      return this.api.put(`${this.url}/${modifiedBonus.id}`, {
+        dateStart: modifiedBonus.dateStart,
+        dateEnd: modifiedBonus.dateEnd,
+        description: modifiedBonus.description,
+        company: modifiedBonus.company,
+        type: modifiedBonus.type,
+        rating: modifiedBonus.rating,
+        discount: modifiedBonus.discount,
+        locations: modifiedBonus.locations,
+        tags: modifiedBonus.tags
       });
     }
 }
