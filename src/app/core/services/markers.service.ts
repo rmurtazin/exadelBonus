@@ -1,22 +1,16 @@
 import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
-import { Marker, Icon, PointExpression } from 'leaflet';
+import { Marker, Icon, PointExpression, DivIcon} from 'leaflet';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
 import { OfficePopupComponent } from '@components/map/office-popup/office-popup.component';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
+import { MarkerIconComponent } from '@components/map/marker-icon/marker-icon.component';
 
 @Injectable()
 export class MarkersService{
     private iconSize: PointExpression = [32, 32];
     private iconAnchor: PointExpression = [32, 32];
     private popupAnchor: PointExpression = [-15, -35];
-
-    private bonusMarkerIco = new Icon({
-        iconUrl: '/assets/icons/marker.png',
-        iconSize: this.iconSize,
-        iconAnchor: this.iconAnchor,
-        popupAnchor: this.popupAnchor
-    });
 
     private officeMarkerIco = new Icon({
         iconUrl: '/assets/icons/office.png',
@@ -28,7 +22,19 @@ export class MarkersService{
     constructor(
         private injector: Injector,
         private resolver: ComponentFactoryResolver
-        ){}
+    ){}
+
+    private bonusMarkerIco = (icon: string): DivIcon => {
+        const component = this.resolver.resolveComponentFactory(MarkerIconComponent).create(this.injector);
+        component.instance.icon = icon;
+        component.changeDetectorRef.detectChanges();
+        return new DivIcon({
+            html: component.location.nativeElement,
+            className: 'marker-pin',
+            iconAnchor: this.iconAnchor,
+            popupAnchor: this.popupAnchor
+        });
+    }
 
     public createOfficesMarkers(offices: IOffice[]): Marker[]{
         return offices.map((office: IOffice) => {
@@ -51,7 +57,7 @@ export class MarkersService{
             component.changeDetectorRef.detectChanges();
             return new Marker(
                 [location.coordinates.latitude, location.coordinates.longitude],
-                {icon: this.bonusMarkerIco}
+                {icon: this.bonusMarkerIco('pets')}
             ).bindPopup(
                 component.location.nativeElement
             );
