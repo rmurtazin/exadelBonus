@@ -27,7 +27,7 @@ export class MarkersService{
 
     private bonusMarkerIco = (type: string): DivIcon => {
         let icon = MarkersIcons.default;
-        console.log(type, Object.keys(MarkersIcons).includes(type))
+        console.log(type, Object.keys(MarkersIcons).includes(type));
         if (Object.keys(MarkersIcons).includes(type)){
             icon = MarkersIcons[type];
         }

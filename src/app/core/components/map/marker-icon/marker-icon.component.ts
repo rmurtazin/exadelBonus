@@ -8,9 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MarkerIconComponent implements OnInit {
   @Input() public icon: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
 }
