@@ -1,10 +1,11 @@
 import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
-import { Marker, Icon, PointExpression, DivIcon} from 'leaflet';
+import { Marker, Icon, PointExpression, DivIcon, bounds} from 'leaflet';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
 import { OfficePopupComponent } from '@components/map/office-popup/office-popup.component';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { MarkerIconComponent } from '@components/map/marker-icon/marker-icon.component';
+import { MarkersIcons } from '../enums/markers-icons.enum';
 
 @Injectable()
 export class MarkersService{
@@ -24,7 +25,12 @@ export class MarkersService{
         private resolver: ComponentFactoryResolver
     ){}
 
-    private bonusMarkerIco = (icon: string): DivIcon => {
+    private bonusMarkerIco = (type: string): DivIcon => {
+        let icon = MarkersIcons.default;
+        console.log(type, Object.keys(MarkersIcons).includes(type))
+        if (Object.keys(MarkersIcons).includes(type)){
+            icon = MarkersIcons[type];
+        }
         const component = this.resolver.resolveComponentFactory(MarkerIconComponent).create(this.injector);
         component.instance.icon = icon;
         component.changeDetectorRef.detectChanges();
@@ -57,7 +63,7 @@ export class MarkersService{
             component.changeDetectorRef.detectChanges();
             return new Marker(
                 [location.coordinates.latitude, location.coordinates.longitude],
-                {icon: this.bonusMarkerIco('pets')}
+                {icon: this.bonusMarkerIco(bonus.type)}
             ).bindPopup(
                 component.location.nativeElement
             );
