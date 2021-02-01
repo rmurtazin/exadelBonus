@@ -24,6 +24,7 @@ export interface IBonus {
     description: string;
     company: ICompany;
     type: string;
+    rating: number;
     discount: number;
     locations: ILocation[];
     tags: string[];

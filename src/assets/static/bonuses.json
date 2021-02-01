@@ -9,6 +9,7 @@
     "email": "zwhitlaw0@craigslist.org"
   },
   "type": "hotel",
+  "rating": 3, 
   "discount": 4,
   "locations": [{
     "id": 1,
@@ -42,6 +43,7 @@
     "email": "jfearnall1@europa.eu"
   },
   "type": "cinema",
+  "rating": 3, 
   "discount": 27,
   "locations": [{
     "id": 1,
@@ -66,6 +68,7 @@
     "email": "lmiddlemass2@elpais.com"
   },
   "type": "gas station",
+  "rating": 3, 
   "discount": 4,
   "locations": [{
       "id": 3,
@@ -101,6 +104,7 @@
     "email": "ahuws3@bbc.co.uk"
   },
   "type": "restaurant",
+  "rating": 3, 
   "discount": 42,
   "locations": [{
     "id": 4,
@@ -125,6 +129,7 @@
     "email": "ajills4@tripod.com"
   },
   "type": "restaurant",
+  "rating": 2.5, 
   "locations": [{
     "id": 1,
     "coordinates": {
@@ -148,6 +153,7 @@
     "email": "jsafe5@51.la"
   },
   "type": "store",
+  "rating": 3, 
   "discount": 15,
   "locations": [{
     "id": 5,
@@ -190,6 +196,7 @@
     "email": "cthorns6@delicious.com"
   },
   "type": "store",
+  "rating": 3, 
   "discount": 20,
   "locations": [{
     "id": 5,
@@ -223,6 +230,7 @@
     "email": "tmarzella7@ft.com"
   },
   "type": "store",
+  "rating": 3, 
   "discount": 49,
   "locations": [{
     "id": 5,
@@ -265,6 +273,7 @@
     "email": "sbagworth8@princeton.edu"
   },
   "type": "store",
+  "rating": 3, 
   "discount": 20,
   "locations": [{
     "id": 1,
@@ -298,6 +307,7 @@
     "email": "tbraunston9@hibu.com"
   },
   "type": "store",
+  "rating": 3, 
   "discount": 22,
   "locations": [{
     "id": 5,
