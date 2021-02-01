@@ -8,7 +8,6 @@ import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
 import { MarkerEventsService } from '@services/markers-events.service';
 import { ActivatedRoute } from '@angular/router';
-import { IMarkerShell } from '@interfaces/marker-shell.interface';
 
 @Component({
   selector: 'app-map-container',
@@ -60,18 +59,18 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   private displayBonusesMarkers(): void {
     this.subscription.add(
       this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
-        const bonusesMarkers: IMarkerShell[] = this.markersService.createBonusesMarkers(bonuses);
-        layerGroup(bonusesMarkers.map(elem => elem.marker)).addTo(this.map);
-        const isRequestedLocation = (markerShell: IMarkerShell) =>  {
-          return markerShell.longitude === +this.queryLongitude &&
-            markerShell.latitude === +this.queryLatitude;
+        const bonusesMarkers: Marker[] = this.markersService.createBonusesMarkers(bonuses);
+        layerGroup(bonusesMarkers).addTo(this.map);
+        const isRequestedLocation = (marker: Marker) =>  {
+          const {lat, lng} = marker.getLatLng();
+          return lng === +this.queryLongitude &&
+            lat === +this.queryLatitude;
         };
         const [targetMarker] = bonusesMarkers.filter(isRequestedLocation);
         if (targetMarker){
           const zoom = 11;
-          const location = latLng(targetMarker.latitude, targetMarker.longitude);
-          targetMarker.marker.openPopup();
-          this.map.setView(location, zoom);
+          targetMarker.openPopup();
+          this.map.setView(targetMarker.getLatLng(), zoom);
         }
       })
     );
