@@ -8,6 +8,7 @@ import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
 import { MarkerEventsService } from '@services/markers-events.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToasterService } from '@services/toaster.service';
 
 @Component({
   selector: 'app-map-container',
@@ -26,6 +27,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
     private markersService: MarkersService,
     private markerEvents: MarkerEventsService,
     private activateRouter: ActivatedRoute,
+    private toaster: ToasterService
   ) {}
 
   ngAfterViewInit(): void {}
@@ -61,19 +63,31 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
       this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
         const bonusesMarkers: Marker[] = this.markersService.createBonusesMarkers(bonuses);
         layerGroup(bonusesMarkers).addTo(this.map);
-        const isRequestedLocation = (marker: Marker) =>  {
-          const {lat, lng} = marker.getLatLng();
-          return lng === +this.queryLongitude &&
-            lat === +this.queryLatitude;
-        };
-        const [targetMarker] = bonusesMarkers.filter(isRequestedLocation);
-        if (targetMarker){
-          const zoom = 11;
-          targetMarker.openPopup();
-          this.map.setView(targetMarker.getLatLng(), zoom);
+        let navigationSuccess = true;
+        if (this.queryLatitude && this.queryLongitude){
+          navigationSuccess = this.navigateToMarker(bonusesMarkers);
+        }
+        if(!navigationSuccess){
+          this.toaster.showError('Bonus not available', 'Error');
         }
       })
     );
+  }
+
+  private navigateToMarker(bonusesMarkers: Marker[]): boolean{
+    const isRequestedLocation = (marker: Marker) =>  {
+      const {lat, lng} = marker.getLatLng();
+      return lng === +this.queryLongitude &&
+        lat === +this.queryLatitude;
+    };
+    const [targetMarker] = bonusesMarkers.filter(isRequestedLocation);
+    if (!targetMarker){
+      return false;
+    }
+    const zoom = 11;
+    targetMarker.openPopup();
+    this.map.setView(targetMarker.getLatLng(), zoom);
+    return true;
   }
 
   private officeMarkerClickObserver(): void {
