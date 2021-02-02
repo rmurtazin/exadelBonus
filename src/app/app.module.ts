@@ -7,7 +7,11 @@ import { MapViewComponent } from '@components/map/map-view/map-view.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ApiService } from '@services/api.service';
 import { MarkersService } from '@services/markers.service';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { LanguageSwitcherDirective } from './shared/directives/language-switcher.directive';
@@ -27,7 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   multi: true,
-  useClass: AuthInterceptor
+  useClass: AuthInterceptor,
 };
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -37,9 +41,10 @@ import { LoginModule } from '@components/login/login.module';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
 import { FooterComponent } from '@components/footer/footer.component';
 
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
+import { AddBonusModule } from '@components/add-bonus/add-bonus.module';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -59,7 +64,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     CloseMenuDirective,
     HomeComponent,
     NotFoundComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     HttpClientModule,
@@ -76,11 +81,12 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
       loader: {
-          provide: TranslateLoader,
-          useFactory: (createTranslateLoader),
-          deps: [HttpClient]
-      }
-  }),
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
+    AddBonusModule,
   ],
   providers: [
     ApiService,
