@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { BonusAddressService } from '../../services/bonus-address.service';
-import { IVendor, ITag, ILocation } from '../../interfaces/add-bonus.interface';
+import { ITag, ILocation } from '../../interfaces/add-bonus.interface';
 
 @Component({
   selector: 'app-add-bonus',
   templateUrl: './add-bonus.component.html',
   styleUrls: ['./add-bonus.component.scss'],
 })
+
 export class AddBonusComponent implements OnInit {
   public subscription: Subscription = new Subscription();
   public myForm: FormGroup;
@@ -34,46 +33,42 @@ export class AddBonusComponent implements OnInit {
       bonusAddress: new FormControl('', [Validators.required]),
       bonusType: new FormControl('', [Validators.required]),
       bonusDescription: new FormControl('', [Validators.required]),
+      bonusTags: new FormControl('', [Validators.required]),
+      bonusValue: new FormControl('', [Validators.required]),
+      vendorEmail: new FormControl('', [Validators.required, Validators.email]),
+      vendorPhone: new FormControl('', [Validators.required]),
       bonusDateRange: (this.range = new FormGroup({
         start: new FormControl('', [Validators.required]),
         end: new FormControl('', [Validators.required]),
       })),
-      bonusTags: new FormControl('', [Validators.required]),
-      bonusValue: new FormControl('', [Validators.required]),
-      vendorEmail: new FormControl('', [Validators.required, Validators.email]),
-      vendorPhone: new FormControl('', [
-        Validators.required,
-      ]),
     });
   }
 
   public onSubmit(): void {
     const formValue = this.myForm.value;
-    if (this.locations.length === 0) {
-      this.onAddAddress();
-    }
-    const submitData = {
-      dateStart: formValue.bonusDateRange.start,
-      dateEnd: formValue.bonusDateRange.end,
-      description: formValue.bonusDescription,
+    const submitedBonus = {
       company: {
         name: formValue.vendorName,
         phone: formValue.vendorPhone,
         email: formValue.vendorEmail,
       },
+      dateStart: formValue.bonusDateRange.start,
+      dateEnd: formValue.bonusDateRange.end,
+      description: formValue.bonusDescription,
       type: formValue.bonusType,
       discount: formValue.bonusValue,
       locations: this.locations,
       bonusTags: this.bonusTags.map((tag) => tag.name),
     };
-    console.log(submitData);
+
+    //TODO: add service for post submitedBonus...
   }
 
-  onCheckAddress() {
+  public onCheckAddress() {
     this.onAddAddress();
   }
 
-  onAddAddress() {
+  public onAddAddress() {
     if (this.myForm.value.bonusAddress) {
       this.subscription.add(
         this.bonusAddressService
@@ -87,7 +82,10 @@ export class AddBonusComponent implements OnInit {
                 },
                 city: data[0].components.city,
                 country: data[0].components.country,
-                address: data[0].components.road && data[0].components.house_number ? `${data[0].components.road}, ${data[0].components.house_number}`: '',
+                address:
+                  data[0].components.road && data[0].components.house_number
+                    ? `${data[0].components.road}, ${data[0].components.house_number}`
+                    : '',
               });
             } else {
               this.myForm.get('bonusAddress').reset();
@@ -98,7 +96,7 @@ export class AddBonusComponent implements OnInit {
     }
   }
 
-  onAddTag(event: MatChipInputEvent): void {
+  public onAddTag(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
     if ((value || '').trim()) {
@@ -109,10 +107,28 @@ export class AddBonusComponent implements OnInit {
     }
   }
 
-  onRemoveTag(tag: ITag): void {
+  public onRemoveTag(tag: ITag): void {
     const index = this.bonusTags.indexOf(tag);
     if (index >= 0) {
       this.bonusTags.splice(index, 1);
+    }
+  }
+
+  public onAddAddressValue(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+    if ((value || '').trim()) {
+      this.onAddAddress();
+    }
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  public onRemoveAddress(location: ILocation): void {
+    const index = this.locations.indexOf(location);
+    if (index >= 0) {
+      this.locations.splice(index, 1);
     }
   }
 }

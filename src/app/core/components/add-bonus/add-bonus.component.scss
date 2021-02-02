@@ -3,7 +3,8 @@
 }
 
 .add-bonus-form {
-  width: 100%;
+  width: 260px;
+  margin: 30px auto;
   text-align: center;
 }
 
@@ -37,4 +38,10 @@
     cursor: pointer;
     outline: none;
   }
+}
+
+.add-bonus-input--chip {
+  width: 260px;
+  display: flex;
+  justify-content: space-between;
 }

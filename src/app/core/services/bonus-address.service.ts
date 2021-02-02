@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { nextTick } from 'process';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BonusAddressService {
-  apiKey: string = '977dc027c5554e86b7bbe1ba4732e7e0';
+  apiKey: string = '977dc027c5554e86b7bbe1ba4732e7e0'; // TODO: hide key to .env file
   baseUrl: string = 'https://api.opencagedata.com/geocode/v1';
 
   constructor(public apiService: ApiService) {}

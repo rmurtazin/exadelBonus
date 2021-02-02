@@ -10,6 +10,7 @@ export interface ICoordinates {
   latitude: number;
   longitude: number;
 }
+
 export interface ILocation {
   coordinates: ICoordinates;
   city: string;

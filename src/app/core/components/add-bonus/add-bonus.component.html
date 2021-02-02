@@ -1,6 +1,6 @@
 <div class="container">
   <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
-    <mat-form-field class="add-bonus-input">
+    <mat-form-field class="add-bonus-input" appearance="fill" >
       <mat-label>Vendor name</mat-label>
       <input
         class="add-bonus-input"
@@ -10,20 +10,26 @@
         autocomplete="off"
       />
     </mat-form-field>
-    <mat-form-field class="add-bonus-input" >
-      <mat-label>Enter your email</mat-label>
-      <input 
+    <mat-form-field class="add-bonus-input" appearance="fill">
+      <mat-label>Enter vendor email</mat-label>
+      <input
         matInput
         formControlName="vendorEmail"
         autocomplete="off"
-        placeholder="pat@example.com">
+        placeholder="pat@example.com"
+      />
     </mat-form-field>
-    <mat-form-field class="add-bonus-input" aria-autocomplete="off" >
-      <mat-label>Telephone</mat-label>
+    <mat-form-field class="add-bonus-input" appearance="fill" aria-autocomplete="off">
+      <mat-label>Vendor phone</mat-label>
       <span matPrefix>+ &nbsp;</span>
-      <input type="tel" matInput placeholder="555-555-1234" formControlName="vendorPhone">
+      <input
+        type="tel"
+        matInput
+        placeholder="555-555-1234"
+        formControlName="vendorPhone"
+      />
     </mat-form-field>
-    <mat-form-field class="add-bonus-input">
+    <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>Bonus type</mat-label>
       <input
         matInput
@@ -38,21 +44,7 @@
       <mat-label>Bonus description</mat-label>
       <textarea matInput formControlName="bonusDescription"></textarea>
     </mat-form-field>
-    <mat-form-field class="add-bonus-input">
-      <mat-label>Bonus address</mat-label>
-      <input
-        autocomplete="off"
-        matInput
-        type="text"
-        formControlName="bonusAddress"
-        placeholder="Enter country, town, street, number..."
-        (blur)="onCheckAddress()"
-      />
-    </mat-form-field>
-    <div class="add-location-btn-container">
-      <button type="button" (click)="onAddAddress()">+</button>
-    </div>
-    <mat-form-field class="add-bonus-input">
+    <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>Bonus value</mat-label>
       <input
         autocomplete="off"
@@ -61,7 +53,7 @@
         formControlName="bonusValue"
       />
     </mat-form-field>
-    <mat-form-field class="add-bonus-input">
+    <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>Bonus tags</mat-label>
       <mat-chip-list #chipList aria-label="Tag selection">
         <mat-chip
@@ -80,6 +72,30 @@
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
           [matChipInputAddOnBlur]="addOnBlur"
           (matChipInputTokenEnd)="onAddTag($event)"
+        />
+      </mat-chip-list>
+    </mat-form-field>
+    <mat-form-field class="add-bonus-input" appearance="fill">
+      <mat-label>Bonus address</mat-label>
+      <mat-chip-list #addressList aria-label="Tag selection">
+        <mat-chip class="add-bonus-input--chip"
+          *ngFor="let location of locations"
+          [selectable]="selectable"
+          [removable]="removable"
+          (removed)="onRemoveAddress(location)"
+        >
+          {{ location.country }}, {{location.city}}, {{location?.address}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input
+          formControlName="bonusAddress"
+          placeholder="Enter new address..."
+          [matChipInputFor]="addressList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="onAddAddressValue($event)"
+          placeholder="Enter country, town, street, number..."
+          autocomplete="off"
         />
       </mat-chip-list>
     </mat-form-field>
