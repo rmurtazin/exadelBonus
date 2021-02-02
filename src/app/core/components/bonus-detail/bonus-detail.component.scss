@@ -18,10 +18,16 @@
     .button-wrapper {
       display: flex;
       justify-content: center;
+      margin: 10px;
 
       .apply-button {
-        min-width: 30%;
+        min-width: 40%;
+        margin: 20px;
       }
+    }
+
+    .contacts {
+      box-shadow: none;
     }
   }
 }
