@@ -21,4 +21,8 @@ export class HeaderComponent implements OnInit {
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
   }
+
+  public logout(): void{
+    this.loginService.logout();
+  }
 }
