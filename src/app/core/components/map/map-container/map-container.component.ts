@@ -31,8 +31,6 @@ export class MapComponent implements OnInit, OnDestroy {
     private toaster: ToasterService
   ) {}
 
-  public ngOnInit(): void {}
-
   public mapReadyEvent(map: Map): void {
     this.map = map;
     this.getQueryParams();
