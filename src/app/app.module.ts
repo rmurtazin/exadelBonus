@@ -42,6 +42,11 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {DatepickerComponent} from './shared/components/datepicker/datepicker.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -63,6 +68,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     NotFoundComponent,
     FooterComponent,
     BonusListComponent,
+    DatepickerComponent,
   ],
   imports: [
     HttpClientModule,
@@ -81,11 +87,16 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
       loader: {
-          provide: TranslateLoader,
-          useFactory: (createTranslateLoader),
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
       }
-  }),
+    }),
+    MatFormFieldModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   providers: [
     ApiService,
