@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
+import { IBonus } from '@interfaces/bonus.interface';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '@services/api.service';
 
 @Injectable()
-export class BonusesService {
-  constructor(private http: HttpClient) {}
+export class BonusesService{
+    constructor(private api: ApiService){}
 
-  public getBonuses(): Observable<any> {
-    return this.http.get('../../../assets/static/bonuses.json');
-  }
+    public getBonuses(): Observable<IBonus[]> {
+        return this.api.get('../../../assets/static/bonuses.json');
+    }
 }
