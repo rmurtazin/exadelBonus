@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {Map, tileLayer, latLng, MarkerClusterGroup} from 'leaflet';
+import { Component, Output, EventEmitter } from '@angular/core';
+import {Map, tileLayer, latLng, latLngBounds} from 'leaflet';
 import 'leaflet.markercluster';
 
 @Component({
@@ -7,7 +7,7 @@ import 'leaflet.markercluster';
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.scss']
 })
-export class MapViewComponent implements OnInit {
+export class MapViewComponent {
 
   @Output() public mapReady = new EventEmitter<Map>();
 
@@ -16,6 +16,7 @@ export class MapViewComponent implements OnInit {
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
          maxZoom: 18,
+         minZoom: 2,
       })
     ],
     zoom: 5,
@@ -25,6 +26,4 @@ export class MapViewComponent implements OnInit {
   public onMapReady(map: Map): void {
     this.mapReady.emit(map);
   }
-
-  public ngOnInit(): void { }
 }

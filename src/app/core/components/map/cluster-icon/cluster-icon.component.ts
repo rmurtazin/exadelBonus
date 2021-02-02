@@ -1,16 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cluster-icon',
   templateUrl: './cluster-icon.component.html',
   styleUrls: ['./cluster-icon.component.scss']
 })
-export class ClusterIconComponent implements OnInit {
+export class ClusterIconComponent {
   @Input() public childCount: number;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

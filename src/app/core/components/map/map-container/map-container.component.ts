@@ -88,6 +88,7 @@ export class MapComponent implements OnInit, OnDestroy {
     }
     const zoom = 11;
     this.map.setView(targetMarker.getLatLng(), zoom);
+    targetMarker.openPopup();
     return true;
   }
 
