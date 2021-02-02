@@ -23,8 +23,6 @@ import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from '@services/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { DatepickerComponent } from './shared/components/datepicker/datepicker.component';
-import { MatNativeDateModule } from '@angular/material/core';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -42,8 +40,8 @@ import { FooterComponent } from '@components/footer/footer.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -64,7 +62,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     HomeComponent,
     NotFoundComponent,
     FooterComponent,
-    DatepickerComponent
+    BonusListComponent,
   ],
   imports: [
     HttpClientModule,
@@ -76,20 +74,18 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     ToastrModule.forRoot(),
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
+    MatExpansionModule,
     LoginModule,
     MatCardModule,
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
       loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
       }
-    }),
-    MatInputModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule
+  }),
   ],
   providers: [
     ApiService,
