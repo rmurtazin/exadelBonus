@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { BonusAddressService } from '../../services/bonus-address.service';
 import { ITag, ILocation } from '../../interfaces/add-bonus.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-bonus',
@@ -18,16 +19,16 @@ export class AddBonusComponent implements OnInit {
   public vendorName: FormControl;
   public range: FormGroup;
   public locations: ILocation[] = [];
-  public visible: boolean = true;
-  public selectable: boolean = true;
-  public removable: boolean = true;
-  public addOnBlur: boolean = true;
+  public visible = true;
+  public selectable = true;
+  public removable = true;
+  public addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   public bonusTags: ITag[] = [];
 
-  constructor(private bonusAddressService: BonusAddressService) {}
+  constructor(private bonusAddressService: BonusAddressService, private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.myForm = new FormGroup({
       vendorName: new FormControl('', [Validators.required]),
       bonusAddress: new FormControl('', [Validators.required]),
@@ -60,15 +61,11 @@ export class AddBonusComponent implements OnInit {
       locations: this.locations,
       bonusTags: this.bonusTags.map((tag) => tag.name),
     };
-
-    //TODO: add service for post submitedBonus...
+    // TODO: add service for post submitedBonus...
+    this.router.navigateByUrl('/home');
   }
 
-  public onCheckAddress() {
-    this.onAddAddress();
-  }
-
-  public onAddAddress() {
+  public onAddAddress(): void {
     if (this.myForm.value.bonusAddress) {
       this.subscription.add(
         this.bonusAddressService
@@ -132,3 +129,5 @@ export class AddBonusComponent implements OnInit {
     }
   }
 }
+
+// TODO: add button to back home page

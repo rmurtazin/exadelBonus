@@ -7,8 +7,8 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class BonusAddressService {
-  apiKey: string = '977dc027c5554e86b7bbe1ba4732e7e0'; // TODO: hide key to .env file
-  baseUrl: string = 'https://api.opencagedata.com/geocode/v1';
+  private apiKey = '977dc027c5554e86b7bbe1ba4732e7e0'; // TODO: hide key to .env file
+  private baseUrl = 'https://api.opencagedata.com/geocode/v1';
 
   constructor(public apiService: ApiService) {}
 
