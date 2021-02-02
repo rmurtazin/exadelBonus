@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IBonus } from '../../interfaces/bonus.interface';
 import { BonusesService } from '../../services/bonuses.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-bonus-list',
@@ -9,10 +10,13 @@ import { BonusesService } from '../../services/bonuses.service';
 })
 export class BonusListComponent implements OnInit {
   public bonuses: IBonus[] = [];
+  public bonusFromMap: IBonus;
+
   constructor(public bonusesService: BonusesService) {}
 
   ngOnInit(): void {
     this.getBonuses();
+    this.getBonusMap();
   }
 
   public getBonuses(): void {
@@ -24,5 +28,11 @@ export class BonusListComponent implements OnInit {
       },
       (err) => console.log(`error ${err}`)
     );
+  }
+
+  public getBonusMap(): void {
+    this.bonusesService.bonusFromMap.subscribe((bonus: IBonus) => {
+      this.bonusFromMap = bonus;
+    });
   }
 }

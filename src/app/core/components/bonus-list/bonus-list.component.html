@@ -1,3 +1,8 @@
+<app-bonus-detail
+  *ngIf="bonusFromMap"
+  [bonus]="bonusFromMap"
+></app-bonus-detail>
+
 <div *ngFor="let bonus of bonuses" class="bonus-list">
   <app-bonus-detail
     [bonus]="bonus"
