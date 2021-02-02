@@ -1,6 +1,6 @@
 <header>
   <nav>
-    <section class="logo">
+    <section class="logo" [routerLink]="['/home']">
       <img class="logo-img" src="assets/images/logo.png" alt="exadel logo" />
       <span class="logo-text">exadel bonus+</span>
     </section>
@@ -37,6 +37,7 @@
         </li>
         <li class="menu-item">
           <a>{{ 'header.signOut' | translate }}</a>
+          <a (click)="logout()">{{'header.signOut' | translate}}</a>
         </li>
       </ul>
       <div class="language-switcher">

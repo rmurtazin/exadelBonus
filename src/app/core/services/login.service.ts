@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ILogin, IUser } from '../interfaces/loginInterface';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
   private currentUser: IUser = JSON.parse(localStorage.getItem('user'));
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: Router) {}
 
   public getUser(): IUser | null {
     return this.currentUser;
@@ -29,8 +30,8 @@ export class LoginService {
     );
   }
 
-  public onlogout(): void {
-    localStorage.removeItem('user');
-    this.currentUser = null;
+  public logout(): void {
+    localStorage.clear();
+    this.route.navigate(['login']);
   }
 }

@@ -8,7 +8,7 @@
     }}</mat-card-title>
     <mat-card-content class="discription-wrapper">
       <p class="discription">{{ bonus.description }}</p>
-      <p>Expiration date: {{ bonus.dateEnd }}</p>
+
       <div
         class="rating-discount-wrapper"
         fxLayout="row"
@@ -34,5 +34,19 @@
         Apply
       </button>
     </div>
+
+    <mat-expansion-panel class="contacts">
+      <mat-expansion-panel-header> Contacts </mat-expansion-panel-header>
+      <mat-card-content>
+        <div>
+          E-mail: <span> {{ bonus.company.email }} </span>
+        </div>
+        <div>
+          Phone: <span> {{ bonus.company.phone }} </span>
+        </div>
+
+        <p>Expiration date: {{ bonus.dateEnd }}</p>
+      </mat-card-content>
+    </mat-expansion-panel>
   </mat-card>
 </div>
