@@ -6,14 +6,14 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { BonusAddressService } from '../../services/bonus-address.service';
 import { ITag, ILocation } from '../../interfaces/add-bonus.interface';
 import { Router } from '@angular/router';
+import { OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-add-bonus',
   templateUrl: './add-bonus.component.html',
   styleUrls: ['./add-bonus.component.scss'],
 })
-
-export class AddBonusComponent implements OnInit {
+export class AddBonusComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
   public myForm: FormGroup;
   public vendorName: FormControl;
@@ -26,9 +26,22 @@ export class AddBonusComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   public bonusTags: ITag[] = [];
 
-  constructor(private bonusAddressService: BonusAddressService, private router: Router) {}
+  constructor(
+    private bonusAddressService: BonusAddressService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.onInitForm();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+ public onInitForm(): void {
     this.myForm = new FormGroup({
       vendorName: new FormControl('', [Validators.required]),
       bonusAddress: new FormControl('', [Validators.required]),
