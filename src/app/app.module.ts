@@ -91,7 +91,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient],
       },
     }),
-    AddBonusModule,
   ],
   providers: [
     ApiService,
