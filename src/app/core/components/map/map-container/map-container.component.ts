@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MarkersService } from '@services/markers.service';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
@@ -16,7 +16,7 @@ import 'leaflet.markercluster';
   templateUrl: './map-container.component.html',
   styleUrls: ['./map-container.component.scss']
 })
-export class MapComponent implements OnInit, OnDestroy {
+export class MapComponent implements OnDestroy {
   private subscription = new Subscription();
   private map: Map;
   private queryLatitude: string;
