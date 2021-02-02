@@ -7,7 +7,7 @@ import { ApiService } from '@services/api.service';
 export class BonusesService{
     constructor(private api: ApiService){}
 
-    url = 'assets/static/bonuses.json'; // TODO: change url
+    url = '../../../assets/static/bonuses.json'; // TODO: change url
 
     public getBonuses(): Observable<IBonus[]> {
         return this.api.get(this.url);
