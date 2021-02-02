@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import {Map, tileLayer, latLng, latLngBounds} from 'leaflet';
+import {Map, tileLayer, latLng, latLngBounds, LatLngBounds} from 'leaflet';
 import 'leaflet.markercluster';
 
 @Component({
@@ -24,6 +24,8 @@ export class MapViewComponent {
   };
 
   public onMapReady(map: Map): void {
+    const bounds = new LatLngBounds(latLng(85, -180), latLng(-85, 180))
+    map.setMaxBounds(bounds);
     this.mapReady.emit(map);
   }
 }
