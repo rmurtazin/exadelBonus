@@ -44,4 +44,8 @@ export class HeaderComponent implements OnInit {
     ];
     return checkRoutes.includes(this.currentRoute);
   }
+  
+  public logout(): void{
+    this.loginService.logout();
+  }
 }

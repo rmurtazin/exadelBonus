@@ -14,10 +14,12 @@ import { LanguageSwitcherDirective } from './shared/directives/language-switcher
 import { MatButtonModule } from '@angular/material/button';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
 import { MarkerEventsService } from '@services/markers-events.service';
+import { BonusDetailComponent } from './core/components/bonus-detail/bonus-detail.component';
 import { HeaderComponent } from '@components/header/header.component';
 import { CloseMenuDirective } from './shared/directives/close-menu.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './shared/components/home/home.component';
+import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from '@services/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -38,6 +40,8 @@ import { FooterComponent } from '@components/footer/footer.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
+import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,6 +52,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     AppComponent,
     MapComponent,
     MapViewComponent,
+    OfficePopupComponent,
+    BonusDetailComponent,
     LanguageSwitcherDirective,
     OfficePopupComponent,
     BonusPopupComponent,
@@ -55,7 +61,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     CloseMenuDirective,
     HomeComponent,
     NotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    BonusListComponent,
   ],
   imports: [
     HttpClientModule,
@@ -67,7 +74,10 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     ToastrModule.forRoot(),
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
+    MatExpansionModule,
     LoginModule,
+    MatCardModule,
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
       loader: {
