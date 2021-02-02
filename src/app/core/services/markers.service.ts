@@ -1,11 +1,13 @@
 import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
-import { Marker, Icon, PointExpression, DivIcon, bounds} from 'leaflet';
-import { IOffice } from '@interfaces/office.interface';
-import { IBonus } from '@interfaces/bonus.interface';
 import { OfficePopupComponent } from '@components/map/office-popup/office-popup.component';
+import { ClusterIconComponent } from '@components/map/cluster-icon/cluster-icon.component';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { MarkerIconComponent } from '@components/map/marker-icon/marker-icon.component';
+import { Marker, Icon, PointExpression, DivIcon, MarkerClusterGroup} from 'leaflet';
 import { MarkersIcons } from '../enums/markers-icons.enum';
+import { IBonus } from '@interfaces/bonus.interface';
+import { IOffice } from '@interfaces/office.interface';
+import 'leaflet.markercluster';
 
 @Injectable()
 export class MarkersService{
@@ -42,6 +44,17 @@ export class MarkersService{
         });
     }
 
+    private iconCreateFunction(cluster): DivIcon{
+        console.log(cluster);
+        const component = this.resolver.resolveComponentFactory(ClusterIconComponent).create(this.injector);
+        component.instance.childCount = cluster.getChildCount();
+        component.changeDetectorRef.detectChanges();
+        return new DivIcon({
+            html: component.location.nativeElement,
+            className: 'cluster-icon'
+        });
+    }
+
     public createOfficesMarkers(offices: IOffice[]): Marker[] {
         return offices.map((office: IOffice) => {
             const component = this.resolver.resolveComponentFactory(OfficePopupComponent).create(this.injector);
@@ -67,19 +80,28 @@ export class MarkersService{
             component.changeDetectorRef.detectChanges();
             return new Marker(
                 [location.coordinates.latitude, location.coordinates.longitude],
-                {icon: this.bonusMarkerIco(bonus.type)}
+                {
+                    icon: this.bonusMarkerIco(bonus.type),
+                    title: bonus.company.name,
+                    alt: bonus.company.name,
+
+                }
             ).bindPopup(
                 component.location.nativeElement
             );
         });
     }
 
-    public createBonusesMarkers(bonuses: IBonus[]): Marker[]{
+    public createBonusesMarkers(bonuses: IBonus[]): MarkerClusterGroup{
         let markers: Marker[] = [];
         bonuses.forEach((bonus: IBonus) => {
             const bonusLocationsMarkers = this.nestedBonusLocationsMarkerGenerator(bonus);
             markers = [...markers, ...bonusLocationsMarkers];
         });
-        return markers;
+        const markersCluster = new MarkerClusterGroup({
+            iconCreateFunction: this.iconCreateFunction
+        });
+        markersCluster.addLayers(markers);
+        return markersCluster;
     }
 }

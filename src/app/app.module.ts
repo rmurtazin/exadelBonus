@@ -41,6 +41,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { MarkerIconComponent } from './core/components/map/marker-icon/marker-icon.component';
+import { ClusterIconComponent } from './core/components/map/cluster-icon/cluster-icon.component';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -61,7 +62,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     HomeComponent,
     NotFoundComponent,
     FooterComponent,
-    MarkerIconComponent
+    MarkerIconComponent,
+    ClusterIconComponent
   ],
   imports: [
     HttpClientModule,

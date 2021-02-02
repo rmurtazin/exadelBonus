@@ -3,12 +3,13 @@ import { MarkersService } from '@services/markers.service';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Map, Marker, layerGroup, latLng} from 'leaflet';
+import { Map, Marker, layerGroup, latLng, MarkerClusterGroup} from 'leaflet';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
 import { MarkerEventsService } from '@services/markers-events.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToasterService } from '@services/toaster.service';
+import 'leaflet.markercluster';
 
 @Component({
   selector: 'app-map-container',
@@ -61,11 +62,11 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   private displayBonusesMarkers(): void {
     this.subscription.add(
       this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
-        const bonusesMarkers: Marker[] = this.markersService.createBonusesMarkers(bonuses);
-        layerGroup(bonusesMarkers).addTo(this.map);
+        const markersGroup: MarkerClusterGroup = this.markersService.createBonusesMarkers(bonuses);;
+        markersGroup.addTo(this.map);
         let navigationSuccess = true;
         if (this.queryLatitude && this.queryLongitude){
-          navigationSuccess = this.navigateToMarker(bonusesMarkers);
+          navigationSuccess = this.navigateToMarker(markersGroup);
         }
         if (!navigationSuccess){
           this.toaster.showError('Bonus not available', 'Error');
@@ -74,13 +75,13 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
-  private navigateToMarker(bonusesMarkers: Marker[]): boolean{
+  private navigateToMarker(markersGroup: MarkerClusterGroup): boolean{
     const isRequestedLocation = (marker: Marker) =>  {
       const {lat, lng} = marker.getLatLng();
       return lng === +this.queryLongitude &&
         lat === +this.queryLatitude;
     };
-    const [targetMarker] = bonusesMarkers.filter(isRequestedLocation);
+    const [targetMarker] = markersGroup.getAllChildMarkers().filter(isRequestedLocation);
     if (!targetMarker){
       return false;
     }
