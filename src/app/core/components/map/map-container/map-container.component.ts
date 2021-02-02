@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MarkersService } from '@services/markers.service';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Map, Marker, layerGroup, latLng, MarkerClusterGroup} from 'leaflet';
+import { Map, Marker, layerGroup, latLng, MarkerClusterGroup, LayerGroup, marker} from 'leaflet';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
 import { MarkerEventsService } from '@services/markers-events.service';
@@ -16,7 +16,7 @@ import 'leaflet.markercluster';
   templateUrl: './map-container.component.html',
   styleUrls: ['./map-container.component.scss']
 })
-export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
+export class MapComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   private map: Map;
   private queryLatitude: string;
@@ -31,8 +31,6 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
     private toaster: ToasterService
   ) {}
 
-  ngAfterViewInit(): void {}
-
   public ngOnInit(): void {}
 
   public mapReadyEvent(map: Map): void {
@@ -44,10 +42,12 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private getQueryParams(): void{
-    this.activateRouter?.queryParams.subscribe(params => {
-      this.queryLatitude = params?.lat;
-      this.queryLongitude = params?.lon;
-    });
+    this.subscription.add(
+      this.activateRouter.queryParams.subscribe(params => {
+        this.queryLatitude = params?.lat;
+        this.queryLongitude = params?.lon;
+      })
+    );
   }
 
   private displayOfficesMarkers(): void {
@@ -62,11 +62,12 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   private displayBonusesMarkers(): void {
     this.subscription.add(
       this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
-        const markersGroup: MarkerClusterGroup = this.markersService.createBonusesMarkers(bonuses);;
+        const markers: Marker[] = this.markersService.createBonusesMarkers(bonuses);
+        const markersGroup = this.markersService.createMarkerCluster(markers);
         markersGroup.addTo(this.map);
         let navigationSuccess = true;
         if (this.queryLatitude && this.queryLongitude){
-          navigationSuccess = this.navigateToMarker(markersGroup);
+          navigationSuccess = this.navigateToMarker(markers);
         }
         if (!navigationSuccess){
           this.toaster.showError('Bonus not available', 'Error');
@@ -75,18 +76,17 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
-  private navigateToMarker(markersGroup: MarkerClusterGroup): boolean{
-    const isRequestedLocation = (marker: Marker) =>  {
-      const {lat, lng} = marker.getLatLng();
-      return lng === +this.queryLongitude &&
-        lat === +this.queryLatitude;
+  private navigateToMarker(markers: Marker[]): boolean{
+    const isRequestedLocation = (currentMarker: Marker) =>  {
+      const {lat, lng} = currentMarker.getLatLng();
+      return lng === Number(this.queryLongitude) &&
+        lat === Number(this.queryLatitude);
     };
-    const [targetMarker] = markersGroup.getAllChildMarkers().filter(isRequestedLocation);
+    const [targetMarker] = markers.filter(isRequestedLocation);
     if (!targetMarker){
       return false;
     }
     const zoom = 11;
-    targetMarker.openPopup();
     this.map.setView(targetMarker.getLatLng(), zoom);
     return true;
   }
@@ -102,6 +102,10 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       )
     );
+  }
+
+  public markerClusterReady(markerCluster: MarkerClusterGroup): void{
+    console.log(markerCluster);
   }
 
   public ngOnDestroy(): void {

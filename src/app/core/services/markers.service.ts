@@ -3,8 +3,8 @@ import { OfficePopupComponent } from '@components/map/office-popup/office-popup.
 import { ClusterIconComponent } from '@components/map/cluster-icon/cluster-icon.component';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { MarkerIconComponent } from '@components/map/marker-icon/marker-icon.component';
-import { Marker, Icon, PointExpression, DivIcon, MarkerClusterGroup} from 'leaflet';
-import { MarkersIcons } from '../enums/markers-icons.enum';
+import { Marker, Icon, PointExpression, DivIcon, MarkerClusterGroup, marker} from 'leaflet';
+import { MarkersIcons } from '@enums/markers-icons.enum';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IOffice } from '@interfaces/office.interface';
 import 'leaflet.markercluster';
@@ -29,7 +29,6 @@ export class MarkersService{
 
     private bonusMarkerIco = (type: string): DivIcon => {
         let icon = MarkersIcons.default;
-        console.log(type, Object.keys(MarkersIcons).includes(type));
         if (Object.keys(MarkersIcons).includes(type)){
             icon = MarkersIcons[type];
         }
@@ -45,13 +44,14 @@ export class MarkersService{
     }
 
     private iconCreateFunction(cluster): DivIcon{
-        console.log(cluster);
         const component = this.resolver.resolveComponentFactory(ClusterIconComponent).create(this.injector);
         component.instance.childCount = cluster.getChildCount();
         component.changeDetectorRef.detectChanges();
         return new DivIcon({
             html: component.location.nativeElement,
-            className: 'cluster-icon'
+            className: 'cluster-icon',
+            iconAnchor: this.iconAnchor,
+
         });
     }
 
@@ -72,11 +72,9 @@ export class MarkersService{
     private nestedBonusLocationsMarkerGenerator(bonus: IBonus): Marker[] {
         return bonus.locations.map( location => {
             const component = this.resolver.resolveComponentFactory(BonusPopupComponent).create(this.injector);
-            const latitude = location.coordinates.latitude;
-            const longitude = location.coordinates.longitude;
             component.instance.bonus = bonus;
-            component.instance.latitude = latitude;
-            component.instance.longitude = longitude;
+            component.instance.latitude = location.coordinates.latitude;
+            component.instance.longitude = location.coordinates.longitude;
             component.changeDetectorRef.detectChanges();
             return new Marker(
                 [location.coordinates.latitude, location.coordinates.longitude],
@@ -92,16 +90,18 @@ export class MarkersService{
         });
     }
 
-    public createBonusesMarkers(bonuses: IBonus[]): MarkerClusterGroup{
+    public createBonusesMarkers(bonuses: IBonus[]): Marker[]{
         let markers: Marker[] = [];
         bonuses.forEach((bonus: IBonus) => {
             const bonusLocationsMarkers = this.nestedBonusLocationsMarkerGenerator(bonus);
             markers = [...markers, ...bonusLocationsMarkers];
         });
-        const markersCluster = new MarkerClusterGroup({
-            iconCreateFunction: this.iconCreateFunction
-        });
-        markersCluster.addLayers(markers);
-        return markersCluster;
+        return markers;
+    }
+
+    public createMarkerCluster(markers: Marker[]): MarkerClusterGroup{
+        return new MarkerClusterGroup({
+            iconCreateFunction: this.iconCreateFunction.bind(this)
+        }).addLayers(markers);
     }
 }

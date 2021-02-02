@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {Map, tileLayer, latLng} from 'leaflet';
+import {Map, tileLayer, latLng, MarkerClusterGroup} from 'leaflet';
+import 'leaflet.markercluster';
 
 @Component({
   selector: 'app-map-view',

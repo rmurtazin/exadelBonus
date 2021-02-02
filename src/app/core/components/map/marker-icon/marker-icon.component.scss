@@ -1,9 +1,10 @@
+@import 'src/styles/variables';
 
 .marker-pin{
     width: 15px;
     height: 15px;
     background: #fff;
-    border: 6px solid #e74c3c;
+    border: 6px solid $theme-color;
     box-shadow: -2px 2px 2px 0px #aaa;
     border-radius: 50% 50% 50% 0;
     transform: rotate(-45deg);
