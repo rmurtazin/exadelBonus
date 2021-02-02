@@ -10,10 +10,13 @@ import { IDateRange } from '@interfaces/dateRange.interface';
 export class DatepickerComponent {
   range = new FormGroup({
     start: new FormControl(),
-    end: new FormControl()
-  });
+    end: new FormControl()}
+  );
+
   @Output() changeDate = new EventEmitter<IDateRange>();
+
   constructor() {}
+
   public onDateChange(): void {
     this.changeDate.emit(this.range.getRawValue());
   }
