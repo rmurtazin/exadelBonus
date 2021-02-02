@@ -104,10 +104,6 @@ export class MapComponent implements OnInit, OnDestroy {
     );
   }
 
-  public markerClusterReady(markerCluster: MarkerClusterGroup): void{
-    console.log(markerCluster);
-  }
-
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
