@@ -27,7 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   multi: true,
-  useClass: AuthInterceptor
+  useClass: AuthInterceptor,
 };
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -37,8 +37,8 @@ import { LoginModule } from '@components/login/login.module';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
 import { FooterComponent } from '@components/footer/footer.component';
 
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -81,11 +81,11 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
       loader: {
-          provide: TranslateLoader,
-          useFactory: (createTranslateLoader),
-          deps: [HttpClient]
-      }
-  }),
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     ApiService,

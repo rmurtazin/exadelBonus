@@ -9,18 +9,16 @@ export class LanguageSwitcherDirective {
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private translate: TranslateService
+    private translate: TranslateService,
   ) {}
 
   @HostListener('click', ['$event'])
   clickEvent(): void {
-    const selectedLanguage = this.elementRef.nativeElement.textContent === Languages.English ? Languages.Russian : Languages.English;
-    this.renderer.setProperty(
-      this.elementRef.nativeElement,
-      'innerHTML',
-      selectedLanguage
-    );
+    const selectedLanguage =
+      this.elementRef.nativeElement.textContent === Languages.English
+        ? Languages.Russian
+        : Languages.English;
+    this.renderer.setProperty(this.elementRef.nativeElement, 'innerHTML', selectedLanguage);
     this.translate.use(selectedLanguage);
-
   }
 }

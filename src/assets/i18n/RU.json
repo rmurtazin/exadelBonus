@@ -1,17 +1,16 @@
 {
-    "header": {
-        "findePlace": "Найти место",
-        "history": "История",
-        "addBonus": "Добавить бонус",
-        "bonuses": "Бонусы",
-        "user": "Пользователь",
-        "loginAs": "Вы вошли как:",
-        "signOut": "Выход"
-    },
-    "popup": {
-        "go": "Перейти",
-        "detail": "Детали"
-    },
-    "notFound": "Не найдено"
-
+  "header": {
+    "findePlace": "Найти место",
+    "history": "История",
+    "addBonus": "Добавить бонус",
+    "bonuses": "Бонусы",
+    "user": "Пользователь",
+    "loginAs": "Вы вошли как:",
+    "signOut": "Выход"
+  },
+  "popup": {
+    "go": "Перейти",
+    "detail": "Детали"
+  },
+  "notFound": "Не найдено"
 }
