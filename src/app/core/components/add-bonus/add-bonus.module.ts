@@ -9,11 +9,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
 import { BonusAddressService } from '@services/bonus-address.service';
+import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component';
 
 @NgModule({
-  declarations: [AddBonusComponent],
+  declarations: [AddBonusComponent, AddBonusFormComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,6 +29,6 @@ import { BonusAddressService } from '@services/bonus-address.service';
     MatChipsModule,
   ],
   providers: [BonusAddressService],
-  exports: [AddBonusComponent],
+  exports: [AddBonusComponent, AddBonusFormComponent],
 })
 export class AddBonusModule {}

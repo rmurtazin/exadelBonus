@@ -1,0 +1,124 @@
+<div class="container">
+    <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
+      <mat-form-field class="add-bonus-input" appearance="fill" >
+        <mat-label>Vendor name</mat-label>
+        <input
+          class="add-bonus-input"
+          type="text"
+          matInput
+          formControlName="vendorName"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <mat-form-field class="add-bonus-input" appearance="fill">
+        <mat-label>Enter vendor email</mat-label>
+        <input
+          matInput
+          formControlName="vendorEmail"
+          autocomplete="off"
+          placeholder="pat@example.com"
+        />
+      </mat-form-field>
+      <mat-form-field class="add-bonus-input" appearance="fill" aria-autocomplete="off">
+        <mat-label>Vendor phone</mat-label>
+        <span matPrefix>+ &nbsp;</span>
+        <input
+          type="tel"
+          matInput
+          placeholder="555-555-1234"
+          formControlName="vendorPhone"
+        />
+      </mat-form-field>
+      <mat-form-field class="add-bonus-input" appearance="fill">
+        <mat-label>Bonus type</mat-label>
+        <input
+          matInput
+          #message
+          maxlength="30"
+          autocomplete="off"
+          formControlName="bonusType"
+          placeholder="Example: pizzeria, beauty salon, cinema..."
+        />
+      </mat-form-field>
+      <mat-form-field class="add-bonus-input" appearance="fill">
+        <mat-label>Bonus description</mat-label>
+        <textarea matInput formControlName="bonusDescription"></textarea>
+      </mat-form-field>
+      <mat-form-field class="add-bonus-input" appearance="fill">
+        <mat-label>Bonus value</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          type="text"
+          formControlName="bonusValue"
+        />
+      </mat-form-field>
+      <mat-form-field class="add-bonus-input" appearance="fill">
+        <mat-label>Bonus tags</mat-label>
+        <mat-chip-list #chipList aria-label="Tag selection">
+          <mat-chip
+            *ngFor="let tag of bonusTags"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="onRemoveTag(tag)"
+          >
+            {{ tag.name }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            formControlName="bonusTags"
+            placeholder="Enter new tag..."
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="onAddTag($event)"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+      <mat-form-field class="add-bonus-input" appearance="fill">
+        <mat-label>Bonus address</mat-label>
+        <mat-chip-list #addressList aria-label="Tag selection">
+          <mat-chip class="add-bonus-input--chip"
+            *ngFor="let location of locations"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="onRemoveAddress(location)"
+          >
+            {{ location.country }}, {{location.city}}, {{location?.address}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            formControlName="bonusAddress"
+            placeholder="Enter new address..."
+            [matChipInputFor]="addressList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="onAddAddressValue($event)"
+            placeholder="Enter country, town, street, number..."
+            autocomplete="off"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+      <mat-form-field class="add-bonus-input" appearance="fill">
+        <mat-label>Enter a bonus date range</mat-label>
+        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="Start date" />
+          <input matEndDate formControlName="end" placeholder="End date" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      <div class="add-bonus-btn-container">
+        <button
+          type="submit"
+          [disabled]="myForm.invalid"
+          class="add-bonus-button"
+          mat-flat-button
+          color="primary"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+  

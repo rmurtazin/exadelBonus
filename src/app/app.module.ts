@@ -104,6 +104,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FormsModule,
     ReactiveFormsModule,
     INTERCEPTOR_PROVIDER,
+    AddBonusModule,
   ],
   bootstrap: [AppComponent],
 })
