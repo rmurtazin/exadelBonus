@@ -9,7 +9,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { IOffice } from '@interfaces/office.interface';
 import 'leaflet.markercluster';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class MarkersService{
     private iconSize: PointExpression = [32, 32];
     private iconAnchor: PointExpression = [32, 32];

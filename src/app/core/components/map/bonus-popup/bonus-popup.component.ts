@@ -23,12 +23,16 @@ export class BonusPopupComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.markerLink = `http://localhost:4200/home/?lat=${this.latitude}&lon=${this.longitude}`;
-    this.changeDetector.detectChanges();
+    this.runChangeDetection();
     this.subscription.add(
       this.translate.onLangChange.subscribe(() => {
-        this.changeDetector.detectChanges();
+        this.runChangeDetection();
       })
     );
+  }
+
+  private runChangeDetection(): void{
+    this.changeDetector.detectChanges();
   }
 
   public log($event): void{
