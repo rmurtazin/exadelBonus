@@ -17,14 +17,14 @@ interface ICompany {
   email: string;
 }
 export interface IBonus {
-    id: number;
-    dateStart: string;
-    dateEnd: string;
-    description: string;
-    company: ICompany;
-    type: string;
-    rating: number;
-    discount: number;
-    locations: ILocation[];
-    tags: string[];
+  id: number;
+  dateStart: string;
+  dateEnd: string;
+  description: string;
+  company: ICompany;
+  type: string;
+  rating: number;
+  discount: number;
+  locations: ILocation[];
+  tags: string[];
 }

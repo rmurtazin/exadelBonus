@@ -17,11 +17,7 @@ export class HeaderComponent implements OnInit {
   user: IUser;
   constructor(private loginService: LoginService, private route: Router) {
     route.events
-      .pipe(
-        filter(
-          (event: Event): event is RouterEvent => event instanceof RouterEvent
-        )
-      )
+      .pipe(filter((event: Event): event is RouterEvent => event instanceof RouterEvent))
       .subscribe((event: RouterEvent) => {
         this.currentRoute = event.url;
       });
@@ -29,23 +25,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.loginService.getUser();
   }
-
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
   }
-
   public checkRoute(): boolean {
-    const checkRoutes: string[] = [
-      '/home',
-      '/add-bonus',
-      '/history',
-      '/bonuses',
-      '/users',
-    ];
+    const checkRoutes: string[] = ['/home', '/add-bonus', '/history', '/bonuses', '/users'];
     return checkRoutes.includes(this.currentRoute);
   }
-  
-  public logout(): void{
+  public logout(): void {
     this.loginService.logout();
   }
 }
