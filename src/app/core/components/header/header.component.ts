@@ -37,10 +37,10 @@ export class HeaderComponent implements OnInit {
   public checkRoute(): boolean {
     const checkRoutes: string[] = [
       '/home',
-      '/add-bonus',
-      '/history',
-      '/bonuses',
-      '/users',
+      '/home/add-bonus',
+      '/home/history',
+      '/home/bonuses',
+      '/home/users',
     ];
     return checkRoutes.includes(this.currentRoute);
   }
