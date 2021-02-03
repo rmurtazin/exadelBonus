@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '@services/login.service';
 import { IUser } from '@interfaces/loginInterface';
 import { Languages } from '../../enums/languages.enum';
-import { Router, RouterEvent, Event } from '@angular/router';
+import { Router, RouterEvent, Event, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -19,11 +19,11 @@ export class HeaderComponent implements OnInit {
     route.events
       .pipe(
         filter(
-          (event: Event): event is RouterEvent => event instanceof RouterEvent
+          (event: Event): event is RouterEvent => event instanceof NavigationEnd
         )
       )
-      .subscribe((event: RouterEvent) => {
-        this.currentRoute = event.url;
+      .subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.urlAfterRedirects;
       });
   }
   ngOnInit(): void {
