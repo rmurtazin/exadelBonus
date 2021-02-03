@@ -17,17 +17,6 @@ interface ICompany {
   email: string;
 }
 export interface IBonus {
-<<<<<<< HEAD
-  id: number;
-  dateStart: string;
-  dateEnd: string;
-  description: string;
-  company: ICompany;
-  type: string;
-  discount: number;
-  locations: ILocation[];
-  tags: string[];
-=======
     id: number;
     dateStart: string;
     dateEnd: string;
@@ -38,5 +27,4 @@ export interface IBonus {
     discount: number;
     locations: ILocation[];
     tags: string[];
->>>>>>> 8b9b7be417f27f0f43a8af64f81d0f6824f93169
 }
