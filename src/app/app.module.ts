@@ -91,6 +91,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient],
       },
     }),
+    AddBonusModule,
   ],
   providers: [
     ApiService,
@@ -104,7 +105,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FormsModule,
     ReactiveFormsModule,
     INTERCEPTOR_PROVIDER,
-    AddBonusModule,
   ],
   bootstrap: [AppComponent],
 })

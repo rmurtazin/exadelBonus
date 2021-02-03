@@ -12,6 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component';
+import { HeaderComponent } from '@components/header/header.component';
 
 @NgModule({
   declarations: [AddBonusComponent, AddBonusFormComponent],
@@ -29,6 +30,6 @@ import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component
     MatChipsModule,
   ],
   providers: [BonusAddressService],
-  exports: [AddBonusComponent, AddBonusFormComponent],
+  exports: [AddBonusComponent],
 })
 export class AddBonusModule {}

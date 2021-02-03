@@ -17,7 +17,7 @@ const routes: Routes = [
     children : [
       { path: '', component: HomeComponent},
       { path: 'history', redirectTo: ''},
-      { path: 'add-bonus', component: AddBonusComponent},
+      { path: 'add-bonus', component: AddBonusComponent },
       { path: 'bonuses', redirectTo: ''},
       { path: 'users', redirectTo: ''},
     ]
