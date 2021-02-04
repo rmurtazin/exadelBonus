@@ -29,11 +29,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.loginService.getUser();
   }
-
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
   }
-
   public checkRoute(): boolean {
     const checkRoutes: string[] = [
       '/home',
@@ -44,8 +42,8 @@ export class HeaderComponent implements OnInit {
     ];
     return checkRoutes.includes(this.currentRoute);
   }
-  
-  public logout(): void{
+
+  public logout(): void {
     this.loginService.logout();
   }
 }

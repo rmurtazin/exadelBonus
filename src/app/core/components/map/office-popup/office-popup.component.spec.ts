@@ -8,9 +8,8 @@ describe('OfficePopupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OfficePopupComponent ]
-    })
-    .compileComponents();
+      declarations: [OfficePopupComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

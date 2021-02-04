@@ -1,19 +1,11 @@
 <div class="bonus-card-wrapper">
   <mat-card *ngIf="bonus" class="bonus-card">
-    <mat-card-subtitle class="company-name">
-      {{ bonus.company.name }}</mat-card-subtitle
-    >
-    <mat-card-title class="type" class="title">{{
-      bonus.type | uppercase
-    }}</mat-card-title>
+    <mat-card-subtitle class="company-name"> {{ bonus.company.name }}</mat-card-subtitle>
+    <mat-card-title class="type" class="title">{{ bonus.type | uppercase }}</mat-card-title>
     <mat-card-content class="discription-wrapper">
       <p class="discription">{{ bonus.description }}</p>
 
-      <div
-        class="rating-discount-wrapper"
-        fxLayout="row"
-        fxLayoutAlign="space-between center"
-      >
+      <div class="rating-discount-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
         <!-- TODO: change icons to component with rating -->
         <span class="stars">
           <mat-icon>star</mat-icon>
@@ -25,12 +17,7 @@
       </div>
     </mat-card-content>
     <div class="button-wrapper">
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="apply()"
-        class="apply-button"
-      >
+      <button mat-raised-button color="primary" (click)="apply()" class="apply-button">
         Apply
       </button>
     </div>

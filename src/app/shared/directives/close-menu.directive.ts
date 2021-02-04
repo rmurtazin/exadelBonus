@@ -1,12 +1,11 @@
-import {Directive, EventEmitter, HostListener, Output} from '@angular/core';
+import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Directive({
   selector: '[appCloseMenu]',
 })
 export class CloseMenuDirective {
   @Output() clickMenuItem = new EventEmitter<void>();
-  constructor() {
-  }
+  constructor() {}
   @HostListener('click', ['$event'])
   public onClick(e): void {
     if (e.target.parentElement.classList.value === 'menu-item') {
