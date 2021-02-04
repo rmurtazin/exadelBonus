@@ -108,8 +108,7 @@ a:not(.active) {
   }
 }
 
-@media (min-width: 1280px),
-(min-device-width: 1280px) {
+@media (min-width: 1280px), (min-device-width: 1280px) {
   .menu-icon {
     display: none;
   }
@@ -128,8 +127,7 @@ a:not(.active) {
   }
 }
 
-@media (max-width: 1279px),
-(max-device-width: 1279px) {
+@media (max-width: 1279px), (max-device-width: 1279px) {
   .menu-icon {
     display: block;
     margin: auto 0;
