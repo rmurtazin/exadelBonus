@@ -3,7 +3,7 @@ import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
 import { Subject, Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class MarkerEventsService {
   private officeSubject = new Subject<any>();
   private bonusSubject = new Subject<any>();
