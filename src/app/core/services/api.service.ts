@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class ApiService{
-    constructor(private http: HttpClient){}
+export class ApiService {
+  constructor(private http: HttpClient) {}
 
   public get(url: string): Observable<any> {
     return this.http.get(url);

@@ -24,15 +24,15 @@ export class OfficePopupComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.translate.onLangChange.subscribe(() => {
         this.runChangeDetection();
-      })
+      }),
     );
   }
 
-  private runChangeDetection(): void{
+  private runChangeDetection(): void {
     this.changeDetector.detectChanges();
   }
 
-  public clickTrigger(): void{
+  public clickTrigger(): void {
     this.markerEvents.officeMarkerClick(this.office);
   }
 

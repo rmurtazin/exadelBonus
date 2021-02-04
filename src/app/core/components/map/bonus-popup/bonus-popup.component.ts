@@ -23,15 +23,15 @@ export class BonusPopupComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.translate.onLangChange.subscribe(() => {
         this.runChangeDetection();
-      })
+      }),
     );
   }
 
-  private runChangeDetection(): void{
+  private runChangeDetection(): void {
     this.changeDetector.detectChanges();
   }
 
-  public log($event): void{
+  public log($event): void {
     console.log($event); // TODO: replace to coll popup method
   }
 

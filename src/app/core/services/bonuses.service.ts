@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
 
 @Injectable({ providedIn: 'root' })
-export class BonusesService{
-    constructor(private api: ApiService){}
+export class BonusesService {
+  constructor(private api: ApiService) {}
 
   url = '../../../assets/static/bonuses.json'; // TODO: change url
 

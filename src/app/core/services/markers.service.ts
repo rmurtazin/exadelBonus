@@ -10,10 +10,10 @@ import { IOffice } from '@interfaces/office.interface';
 import 'leaflet.markercluster';
 
 @Injectable({ providedIn: 'root' })
-export class MarkersService{
-    private iconSize: PointExpression = [32, 32];
-    private iconAnchor: PointExpression = [32, 32];
-    private popupAnchor: PointExpression = [-15, -35];
+export class MarkersService {
+  private iconSize: PointExpression = [32, 32];
+  private iconAnchor: PointExpression = [32, 32];
+  private popupAnchor: PointExpression = [-15, -35];
 
   private officeMarkerIco = new Icon({
     iconUrl: '/assets/icons/office.png',
@@ -24,7 +24,7 @@ export class MarkersService{
 
   constructor(private injector: Injector, private resolver: ComponentFactoryResolver) {}
 
-  private bonusMarkerIco = (type: string): DivIcon => {
+  private bonusMarkerIco(type: string): DivIcon {
     let icon = MarkersIcons.default;
     if (Object.keys(MarkersIcons).includes(type)) {
       icon = MarkersIcons[type];
@@ -40,7 +40,7 @@ export class MarkersService{
       iconAnchor: this.iconAnchor,
       popupAnchor: this.popupAnchor,
     });
-  };
+  }
 
   private iconCreateFunction(cluster): DivIcon {
     const component = this.resolver
