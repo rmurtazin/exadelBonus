@@ -17,11 +17,7 @@ export class HeaderComponent implements OnInit {
   user: IUser;
   constructor(private loginService: LoginService, private route: Router) {
     route.events
-      .pipe(
-        filter(
-          (event: Event): event is RouterEvent => event instanceof NavigationEnd
-        )
-      )
+      .pipe(filter((event: Event): event is RouterEvent => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.currentRoute = event.urlAfterRedirects;
       });
