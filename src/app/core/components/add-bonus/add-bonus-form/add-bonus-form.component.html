@@ -20,11 +20,11 @@
         />
       </mat-form-field>
       <mat-form-field class="add-bonus-input" appearance="fill" aria-autocomplete="off">
-        <mat-label>Vendor phone</mat-label>
+        <mat-label>Phone</mat-label>
         <input
           matInput
           placeholder="+00(000) 000-00-00"
-          formControlName="vendorPhone"
+          formControlName="phone"
           mask="+00(000) 000-00-00"
         />
       </mat-form-field>
@@ -44,12 +44,12 @@
         <textarea matInput formControlName="bonusDescription"></textarea>
       </mat-form-field>
       <mat-form-field class="add-bonus-input" appearance="fill">
-        <mat-label>Bonus value</mat-label>
+        <mat-label>Bonus title</mat-label>
         <input
           autocomplete="off"
           matInput
           type="text"
-          formControlName="bonusValue"
+          formControlName="bonusTitle"
         />
       </mat-form-field>
       <mat-form-field class="add-bonus-input" appearance="fill">
@@ -83,7 +83,7 @@
             [removable]="removable"
             (removed)="onRemoveAddress(location)"
           >
-            {{ location.country }}, {{location.city}}, {{location?.address}}
+            {{ location?.country }}, {{location?.city}}, {{location?.address}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
           <input

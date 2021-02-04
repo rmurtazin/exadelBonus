@@ -6,13 +6,9 @@ export interface ITag {
   name: string;
 }
 
-export interface ICoordinates {
+export interface ILocation {
   latitude: number;
   longitude: number;
-}
-
-export interface ILocation {
-  coordinates: ICoordinates;
   city: string;
   country: string;
   address: string;
