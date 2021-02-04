@@ -12,7 +12,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component';
-import { HeaderComponent } from '@components/header/header.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
+
 
 @NgModule({
   declarations: [AddBonusComponent, AddBonusFormComponent],
@@ -28,6 +30,7 @@ import { HeaderComponent } from '@components/header/header.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatChipsModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [BonusAddressService],
   exports: [AddBonusComponent],
