@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -16,10 +16,9 @@ export class BonusAddressService {
     const currentUrl = `${this.baseUrl}/json?q=${place}&key=${this.apiKey}`;
     return this.apiService.get(currentUrl).pipe(
       map(({ results }) => {
-        if (results.length > 0 && results[0].components.city) {
-          return results;
-        }
+        return results;
       }),
+      filter(data=>data.length > 0 && data[0].components.city)
     );
   }
 }
