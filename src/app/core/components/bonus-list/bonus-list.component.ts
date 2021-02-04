@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { ToasterService } from './../../services/toaster.service';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IBonus } from '../../interfaces/bonus.interface';
 import { BonusesService } from '../../services/bonuses.service';
-import { Subscription } from 'rxjs';
+import { SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-bonus-list',
   templateUrl: './bonus-list.component.html',
   styleUrls: ['./bonus-list.component.scss'],
+  providers: [BonusesService],
 })
-export class BonusListComponent implements OnInit {
+export class BonusListComponent implements OnInit, OnDestroy {
+  public bonusMap: IBonus;
   public bonuses: IBonus[] = [];
-  public bonusFromMap: IBonus;
+  private subscription = new Subscription();
 
-  constructor(public bonusesService: BonusesService) {}
+  constructor(
+    public bonusesService: BonusesService,
+    public toasterService: ToasterService
+  ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getBonuses();
-    this.getBonusMap();
   }
 
   public getBonuses(): void {
@@ -26,13 +32,30 @@ export class BonusListComponent implements OnInit {
           this.bonuses = data;
         }
       },
-      (err) => console.log(`error ${err}`)
+      (err) => this.toasterService.showError(err, 'BonusListComponent')
     );
   }
 
-  public getBonusMap(): void {
-    this.bonusesService.bonusFromMap.subscribe((bonus: IBonus) => {
-      this.bonusFromMap = bonus;
-    });
+  ngOnChanges(changes: SimpleChanges) {
+  
+    if (changes['bonusFromMap']) {
+        this.bonusMap = this.bonusesService.showBonusFromMap();
+    }
+}
+
+  public getBonusFromMap(): void{
+    if (this.bonusesService.showBonusFromMap()) {
+    this.bonusMap =  this.bonusesService.showBonusFromMap();
+    }
+    console.log(this.bonusMap, 'get')
   }
+ 
+  public trackById(index: number, item: IBonus): number {
+      return item.id;
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+  
 }

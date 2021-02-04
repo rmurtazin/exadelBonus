@@ -20,7 +20,8 @@ export class BonusPopupComponent implements OnInit {
     console.log($event);
   }
 
-  public showBonusMap(): void {
-    this.bonusesService.setBonusFromMap(this.bonus);
+  public showBonusMap(bonus: IBonus): void {
+    this.bonusesService.fetchBonusFromMap(bonus);
+    console.log(this.bonusesService.bonusFromMap)
   }
 }

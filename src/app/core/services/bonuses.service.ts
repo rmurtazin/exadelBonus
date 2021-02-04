@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
 
 @Injectable()
 export class BonusesService {
-  public bonusFromMap = new Subject();
+  public bonusFromMap: IBonus;
   constructor(private api: ApiService) {}
 
   url = '../../../assets/static/bonuses.json'; // TODO: change url
@@ -36,7 +36,14 @@ export class BonusesService {
     });
   }
 
-  public setBonusFromMap(bonus: IBonus): void {
-    this.bonusFromMap.next(bonus);
+  public fetchBonusFromMap(bonus: IBonus): void {
+    this.bonusFromMap = bonus;
+    console.log('serv', this.bonusFromMap)
+  }
+
+  public showBonusFromMap(): IBonus {
+    console.log('show', this.bonusFromMap)
+    return this.bonusFromMap;
+   
   }
 }
