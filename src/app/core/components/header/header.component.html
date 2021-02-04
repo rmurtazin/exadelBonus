@@ -1,11 +1,17 @@
 <header>
-  <nav>
+  <nav class="nav-menu">
     <section class="logo" [routerLink]="['/home']">
       <img class="logo-img" src="assets/images/logo.png" alt="exadel logo" />
       <span class="logo-text">exadel bonus+</span>
     </section>
-    <section class="menu-container" [ngClass]="{ hide: isMenuHide }">
-      <ul class="menu" appCloseMenu (clickMenuItem)="toggleMenu()" *ngIf="checkRoute()">
+    <div class="language-switcher" [class.isLogout]="!checkRoute()">
+      <button class="language-switcher-button" mat-mini-fab appLanguageSwitcher color="primary">
+        {{ language }}
+      </button>
+    </div>
+    <div *ngIf="checkRoute()">
+    <section class="menu-container" [ngClass]="{ hide: isMenuHide }" >
+      <ul class="menu" appCloseMenu (clickMenuItem)="toggleMenu()">
         <li>
           <span class="login-as-label">{{ 'header.loginAs' | translate }}</span>
           <span class="login-as-text">{{ user?.first_name }} {{ user?.last_name }} </span>
@@ -39,11 +45,6 @@
           <a (click)="logout()">{{ 'header.signOut' | translate }}</a>
         </li>
       </ul>
-      <div class="language-switcher">
-        <button class="language-switcher-button" mat-mini-fab appLanguageSwitcher color="primary">
-          {{ language }}
-        </button>
-      </div>
     </section>
     <button
       mat-icon-button
@@ -53,6 +54,8 @@
       (click)="this.toggleMenu()"
     >
       <mat-icon>menu</mat-icon>
-    </button>
+  </button>
+</div>
+
   </nav>
 </header>
