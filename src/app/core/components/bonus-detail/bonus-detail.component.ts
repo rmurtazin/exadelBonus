@@ -22,7 +22,6 @@ export class BonusDetailComponent {
   }
 
   public apply(): void {
-    console.log('Button "Apply" clicked');
     this.writeEmail();
     this.writeToUserHistory();
   }

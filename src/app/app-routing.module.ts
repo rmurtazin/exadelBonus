@@ -9,23 +9,24 @@ import { NotFoundComponent } from '@components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent},
-  { path: 'home',
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'home',
     canActivate: [AuthGuard],
     canActivateChild: [RoleGuard],
-    children : [
-      { path: '', component: HomeComponent},
-      { path: 'history', redirectTo: ''},
-      { path: 'add-bonus', redirectTo: ''},
-      { path: 'bonuses', redirectTo: ''},
-      { path: 'users', redirectTo: ''},
-    ]
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'history', redirectTo: '' },
+      { path: 'add-bonus', redirectTo: '' },
+      { path: 'bonuses', redirectTo: '' },
+      { path: 'users', redirectTo: '' },
+    ],
   },
-  { path: '**', component: NotFoundComponent}
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

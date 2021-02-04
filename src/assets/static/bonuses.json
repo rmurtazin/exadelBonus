@@ -48,8 +48,8 @@
   "locations": [{
     "id": 1,
     "coordinates": {
-      "latitude": 53.8930095,
-      "longitude": 27.5674444
+      "latitude": 23.8930095,
+      "longitude": -27.5674444
     },
     "city": "Minsk",
     "country": "Belarus",
@@ -133,7 +133,7 @@
   "locations": [{
     "id": 1,
     "coordinates": {
-      "latitude": 53.8930095,
+      "latitude": -53.8930095,
       "longitude": 27.5674444
     },
     "city": "Minsk",
@@ -158,8 +158,8 @@
   "locations": [{
     "id": 5,
     "coordinates": {
-      "latitude": 45.1973827,
-      "longitude": 33.2979082
+      "latitude": -45.1973827,
+      "longitude": -33.2979082
     },
     "city": "Uyutne",
     "country": "Ukraine",
@@ -167,8 +167,8 @@
   }, {
     "id": 7,
     "coordinates": {
-      "latitude": 53.2856154,
-      "longitude": 15.2926343
+      "latitude": 54.2856154,
+      "longitude": 13.2926343
     },
     "city": "Suchań",
     "country": "Poland",
@@ -176,8 +176,8 @@
   }, {
     "id": 1,
     "coordinates": {
-      "latitude": 53.8930095,
-      "longitude": 27.5674444
+      "latitude": -43.8930095,
+      "longitude": 27.3574444
     },
     "city": "Minsk",
     "country": "Belarus",
@@ -201,7 +201,7 @@
   "locations": [{
     "id": 5,
     "coordinates": {
-      "latitude": 45.1973827,
+      "latitude": -45.1973827,
       "longitude": 33.2979082
     },
     "city": "Uyutne",
@@ -210,8 +210,8 @@
   }, {
     "id": 7,
     "coordinates": {
-      "latitude": 53.2856154,
-      "longitude": 15.2926343
+      "latitude": 33.2856154,
+      "longitude": 55.2926343
     },
     "city": "Suchań",
     "country": "Poland",
@@ -236,7 +236,7 @@
     "id": 5,
     "coordinates": {
       "latitude": 45.1973827,
-      "longitude": 33.2979082
+      "longitude": -33.2979082
     },
     "city": "Uyutne",
     "country": "Ukraine",
@@ -244,8 +244,8 @@
   }, {
     "id": 2,
     "coordinates": {
-      "latitude": 52.00577,
-      "longitude": 33.2615
+      "latitude": 45.3273827,
+      "longitude": 66.6679082
     },
     "city": "Novhorod-Sivers’kyy",
     "country": "Ukraine",
@@ -253,8 +253,8 @@
   }, {
     "id": 5,
     "coordinates": {
-      "latitude": 45.1973827,
-      "longitude": 33.2979082
+      "latitude": 22.2273827,
+      "longitude": 22.2279082
     },
     "city": "Uyutne",
     "country": "Ukraine",
@@ -278,7 +278,7 @@
   "locations": [{
     "id": 1,
     "coordinates": {
-      "latitude": 53.8930095,
+      "latitude": -3.8930095,
       "longitude": 27.5674444
     },
     "city": "Minsk",
@@ -287,8 +287,8 @@
   }, {
     "id": 4,
     "coordinates": {
-      "latitude": 55.1872225,
-      "longitude": 30.2051165
+      "latitude": -55.1872225,
+      "longitude": -30.2051165
     },
     "city": "Vitsyebsk",
     "country": "Belarus",
@@ -312,8 +312,8 @@
   "locations": [{
     "id": 5,
     "coordinates": {
-      "latitude": 45.1973827,
-      "longitude": 33.2979082
+      "latitude": 45.3273827,
+      "longitude": 66.6679082
     },
     "city": "Uyutne",
     "country": "Ukraine",

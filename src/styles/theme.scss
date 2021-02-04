@@ -13,20 +13,20 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $mat-blue: (
-  50: #065AA2,
-  100: #065AA2,
-  200: #065AA2,
-  300: #065AA2,
-  400: #065AA2,
-  500: #0082CA,
-  600: #0082CA,
-  700: #0082CA,
-  800: #0082CA,
-  900: #0082CA,
-  A100: #065AA2,
-  A200: #0075BD,
-  A400: #055BA3,
-  A700: #00549C,
+  50: #065aa2,
+  100: #065aa2,
+  200: #065aa2,
+  300: #065aa2,
+  400: #065aa2,
+  500: #0082ca,
+  600: #0082ca,
+  700: #0082ca,
+  800: #0082ca,
+  900: #0082ca,
+  A100: #065aa2,
+  A200: #0075bd,
+  A400: #055ba3,
+  A700: #00549c,
   contrast: (
     50: $dark-primary-text,
     100: $dark-primary-text,
@@ -42,7 +42,8 @@ $mat-blue: (
     A200: $light-primary-text,
     A400: $light-primary-text,
     A700: $light-primary-text,
-  ));
+  ),
+);
 $exadelBonus-primary: mat-palette($mat-blue);
 $exadelBonus-accent: mat-palette($mat-pink, A200, A100, A400);
 
@@ -51,13 +52,15 @@ $exadelBonus-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$exadelBonus-theme: mat-light-theme((
-  color: (
-    primary: $exadelBonus-primary,
-    accent: $exadelBonus-accent,
-    warn: $exadelBonus-warn,
+$exadelBonus-theme: mat-light-theme(
+  (
+    color: (
+      primary: $exadelBonus-primary,
+      accent: $exadelBonus-accent,
+      warn: $exadelBonus-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
