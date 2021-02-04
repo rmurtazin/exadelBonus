@@ -26,12 +26,12 @@ export class AddBonusFormComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  public onAddAddress(myForm: any): void {
-    this.addAddress.emit(myForm);
-  }
-
   ngOnInit(): void {
     this.onInitForm();
+  }
+
+  public onAddAddress(myForm: any): void {
+    this.addAddress.emit(myForm);
   }
 
   public onInitForm(): void {

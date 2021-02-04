@@ -40,7 +40,6 @@
     "@asymmetrik/ngx-leaflet": "^8.1.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
-    "input-mask-angular": "^2.0.1",
     "leaflet": "^1.7.1",
     "ngx-mask": "^11.1.4",
     "ngx-toastr": "^13.2.0",
