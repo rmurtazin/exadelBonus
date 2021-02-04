@@ -3,10 +3,10 @@ import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
 import { Subject, Observable } from 'rxjs';
 
-@Injectable()
-export class MarkerEventsService {
-  private officeSubject = new Subject<any>();
-  private bonusSubject = new Subject<any>();
+@Injectable({ providedIn: 'root' })
+export class MarkerEventsService{
+    private officeSubject = new Subject<any>();
+    private bonusSubject = new Subject<any>();
 
   public officeMarkerClick(office: IOffice): void {
     this.officeSubject.next(office);

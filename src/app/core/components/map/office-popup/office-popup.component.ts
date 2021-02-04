@@ -20,15 +20,19 @@ export class OfficePopupComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.changeDetector.detectChanges();
+    this.runChangeDetection();
     this.subscription.add(
       this.translate.onLangChange.subscribe(() => {
-        this.changeDetector.detectChanges();
-      }),
+        this.runChangeDetection();
+      })
     );
   }
 
-  public clickTrigger(): void {
+  private runChangeDetection(): void{
+    this.changeDetector.detectChanges();
+  }
+
+  public clickTrigger(): void{
     this.markerEvents.officeMarkerClick(this.office);
   }
 
