@@ -8,7 +8,7 @@ import { IDateRange } from '@interfaces/dateRange.interface';
   styleUrls: ['./datepicker.component.scss']
 })
 export class DatepickerComponent {
-  range = new FormGroup({
+  public range: FormGroup = new FormGroup({
     start: new FormControl(),
     end: new FormControl()}
   );
