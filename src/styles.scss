@@ -1,5 +1,12 @@
 @import 'styles/theme.scss';
 @import 'styles/adaptive-screen.scss';
 
-html, body { height: 100%; overflow-x: hidden; }
-body { margin: 0; font-family: 'Mulish', sans-serif; }
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+body {
+  margin: 0;
+  font-family: 'Mulish', sans-serif;
+}

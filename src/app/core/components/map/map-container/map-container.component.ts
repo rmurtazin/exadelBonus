@@ -14,7 +14,7 @@ import 'leaflet.markercluster';
 @Component({
   selector: 'app-map-container',
   templateUrl: './map-container.component.html',
-  styleUrls: ['./map-container.component.scss']
+  styleUrls: ['./map-container.component.scss'],
 })
 export class MapComponent implements OnDestroy {
   private subscription = new Subscription();
@@ -53,7 +53,7 @@ export class MapComponent implements OnDestroy {
       this.officeService.getOffices().subscribe((offices: IOffice[]) => {
         const bonusesMarkers = this.markersService.createOfficesMarkers(offices);
         layerGroup(bonusesMarkers).addTo(this.map);
-      })
+      }),
     );
   }
 

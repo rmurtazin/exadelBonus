@@ -1,11 +1,11 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import {Map, tileLayer, latLng, latLngBounds, LatLngBounds} from 'leaflet';
+import {Map, tileLayer, latLng, LatLngBounds} from 'leaflet';
 import 'leaflet.markercluster';
 
 @Component({
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
-  styleUrls: ['./map-view.component.scss']
+  styleUrls: ['./map-view.component.scss'],
 })
 export class MapViewComponent {
 
@@ -20,7 +20,7 @@ export class MapViewComponent {
       })
     ],
     zoom: 5,
-    center: latLng(46.879966, -121.726909)
+    center: latLng(46.879966, -121.726909),
   };
 
   public onMapReady(map: Map): void {

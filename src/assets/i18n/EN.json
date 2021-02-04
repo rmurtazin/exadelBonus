@@ -1,16 +1,16 @@
 {
-    "header": {
-        "findePlace": "Finde plce",
-        "history": "History",
-        "addBonus": "Add bonus",
-        "bonuses": "Bonuses",
-        "user": "Users",
-        "loginAs": "You're login as:",
-        "signOut": "Sign out"
-    },
-    "popup": {
-        "go": "Go",
-        "detail": "Detail"
-    },
-    "notFound": "Not found"
+  "header": {
+    "findePlace": "Finde plce",
+    "history": "History",
+    "addBonus": "Add bonus",
+    "bonuses": "Bonuses",
+    "user": "Users",
+    "loginAs": "You're login as:",
+    "signOut": "Sign out"
+  },
+  "popup": {
+    "go": "Go",
+    "detail": "Detail"
+  },
+  "notFound": "Not found"
 }

@@ -1,14 +1,13 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { IOffice } from '@interfaces/office.interface';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { MarkerEventsService } from '@services/markers-events.service';
 import { Subscription } from 'rxjs';
-
 
 @Component({
   selector: 'app-office-popup',
   templateUrl: './office-popup.component.html',
-  styleUrls: ['./office-popup.component.scss']
+  styleUrls: ['./office-popup.component.scss'],
 })
 export class OfficePopupComponent implements OnInit, OnDestroy {
 
@@ -30,7 +29,7 @@ export class OfficePopupComponent implements OnInit, OnDestroy {
     );
   }
 
-  public clickTrigger(): void{
+  public clickTrigger(): void {
     this.markerEvents.officeMarkerClick(this.office);
   }
 

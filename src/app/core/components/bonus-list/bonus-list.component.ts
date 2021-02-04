@@ -22,7 +22,7 @@ export class BonusListComponent implements OnInit {
           this.bonuses = data;
         }
       },
-      (err) => console.log(`error ${err}`)
+      (err) => console.log(`error ${err}`),
     );
   }
 }

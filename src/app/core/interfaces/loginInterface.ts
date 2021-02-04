@@ -1,13 +1,13 @@
 export interface ILogin {
-    userLogin: string;
-    userPassword: string;
+  userLogin: string;
+  userPassword: string;
 }
 
 export interface IUser {
-    id: string;
-    first_name: string;
-    last_name: string;
-    city: string;
-    role: string;
-    token: string;
+  id: string;
+  first_name: string;
+  last_name: string;
+  city: string;
+  role: string;
+  token: string;
 }

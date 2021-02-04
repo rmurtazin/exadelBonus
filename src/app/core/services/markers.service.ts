@@ -3,17 +3,17 @@ import { OfficePopupComponent } from '@components/map/office-popup/office-popup.
 import { ClusterIconComponent } from '@components/map/cluster-icon/cluster-icon.component';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { MarkerIconComponent } from '@components/map/marker-icon/marker-icon.component';
-import { Marker, Icon, PointExpression, DivIcon, MarkerClusterGroup, marker} from 'leaflet';
+import { Marker, Icon, PointExpression, DivIcon, MarkerClusterGroup} from 'leaflet';
 import { MarkersIcons } from '@enums/markers-icons.enum';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IOffice } from '@interfaces/office.interface';
 import 'leaflet.markercluster';
 
 @Injectable()
-export class MarkersService{
-    private iconSize: PointExpression = [32, 32];
-    private iconAnchor: PointExpression = [32, 32];
-    private popupAnchor: PointExpression = [-15, -35];
+export class MarkersService {
+  private iconSize: PointExpression = [32, 32];
+  private iconAnchor: PointExpression = [32, 32];
+  private popupAnchor: PointExpression = [-15, -35];
 
     private officeMarkerIco = new Icon({
         iconUrl: '/assets/icons/office.png',

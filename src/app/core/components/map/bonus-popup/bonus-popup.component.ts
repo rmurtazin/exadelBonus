@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-bonus-popup',
   templateUrl: './bonus-popup.component.html',
-  styleUrls: ['./bonus-popup.component.scss']
+  styleUrls: ['./bonus-popup.component.scss'],
 })
 export class BonusPopupComponent implements OnInit, OnDestroy {
 
@@ -38,5 +38,4 @@ export class BonusPopupComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }
