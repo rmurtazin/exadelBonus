@@ -3,7 +3,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class BonusesService {
   constructor(private api: ApiService) {}
 

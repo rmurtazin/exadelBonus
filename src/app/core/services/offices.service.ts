@@ -3,7 +3,7 @@ import { IOffice } from '@interfaces/office.interface';
 import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class OfficesService {
   constructor(private api: ApiService) {}
 

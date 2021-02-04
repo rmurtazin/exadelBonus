@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit {
     const checkRoutes: string[] = ['/home', '/add-bonus', '/history', '/bonuses', '/users'];
     return checkRoutes.includes(this.currentRoute);
   }
+
   public logout(): void {
     this.loginService.logout();
   }

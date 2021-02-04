@@ -23,26 +23,25 @@ import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from '@services/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginModule } from '@components/login/login.module';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
+import { FooterComponent } from '@components/footer/footer.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
+import { AddBonusModule } from '@components/add-bonus/add-bonus.module';
+import { MarkerIconComponent } from './core/components/map/marker-icon/marker-icon.component';
+import { ClusterIconComponent } from './core/components/map/cluster-icon/cluster-icon.component';
+import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   multi: true,
   useClass: AuthInterceptor,
 };
-
-import { LayoutModule } from '@angular/cdk/layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { LoginModule } from '@components/login/login.module';
-import { NotFoundComponent } from './core/components/not-found/not-found.component';
-import { FooterComponent } from '@components/footer/footer.component';
-
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
-import { AddBonusModule } from '@components/add-bonus/add-bonus.module';
-import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
-import { MatExpansionModule } from '@angular/material/expansion';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -64,6 +63,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     NotFoundComponent,
     FooterComponent,
     BonusListComponent,
+    ClusterIconComponent,
+    MarkerIconComponent,
   ],
   imports: [
     HttpClientModule,
