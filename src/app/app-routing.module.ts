@@ -6,7 +6,7 @@ import { LoginComponent } from '@components/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { RoleGuard } from './core/guards/role.guard';
 import { NotFoundComponent } from '@components/not-found/not-found.component';
-import { AddBonusComponent } from './core/components/add-bonus/add-bonus.component';
+import { AddBonusComponent } from '@components/add-bonus/add-bonus.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

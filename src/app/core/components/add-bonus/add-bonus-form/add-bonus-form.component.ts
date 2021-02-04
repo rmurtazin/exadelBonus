@@ -5,18 +5,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Router } from '@angular/router';
 import { ILocation, ITag } from '@interfaces/add-bonus.interface';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-bonus-form',
   templateUrl: './add-bonus-form.component.html',
-  styleUrls: ['./add-bonus-form.component.scss']
+  styleUrls: ['./add-bonus-form.component.scss'],
 })
-
 export class AddBonusFormComponent implements OnInit {
-  @Output() onAddAddress = new EventEmitter<any>();
-  @Input() locations: ILocation[]
-  public subscription: Subscription = new Subscription();
+  @Output() addAddress = new EventEmitter<any>();
+  @Input() locations: ILocation[];
   public myForm: FormGroup;
   public vendorName: FormControl;
   public range: FormGroup;
@@ -27,25 +24,17 @@ export class AddBonusFormComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   public bonusTags: ITag[] = [];
 
-  constructor(
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
 
-  public addAddress(myForm: any){
-    this.onAddAddress.emit(myForm)
+  public onAddAddress(myForm: any): void {
+    this.addAddress.emit(myForm);
   }
 
   ngOnInit(): void {
     this.onInitForm();
   }
 
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
-
- public onInitForm(): void {
+  public onInitForm(): void {
     this.myForm = new FormGroup({
       vendorName: new FormControl('', [Validators.required]),
       bonusAddress: new FormControl('', [Validators.required]),
@@ -80,41 +69,37 @@ export class AddBonusFormComponent implements OnInit {
     };
     console.log(submitedBonus);
     // TODO: add service for post submitedBonus...
-    // TODO: add service to get the current vendor from the base and post new vendor if it does not existed, and change input vendor name when api will be ready
+    // TODO: add service to get the current vendor from the base
+    // TODO: add post new vendor if it does not existed, and change input vendor name when api will be ready
     this.router.navigateByUrl('/home/add-bonus');
   }
-
- 
 
   public onAddTag(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value.trim();
     if (value || '') {
-      this.bonusTags.push({ name: value});
+      this.bonusTags.push({ name: value });
     }
     if (input) {
       input.value = '';
     }
   }
-
   public onRemoveTag(tag: ITag): void {
     const index = this.bonusTags.indexOf(tag);
     if (index >= 0) {
       this.bonusTags.splice(index, 1);
     }
   }
-
   public onAddAddressValue(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
     if ((value || '').trim()) {
-      this.addAddress(this.myForm);
+      this.onAddAddress(this.myForm);
     }
     if (input) {
       input.value = '';
     }
   }
-
   public onRemoveAddress(location: ILocation): void {
     const index = this.locations.indexOf(location);
     if (index >= 0) {

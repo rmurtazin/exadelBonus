@@ -1,47 +1,47 @@
 .add-bonus-btn-container {
-    text-align: center;
-  }
-  
-  .add-bonus-form {
-    width: 260px;
-    margin: 30px auto;
-    text-align: center;
-  }
-  
-  .add-bonus-input {
-    width: 260px;
-  
-    &--description {
-      textarea {
-        min-height: 50px;
-      }
+  text-align: center;
+}
+
+.add-bonus-form {
+  width: 260px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.add-bonus-input {
+  width: 260px;
+
+  &--description {
+    textarea {
+      min-height: 50px;
     }
   }
-  
-  .add-location-btn-container {
-    width: 100%;
-    text-align: right;
-    position: relative;
-    top: -60px;
-    right: 10px;
-    box-sizing: border-box;
-  
-    & button {
-      width: 24px;
-      height: 24px;
-      line-height: 1;
-      padding: 0px;
-      font-size: 20px;
-      border-radius: 50% 50% 50% 50%;
-      border: 2px solid #0082CA;
-      color: #0082CA;
-      cursor: pointer;
-      outline: none;
-    }
+}
+
+.add-location-btn-container {
+  width: 100%;
+  text-align: right;
+  position: relative;
+  top: -60px;
+  right: 10px;
+  box-sizing: border-box;
+
+  & button {
+    width: 24px;
+    height: 24px;
+    line-height: 1;
+    padding: 0px;
+    font-size: 20px;
+    border-radius: 50% 50% 50% 50%;
+    border: 2px solid #0082ca;
+    color: #0082ca;
+    cursor: pointer;
+    outline: none;
   }
-  
-  .add-bonus-input--chip {
-    width: 260px;
-    display: flex;
-    justify-content: space-between;
-  }
+}
+
+.add-bonus-input--chip {
+  width: 260px;
+  display: flex;
+  justify-content: space-between;
+}

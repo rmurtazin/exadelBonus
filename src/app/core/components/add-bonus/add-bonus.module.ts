@@ -15,7 +15,6 @@ import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
-
 @NgModule({
   declarations: [AddBonusComponent, AddBonusFormComponent],
   imports: [

@@ -15,7 +15,7 @@ export class BonusAddressService {
   public getSearchedAddress(place): Observable<any> {
     const currentUrl = `${this.baseUrl}/json?q=${place}&key=${this.apiKey}`;
     return this.apiService.get(currentUrl).pipe(
-      map(({results}) => {
+      map(({ results }) => {
         if (results.length > 0 && results[0].components.city) {
           return results;
         }
