@@ -28,7 +28,7 @@ export class MapComponent implements OnDestroy {
     private markersService: MarkersService,
     private markerEvents: MarkerEventsService,
     private activateRouter: ActivatedRoute,
-    private toaster: ToasterService
+    private toaster: ToasterService,
   ) {}
 
   public mapReadyEvent(map: Map): void {
@@ -39,12 +39,12 @@ export class MapComponent implements OnDestroy {
     this.officeMarkerClickObserver();
   }
 
-  private getQueryParams(): void{
+  private getQueryParams(): void {
     this.subscription.add(
-      this.activateRouter.queryParams.subscribe(params => {
+      this.activateRouter.queryParams.subscribe((params) => {
         this.queryLatitude = params?.lat;
         this.queryLongitude = params?.lon;
-      })
+      }),
     );
   }
 
@@ -64,24 +64,23 @@ export class MapComponent implements OnDestroy {
         const markersGroup = this.markersService.createMarkerCluster(markers);
         markersGroup.addTo(this.map);
         let navigationSuccess = true;
-        if (this.queryLatitude && this.queryLongitude){
+        if (this.queryLatitude && this.queryLongitude) {
           navigationSuccess = this.navigateToMarker(markers);
         }
-        if (!navigationSuccess){
+        if (!navigationSuccess) {
           this.toaster.showError('Bonus not available', 'Error');
         }
-      })
+      }),
     );
   }
 
-  private navigateToMarker(markers: Marker[]): boolean{
-    const isRequestedLocation = (currentMarker: Marker) =>  {
-      const {lat, lng} = currentMarker.getLatLng();
-      return lng === Number(this.queryLongitude) &&
-        lat === Number(this.queryLatitude);
+  private navigateToMarker(markers: Marker[]): boolean {
+    const isRequestedLocation = (currentMarker: Marker) => {
+      const { lat, lng } = currentMarker.getLatLng();
+      return lng === Number(this.queryLongitude) && lat === Number(this.queryLatitude);
     };
     const [targetMarker] = markers.filter(isRequestedLocation);
-    if (!targetMarker){
+    if (!targetMarker) {
       return false;
     }
     const zoom = 11;
@@ -92,14 +91,12 @@ export class MapComponent implements OnDestroy {
 
   private officeMarkerClickObserver(): void {
     this.subscription.add(
-      this.markerEvents.officeMarkerClickObserver().subscribe(
-        (office: IOffice) => {
-          const location = latLng(office.latitude, office.longitude);
-          const zoom = 11;
-          this.map.flyTo( location, zoom );
-          this.map.closePopup();
-        }
-      )
+      this.markerEvents.officeMarkerClickObserver().subscribe((office: IOffice) => {
+        const location = latLng(office.latitude, office.longitude);
+        const zoom = 11;
+        this.map.flyTo(location, zoom);
+        this.map.closePopup();
+      }),
     );
   }
 

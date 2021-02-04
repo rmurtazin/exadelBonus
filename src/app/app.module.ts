@@ -66,7 +66,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FooterComponent,
     BonusListComponent,
     ClusterIconComponent,
-    MarkerIconComponent
+    MarkerIconComponent,
   ],
   imports: [
     HttpClientModule,

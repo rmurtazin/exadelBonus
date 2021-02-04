@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import {Map, tileLayer, latLng, LatLngBounds} from 'leaflet';
+import { Map, tileLayer, latLng, LatLngBounds } from 'leaflet';
 import 'leaflet.markercluster';
 
 @Component({
@@ -8,16 +8,14 @@ import 'leaflet.markercluster';
   styleUrls: ['./map-view.component.scss'],
 })
 export class MapViewComponent {
-
   @Output() public mapReady = new EventEmitter<Map>();
 
   public options = {
     layers: [
-      tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-         maxZoom: 18,
-         minZoom: 2,
-      })
+      tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        minZoom: 2,
+      }),
     ],
     zoom: 5,
     center: latLng(46.879966, -121.726909),

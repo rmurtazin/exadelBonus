@@ -10,22 +10,21 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./office-popup.component.scss'],
 })
 export class OfficePopupComponent implements OnInit, OnDestroy {
-
   @Input() public office: IOffice;
   private subscription = new Subscription();
 
   constructor(
     private markerEvents: MarkerEventsService,
     private translate: TranslateService,
-    private changeDetector: ChangeDetectorRef
-  ) { }
+    private changeDetector: ChangeDetectorRef,
+  ) {}
 
   public ngOnInit(): void {
     this.changeDetector.detectChanges();
     this.subscription.add(
       this.translate.onLangChange.subscribe(() => {
         this.changeDetector.detectChanges();
-      })
+      }),
     );
   }
 

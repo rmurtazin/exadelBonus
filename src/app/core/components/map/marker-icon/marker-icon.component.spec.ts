@@ -8,9 +8,8 @@ describe('MarkerIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MarkerIconComponent ]
-    })
-    .compileComponents();
+      declarations: [MarkerIconComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

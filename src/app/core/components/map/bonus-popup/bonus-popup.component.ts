@@ -9,17 +9,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./bonus-popup.component.scss'],
 })
 export class BonusPopupComponent implements OnInit, OnDestroy {
-
   @Input() public bonus: IBonus;
   @Input() public latitude: number;
   @Input() public longitude: number;
   public markerLink: string;
   private subscription = new Subscription();
 
-  constructor(
-    private translate: TranslateService,
-    private changeDetector: ChangeDetectorRef
-  ) { }
+  constructor(private translate: TranslateService, private changeDetector: ChangeDetectorRef) {}
 
   public ngOnInit(): void {
     this.markerLink = `http://localhost:4200/home/?lat=${this.latitude}&lon=${this.longitude}`;
@@ -27,11 +23,11 @@ export class BonusPopupComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.translate.onLangChange.subscribe(() => {
         this.changeDetector.detectChanges();
-      })
+      }),
     );
   }
 
-  public log($event): void{
+  public log($event): void {
     console.log($event); // TODO: replace to coll popup method
   }
 

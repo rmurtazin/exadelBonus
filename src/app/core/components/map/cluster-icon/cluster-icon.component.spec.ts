@@ -8,9 +8,8 @@ describe('ClusterIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ClusterIconComponent ]
-    })
-    .compileComponents();
+      declarations: [ClusterIconComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
