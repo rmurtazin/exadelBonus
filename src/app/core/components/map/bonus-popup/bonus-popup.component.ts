@@ -1,19 +1,46 @@
-import { Component, Input } from '@angular/core';
-import { IBonus } from '@interfaces/bonus.interface';
+import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MarkerEventsService } from '@services/markers-events.service';
+import { IBonus } from '@interfaces/bonus.interface';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-bonus-popup',
   templateUrl: './bonus-popup.component.html',
   styleUrls: ['./bonus-popup.component.scss'],
 })
-export class BonusPopupComponent {
+export class BonusPopupComponent implements OnInit, OnDestroy {
   @Input() public bonus: IBonus;
+  @Input() public latitude: number;
+  @Input() public longitude: number;
+  public markerLink: string;
+  private subscription = new Subscription();
 
-  constructor(private markerEventsService: MarkerEventsService) {}
+  constructor(
+    private translate: TranslateService,
+    private changeDetector: ChangeDetectorRef,
+    private markerEventsService: MarkerEventsService
+  ) {}
+
+  public ngOnInit(): void {
+    this.markerLink = `http://localhost:4200/home/?lat=${this.latitude}&lon=${this.longitude}`;
+    this.runChangeDetection();
+    this.subscription.add(
+      this.translate.onLangChange.subscribe(() => {
+        this.runChangeDetection();
+      }),
+    );
+  }
 
   public showBonusMap(): void {
-    console.log(this.bonus);
     this.markerEventsService.bonusMarkerClick(this.bonus);
+  }
+
+  private runChangeDetection(): void {
+    this.changeDetector.detectChanges();
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

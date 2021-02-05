@@ -5,7 +5,9 @@
     "paths": {
       "@interfaces/*": ["src/app/core/interfaces/*"],
       "@components/*": ["src/app/core/components/*"],
-      "@services/*": ["src/app/core/services/*"]
+      "@services/*": ["src/app/core/services/*"],
+      "@enums/*": ["src/app/core/enums/*"],
+      "@models/*": ["src/app/core/models/*"]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

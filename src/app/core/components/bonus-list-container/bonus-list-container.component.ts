@@ -18,13 +18,13 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
 
   constructor(
     public bonusesService: BonusesService,
-    public MarkerEventsService: MarkerEventsService,
+    public markerEventsService: MarkerEventsService,
     public toasterService: ToasterService
   ) {}
 
   public ngOnInit(): void {
-    this.getBonuses();
     this.getBonusMap();
+    this.getBonuses();
   }
 
   public getBonuses(): void {
@@ -40,7 +40,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   }
 
   public getBonusMap(): void {
-    this.subscriptionBonusMap = this.MarkerEventsService.bonusMarkerClickObserver().subscribe(
+    this.subscriptionBonusMap = this.markerEventsService.bonusMarkerClickObserver().subscribe(
       (bonus: IBonus) => {
         if (bonus) {
           this.bonusMap = bonus;

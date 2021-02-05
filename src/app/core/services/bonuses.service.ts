@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
-import { BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class BonusesService {
-  private bonusFromMap = new BehaviorSubject<IBonus>(null);
   constructor(private api: ApiService) {}
 
   url = '../../../assets/static/bonuses.json'; // TODO: change url
@@ -35,13 +33,5 @@ export class BonusesService {
       locations: modifiedBonus.locations,
       tags: modifiedBonus.tags,
     });
-  }
-  
-  public setBonusFromMap(bonus: IBonus): void {
-    this.bonusFromMap.next(bonus);
-  }
-
-  public getBonusFromMap(): BehaviorSubject<IBonus>{
-    return this.bonusFromMap;
   }
 }

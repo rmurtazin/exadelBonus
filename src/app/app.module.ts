@@ -6,7 +6,6 @@ import { MapComponent } from '@components/map/map-container/map-container.compon
 import { MapViewComponent } from '@components/map/map-view/map-view.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ApiService } from '@services/api.service';
-import { MarkersService } from '@services/markers.service';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
@@ -27,20 +26,21 @@ import { ToastrModule } from 'ngx-toastr';
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   multi: true,
-  useClass: AuthInterceptor
+  useClass: AuthInterceptor,
 };
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { LoginModule } from '@components/login/login.module';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
 import { FooterComponent } from '@components/footer/footer.component';
 
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { BonusListContainerComponent } from './core/components/bonus-list-container/bonus-list-container.component';
+import { MarkerIconComponent } from './core/components/map/marker-icon/marker-icon.component';
+import { ClusterIconComponent } from './core/components/map/cluster-icon/cluster-icon.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BonusListViewComponent } from './core/components/bonus-list-view/bonus-list-view.component';
 
@@ -65,6 +65,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FooterComponent,
     BonusListContainerComponent,
     BonusListViewComponent,
+    ClusterIconComponent,
+    MarkerIconComponent,
   ],
   imports: [
     HttpClientModule,
@@ -83,17 +85,16 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
       loader: {
-          provide: TranslateLoader,
-          useFactory: (createTranslateLoader),
-          deps: [HttpClient]
-      }
-  }),
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     ApiService,
     OfficesService,
     BonusesService,
-    MarkersService,
     MarkerEventsService,
     OfficePopupComponent,
     BrowserAnimationsModule,

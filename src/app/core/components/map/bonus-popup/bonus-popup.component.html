@@ -1,4 +1,6 @@
 <div>
   <h1>{{ bonus.type }}</h1>
-  <button (click)="showBonusMap()">{{ "popup.detail" | translate }}</button>
+  <a mat-flat-button color="primary" href="{{ markerLink }}" (click)="showBonusMap()">{{
+    'popup.detail' | translate
+  }}</a>
 </div>
