@@ -13,6 +13,7 @@ import { ILocation, ITag } from '@interfaces/add-bonus.interface';
 })
 export class AddBonusFormComponent implements OnInit {
   @Output() addAddress = new EventEmitter<any>();
+  @Output() closeForm = new EventEmitter<boolean>();
   @Input() locations: ILocation[];
   public myForm: FormGroup;
   public vendorName: FormControl;
@@ -32,6 +33,10 @@ export class AddBonusFormComponent implements OnInit {
 
   public onAddAddress(myForm: any): void {
     this.addAddress.emit(myForm);
+  }
+
+  public goBack(): void {
+    this.closeForm.emit(false);
   }
 
   public onInitForm(): void {
@@ -71,7 +76,7 @@ export class AddBonusFormComponent implements OnInit {
     // TODO: add service for post submitedBonus...
     // TODO: add service to get the current vendor from the base
     // TODO: add post new vendor if it does not existed, and change input vendor name when api will be ready
-    this.router.navigateByUrl('/home/add-bonus');
+    this.goBack();
   }
 
   public onAddTag(event: MatChipInputEvent): void {

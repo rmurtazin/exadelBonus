@@ -1,4 +1,5 @@
 <div class="container">
+  <button (click)="goBack()" mat-stroked-button color="primary">&#8656; Back</button>
   <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>Vendor name</mat-label>

@@ -13,10 +13,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.component';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
-  declarations: [AddBonusComponent, AddBonusFormComponent],
+  declarations: [AddBonusComponent, AddBonusFormComponent, AddBonusButtonComponent],
   imports: [
     CommonModule,
     FormsModule,
