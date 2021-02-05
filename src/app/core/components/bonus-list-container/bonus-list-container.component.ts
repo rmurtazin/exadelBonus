@@ -19,7 +19,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   constructor(
     public bonusesService: BonusesService,
     public markerEventsService: MarkerEventsService,
-    public toasterService: ToasterService
+    public toasterService: ToasterService,
   ) {}
 
   public ngOnInit(): void {
@@ -34,8 +34,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
           this.bonuses = data;
         }
       },
-      (err) =>
-        this.toasterService.showError(err, 'Some problems with getting bonuses')
+      (err) => this.toasterService.showError(err, 'Some problems with getting bonuses'),
     );
   }
 
@@ -46,11 +45,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
           this.bonusMap = bonus;
         }
       },
-      (err) =>
-        this.toasterService.showError(
-          err,
-          'Some problems with getting bonus from the map'
-        )
+      (err) => this.toasterService.showError(err, 'Some problems with getting bonus from the map'),
     );
   }
 

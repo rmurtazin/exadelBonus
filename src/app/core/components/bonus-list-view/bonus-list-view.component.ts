@@ -7,8 +7,8 @@ import { IBonus } from '../../interfaces/bonus.interface';
   styleUrls: ['./bonus-list-view.component.scss'],
 })
 export class BonusListViewComponent implements OnInit {
-  @Input('bonusMap') bonusMap: IBonus;
-  @Input('bonuses') bonuses: IBonus[];
+  @Input() bonusMap: IBonus;
+  @Input() bonuses: IBonus[];
   constructor() {}
 
   ngOnInit(): void {}

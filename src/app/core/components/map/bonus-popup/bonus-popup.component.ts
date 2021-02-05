@@ -19,7 +19,7 @@ export class BonusPopupComponent implements OnInit, OnDestroy {
   constructor(
     private translate: TranslateService,
     private changeDetector: ChangeDetectorRef,
-    private markerEventsService: MarkerEventsService
+    private markerEventsService: MarkerEventsService,
   ) {}
 
   public ngOnInit(): void {
