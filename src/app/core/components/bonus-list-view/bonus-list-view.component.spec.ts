@@ -8,9 +8,8 @@ describe('BonusListViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BonusListViewComponent ]
-    })
-    .compileComponents();
+      declarations: [BonusListViewComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
