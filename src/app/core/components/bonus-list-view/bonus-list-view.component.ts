@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IBonus } from '../../interfaces/bonus.interface';
 
 @Component({
@@ -6,12 +6,10 @@ import { IBonus } from '../../interfaces/bonus.interface';
   templateUrl: './bonus-list-view.component.html',
   styleUrls: ['./bonus-list-view.component.scss'],
 })
-export class BonusListViewComponent implements OnInit {
+export class BonusListViewComponent {
   @Input() bonusMap: IBonus;
   @Input() bonuses: IBonus[];
   constructor() {}
-
-  ngOnInit(): void {}
 
   public trackById(index: number, item: IBonus): number {
     return item.id;
