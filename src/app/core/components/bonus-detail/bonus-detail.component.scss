@@ -29,5 +29,13 @@
     .contacts {
       box-shadow: none;
     }
+
+    .update-img {
+      position: absolute;
+      right: 16px;
+      width: 30px;
+      border: 1px solid #0082ca;
+      border-radius: 4px;
+    }
   }
 }
