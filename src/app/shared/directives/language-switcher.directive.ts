@@ -5,26 +5,15 @@ import { TranslateService } from '@ngx-translate/core';
 @Directive({
   selector: '[appLanguageSwitcher]',
 })
-export class LanguageSwitcherDirective implements OnInit, OnChanges {
-  public initialLanguage = this.elementRef.nativeElement
+export class LanguageSwitcherDirective {
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
     private translate: TranslateService,
   ) {}
 
-  ngOnChanges (){
-  
-  }
-
-  ngOnInit () {
-  
-  }
-
   @HostListener('click', ['$event'])
   clickEvent(): void {
-    console.log(this.elementRef.nativeElement.textContent)
-   
     const selectedLanguage =
       this.elementRef.nativeElement.textContent === Languages.Russian
         ? Languages.English
