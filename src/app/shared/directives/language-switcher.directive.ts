@@ -1,4 +1,4 @@
-import { Directive, HostListener, ElementRef, Renderer2, OnInit, OnChanges } from '@angular/core';
+import { Directive, HostListener, ElementRef, Renderer2 } from '@angular/core';
 import { Languages } from 'src/app/core/enums/languages.enum';
 import { TranslateService } from '@ngx-translate/core';
 
