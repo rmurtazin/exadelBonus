@@ -45,3 +45,19 @@
   display: flex;
   justify-content: space-between;
 }
+.form-btn-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  padding: 0px;
+  margin: 10px;
+  @media screen and (min-width: 1280px) {
+    margin: 0px;
+  }
+}
+
+.form-btn-back-container {
+  width: 100%;
+  text-align: center;
+}

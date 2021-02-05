@@ -1,5 +1,5 @@
 <div class="container">
-  <button (click)="goBack()" mat-stroked-button color="primary">&#8656; Back</button>
+  <div class="form-btn-back-container"><button class="form-btn-back" (click)="goBack()" mat-stroked-button color="primary">&#8656; {{'addBonus.goBack' | translate}}</button></div>
   <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>Vendor name</mat-label>
@@ -112,7 +112,7 @@
         mat-flat-button
         color="primary"
       >
-        Save
+        {{'addBonus.saveBonus' | translate}}
       </button>
     </div>
   </form>

@@ -12,5 +12,10 @@
     "go": "Перейти",
     "detail": "Детали"
   },
-  "notFound": "Не найдено"
+  "notFound": "Не найдено",
+  "addBonus": {
+    "addBonusBtn": "Добавить бонус",
+    "goBack": "Назад",
+    "saveBonus": "Сохранить"
+  }
 }

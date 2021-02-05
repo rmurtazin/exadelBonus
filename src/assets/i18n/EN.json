@@ -1,6 +1,6 @@
 {
   "header": {
-    "findePlace": "Finde plce",
+    "findPlace": "Find place",
     "history": "History",
     "addBonus": "Add bonus",
     "bonuses": "Bonuses",
@@ -12,5 +12,10 @@
     "go": "Go",
     "detail": "Detail"
   },
-  "notFound": "Not found"
+  "notFound": "Not found",
+  "addBonus": {
+    "addBonusBtn": "Add bonus",
+    "goBack": "Back",
+    "saveBonus": "Save"
+  }
 }

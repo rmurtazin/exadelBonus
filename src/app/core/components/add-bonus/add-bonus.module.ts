@@ -14,6 +14,9 @@ import { BonusAddressService } from '@services/bonus-address.service';
 import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.component';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { createTranslateLoader } from 'src/app/app.module';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -31,6 +34,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MatNativeDateModule,
     MatChipsModule,
     NgxMaskModule.forRoot(),
+    TranslateModule,
   ],
   providers: [BonusAddressService],
   exports: [AddBonusComponent],
