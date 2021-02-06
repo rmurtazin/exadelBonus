@@ -4,12 +4,12 @@
       <img class="logo-img" src="assets/images/logo.png" alt="exadel logo" />
       <span class="logo-text">exadel bonus+</span>
     </section>
-    <div class="language-switcher" [class.isLogout]="!checkRoute()">
+    <div class="language-switcher" [class.isLogout]="!ifShowMenuButtons">
       <button class="language-switcher-button" mat-mini-fab appLanguageSwitcher color="primary">
         {{ language }}
       </button>
     </div>
-    <div [hidden]="checkRoute()">
+    <div [hidden]="ifShowMenuButtons">
       <section class="menu-container" [ngClass]="{ hide: isMenuHide }">
         <ul class="menu" appCloseMenu (clickMenuItem)="toggleMenu()">
           <li>
