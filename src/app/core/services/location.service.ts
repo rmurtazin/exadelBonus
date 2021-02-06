@@ -1,41 +1,52 @@
 import { Injectable } from '@angular/core';
-import { from, Observable, Subject } from 'rxjs';
 import { ToasterService } from './toaster.service';
-import { take } from 'rxjs/operators';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ChoosePlaceDialogComponent } from '@components/choose-place-dialog/choose-place-dialog.component';
+import { LatLng, latLng } from 'leaflet';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { MapEventsService } from './map-events.service';
 
 @Injectable()
 export class LocationService {
-  private geolocationSubject = new Subject<string>();
+  private subscription = new Subscription();
+  private dialogRef: MatDialogRef<ChoosePlaceDialogComponent>;
 
-  constructor(private toastr: ToasterService) {
-      this.watchGeolocationPermissionChanging();
-  }
-
-  private permissionChanged(status: string): void {
-    this.geolocationSubject.next(status);
-  }
-
-  private watchGeolocationPermissionChanging(): void {
-    if ('geolocation' in navigator) {
-      console.log('step 1');
-      from(navigator.permissions.query({ name: 'geolocation' })).subscribe((permission) => {
-        permission.onchange = (event: any) => {
-          const permissionStatus: PermissionStatus = event.target;
-          this.permissionChanged(permissionStatus.state);
-        };
-      });
+  constructor(
+    private toastr: ToasterService,
+    private dialog: MatDialog,
+    private mapEventService: MapEventsService
+  ) {
+    console.log(localStorage.getItem('currentLatitude'));
+    if (!localStorage.getItem('currentLatitude')){
+      this.selectPlaceDialog();
     }
   }
 
-  public permissionChangingObserver(): Observable<string> {
-    return this.geolocationSubject.asObservable();
+  public selectPlaceDialog(): void {
+    this.dialogRef = this.dialog.open(ChoosePlaceDialogComponent);
+    this.subscription.add(
+      this.dialogRef.afterClosed().subscribe((location: LatLng) => this.setPosition(location))
+    );
   }
 
-  public getPermissionStatus(): Observable<any>{
-      return from(navigator.permissions.query({name: 'geolocation'})).pipe(take(1));
+  private setPosition(location: LatLng): void{
+    if (location){
+      this.saveToStorage(location);
+      this.mapEventService.setMapView(location);
+      return;
+    }
+    this.getUserLocation().subscribe(geolocation => {
+      this.saveToStorage(geolocation);
+      this.mapEventService.setMapView(geolocation);
+    });
   }
 
-  public getUserLocation(): Observable<any> {
+  private saveToStorage(location: LatLng): void {
+    localStorage.setItem('currentLatitude', location.lat.toString());
+    localStorage.setItem('currentLongitude', location.lng.toString());
+  }
+
+  private getUserLocation(): Observable<LatLng> {
     return new Observable((observer) => {
       const options = {
         enableHighAccuracy: false,
@@ -45,7 +56,8 @@ export class LocationService {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            observer.next(position);
+            const location: LatLng = latLng(position.coords.latitude, position.coords.longitude);
+            observer.next(location);
           },
           (error) => {
             observer.error(error);

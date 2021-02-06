@@ -98,6 +98,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient],
       },
     }),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ApiService,

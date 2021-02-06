@@ -33,4 +33,12 @@ export class MapEventsService {
   public changeMapLocationObserver(): Observable<LatLng> {
     return this.locationSubject.asObservable();
   }
+
+  public setMapView(location: LatLng): void {
+    this.locationSubject.next(location);
+  }
+
+  public changeMapViewObserver(): Observable<LatLng> {
+    return this.locationSubject.asObservable();
+  }
 }

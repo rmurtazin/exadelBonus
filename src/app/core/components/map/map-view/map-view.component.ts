@@ -9,6 +9,7 @@ import 'leaflet.markercluster';
 })
 export class MapViewComponent {
   @Output() public mapReady = new EventEmitter<Map>();
+  @Output() public changePlaceEvent = new EventEmitter<any>();
   public options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -24,5 +25,9 @@ export class MapViewComponent {
     const bounds = new LatLngBounds(latLng(85, -180), latLng(-85, 180));
     map.setMaxBounds(bounds);
     this.mapReady.emit(map);
+  }
+
+  public changePlace(): void {
+    this.changePlaceEvent.emit();
   }
 }

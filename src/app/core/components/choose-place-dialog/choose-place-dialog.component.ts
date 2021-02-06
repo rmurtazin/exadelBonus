@@ -15,7 +15,7 @@ export class ChoosePlaceDialogComponent implements OnInit {
   public geolocationEnabled = false;
   public offices: IOffice[];
   public selectedOffice = 0;
-  public selectedPlaceDetection = placeDetectionMethod.officeLocation;
+  public selectedPlaceDetection = '1';
   private subscription = new Subscription();
 
   constructor(
@@ -37,11 +37,11 @@ export class ChoosePlaceDialogComponent implements OnInit {
   }
 
   apply(): void {
-    if (this.selectedPlaceDetection === placeDetectionMethod.geolocation){
+    if (this.selectedPlaceDetection === placeDetectionMethod.geolocation) {
       this.dialogRef.close();
       return;
     }
-    const location = latLng(this.offices[this.selectedOffice].latitude, this.offices[this.selectedOffice].latitude)
+    const location = latLng(this.offices[this.selectedOffice].latitude, this.offices[this.selectedOffice].longitude);
     this.dialogRef.close(location);
   }
 }

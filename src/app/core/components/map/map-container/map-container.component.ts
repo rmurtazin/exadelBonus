@@ -9,18 +9,17 @@ import { MapEventsService } from '@services/map-events.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToasterService } from '@services/toaster.service';
 import { MarkerModel } from '@models/marker.model';
-import { DialogService } from '@services/dialog.service';
+import { LocationService } from '@services/location.service';
 import 'leaflet.markercluster';
 
 @Component({
   selector: 'app-map-container',
   templateUrl: './map-container.component.html',
   styleUrls: ['./map-container.component.scss'],
-  providers: [MarkerModel, DialogService],
+  providers: [MarkerModel, LocationService],
 })
 export class MapComponent implements OnDestroy {
   private map: Map;
-  private custom: Control;
   private queryLatitude: string;
   private queryLongitude: string;
   private subscription = new Subscription();
@@ -32,17 +31,17 @@ export class MapComponent implements OnDestroy {
     private mapEvents: MapEventsService,
     private activateRouter: ActivatedRoute,
     private toaster: ToasterService,
-    private dialogService: DialogService
+    private locationService: LocationService
   ) {}
 
   public mapReadyEvent(map: Map): void {
     this.map = map;
+    this.changeMapViewObserver();
     this.getQueryParams();
     this.displayOfficesMarkers();
     this.displayBonusesMarkers();
     this.officeMarkerClickObserver();
     this.mapViewObserver();
-    this.dialogService.selectPlace();
   }
 
   private getQueryParams(): void {
@@ -89,8 +88,7 @@ export class MapComponent implements OnDestroy {
     if (!targetMarker) {
       return false;
     }
-    const zoom = 11;
-    this.map.setView(targetMarker.getLatLng(), zoom);
+    this.setMapView(targetMarker.getLatLng());
     targetMarker.openPopup();
     return true;
   }
@@ -108,11 +106,27 @@ export class MapComponent implements OnDestroy {
 
   private mapViewObserver(): void {
     this.subscription.add(
-      this.mapEvents.changeMapLocationObserver().subscribe((coordinates: LatLng) => {
-        const zoom = 12;
-        this.map.setView(coordinates, zoom);
+      this.mapEvents.changeMapLocationObserver().subscribe((location: LatLng) => {
+        this.setMapView(location);
       }),
     );
+  }
+
+  public changePlace(): void{
+    this.locationService.selectPlaceDialog();
+  }
+
+  private changeMapViewObserver(): void{
+    this.subscription.add(
+      this.mapEvents.changeMapLocationObserver().subscribe((location: LatLng) => {
+        this.setMapView(location);
+      })
+    );
+  }
+
+  private setMapView(location: LatLng): void{
+    const zoom = 11;
+    this.map.setView(location, zoom);
   }
 
   public ngOnDestroy(): void {
