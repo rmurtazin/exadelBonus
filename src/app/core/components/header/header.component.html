@@ -1,6 +1,6 @@
 <header>
   <nav>
-    <section class="logo" [routerLink]="['/home']">
+    <section class="logo" [routerLink]="['']">
       <img class="logo-img" src="assets/images/logo.png" alt="exadel logo" />
       <span class="logo-text">exadel bonus+</span>
     </section>
@@ -11,8 +11,8 @@
           <span class="login-as-text">{{ user?.first_name }} {{ user?.last_name }} </span>
         </li>
         <li class="menu-item">
-          <a [routerLink]="['/home']" [routerLinkActive]="'active'">{{
-            'header.findePlace' | translate
+          <a [routerLink]="['']" [routerLinkActive]="'active'">{{
+            'header.findPlace' | translate
           }}</a>
         </li>
         <li class="menu-item">

@@ -48,6 +48,7 @@ a:not(.active) {
       opacity: 0.85;
       &:hover {
         color: $theme-color;
+        cursor: pointer;
       }
     }
   }
@@ -57,6 +58,7 @@ a:not(.active) {
   height: 100%;
   color: $theme-color;
   display: flex;
+  cursor: pointer;
   .logo-img {
     display: inline-block;
     margin: auto 5px;

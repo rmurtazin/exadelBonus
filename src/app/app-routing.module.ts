@@ -8,16 +8,15 @@ import { RoleGuard } from './core/guards/role.guard';
 import { NotFoundComponent } from '@components/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'home',
+    path: '',
     canActivate: [AuthGuard],
     canActivateChild: [RoleGuard],
     children: [
       { path: '', component: HomeComponent },
       { path: 'history', redirectTo: '' },
-      { path: 'add-bonus', redirectTo: '' },
+      { path: 'add-bonus', component: HomeComponent },
       { path: 'bonuses', redirectTo: '' },
       { path: 'users', redirectTo: '' },
     ],
