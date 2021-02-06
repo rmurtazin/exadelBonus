@@ -1,6 +1,8 @@
+import { OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
-import { ILocation } from '@interfaces/add-bonus.interface';
+import { ILocation, IVendor } from '@interfaces/add-bonus.interface';
 import { BonusAddressService } from '@services/bonus-address.service';
+import { VendorsService } from '@services/vendors.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -8,12 +10,18 @@ import { Subscription } from 'rxjs';
   templateUrl: './add-bonus.component.html',
   styleUrls: ['./add-bonus.component.scss'],
 })
-export class AddBonusComponent implements OnDestroy {
+export class AddBonusComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
   public locations: ILocation[] = [];
-  constructor(public bonusAddressService: BonusAddressService) {}
+  public vendors: IVendor[] = [];
 
-  ngOnDestroy(): void {
+  constructor(public bonusAddressService: BonusAddressService, public vendorsService: VendorsService) {}
+
+  public ngOnInit(): void {
+    this.getVendorsByFirstWord()
+  }
+
+  public ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
@@ -42,4 +50,14 @@ export class AddBonusComponent implements OnDestroy {
       );
     }
   }
+
+  public getVendorsByFirstWord (): void {
+    this.vendorsService.getVendors().subscribe(
+      data=>{
+        this.vendors = data;
+        console.log(data)
+      }
+    )
+  }
+
 }

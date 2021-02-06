@@ -7,17 +7,17 @@
         type="text"
         matInput
         formControlName="vendorName"
-        autocomplete="off"
+        [matAutocomplete]="auto"
       />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let vendor of filteredVendors | async" [value]="vendor">
+          {{ vendor.vendorName }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>Enter vendor email</mat-label>
-      <input
-        matInput
-        formControlName="vendorEmail"
-        autocomplete="off"
-        placeholder="pat@example.com"
-      />
+      <input matInput formControlName="vendorEmail" placeholder="pat@example.com" />
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill" aria-autocomplete="off">
       <mat-label>Phone</mat-label>

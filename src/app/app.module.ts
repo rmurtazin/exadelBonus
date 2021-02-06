@@ -41,6 +41,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { VendorsService } from '@services/vendors.service';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -113,6 +114,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FormsModule,
     ReactiveFormsModule,
     INTERCEPTOR_PROVIDER,
+    VendorsService,
   ],
   bootstrap: [AppComponent],
 })

@@ -13,3 +13,9 @@ export interface ILocation {
   country: string;
   address: string;
 }
+
+export interface IVendor {
+  vendorId: string,
+  vendorName: string,
+  vendorEmail: string
+}

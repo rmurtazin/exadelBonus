@@ -4,7 +4,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Router } from '@angular/router';
-import { ILocation, ITag } from '@interfaces/add-bonus.interface';
+import { ILocation, ITag, IVendor } from '@interfaces/add-bonus.interface';
+import { Observable } from 'rxjs';
+import { startWith } from 'rxjs/internal/operators/startWith';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-bonus-form',
@@ -14,6 +17,7 @@ import { ILocation, ITag } from '@interfaces/add-bonus.interface';
 export class AddBonusFormComponent implements OnInit {
   @Output() addAddress = new EventEmitter<any>();
   @Input() locations: ILocation[];
+  @Input() vendors: IVendor[];
   public myForm: FormGroup;
   public vendorName: FormControl;
   public range: FormGroup;
@@ -23,11 +27,29 @@ export class AddBonusFormComponent implements OnInit {
   public addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   public bonusTags: ITag[] = [];
+  filteredVendors: Observable<IVendor[]>;
 
   constructor(private router: Router) {}
 
   public ngOnInit(): void {
     this.onInitForm();
+    this.filteredVendors = this.vendorName.valueChanges.pipe(
+      startWith(''),
+      map((value) => (typeof value === 'string' ? value : value.name)),
+      map((name) => (name ? this._filter(name) : this.vendors.slice())),
+    );
+  }
+
+  displayFn(vendor: IVendor): string {
+    return vendor && vendor.vendorName ? vendor.vendorName : '';
+  }
+
+  private _filter(vendor: string): IVendor[] {
+    const filterValue = vendor.toLowerCase();
+
+    return this.vendors.filter(
+      (vendor) => vendor.vendorName.toLowerCase().indexOf(filterValue) === 0,
+    );
   }
 
   public onAddAddress(myForm: FormGroup): void {
@@ -36,7 +58,7 @@ export class AddBonusFormComponent implements OnInit {
 
   public onInitForm(): void {
     this.myForm = new FormGroup({
-      vendorName: new FormControl('', [Validators.required]),
+      vendorName: (this.vendorName = new FormControl('', [Validators.required])),
       bonusAddress: new FormControl('', [Validators.required]),
       bonusType: new FormControl('', [Validators.required]),
       bonusDescription: new FormControl('', [Validators.required]),
