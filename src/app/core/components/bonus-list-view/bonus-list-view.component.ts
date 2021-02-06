@@ -9,6 +9,7 @@ import { IBonus } from '../../interfaces/bonus.interface';
 export class BonusListViewComponent {
   @Input() bonusMap: IBonus;
   @Input() bonuses: IBonus[];
+  @Input() bonusButtonClickFunc: () => void;
   constructor() {}
 
   public trackById(index: number, item: IBonus): number {

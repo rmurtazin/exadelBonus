@@ -13,7 +13,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 export class RateWrapperComponent {
 
   @Input() isForm = true;
-  @Output() ratingWasChanged = new EventEmitter();
+  @Output() ratingWasChanged = new EventEmitter<Observable<IBonus>>();
   @Input() rating: number;
   @Input() bonus: IBonus;
 

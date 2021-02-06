@@ -77,7 +77,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     BonusListViewComponent,
     ClusterIconComponent,
     MarkerIconComponent,
-    DatepickerComponent
+    DatepickerComponent,
     RateWrapperComponent,
     RateComponent,
     BonusComponent,
@@ -109,7 +109,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
     MatSliderModule,
   ],
   providers: [

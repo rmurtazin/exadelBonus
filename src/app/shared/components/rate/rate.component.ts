@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, DoCheck, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-rate',
@@ -6,12 +6,8 @@ import {ChangeDetectionStrategy, Component, DoCheck, Input} from '@angular/core'
   styleUrls: ['./rate.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RateComponent implements DoCheck {
-  @Input() widthValue;
+export class RateComponent {
+  @Input() widthValue: number;
 
   constructor() { }
-
-  ngDoCheck(): void {
-    console.log('Check rate ' + this.widthValue);
-  }
 }

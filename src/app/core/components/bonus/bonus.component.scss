@@ -68,6 +68,8 @@
     border-radius: 10px;
   }
   .tag {
+    pointer-events: none;
+    user-select: none;
     border: 1px solid $theme-color;
     border-radius: 30px;
     font-size: 18px;

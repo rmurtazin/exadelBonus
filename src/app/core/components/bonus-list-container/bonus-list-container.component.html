@@ -1,2 +1,3 @@
-<app-bonus-detail [bonus]="bonusMap"></app-bonus-detail>
-<app-bonus-list-view [bonuses]="bonuses"></app-bonus-list-view>
+<!--<app-bonus-detail [bonus]="bonusMap"></app-bonus-detail>-->
+<app-bonus *ngIf="bonusMap" [bonus]="bonusMap" [func]="bonusButtonClickFunc"></app-bonus>
+<app-bonus-list-view [bonuses]="bonuses" [bonusButtonClickFunc]="bonusButtonClickFunc"></app-bonus-list-view>

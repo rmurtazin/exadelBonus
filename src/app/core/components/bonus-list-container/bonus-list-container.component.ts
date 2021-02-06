@@ -1,5 +1,5 @@
 import { ToasterService } from '@services/toaster.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
@@ -15,6 +15,8 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   public bonuses: IBonus[] = [];
   private subscriptionBonuses: Subscription;
   private subscriptionBonusMap: Subscription;
+
+  @Input() bonusButtonClickFunc: () => void;
 
   constructor(
     public bonusesService: BonusesService,
