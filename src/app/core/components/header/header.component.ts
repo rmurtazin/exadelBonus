@@ -42,7 +42,8 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
     this.route.config.forEach((route) => {
       if (route.canActivateChild) {
         allChildrenRoutes = route.children.map((element) => element.path);
-        checkRoutes = allChildrenRoutes.filter((routeItem) => routeItem !== '')
+        checkRoutes = allChildrenRoutes
+          .filter((routeItem) => routeItem !== '')
           .map((pathItem) => '/' + pathItem);
       }
     });
