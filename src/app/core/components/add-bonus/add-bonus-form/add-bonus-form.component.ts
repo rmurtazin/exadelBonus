@@ -24,9 +24,9 @@ export class AddBonusFormComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   public bonusTags: ITag[] = [];
 
-  constructor(public router: Router) {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.onInitForm();
   }
 
