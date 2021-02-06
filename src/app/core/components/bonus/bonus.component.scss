@@ -1,0 +1,95 @@
+@import "src/styles/variables";
+
+.bonus {
+  width: 520px;
+  height: 200px;
+  border: 1px solid $theme-color;
+  display: flex;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #FFF;
+  margin: 0 5px 10px;
+}
+
+.description-container {
+  background-color: $theme-color;
+  color: #FFF;
+  flex: 1 1 33.33333%;
+  font-weight: 500;
+  padding: 8px 5px;
+  margin-left: -1px;
+  .vendor-name {
+    text-decoration: underline;
+    font-style: normal;
+    font-size: 20px;
+  }
+  .bonus-description {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+}
+
+.bonus-content {
+  flex: 1 1 66.666666%;
+  justify-content: space-between;
+  padding: 6px;
+}
+
+.discount-icon {
+  width: 36px;
+}
+
+.discount-value {
+  color: #404040;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.bonus-name {
+  color: #282828;
+  font-size: 27px;
+  font-weight: bold;
+  margin: 8px 0 0 8px;
+}
+
+.tags {
+  margin-top: 20px;
+  width: 320px;
+  height: 28px;
+  padding: 3px;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 6px;
+    background-color: #ebe9de;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $theme-color;
+    border-radius: 10px;
+  }
+  .tag {
+    border: 1px solid $theme-color;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #464646;
+    padding: 0 7px;
+    margin-right: 8px;
+    text-transform: lowercase;
+  }
+}
+
+.apply-button {
+  border-radius: 0;
+  width: 187px;
+  height: 42px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 26px;
+  font-weight: 500;
+  float: right;
+}
+
+.button-container {
+  margin-top: 26px;
+  padding-right: 2px;
+}

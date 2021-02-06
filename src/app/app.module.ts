@@ -43,6 +43,11 @@ import { MarkerIconComponent } from './core/components/map/marker-icon/marker-ic
 import { ClusterIconComponent } from './core/components/map/cluster-icon/cluster-icon.component';
 import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { RateComponent } from './shared/components/rate/rate.component';
+import { RateWrapperComponent } from './shared/components/rate-wrapper/rate-wrapper.component';
+import {MatSliderModule} from '@angular/material/slider';
+import { BonusComponent } from './core/components/bonus/bonus.component';
+import { HistoryComponent } from './shared/components/history/history.component';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -66,6 +71,10 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     BonusListComponent,
     ClusterIconComponent,
     MarkerIconComponent,
+    RateWrapperComponent,
+    RateComponent,
+    BonusComponent,
+    HistoryComponent
   ],
   imports: [
     HttpClientModule,
@@ -89,6 +98,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient],
       },
     }),
+    MatSliderModule,
   ],
   providers: [
     ApiService,

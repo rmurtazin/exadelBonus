@@ -1,3 +1,4 @@
-<div *ngFor="let bonus of bonuses" class="bonus-list">
-  <app-bonus-detail [bonus]="bonus" class="bonus-detail-component"></app-bonus-detail>
+<div *ngFor="let bonus of bonuses; trackBy: trackByFn" class="bonus-list">
+<!--  <app-bonus-detail [bonus]="bonus" class="bonus-detail-component"></app-bonus-detail>-->
+  <app-bonus [bonus]="bonus" [func]="bonusButtonClickFunc"></app-bonus>
 </div>

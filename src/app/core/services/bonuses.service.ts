@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Observable } from 'rxjs';
+import { Observable, of} from 'rxjs';
 import { ApiService } from '@services/api.service';
+import * as bonuses from 'src/assets/static/bonuses.json';
+import {Util} from 'leaflet';
+import bind = Util.bind;
 
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
@@ -33,5 +36,10 @@ export class BonusesService {
       locations: modifiedBonus.locations,
       tags: modifiedBonus.tags,
     });
+  }
+
+  public rate(id: number, rating: number): Observable<any> {  // TODO: change 'Observable<any>' to 'Observable<IBonus>' when using backend
+    // return this.api.post(`${this.url}/${id}/rate`, {rating});
+    return of(bonuses[1]);
   }
 }

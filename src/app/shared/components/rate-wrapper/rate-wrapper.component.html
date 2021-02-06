@@ -1,0 +1,17 @@
+<div class="discount-row">
+  <ng-content *ngIf="!isForm"></ng-content>
+  <app-rate [widthValue]="this.rating"></app-rate>
+</div>
+<div *ngIf="isForm">
+  <mat-slider
+    class="slider"
+    tickInterval="1"
+    min="0"
+    max="10000"
+    (input)="onMatSliderChange($event)">
+  </mat-slider>
+  <button
+    class="" color="primary"
+    mat-raised-button
+    (click)="rate()"><span class="rate-button">Apply</span></button>
+</div>

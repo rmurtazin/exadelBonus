@@ -9,4 +9,8 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  public applyBonus(): void {
+    alert('Apply bonus (at home)');
+  }
 }

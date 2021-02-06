@@ -6,6 +6,7 @@ import { LoginComponent } from '@components/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { RoleGuard } from './core/guards/role.guard';
 import { NotFoundComponent } from '@components/not-found/not-found.component';
+import {HistoryComponent} from './shared/components/history/history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,11 +17,15 @@ const routes: Routes = [
     canActivateChild: [RoleGuard],
     children: [
       { path: '', component: HomeComponent },
-      { path: 'history', redirectTo: '' },
       { path: 'add-bonus', redirectTo: '' },
       { path: 'bonuses', redirectTo: '' },
       { path: 'users', redirectTo: '' },
     ],
+  },
+  {
+    path: 'history',
+    canActivate: [AuthGuard],
+    component: HistoryComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];

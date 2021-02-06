@@ -1,0 +1,12 @@
+.discount-row {
+  display: flex;
+  position: relative;
+  app-rate {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.rate-button {
+  pointer-events: none;
+}

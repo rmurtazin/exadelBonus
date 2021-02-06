@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { IBonus } from '../../interfaces/bonus.interface';
-import { BonusesService } from '../../services/bonuses.service';
+import {Component, Input, OnInit} from '@angular/core';
+import { IBonus } from '@interfaces/bonus.interface';
+import { BonusesService } from '@services/bonuses.service';
 
 @Component({
   selector: 'app-bonus-list',
@@ -8,6 +8,8 @@ import { BonusesService } from '../../services/bonuses.service';
   styleUrls: ['./bonus-list.component.scss'],
 })
 export class BonusListComponent implements OnInit {
+  @Input() bonusButtonClickFunc: () => void;
+
   public bonuses: IBonus[] = [];
   constructor(public bonusesService: BonusesService) {}
 
@@ -24,5 +26,9 @@ export class BonusListComponent implements OnInit {
       },
       (err) => console.log(`error ${err}`),
     );
+  }
+
+  public trackByFn(index): number {
+    return index;
   }
 }
