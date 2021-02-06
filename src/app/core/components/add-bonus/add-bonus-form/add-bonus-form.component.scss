@@ -1,0 +1,25 @@
+.add-bonus-btn-container {
+  text-align: center;
+}
+
+.add-bonus-form {
+  width: 260px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.add-bonus-input {
+  width: 260px;
+
+  &--description {
+    textarea {
+      min-height: 50px;
+    }
+  }
+}
+
+.add-bonus-input--chip {
+  width: 260px;
+  display: flex;
+  justify-content: space-between;
+}

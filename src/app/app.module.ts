@@ -22,22 +22,15 @@ import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from '@services/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-
-const INTERCEPTOR_PROVIDER: Provider = {
-  provide: HTTP_INTERCEPTORS,
-  multi: true,
-  useClass: AuthInterceptor,
-};
-
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from '@components/login/login.module';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
 import { FooterComponent } from '@components/footer/footer.component';
-
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
+import { AddBonusModule } from '@components/add-bonus/add-bonus.module';
 import { BonusListContainerComponent } from './core/components/bonus-list-container/bonus-list-container.component';
 import { MarkerIconComponent } from './core/components/map/marker-icon/marker-icon.component';
 import { ClusterIconComponent } from './core/components/map/cluster-icon/cluster-icon.component';
@@ -48,6 +41,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor,
+};
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -72,7 +71,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     BonusListViewComponent,
     ClusterIconComponent,
     MarkerIconComponent,
-    DatepickerComponent
+    DatepickerComponent,
   ],
   imports: [
     HttpClientModule,
@@ -96,11 +95,12 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient],
       },
     }),
+    AddBonusModule,
     ReactiveFormsModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [
     ApiService,
