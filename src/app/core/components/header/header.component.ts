@@ -29,8 +29,8 @@ export class HeaderComponent implements OnInit {
     this.isMenuHide = !this.isMenuHide;
   }
   public checkRoute(): boolean {
-    const checkRoutes: string[] = ['/login', '**'];
-    return checkRoutes.includes(this.currentRoute);
+    const checkRoutes: string[] = ['/home', '/add-bonus', '/history', '/bonuses', '/users'];
+    return !checkRoutes.includes(this.currentRoute);
   }
 
   public logout(): void {
