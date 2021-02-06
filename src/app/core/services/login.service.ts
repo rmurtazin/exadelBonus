@@ -25,7 +25,6 @@ export class LoginService {
       tap((user) => {
         this.currentUser = user;
         localStorage.setItem('token', this.currentUser.token);
-        localStorage.setItem('user', JSON.stringify(user));
         return user;
       }),
     );

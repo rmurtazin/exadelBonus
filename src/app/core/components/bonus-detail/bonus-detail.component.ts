@@ -11,16 +11,14 @@ import { LoginService } from '@services/login.service';
 export class BonusDetailComponent implements OnInit {
   @Input() public bonus: IBonus;
 
-  user: IUser;
-  isModeratorOrAdmin = false;
+  public user: IUser;
+  public isModeratorOrAdmin = false;
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();
-    if (this.user !== null) {
-      if (this.user.role === 'moderator' || this.user.role === 'admin') {
-        this.isModeratorOrAdmin = true;
-      }
+    if (this.user ?? false) {
+      this.isModeratorOrAdmin = this.user.role === 'admin' || this.user.role === 'moderator';
     }
   }
 
