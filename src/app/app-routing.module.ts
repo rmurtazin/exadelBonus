@@ -14,14 +14,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     canActivateChild: [RoleGuard],
     children: [
-      { path: '', component: HomeComponent },
+      { path: 'home', component: HomeComponent },
       { path: 'history', redirectTo: '' },
-      { path: 'add-bonus', component: HomeComponent },
+      { path: 'add-bonus', redirectTo: '' },
       { path: 'bonuses', redirectTo: '' },
       { path: 'users', redirectTo: '' },
     ],
   },
-  { path: '**', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
