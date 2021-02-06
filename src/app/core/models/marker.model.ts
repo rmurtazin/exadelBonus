@@ -10,7 +10,7 @@ import { IOffice } from '@interfaces/office.interface';
 import 'leaflet.markercluster';
 
 @Injectable({ providedIn: 'root' })
-export class MarkersService {
+export class MarkerModel {
   private iconSize: PointExpression = [32, 32];
   private iconAnchor: PointExpression = [32, 32];
   private popupAnchor: PointExpression = [-15, -35];

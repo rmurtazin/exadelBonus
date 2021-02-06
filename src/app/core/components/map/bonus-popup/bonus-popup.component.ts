@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { MarkerEventsService } from '@services/markers-events.service';
 import { IBonus } from '@interfaces/bonus.interface';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -15,7 +16,11 @@ export class BonusPopupComponent implements OnInit, OnDestroy {
   public markerLink: string;
   private subscription = new Subscription();
 
-  constructor(private translate: TranslateService, private changeDetector: ChangeDetectorRef) {}
+  constructor(
+    private translate: TranslateService,
+    private changeDetector: ChangeDetectorRef,
+    private markerEventsService: MarkerEventsService,
+  ) {}
 
   public ngOnInit(): void {
     this.markerLink = `http://localhost:4200/home/?lat=${this.latitude}&lon=${this.longitude}`;
@@ -27,12 +32,12 @@ export class BonusPopupComponent implements OnInit, OnDestroy {
     );
   }
 
-  private runChangeDetection(): void {
-    this.changeDetector.detectChanges();
+  public showBonusMap(): void {
+    this.markerEventsService.bonusMarkerClick(this.bonus);
   }
 
-  public log($event): void {
-    console.log($event); // TODO: replace to coll popup method
+  private runChangeDetection(): void {
+    this.changeDetector.detectChanges();
   }
 
   public ngOnDestroy(): void {
