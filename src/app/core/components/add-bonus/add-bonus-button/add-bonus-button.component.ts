@@ -5,7 +5,7 @@ import { Languages } from '@enums/languages.enum';
 @Component({
   selector: 'app-add-bonus-button',
   templateUrl: './add-bonus-button.component.html',
-  styleUrls: ['./add-bonus-button.component.scss']
+  styleUrls: ['./add-bonus-button.component.scss'],
 })
 export class AddBonusButtonComponent {
   @Output() openForm = new EventEmitter<boolean>();

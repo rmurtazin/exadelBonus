@@ -44,10 +44,10 @@ export class AddBonusComponent implements OnDestroy {
     }
   }
 
-  public openForm (): void {
+  public openForm(): void {
     this.isFormActive = true;
   }
-  public closeForm (): void {
+  public closeForm(): void {
     this.isFormActive = false;
   }
 }

@@ -16,6 +16,24 @@
   "addBonus": {
     "addBonusBtn": "Add bonus",
     "goBack": "Back",
-    "saveBonus": "Save"
+    "saveBonus": "Save",
+    "form" : {
+      "vendorName": "Vendor name",
+      "vendorEmail": "Enter vendor email",
+      "phone": "Phone",
+      "bonusType": "Bonus type",
+      "bonusDescription": "Bonus description",
+      "bonusTitle": "Bonus title",
+      "bonusTags": "Bonus tags",
+      "bonusTagPlaceholder": "Enter new tag...",
+      "bonusAddress": "Bonus Address",
+      "bonusAddressPlaceholder": "Enter country, city, town, number",
+      "bonusDateRange": "Enter a bonus date range"
+    }
+  },
+  "loginPage": {
+    "login": "Enter your login",
+    "password": "Enter your password",
+    "signIn": "Sign in"
   }
 }

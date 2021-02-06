@@ -16,6 +16,24 @@
   "addBonus": {
     "addBonusBtn": "Добавить бонус",
     "goBack": "Назад",
-    "saveBonus": "Сохранить"
+    "saveBonus": "Сохранить",
+    "form" : {
+      "vendorName": "Имя вендора",
+      "vendorEmail": "Введите адрес ел. почты вендора",
+      "phone": "Номер телефона",
+      "bonusType": "Тип бонуса",
+      "bonusDescription": "Описание бонуса",
+      "bonusTitle": "Название бонуса",
+      "bonusTags": "Теги бонуса",
+      "bonusTagPlaceholder": "Введите новый тег...",
+      "bonusAddress": "Адрес бонуса",
+      "bonusAddressPlaceholder": "Введите страну, город, улицу, номер",
+      "bonusDateRange": "Введите диапазон даты бонуса"
+    }
+  },
+  "loginPage": {
+    "login": "Введите логин пользователя",
+    "password": "Введите пароль",
+    "signIn": "Войти"
   }
 }
