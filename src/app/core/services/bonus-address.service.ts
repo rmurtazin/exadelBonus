@@ -18,7 +18,7 @@ export class BonusAddressService {
       map(({ results }) => {
         return results;
       }),
-      filter(data=>data.length > 0 && data[0].components.city)
+      filter((data) => data.length > 0 && data[0].components.city),
     );
   }
 }

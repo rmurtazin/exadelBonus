@@ -1,0 +1,29 @@
+<form>
+  <section class="datepicker-container" [formGroup]="range">
+    <mat-form-field appearance="fill" class="datepicker-field">
+      <mat-label>Start date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="pickerStart"
+        (dateChange)="onDateChange()"
+        [max]="range.getRawValue().end"
+        formControlName="start"
+      />
+      <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart></mat-datepicker>
+    </mat-form-field>
+    <span class="wide-dash">&#8212;</span>
+    <mat-form-field appearance="fill" class="datepicker-field">
+      <mat-label>End date</mat-label>
+      <input
+        matInput
+        (dateChange)="onDateChange()"
+        [matDatepicker]="pickerEnd"
+        [min]="range.getRawValue().start"
+        formControlName="end"
+      />
+      <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd></mat-datepicker>
+    </mat-form-field>
+  </section>
+</form>

@@ -1,6 +1,12 @@
 <div>
+  <h3>{{ bonus.company.name }}</h3>
   <h1>{{ bonus.type }}</h1>
-  <a mat-flat-button color="primary" href="{{ markerLink }}" target="_blank">{{
+
+  <!-- TODO: fix "Share with friends" button  -->
+
+  <!-- <a mat-flat-button color="primary" href="{{ markerLink }}" target="_blank">{{
     'popup.detail' | translate
-  }}</a>
+  }}</a> -->
+
+  <button (click)="showBonusMap()">{{ 'popup.detail' | translate }}</button>
 </div>

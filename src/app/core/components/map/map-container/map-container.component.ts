@@ -1,5 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { MarkersService } from '@services/markers.service';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
@@ -9,12 +8,14 @@ import { OfficesService } from '@services/offices.service';
 import { MarkerEventsService } from '@services/markers-events.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToasterService } from '@services/toaster.service';
+import { MarkerModel } from '@models/marker.model';
 import 'leaflet.markercluster';
 
 @Component({
   selector: 'app-map-container',
   templateUrl: './map-container.component.html',
   styleUrls: ['./map-container.component.scss'],
+  providers: [MarkerModel],
 })
 export class MapComponent implements OnDestroy {
   private subscription = new Subscription();
@@ -25,7 +26,7 @@ export class MapComponent implements OnDestroy {
   constructor(
     private officeService: OfficesService,
     private bonusesService: BonusesService,
-    private markersService: MarkersService,
+    private markerModel: MarkerModel,
     private markerEvents: MarkerEventsService,
     private activateRouter: ActivatedRoute,
     private toaster: ToasterService,
@@ -51,7 +52,7 @@ export class MapComponent implements OnDestroy {
   private displayOfficesMarkers(): void {
     this.subscription.add(
       this.officeService.getOffices().subscribe((offices: IOffice[]) => {
-        const bonusesMarkers = this.markersService.createOfficesMarkers(offices);
+        const bonusesMarkers = this.markerModel.createOfficesMarkers(offices);
         layerGroup(bonusesMarkers).addTo(this.map);
       }),
     );
@@ -60,8 +61,8 @@ export class MapComponent implements OnDestroy {
   private displayBonusesMarkers(): void {
     this.subscription.add(
       this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
-        const markers: Marker[] = this.markersService.createBonusesMarkers(bonuses);
-        const markersGroup = this.markersService.createMarkerCluster(markers);
+        const markers: Marker[] = this.markerModel.createBonusesMarkers(bonuses);
+        const markersGroup = this.markerModel.createMarkerCluster(markers);
         markersGroup.addTo(this.map);
         let navigationSuccess = true;
         if (this.queryLatitude && this.queryLongitude) {
