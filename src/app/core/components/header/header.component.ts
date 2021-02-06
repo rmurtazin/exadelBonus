@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { LoginService } from '@services/login.service';
 import { IUser } from '@interfaces/loginInterface';
 import { Languages } from '../../enums/languages.enum';
-import { Router, RouterEvent, Event } from '@angular/router';
+import { Router, RouterEvent, Event, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -10,26 +10,42 @@ import { filter } from 'rxjs/operators';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterContentChecked {
   public language = Languages.English;
   public currentRoute: string;
+  public ifShowMenuButtons: boolean;
   isMenuHide = true;
   user: IUser;
+
   constructor(private loginService: LoginService, private route: Router) {
     route.events
-      .pipe(filter((event: Event): event is RouterEvent => event instanceof RouterEvent))
-      .subscribe((event: RouterEvent) => {
-        this.currentRoute = event.url;
+      .pipe(filter((event: Event): event is RouterEvent => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.urlAfterRedirects;
       });
   }
+
   ngOnInit(): void {
     this.user = this.loginService.getUser();
   }
+
+  public ngAfterContentChecked(): void {
+    this.ifShowMenuButtons = !this.checkRoute();
+  }
+
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
   }
   public checkRoute(): boolean {
-    const checkRoutes: string[] = ['/home', '/add-bonus', '/history', '/bonuses', '/users'];
+    let allChildrenRoutes: string[];
+    let checkRoutes: string[];
+    this.route.config.forEach((route) => {
+      if (route.canActivateChild) {
+        allChildrenRoutes = route.children.map((element) => element.path);
+        checkRoutes = allChildrenRoutes.filter((routeItem) => routeItem !== '')
+          .map((pathItem) => '/' + pathItem);
+      }
+    });
     return checkRoutes.includes(this.currentRoute);
   }
 

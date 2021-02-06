@@ -9,14 +9,14 @@ import { NotFoundComponent } from '@components/not-found/not-found.component';
 import { AddBonusComponent } from '@components/add-bonus/add-bonus.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'home',
+    path: '',
     canActivate: [AuthGuard],
     canActivateChild: [RoleGuard],
     children: [
-      { path: '', component: HomeComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'home' },
+      { path: 'home', component: HomeComponent },
       { path: 'history', redirectTo: '' },
       { path: 'add-bonus', component: AddBonusComponent },
       { path: 'bonuses', redirectTo: '' },
