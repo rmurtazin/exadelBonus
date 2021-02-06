@@ -1,6 +1,6 @@
 {
   "header": {
-    "findePlace": "Найти место",
+    "findPlace": "Найти место",
     "history": "История",
     "addBonus": "Добавить бонус",
     "bonuses": "Бонусы",
@@ -12,5 +12,6 @@
     "go": "Перейти",
     "detail": "Детали"
   },
-  "notFound": "Не найдено"
+  "notFound": "Не найдено",
+  "geolocationError": "Геолокацыя выключена"
 }

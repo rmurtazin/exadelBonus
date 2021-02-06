@@ -2,34 +2,37 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Map, Marker, layerGroup, latLng } from 'leaflet';
+import { Map, Marker, layerGroup, latLng, LatLng, Control, DomUtil } from 'leaflet';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
-import { MarkerEventsService } from '@services/markers-events.service';
+import { MapEventsService } from '@services/map-events.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToasterService } from '@services/toaster.service';
 import { MarkerModel } from '@models/marker.model';
+import { DialogService } from '@services/dialog.service';
 import 'leaflet.markercluster';
 
 @Component({
   selector: 'app-map-container',
   templateUrl: './map-container.component.html',
   styleUrls: ['./map-container.component.scss'],
-  providers: [MarkerModel],
+  providers: [MarkerModel, DialogService],
 })
 export class MapComponent implements OnDestroy {
-  private subscription = new Subscription();
   private map: Map;
+  private custom: Control;
   private queryLatitude: string;
   private queryLongitude: string;
+  private subscription = new Subscription();
 
   constructor(
     private officeService: OfficesService,
     private bonusesService: BonusesService,
     private markerModel: MarkerModel,
-    private markerEvents: MarkerEventsService,
+    private mapEvents: MapEventsService,
     private activateRouter: ActivatedRoute,
     private toaster: ToasterService,
+    private dialogService: DialogService
   ) {}
 
   public mapReadyEvent(map: Map): void {
@@ -38,6 +41,8 @@ export class MapComponent implements OnDestroy {
     this.displayOfficesMarkers();
     this.displayBonusesMarkers();
     this.officeMarkerClickObserver();
+    this.mapViewObserver();
+    this.dialogService.selectPlace();
   }
 
   private getQueryParams(): void {
@@ -92,11 +97,20 @@ export class MapComponent implements OnDestroy {
 
   private officeMarkerClickObserver(): void {
     this.subscription.add(
-      this.markerEvents.officeMarkerClickObserver().subscribe((office: IOffice) => {
+      this.mapEvents.zoomToOfficeObserver().subscribe((office: IOffice) => {
         const location = latLng(office.latitude, office.longitude);
         const zoom = 11;
         this.map.flyTo(location, zoom);
         this.map.closePopup();
+      }),
+    );
+  }
+
+  private mapViewObserver(): void {
+    this.subscription.add(
+      this.mapEvents.changeMapLocationObserver().subscribe((coordinates: LatLng) => {
+        const zoom = 12;
+        this.map.setView(coordinates, zoom);
       }),
     );
   }

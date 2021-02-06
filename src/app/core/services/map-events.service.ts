@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+import { IOffice } from '@interfaces/office.interface';
+import { IBonus } from '@interfaces/bonus.interface';
+import { Subject, Observable } from 'rxjs';
+import { LatLng } from 'leaflet';
+
+@Injectable({ providedIn: 'root' })
+export class MapEventsService {
+  private officeSubject = new Subject<any>();
+  private bonusSubject = new Subject<any>();
+  private locationSubject = new Subject<LatLng>();
+
+  public zoomToOffice(office: IOffice): void {
+    this.officeSubject.next(office);
+  }
+
+  public collBonusInfo(bonus: IBonus): void {
+    this.bonusSubject.next(bonus);
+  }
+
+  public zoomToOfficeObserver(): Observable<any> {
+    return this.officeSubject.asObservable();
+  }
+
+  public collBonusInfoObserver(): Observable<any> {
+    return this.bonusSubject.asObservable();
+  }
+
+  public changeMapLocation(coordinates: LatLng): void {
+    return this.locationSubject.next(coordinates);
+  }
+
+  public changeMapLocationObserver(): Observable<LatLng> {
+    return this.locationSubject.asObservable();
+  }
+}

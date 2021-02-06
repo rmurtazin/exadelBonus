@@ -9,7 +9,6 @@ import 'leaflet.markercluster';
 })
 export class MapViewComponent {
   @Output() public mapReady = new EventEmitter<Map>();
-
   public options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

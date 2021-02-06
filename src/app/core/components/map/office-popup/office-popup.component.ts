@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { IOffice } from '@interfaces/office.interface';
 import { TranslateService } from '@ngx-translate/core';
-import { MarkerEventsService } from '@services/markers-events.service';
+import { MapEventsService } from '@services/map-events.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,7 +14,7 @@ export class OfficePopupComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
 
   constructor(
-    private markerEvents: MarkerEventsService,
+    private markerEvents: MapEventsService,
     private translate: TranslateService,
     private changeDetector: ChangeDetectorRef,
   ) {}
@@ -33,7 +33,7 @@ export class OfficePopupComponent implements OnInit, OnDestroy {
   }
 
   public clickTrigger(): void {
-    this.markerEvents.officeMarkerClick(this.office);
+    this.markerEvents.zoomToOffice(this.office);
   }
 
   public ngOnDestroy(): void {

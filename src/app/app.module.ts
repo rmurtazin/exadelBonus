@@ -12,7 +12,7 @@ import { BonusesService } from '@services/bonuses.service';
 import { LanguageSwitcherDirective } from './shared/directives/language-switcher.directive';
 import { MatButtonModule } from '@angular/material/button';
 import { OfficePopupComponent } from './core/components/map/office-popup/office-popup.component';
-import { MarkerEventsService } from '@services/markers-events.service';
+import { MapEventsService } from '@services/map-events.service';
 import { BonusDetailComponent } from './core/components/bonus-detail/bonus-detail.component';
 import { HeaderComponent } from '@components/header/header.component';
 import { CloseMenuDirective } from './shared/directives/close-menu.directive';
@@ -43,7 +43,11 @@ import { MarkerIconComponent } from './core/components/map/marker-icon/marker-ic
 import { ClusterIconComponent } from './core/components/map/cluster-icon/cluster-icon.component';
 import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ChoosePlaceDialogComponent } from './core/components/choose-place-dialog/choose-place-dialog.component';
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -66,6 +70,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     BonusListComponent,
     ClusterIconComponent,
     MarkerIconComponent,
+    ChoosePlaceDialogComponent,
   ],
   imports: [
     HttpClientModule,
@@ -81,6 +86,10 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     MatExpansionModule,
     LoginModule,
     MatCardModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatTooltipModule,
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
       loader: {
@@ -94,13 +103,14 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     ApiService,
     OfficesService,
     BonusesService,
-    MarkerEventsService,
+    MapEventsService,
     OfficePopupComponent,
     BrowserAnimationsModule,
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
     INTERCEPTOR_PROVIDER,
+    MatDialog,
   ],
   bootstrap: [AppComponent],
 })

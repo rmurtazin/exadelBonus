@@ -1,0 +1,29 @@
+<div class="dialog-container">
+  <mat-radio-group class="radio-group" aria-label="Select an option">
+    <mat-radio-button
+      class="radio-button"
+      value="0"
+      [checked]="selectedPlaceDetection === 0"
+    >
+      Geolocation
+    </mat-radio-button>
+    <mat-radio-button
+      class="radio-button"
+      value="1"
+      [checked]="selectedPlaceDetection === 1"
+      #officeOption
+      >Choose office</mat-radio-button
+    >
+  </mat-radio-group>
+  <mat-form-field appearance="fill">
+    <mat-select appearance="fill" [value]="selectedOffice" [disabled]="!officeOption.checked">
+      <mat-option *ngFor="let office of offices; index as i" [value]="i">
+        <p>
+          {{ office.city }}
+          <small>{{ office.address }}</small>
+        </p>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-flat-button color="primary" (click)="apply()">OK</button>
+</div>

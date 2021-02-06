@@ -42,6 +42,12 @@ export class MarkerModel {
     });
   }
 
+  private userMarkerIco = new Icon({
+    iconUrl: 'assets/icons/user-marker.ico',
+    iconAnchor: this.iconAnchor,
+    iconSize: this.iconSize,
+  });
+
   private iconCreateFunction(cluster): DivIcon {
     const component = this.resolver
       .resolveComponentFactory(ClusterIconComponent)
@@ -53,6 +59,10 @@ export class MarkerModel {
       className: 'cluster-icon',
       iconAnchor: this.iconAnchor,
     });
+  }
+
+  public getUserMarkerIco(): Icon {
+    return this.userMarkerIco;
   }
 
   public createOfficesMarkers(offices: IOffice[]): Marker[] {
