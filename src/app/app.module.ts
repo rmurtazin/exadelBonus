@@ -31,10 +31,16 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
 import { AddBonusModule } from '@components/add-bonus/add-bonus.module';
+import { BonusListContainerComponent } from './core/components/bonus-list-container/bonus-list-container.component';
 import { MarkerIconComponent } from './core/components/map/marker-icon/marker-icon.component';
 import { ClusterIconComponent } from './core/components/map/cluster-icon/cluster-icon.component';
-import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { BonusListViewComponent } from './core/components/bonus-list-view/bonus-list-view.component';
+import { DatepickerComponent } from './shared/components/datepicker/datepicker.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -61,9 +67,11 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     HomeComponent,
     NotFoundComponent,
     FooterComponent,
-    BonusListComponent,
+    BonusListContainerComponent,
+    BonusListViewComponent,
     ClusterIconComponent,
     MarkerIconComponent,
+    DatepickerComponent
   ],
   imports: [
     HttpClientModule,
@@ -88,6 +96,11 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
       },
     }),
     AddBonusModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
   providers: [
     ApiService,
