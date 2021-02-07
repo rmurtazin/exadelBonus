@@ -34,4 +34,10 @@ export class LoginService {
     localStorage.clear();
     this.route.navigate(['login']);
   }
+
+  public getRole(): string {
+    // TODO: rewrite after integration with back
+    // return this.getUser().role;
+    return 'admin';
+  }
 }
