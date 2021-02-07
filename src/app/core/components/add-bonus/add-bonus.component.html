@@ -1,1 +1,9 @@
-<app-add-bonus-form (addAddress)="addAddress($event)" [locations]="locations"></app-add-bonus-form>
+<div class="container">
+  <app-add-bonus-button *ngIf="!isFormActive" (openForm)="openForm()"></app-add-bonus-button>
+  <app-add-bonus-form
+    *ngIf="isFormActive"
+    (addAddress)="addAddress($event)"
+    (closeForm)="closeForm()"
+    [locations]="locations"
+  ></app-add-bonus-form>
+</div>

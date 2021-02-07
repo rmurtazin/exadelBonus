@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class AddBonusComponent implements OnDestroy {
   public subscription: Subscription = new Subscription();
   public locations: ILocation[] = [];
+  public isFormActive = false;
   constructor(public bonusAddressService: BonusAddressService) {}
 
   ngOnDestroy(): void {
@@ -41,5 +42,12 @@ export class AddBonusComponent implements OnDestroy {
         }),
       );
     }
+  }
+
+  public openForm(): void {
+    this.isFormActive = true;
+  }
+  public closeForm(): void {
+    this.isFormActive = false;
   }
 }
