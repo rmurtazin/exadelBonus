@@ -1,11 +1,11 @@
 <div class="container login-form-container">
   <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
     <mat-form-field class="login-input" appearance="fill">
-      <mat-label>Enter your login</mat-label>
+      <mat-label>{{ 'loginPage.login' | translate }}</mat-label>
       <input matInput formControlName="userLogin" autocomplete="off" />
     </mat-form-field>
     <mat-form-field class="login-input" appearance="fill" autocomplete="off">
-      <mat-label>Enter your password</mat-label>
+      <mat-label>{{ 'loginPage.password' | translate }}</mat-label>
       <input matInput formControlName="userPassword" [type]="hide ? 'password' : 'text'" />
       <button
         (click)="onToggleClickPasswordIcon()"
@@ -20,7 +20,7 @@
     </mat-form-field>
     <div class="login-button-container">
       <button class="login-button" mat-flat-button color="primary" [disabled]="myForm.invalid">
-        Sign in
+        {{ 'loginPage.signIn' | translate }}
       </button>
     </div>
   </form>

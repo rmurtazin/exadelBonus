@@ -1,0 +1,41 @@
+.add-bonus-btn-container {
+  text-align: center;
+}
+
+.add-bonus-form {
+  width: 260px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.add-bonus-input {
+  width: 260px;
+
+  &--description {
+    textarea {
+      min-height: 50px;
+    }
+  }
+}
+
+.add-bonus-input--chip {
+  width: 260px;
+  display: flex;
+  justify-content: space-between;
+}
+.form-btn-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  padding: 0px;
+  margin: 10px;
+  @media screen and (min-width: 1280px) {
+    margin: 0px;
+  }
+}
+
+.form-btn-back-container {
+  width: 100%;
+  text-align: center;
+}

@@ -22,6 +22,30 @@ import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from '@services/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginModule } from '@components/login/login.module';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
+import { FooterComponent } from '@components/footer/footer.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
+import { AddBonusModule } from '@components/add-bonus/add-bonus.module';
+import { BonusListContainerComponent } from './core/components/bonus-list-container/bonus-list-container.component';
+import { MarkerIconComponent } from './core/components/map/marker-icon/marker-icon.component';
+import { ClusterIconComponent } from './core/components/map/cluster-icon/cluster-icon.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ChoosePlaceDialogComponent } from './core/components/choose-place-dialog/choose-place-dialog.component';
+import { BonusListViewComponent } from './core/components/bonus-list-view/bonus-list-view.component';
+import { DatepickerComponent } from './shared/components/datepicker/datepicker.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -29,25 +53,6 @@ const INTERCEPTOR_PROVIDER: Provider = {
   useClass: AuthInterceptor,
 };
 
-import { LayoutModule } from '@angular/cdk/layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { LoginModule } from '@components/login/login.module';
-import { NotFoundComponent } from './core/components/not-found/not-found.component';
-import { FooterComponent } from '@components/footer/footer.component';
-
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
-import { MarkerIconComponent } from './core/components/map/marker-icon/marker-icon.component';
-import { ClusterIconComponent } from './core/components/map/cluster-icon/cluster-icon.component';
-import { BonusListComponent } from './core/components/bonus-list/bonus-list.component';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { ChoosePlaceDialogComponent } from './core/components/choose-place-dialog/choose-place-dialog.component';
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -67,10 +72,12 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     HomeComponent,
     NotFoundComponent,
     FooterComponent,
-    BonusListComponent,
+    BonusListContainerComponent,
+    BonusListViewComponent,
     ClusterIconComponent,
     MarkerIconComponent,
     ChoosePlaceDialogComponent,
+    DatepickerComponent,
   ],
   imports: [
     HttpClientModule,
@@ -100,6 +107,12 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     }),
     FormsModule,
     ReactiveFormsModule,
+    AddBonusModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
   ],
   providers: [
     ApiService,
