@@ -16,6 +16,7 @@ import { map } from 'rxjs/operators';
 })
 export class AddBonusFormComponent implements OnInit {
   @Output() addAddress = new EventEmitter<any>();
+  @Output() closeForm = new EventEmitter<boolean>();
   @Input() locations: ILocation[];
   @Input() vendors: IVendor[];
   public myForm: FormGroup;
@@ -56,6 +57,10 @@ export class AddBonusFormComponent implements OnInit {
     this.addAddress.emit(myForm);
   }
 
+  public goBack(): void {
+    this.closeForm.emit(false);
+  }
+
   public onInitForm(): void {
     this.myForm = new FormGroup({
       vendorName: (this.vendorName = new FormControl('', [Validators.required])),
@@ -93,7 +98,7 @@ export class AddBonusFormComponent implements OnInit {
     // TODO: add service for post submitedBonus...
     // TODO: add service to get the current vendor from the base
     // TODO: add post new vendor if it does not existed, and change input vendor name when api will be ready
-    this.router.navigateByUrl('/home/add-bonus');
+    this.goBack();
   }
 
   public onAddTag(event: MatChipInputEvent): void {

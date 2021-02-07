@@ -1,7 +1,12 @@
 <div class="container">
+  <div class="form-btn-back-container">
+    <button class="form-btn-back" (click)="goBack()" mat-stroked-button color="primary">
+      &#8656; {{ 'addBonus.goBack' | translate }}
+    </button>
+  </div>
   <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
     <mat-form-field class="add-bonus-input" appearance="fill">
-      <mat-label>Vendor name</mat-label>
+      <mat-label>{{ 'addBonus.form.vendorName' | translate }}</mat-label>
       <input
         class="add-bonus-input"
         type="text"
@@ -16,11 +21,16 @@
       </mat-autocomplete>
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
-      <mat-label>Enter vendor email</mat-label>
-      <input matInput formControlName="vendorEmail" placeholder="pat@example.com" />
+      <mat-label>{{ 'addBonus.form.vendorEmail' | translate }}</mat-label>
+      <input
+        matInput
+        formControlName="vendorEmail"
+        autocomplete="off"
+        placeholder="pat@example.com"
+      />
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill" aria-autocomplete="off">
-      <mat-label>Phone</mat-label>
+      <mat-label>{{ 'addBonus.form.phone' | translate }}</mat-label>
       <input
         matInput
         placeholder="+00(000) 000-00-00"
@@ -29,7 +39,7 @@
       />
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
-      <mat-label>Bonus type</mat-label>
+      <mat-label>{{ 'addBonus.form.bonusType' | translate }}</mat-label>
       <input
         matInput
         #message
@@ -40,15 +50,15 @@
       />
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
-      <mat-label>Bonus description</mat-label>
+      <mat-label>{{ 'addBonus.form.bonusDescription' | translate }}</mat-label>
       <textarea matInput formControlName="bonusDescription"></textarea>
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
-      <mat-label>Bonus title</mat-label>
+      <mat-label>{{ 'addBonus.form.bonusTitle' | translate }}</mat-label>
       <input autocomplete="off" matInput type="text" formControlName="bonusTitle" />
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
-      <mat-label>Bonus tags</mat-label>
+      <mat-label>{{ 'addBonus.form.bonusTags' | translate }}</mat-label>
       <mat-chip-list #chipList aria-label="Tag selection">
         <mat-chip
           *ngFor="let tag of bonusTags"
@@ -61,7 +71,7 @@
         </mat-chip>
         <input
           formControlName="bonusTags"
-          placeholder="Enter new tag..."
+          placeholder="{{ 'addBonus.form.bonusTagPlaceholder' | translate }}"
           [matChipInputFor]="chipList"
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
           [matChipInputAddOnBlur]="addOnBlur"
@@ -70,7 +80,7 @@
       </mat-chip-list>
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
-      <mat-label>Bonus address</mat-label>
+      <mat-label>{{ 'addBonus.form.bonusAddress' | translate }}</mat-label>
       <mat-chip-list #addressList aria-label="Tag selection">
         <mat-chip
           class="add-bonus-input--chip"
@@ -84,18 +94,17 @@
         </mat-chip>
         <input
           formControlName="bonusAddress"
-          placeholder="Enter new address..."
           [matChipInputFor]="addressList"
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
           [matChipInputAddOnBlur]="addOnBlur"
           (matChipInputTokenEnd)="onAddAddressValue($event)"
-          placeholder="Enter country, town, street, number..."
+          placeholder="{{ 'addBonus.form.bonusAddressPlaceholder' | translate }}"
           autocomplete="off"
         />
       </mat-chip-list>
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
-      <mat-label>Enter a bonus date range</mat-label>
+      <mat-label>{{ 'addBonus.form.bonusDateRange' | translate }}</mat-label>
       <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
         <input matStartDate formControlName="start" placeholder="Start date" />
         <input matEndDate formControlName="end" placeholder="End date" />
@@ -111,7 +120,7 @@
         mat-flat-button
         color="primary"
       >
-        Save
+        {{ 'addBonus.saveBonus' | translate }}
       </button>
     </div>
   </form>

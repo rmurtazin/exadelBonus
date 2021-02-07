@@ -14,6 +14,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
   public locations: ILocation[] = [];
   public vendors: IVendor[] = [];
+  public isFormActive = false;
 
   constructor(public bonusAddressService: BonusAddressService, public vendorsService: VendorsService) {}
 
@@ -50,7 +51,6 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       );
     }
   }
-
   public getVendorsByFirstWord (): void {
     this.vendorsService.getVendors().subscribe(
       data=>{
@@ -59,5 +59,10 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       }
     )
   }
-
+  public openForm(): void {
+    this.isFormActive = true;
+  }
+  public closeForm(): void {
+    this.isFormActive = false;
+  }
 }
