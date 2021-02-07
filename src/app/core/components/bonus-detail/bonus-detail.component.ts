@@ -15,7 +15,7 @@ export class BonusDetailComponent implements OnInit {
   public isModeratorOrAdmin = false;
   constructor(private loginService: LoginService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.user = this.loginService.getUser();
     if (this.user ?? false) {
       this.isModeratorOrAdmin = this.user.role === 'admin' || this.user.role === 'moderator';
