@@ -16,7 +16,6 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public locations: ILocation[] = [];
   public vendors: IVendor[] = [];
   public isFormActive = false;
-  public vendorName;
 
   constructor(
     public bonusAddressService: BonusAddressService,
@@ -35,8 +34,10 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     if (vendorName.length === 1) {
       return this.getVendors();
     }
-    console.log(vendorName)
-      // return this.createVendor();
+  }
+
+  public createNewVendor(event: any) {
+   console.log(event);
   }
 
   public addAddress(myForm: any): void {
@@ -65,13 +66,11 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public getVendors(): void {
     this.vendorsService.getVendors().subscribe((data) => {
       this.vendors = data;
-      console.log('get', data);
     });
   }
   public createVendor(): void {
-    this.vendorsService.createVendor().subscribe((data) => {
-      this.vendors = data;
-      console.log('create', data);
+    this.vendorsService.createVendor().subscribe((data): void => {
+      console.log(data);
     });
   }
   public openForm(): void {

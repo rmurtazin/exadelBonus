@@ -6,8 +6,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { Router } from '@angular/router';
 import { ILocation, ITag, IVendor } from '@interfaces/add-bonus.interface';
 import { Observable } from 'rxjs';
-import { startWith } from 'rxjs/internal/operators/startWith';
-import { map } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-bonus-form',
@@ -18,6 +17,7 @@ export class AddBonusFormComponent implements OnInit {
   @Output() addAddress = new EventEmitter<any>();
   @Output() closeForm = new EventEmitter<boolean>();
   @Output() vendorNameChange = new EventEmitter<any>();
+  @Output() createNewVendor = new EventEmitter<any>();
   @Input() locations: ILocation[];
   @Input() vendors: IVendor[];
   public myForm: FormGroup;
@@ -49,6 +49,10 @@ export class AddBonusFormComponent implements OnInit {
       return this.myForm.get('vendorEmail').setValue(vendorName.vendorEmail);
     }
     this.myForm.get('vendorEmail').reset();
+  }
+
+  onGetNewVendor(event: any): void {
+    this.createNewVendor.emit(event.target.value);
   }
 
   displayFn(vendor: IVendor): string {
@@ -94,16 +98,13 @@ export class AddBonusFormComponent implements OnInit {
   public onSubmit(): void {
     const formValue = this.myForm.value;
     const submitedBonus = {
-      company: {
-        name: formValue.vendorName,
-        phone: formValue.phone,
-        email: formValue.vendorEmail,
-      },
+      company: this.vendorName.value.vendorId,
+      phone: formValue.phone,
       dateStart: formValue.bonusDateRange.start,
       dateEnd: formValue.bonusDateRange.end,
       description: formValue.bonusDescription,
       type: formValue.bonusType,
-      title: formValue.bonusValue,
+      title: formValue.bonusTitle,
       locations: this.locations,
       tags: this.bonusTags.map((tag) => tag.name),
     };
