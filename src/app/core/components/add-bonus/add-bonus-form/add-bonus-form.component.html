@@ -13,10 +13,11 @@
         matInput
         formControlName="vendorName"
         [matAutocomplete]="auto"
+        (ngModelChange)="onVendorNameChange($event)" 
       />
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         <mat-option *ngFor="let vendor of filteredVendors | async" [value]="vendor">
-          {{ vendor.vendorName }}
+          {{ vendor?.vendorName }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>

@@ -13,5 +13,11 @@ export class VendorsService {
           map(data=>data)
       )
     }
+    public createVendor(): Observable<IVendor[]> {
+      // TODO: there must be post method
+      return this.apiService.get(this.url).pipe(
+          map(data=>data[0]),
+      )
+    }
     
 }

@@ -17,10 +17,12 @@ import { map } from 'rxjs/operators';
 export class AddBonusFormComponent implements OnInit {
   @Output() addAddress = new EventEmitter<any>();
   @Output() closeForm = new EventEmitter<boolean>();
+  @Output() vendorNameChange = new EventEmitter<any>();
   @Input() locations: ILocation[];
   @Input() vendors: IVendor[];
   public myForm: FormGroup;
   public vendorName: FormControl;
+  public vendorEmail: FormControl;
   public range: FormGroup;
   public visible = true;
   public selectable = true;
@@ -41,6 +43,14 @@ export class AddBonusFormComponent implements OnInit {
     );
   }
 
+  onVendorNameChange(vendorName: any): void {
+    this.vendorNameChange.emit(vendorName);
+    if (vendorName.vendorId) {
+      return this.myForm.get('vendorEmail').setValue(vendorName.vendorEmail);
+    }
+    this.myForm.get('vendorEmail').reset();
+  }
+
   displayFn(vendor: IVendor): string {
     return vendor && vendor.vendorName ? vendor.vendorName : '';
   }
@@ -53,7 +63,7 @@ export class AddBonusFormComponent implements OnInit {
     );
   }
 
-  public onAddAddress(myForm: FormGroup): void {
+  public onAddAddress(myForm: any): void {
     this.addAddress.emit(myForm);
   }
 
@@ -69,7 +79,10 @@ export class AddBonusFormComponent implements OnInit {
       bonusDescription: new FormControl('', [Validators.required]),
       bonusTags: new FormControl('', [Validators.required]),
       bonusTitle: new FormControl('', [Validators.required]),
-      vendorEmail: new FormControl('', [Validators.required, Validators.email]),
+      vendorEmail: (this.vendorEmail = new FormControl(this.vendorEmail, [
+        Validators.required,
+        Validators.email,
+      ])),
       phone: new FormControl('', [Validators.required]),
       bonusDateRange: (this.range = new FormGroup({
         start: new FormControl('', [Validators.required]),
