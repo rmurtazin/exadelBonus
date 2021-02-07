@@ -4,23 +4,22 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { LoginComponent } from '@components/login/login.component';
 
 import { AuthGuard } from './core/guards/auth.guard';
-import { RoleGuard } from './core/guards/role.guard';
 import { NotFoundComponent } from '@components/not-found/not-found.component';
 import { AddBonusComponent } from '@components/add-bonus/add-bonus.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'home',
+    path: '',
     canActivate: [AuthGuard],
-    canActivateChild: [RoleGuard],
+    canActivateChild: [AuthGuard],
     children: [
-      { path: '', component: HomeComponent },
-      { path: 'history', redirectTo: '' },
-      { path: 'add-bonus', component: AddBonusComponent },
-      { path: 'bonuses', redirectTo: '' },
-      { path: 'users', redirectTo: '' },
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
+      { path: 'home', component: HomeComponent, data: {roles: ['user', 'moderator','admin']} },
+      { path: 'history', redirectTo: '', data: {roles: ['user', 'moderator','admin']} },
+      { path: 'add-bonus', component: AddBonusComponent, data: {roles: ['moderator','admin']} },
+      { path: 'bonuses', redirectTo: '', data: {roles: ['moderator','admin']} },
+      { path: 'users', redirectTo: '', data: {roles: ['admin']} },
     ],
   },
   { path: '**', component: NotFoundComponent },

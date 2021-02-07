@@ -15,10 +15,11 @@ export class LanguageSwitcherDirective {
   @HostListener('click', ['$event'])
   clickEvent(): void {
     const selectedLanguage =
-      this.elementRef.nativeElement.textContent === Languages.Russian
+      this.elementRef.nativeElement.textContent.trim() === Languages.Russian
         ? Languages.English
         : Languages.Russian;
     this.renderer.setProperty(this.elementRef.nativeElement, 'innerHTML', selectedLanguage);
+    localStorage.setItem('language', selectedLanguage);
     this.translate.use(selectedLanguage);
   }
 }

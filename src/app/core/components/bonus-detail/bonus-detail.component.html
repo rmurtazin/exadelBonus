@@ -1,5 +1,8 @@
 <div class="bonus-card-wrapper">
   <mat-card *ngIf="bonus" class="bonus-card">
+    <a *ngIf="isModeratorOrAdmin" [routerLink]="['/home']" [routerLinkActive]="'active'">
+      <img class="update-img" src="assets/images/pencil.png" alt="update bonus" />
+    </a>
     <mat-card-subtitle class="company-name"> {{ bonus.company.name }}</mat-card-subtitle>
     <mat-card-title class="type" class="title">{{ bonus.type | uppercase }}</mat-card-title>
     <mat-card-content class="discription-wrapper">
