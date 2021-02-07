@@ -4,6 +4,7 @@ import { IUser } from '@interfaces/loginInterface';
 import { Languages } from '../../enums/languages.enum';
 import { Router, RouterEvent, Event } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -11,11 +12,14 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public language = Languages.English;
+  public language = localStorage.getItem('language') || Languages.English;
   public currentRoute: string;
   isMenuHide = true;
   user: IUser;
-  constructor(private loginService: LoginService, private route: Router) {
+  constructor(
+    private loginService: LoginService,
+    private route: Router,
+    private translate: TranslateService) {
     route.events
       .pipe(filter((event: Event): event is RouterEvent => event instanceof RouterEvent))
       .subscribe((event: RouterEvent) => {
@@ -24,6 +28,7 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit(): void {
     this.user = this.loginService.getUser();
+    this.translate.use(this.language);
   }
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
