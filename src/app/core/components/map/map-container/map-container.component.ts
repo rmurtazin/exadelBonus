@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Map, Marker, layerGroup, latLng, LatLng, Control, DomUtil } from 'leaflet';
+import { Map, Marker, layerGroup, latLng, LatLng, Control, DomUtil, Icon } from 'leaflet';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
 import { MapEventsService } from '@services/map-events.service';
@@ -36,12 +36,11 @@ export class MapComponent implements OnDestroy {
 
   public mapReadyEvent(map: Map): void {
     this.map = map;
-    this.changeMapViewObserver();
+    this.mapViewObserver();
     this.getQueryParams();
     this.displayOfficesMarkers();
     this.displayBonusesMarkers();
     this.officeMarkerClickObserver();
-    this.mapViewObserver();
   }
 
   private getQueryParams(): void {
@@ -88,7 +87,7 @@ export class MapComponent implements OnDestroy {
     if (!targetMarker) {
       return false;
     }
-    this.setMapView(targetMarker.getLatLng());
+    this.setMapView(targetMarker.getLatLng(), false);
     targetMarker.openPopup();
     return true;
   }
@@ -97,8 +96,7 @@ export class MapComponent implements OnDestroy {
     this.subscription.add(
       this.mapEvents.zoomToOfficeObserver().subscribe((office: IOffice) => {
         const location = latLng(office.latitude, office.longitude);
-        const zoom = 11;
-        this.map.flyTo(location, zoom);
+        this.setMapView(location);
         this.map.closePopup();
       }),
     );
@@ -106,8 +104,8 @@ export class MapComponent implements OnDestroy {
 
   private mapViewObserver(): void {
     this.subscription.add(
-      this.mapEvents.changeMapLocationObserver().subscribe((location: LatLng) => {
-        this.setMapView(location);
+      this.mapEvents.changeMapViewObserver().subscribe((parameters) => {
+        this.setMapView(parameters.location, parameters.showUserMarker);
       }),
     );
   }
@@ -116,17 +114,17 @@ export class MapComponent implements OnDestroy {
     this.locationService.selectPlaceDialog();
   }
 
-  private changeMapViewObserver(): void{
-    this.subscription.add(
-      this.mapEvents.changeMapLocationObserver().subscribe((location: LatLng) => {
-        this.setMapView(location);
-      })
-    );
+  private setMapView(location: LatLng, showUserMarker?: boolean): void{
+    const zoom = 11;
+    this.map.flyTo(location, zoom);
+    if ( showUserMarker ){
+      this.showUserLocation(location);
+    }
   }
 
-  private setMapView(location: LatLng): void{
-    const zoom = 11;
-    this.map.setView(location, zoom);
+  private showUserLocation(location: LatLng): void {
+    const icon: Icon = this.markerModel.getUserMarkerIco();
+    (new Marker(location, { icon })).addTo(this.map);
   }
 
   public ngOnDestroy(): void {

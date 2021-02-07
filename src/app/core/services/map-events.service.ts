@@ -4,11 +4,15 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { Subject, Observable } from 'rxjs';
 import { LatLng } from 'leaflet';
 
+interface ILocationSubject{
+  location: LatLng;
+  showUserMarker: boolean;
+}
 @Injectable({ providedIn: 'root' })
 export class MapEventsService {
   private officeSubject = new Subject<any>();
   private bonusSubject = new Subject<any>();
-  private locationSubject = new Subject<LatLng>();
+  private locationSubject = new Subject<ILocationSubject>();
 
   public zoomToOffice(office: IOffice): void {
     this.officeSubject.next(office);
@@ -26,19 +30,11 @@ export class MapEventsService {
     return this.bonusSubject.asObservable();
   }
 
-  public changeMapLocation(coordinates: LatLng): void {
-    return this.locationSubject.next(coordinates);
+  public setMapView(location: LatLng, showUserMarker: boolean): void {
+    this.locationSubject.next({location, showUserMarker});
   }
 
-  public changeMapLocationObserver(): Observable<LatLng> {
-    return this.locationSubject.asObservable();
-  }
-
-  public setMapView(location: LatLng): void {
-    this.locationSubject.next(location);
-  }
-
-  public changeMapViewObserver(): Observable<LatLng> {
+  public changeMapViewObserver(): Observable<ILocationSubject> {
     return this.locationSubject.asObservable();
   }
 }

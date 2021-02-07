@@ -109,8 +109,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     OfficePopupComponent,
     BrowserAnimationsModule,
     LayoutModule,
-    FormsModule,
-    ReactiveFormsModule,
     INTERCEPTOR_PROVIDER,
     MatDialog,
   ],

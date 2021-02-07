@@ -20,7 +20,6 @@ export class LoginService {
   }
 
   public onLogin(userInput: ILogin): Observable<any> {
-    // here will be function like this.http.post('authApiUrl', userInput)...
     return this.http.get('../../../assets/static/currentUser.json').pipe(
       tap((user) => {
         this.currentUser = user;

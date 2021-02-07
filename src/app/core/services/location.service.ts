@@ -16,28 +16,29 @@ export class LocationService {
     private dialog: MatDialog,
     private mapEventService: MapEventsService
   ) {
-    console.log(localStorage.getItem('currentLatitude'));
     if (!localStorage.getItem('currentLatitude')){
       this.selectPlaceDialog();
     }
   }
 
   public selectPlaceDialog(): void {
-    this.dialogRef = this.dialog.open(ChoosePlaceDialogComponent);
+    this.dialogRef = this.dialog.open(ChoosePlaceDialogComponent, { disableClose: true });
     this.subscription.add(
-      this.dialogRef.afterClosed().subscribe((location: LatLng) => this.setPosition(location))
+      this.dialogRef.afterClosed().subscribe((location) => this.setPosition(location))
     );
   }
 
   private setPosition(location: LatLng): void{
     if (location){
       this.saveToStorage(location);
-      this.mapEventService.setMapView(location);
+      const showUserLocation = false;
+      this.mapEventService.setMapView(location, showUserLocation);
       return;
     }
     this.getUserLocation().subscribe(geolocation => {
       this.saveToStorage(geolocation);
-      this.mapEventService.setMapView(geolocation);
+      const showUserLocation = true;
+      this.mapEventService.setMapView(geolocation, showUserLocation);
     });
   }
 
