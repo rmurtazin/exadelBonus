@@ -14,9 +14,9 @@ export class LocationService {
   constructor(
     private toastr: ToasterService,
     private dialog: MatDialog,
-    private mapEventService: MapEventsService
+    private mapEventService: MapEventsService,
   ) {
-    if (!localStorage.getItem('currentLatitude')){
+    if (!localStorage.getItem('currentLatitude')) {
       this.selectPlaceDialog();
     }
   }
@@ -24,18 +24,18 @@ export class LocationService {
   public selectPlaceDialog(): void {
     this.dialogRef = this.dialog.open(ChoosePlaceDialogComponent, { disableClose: true });
     this.subscription.add(
-      this.dialogRef.afterClosed().subscribe((location) => this.setPosition(location))
+      this.dialogRef.afterClosed().subscribe((location) => this.setPosition(location)),
     );
   }
 
-  private setPosition(location: LatLng): void{
-    if (location){
+  private setPosition(location: LatLng): void {
+    if (location) {
       this.saveToStorage(location);
       const showUserLocation = false;
       this.mapEventService.setMapView(location, showUserLocation);
       return;
     }
-    this.getUserLocation().subscribe(geolocation => {
+    this.getUserLocation().subscribe((geolocation) => {
       this.saveToStorage(geolocation);
       const showUserLocation = true;
       this.mapEventService.setMapView(geolocation, showUserLocation);

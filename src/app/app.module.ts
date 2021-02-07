@@ -99,7 +99,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
       },
     }),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     ApiService,

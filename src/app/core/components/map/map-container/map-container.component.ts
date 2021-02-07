@@ -31,7 +31,7 @@ export class MapComponent implements OnDestroy {
     private mapEvents: MapEventsService,
     private activateRouter: ActivatedRoute,
     private toaster: ToasterService,
-    private locationService: LocationService
+    private locationService: LocationService,
   ) {}
 
   public mapReadyEvent(map: Map): void {
@@ -110,21 +110,21 @@ export class MapComponent implements OnDestroy {
     );
   }
 
-  public changePlace(): void{
+  public changePlace(): void {
     this.locationService.selectPlaceDialog();
   }
 
-  private setMapView(location: LatLng, showUserMarker?: boolean): void{
+  private setMapView(location: LatLng, showUserMarker?: boolean): void {
     const zoom = 11;
     this.map.flyTo(location, zoom);
-    if ( showUserMarker ){
+    if (showUserMarker) {
       this.showUserLocation(location);
     }
   }
 
   private showUserLocation(location: LatLng): void {
     const icon: Icon = this.markerModel.getUserMarkerIco();
-    (new Marker(location, { icon })).addTo(this.map);
+    new Marker(location, { icon }).addTo(this.map);
   }
 
   public ngOnDestroy(): void {

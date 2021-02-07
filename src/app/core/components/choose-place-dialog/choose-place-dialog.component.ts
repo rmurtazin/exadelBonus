@@ -21,7 +21,7 @@ export class ChoosePlaceDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ChoosePlaceDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: LatLng,
-    private officeService: OfficesService
+    private officeService: OfficesService,
   ) {}
 
   public ngOnInit(): void {
@@ -41,7 +41,10 @@ export class ChoosePlaceDialogComponent implements OnInit {
       this.dialogRef.close();
       return;
     }
-    const location = latLng(this.offices[this.selectedOffice].latitude, this.offices[this.selectedOffice].longitude);
+    const location = latLng(
+      this.offices[this.selectedOffice].latitude,
+      this.offices[this.selectedOffice].longitude,
+    );
     this.dialogRef.close(location);
   }
 }

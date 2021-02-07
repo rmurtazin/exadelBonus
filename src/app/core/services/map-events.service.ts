@@ -4,7 +4,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { Subject, Observable } from 'rxjs';
 import { LatLng } from 'leaflet';
 
-interface ILocationSubject{
+interface ILocationSubject {
   location: LatLng;
   showUserMarker: boolean;
 }
@@ -31,7 +31,7 @@ export class MapEventsService {
   }
 
   public setMapView(location: LatLng, showUserMarker: boolean): void {
-    this.locationSubject.next({location, showUserMarker});
+    this.locationSubject.next({ location, showUserMarker });
   }
 
   public changeMapViewObserver(): Observable<ILocationSubject> {

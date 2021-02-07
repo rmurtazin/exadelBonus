@@ -11,7 +11,6 @@ import 'leaflet.markercluster';
 
 @Injectable({ providedIn: 'root' })
 export class MarkerModel {
-
   constructor(private injector: Injector, private resolver: ComponentFactoryResolver) {}
   private iconSize: PointExpression = [32, 32];
   private iconAnchor: PointExpression = [32, 32];
@@ -109,5 +108,4 @@ export class MarkerModel {
       iconCreateFunction: this.iconCreateFunction.bind(this),
     }).addLayers(markers);
   }
-
 }
