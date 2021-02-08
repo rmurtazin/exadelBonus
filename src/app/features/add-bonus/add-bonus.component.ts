@@ -12,7 +12,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./add-bonus.component.scss'],
 })
 export class AddBonusComponent implements OnInit, OnDestroy {
-  public subscription: Subscription = new Subscription();
+  public subscriptionBonusAddress: Subscription = new Subscription();
+  public subscriptionGetVendors: Subscription = new Subscription();
+  public subscriptionCreateVendors: Subscription = new Subscription();
+  public subscriptionCreateBonus: Subscription = new Subscription();
   public locations: ILocation[] = [];
   public vendors: IVendor[] = [];
   public newVendor: IVendor;
@@ -26,9 +29,10 @@ export class AddBonusComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {}
   public ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscriptionBonusAddress.unsubscribe();
+    this.subscriptionGetVendors.unsubscribe();
+    this.subscriptionCreateVendors.unsubscribe();
+    this.subscriptionCreateBonus.unsubscribe();
   }
   public vendorNameChange(vendorName: string): any {
     if (vendorName && vendorName.length === 1) {
@@ -36,12 +40,11 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     }
   }
   public createNewVendor(newVendor: any): any {
-    console.log(newVendor);
     return this.createVendor();
   }
   public addAddress(myForm: any): void {
     if (myForm.value.bonusAddress) {
-      this.subscription.add(
+      this.subscriptionBonusAddress.add(
         this.bonusAddressService.getSearchedAddress(myForm.value.bonusAddress).subscribe((data) => {
           if (data) {
             this.locations.push({
@@ -62,22 +65,26 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       );
     }
   }
-  public getVendors(): void {
-    this.vendorsService.getVendors().subscribe((data) => {
-      this.vendors = data;
-    });
+  public getVendors(): IVendor[] | any {
+    this.subscriptionGetVendors.add(
+      this.vendorsService.getVendors().subscribe((data) => {
+        this.vendors = data;
+      }),
+    );
   }
   public createVendor(): void {
     // TODO here should be post method for created new vendor
-    this.vendorsService.createVendor().subscribe((data) => {
-      this.newVendor = data;
-    });
+    this.subscriptionGetVendors.add(
+      this.vendorsService.createVendor().subscribe((data) => {
+        this.newVendor = data;
+      }),
+    );
   }
   public createBonus(newBonus: INewBonus): void {
-    console.log(newBonus);
-    // this.bonusesService.addBonus().subscribe((data) => {
-    //  console.log(data)
-    // });
+    this.subscriptionCreateBonus
+      .add
+      // this.bonusesService.addBonus(newBonus).subscribe((data) => data)
+      ();
   }
   public openForm(): void {
     this.isFormActive = true;
