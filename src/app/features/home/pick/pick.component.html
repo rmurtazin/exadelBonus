@@ -1,4 +1,11 @@
-<mat-tab-group mat-align-tabs="center">
-  <mat-tab label="Filter">Filter Component</mat-tab>
-  <mat-tab label="Sorting">Sorting Component</mat-tab>
-</mat-tab-group>
+<ng-container *ngIf="isMobile">
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Filter">Filter Component</mat-tab>
+    <mat-tab label="Sorting">Sorting Component</mat-tab>
+  </mat-tab-group>
+</ng-container>
+
+<ng-container *ngIf="!isMobile">
+  <p>Filter Component Desktop</p>
+  <p>Sorting Component Desktop</p>
+</ng-container>
