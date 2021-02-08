@@ -1,3 +1,4 @@
+import { BonusListContainerModule } from './../../shared/components/bonus-list-container/bonus-list-container.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
@@ -9,7 +10,6 @@ import { MapViewComponent } from './map/map-view/map-view.component';
 import { MapComponent } from './map/map-container/map-container.component';
 import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home.component';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -25,12 +25,12 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     CommonModule,
-    RouterModule,
     SharedModule,
     TranslateModule,
     MatIconModule,
     LeafletModule,
+    BonusListContainerModule,
   ],
-  exports: [RouterModule, HomeComponent],
+  exports: [HomeComponent],
 })
 export class HomeModule {}
