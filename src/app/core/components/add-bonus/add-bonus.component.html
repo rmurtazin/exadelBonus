@@ -3,6 +3,7 @@
   <app-add-bonus-form
     *ngIf="isFormActive"
     (addAddress)="addAddress($event)"
+    (createBonus)="createBonus($event)"
     (closeForm)="closeForm()"
     [locations]="locations"
     [vendors]="vendors"

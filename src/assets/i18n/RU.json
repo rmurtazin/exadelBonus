@@ -28,7 +28,8 @@
       "bonusTagPlaceholder": "Введите новый тег...",
       "bonusAddress": "Адрес бонуса",
       "bonusAddressPlaceholder": "Введите страну, город, улицу, номер",
-      "bonusDateRange": "Введите диапазон даты бонуса"
+      "bonusDateRange": "Введите диапазон даты бонуса",
+      "saveNewVendorBtn": "Сохранить новый вендор"
     }
   },
   "loginPage": {

@@ -20,12 +20,13 @@ export class HeaderComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private route: Router,
-    private translate: TranslateService) {
+    private translate: TranslateService,
+  ) {
     route.events
       .pipe(filter((event: Event): event is RouterEvent => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.currentRoute = event.urlAfterRedirects;
-        this.ifShowMenuButtons =  this.checkRoute();
+        this.ifShowMenuButtons = this.checkRoute();
       });
   }
   ngOnInit(): void {

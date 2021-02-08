@@ -17,7 +17,7 @@ import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.com
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { createTranslateLoader } from 'src/app/app.module';
-export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [AddBonusComponent, AddBonusFormComponent, AddBonusButtonComponent],
@@ -35,6 +35,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MatChipsModule,
     NgxMaskModule.forRoot(),
     TranslateModule,
+    MatSelectModule,
   ],
   providers: [BonusAddressService],
   exports: [AddBonusComponent],

@@ -4,7 +4,7 @@
       &#8656; {{ 'addBonus.goBack' | translate }}
     </button>
   </div>
-  <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
+  <form class="add-bonus-form" (ngSubmit)="onSubmit($event)" [formGroup]="myForm">
     <mat-form-field [formGroup]="vendorInfo" class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.vendorName' | translate }}</mat-label>
       <input
@@ -47,7 +47,7 @@
       type="button"
       (click)="onSaveNewVendor($event)"
     >
-      Save new vendor
+    {{ 'addBonus.form.saveNewVendorBtn' | translate }}
     </button>
     <mat-form-field class="add-bonus-input" appearance="fill" aria-autocomplete="off">
       <mat-label>{{ 'addBonus.form.phone' | translate }}</mat-label>
@@ -60,14 +60,11 @@
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.bonusType' | translate }}</mat-label>
-      <input
-        matInput
-        #message
-        maxlength="30"
-        autocomplete="off"
-        formControlName="bonusType"
-        placeholder="Example: pizzeria, beauty salon, cinema..."
-      />
+      <mat-select formControlName="bonusType" name="food">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.bonusDescription' | translate }}</mat-label>

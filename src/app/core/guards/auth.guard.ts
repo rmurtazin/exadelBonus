@@ -32,12 +32,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
     const userRole = this.loginService.getRole();
 
     // TODO: rewrite after integration with back
     // return childRoute.data.roles.include(userRole);
-    return true;   
+    return true;
   }
 
   constructor(private loginService: LoginService, private router: Router) {}
