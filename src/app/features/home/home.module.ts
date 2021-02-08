@@ -12,6 +12,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PickComponent } from './pick/pick.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { CommonModule } from '@angular/common';
     ClusterIconComponent,
     MarkerIconComponent,
     OfficePopupComponent,
+    PickComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     TranslateModule,
     MatIconModule,
+    MatTabsModule,
     LeafletModule,
     BonusListContainerModule,
   ],
