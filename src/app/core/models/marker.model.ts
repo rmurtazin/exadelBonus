@@ -1,8 +1,8 @@
 import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
-import { OfficePopupComponent } from '@components/map/office-popup/office-popup.component';
-import { ClusterIconComponent } from '@components/map/cluster-icon/cluster-icon.component';
-import { BonusPopupComponent } from '@components/map/bonus-popup/bonus-popup.component';
-import { MarkerIconComponent } from '@components/map/marker-icon/marker-icon.component';
+import { OfficePopupComponent } from '../../features/home/map/office-popup/office-popup.component';
+import { ClusterIconComponent } from '../../features/home/map/cluster-icon/cluster-icon.component';
+import { BonusPopupComponent } from '../../features/home/map/bonus-popup/bonus-popup.component';
+import { MarkerIconComponent } from '../../features/home/map/marker-icon/marker-icon.component';
 import { Marker, Icon, PointExpression, DivIcon, MarkerClusterGroup } from 'leaflet';
 import { MarkersIcons } from '@enums/markers-icons.enum';
 import { IBonus } from '@interfaces/bonus.interface';
