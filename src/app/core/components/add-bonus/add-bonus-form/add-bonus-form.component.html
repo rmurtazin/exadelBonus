@@ -5,7 +5,7 @@
     </button>
   </div>
   <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
-    <mat-form-field class="add-bonus-input" appearance="fill">
+    <mat-form-field [formGroup]="vendorInfo" class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.vendorName' | translate }}</mat-label>
       <input
         class="add-bonus-input"
@@ -13,24 +13,42 @@
         matInput
         formControlName="vendorName"
         [matAutocomplete]="auto"
-        (ngModelChange)="onVendorNameChange($event)" 
-        (blur)="onGetNewVendor($event)"
+        (ngModelChange)="onVendorNameChange($event)"
+        [readonly]="readonlyForVendorName"
       />
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         <mat-option *ngFor="let vendor of filteredVendors | async" [value]="vendor">
           {{ vendor?.vendorName }}
         </mat-option>
       </mat-autocomplete>
+      <button type="button" (click)="onOpenEmailInput()" class="new-vendor-btn">&#43;</button>
     </mat-form-field>
-    <mat-form-field class="add-bonus-input" appearance="fill">
+    <mat-form-field
+      *ngIf="vendorEmailVisible"
+      [formGroup]="vendorInfo"
+      class="add-bonus-input"
+      appearance="fill"
+    >
       <mat-label>{{ 'addBonus.form.vendorEmail' | translate }}</mat-label>
       <input
         matInput
         formControlName="vendorEmail"
         autocomplete="off"
         placeholder="pat@example.com"
+        [readonly]="readonlyForVendorEmail"
       />
     </mat-form-field>
+    <button
+      *ngIf="visibleBtnForSaveNewVendor"
+      class="vendor-info-btn"
+      [disabled]="vendorInfo.invalid"
+      mat-flat-button
+      color="primary"
+      type="button"
+      (click)="onSaveNewVendor($event)"
+    >
+      Save new vendor
+    </button>
     <mat-form-field class="add-bonus-input" appearance="fill" aria-autocomplete="off">
       <mat-label>{{ 'addBonus.form.phone' | translate }}</mat-label>
       <input

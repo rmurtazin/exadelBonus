@@ -15,6 +15,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
   public locations: ILocation[] = [];
   public vendors: IVendor[] = [];
+  public newVendor: IVendor;
   public isFormActive = false;
 
   constructor(
@@ -31,13 +32,14 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   }
 
   public vendorNameChange(vendorName: string) {
-    if (vendorName.length === 1) {
+    if (vendorName && vendorName.length === 1) {
       return this.getVendors();
     }
   }
 
-  public createNewVendor(event: any) {
-   console.log(event);
+  public createNewVendor(newVendor: any) {
+   console.log(newVendor);
+   return this.createVendor();
   }
 
   public addAddress(myForm: any): void {
@@ -69,8 +71,9 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     });
   }
   public createVendor(): void {
-    this.vendorsService.createVendor().subscribe((data): void => {
-      console.log(data);
+    // TODO here should be post method for created new vendor
+    this.vendorsService.createVendor().subscribe((data) => {
+      this.newVendor = data;
     });
   }
   public openForm(): void {

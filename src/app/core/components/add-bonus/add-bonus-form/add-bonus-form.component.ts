@@ -20,9 +20,14 @@ export class AddBonusFormComponent implements OnInit {
   @Output() createNewVendor = new EventEmitter<any>();
   @Input() locations: ILocation[];
   @Input() vendors: IVendor[];
+  @Input() newVendor: IVendor;
   public myForm: FormGroup;
+  public vendorInfo: FormGroup;
   public vendorName: FormControl;
   public vendorEmail: FormControl;
+  public vendorEmailVisible = false;
+  public visibleBtnForSaveNewVendor = false;
+  public readonlyForVendorEmail = true;
   public range: FormGroup;
   public visible = true;
   public selectable = true;
@@ -38,21 +43,38 @@ export class AddBonusFormComponent implements OnInit {
     this.onInitForm();
     this.filteredVendors = this.vendorName.valueChanges.pipe(
       startWith(''),
-      map((value) => (typeof value === 'string' ? value : value.name)),
+      map((value) => (typeof value === 'string' ? value : '')),
       map((name) => (name ? this._filter(name) : this.vendors.slice())),
     );
   }
 
   onVendorNameChange(vendorName: any): void {
     this.vendorNameChange.emit(vendorName);
-    if (vendorName.vendorId) {
-      return this.myForm.get('vendorEmail').setValue(vendorName.vendorEmail);
+    if (vendorName && vendorName.vendorId) {
+      this.readonlyForVendorEmail = true;
+      this.vendorEmailVisible = true;
+      this.visibleBtnForSaveNewVendor = false;
+      return this.vendorInfo.get('vendorEmail').setValue(vendorName.vendorEmail);
     }
-    this.myForm.get('vendorEmail').reset();
+    if (this.vendorName.value === '') {
+      this.vendorEmailVisible = false;
+    }
+    this.vendorInfo.get('vendorEmail').reset();
   }
 
-  onGetNewVendor(event: any): void {
-    this.createNewVendor.emit(event.target.value);
+  onOpenEmailInput(): void {
+    this.vendorInfo.get('vendorEmail').reset();
+    this.vendorInfo.get('vendorName').reset();
+    this.vendorEmailVisible = true;
+    this.visibleBtnForSaveNewVendor = true;
+    this.readonlyForVendorEmail = false;
+  }
+
+  onSaveNewVendor(newVendor: any): void {
+    this.createNewVendor.emit(this.vendorInfo.value);
+    this.visibleBtnForSaveNewVendor = false;
+    this.readonlyForVendorEmail = true;
+
   }
 
   displayFn(vendor: IVendor): string {
@@ -77,16 +99,15 @@ export class AddBonusFormComponent implements OnInit {
 
   public onInitForm(): void {
     this.myForm = new FormGroup({
-      vendorName: (this.vendorName = new FormControl('', [Validators.required])),
+      vendorInfo: (this.vendorInfo = new FormGroup({
+        vendorName: (this.vendorName = new FormControl('', [Validators.required])),
+        vendorEmail: (this.vendorEmail = new FormControl('', [Validators.required])),
+      })),
       bonusAddress: new FormControl('', [Validators.required]),
       bonusType: new FormControl('', [Validators.required]),
       bonusDescription: new FormControl('', [Validators.required]),
       bonusTags: new FormControl('', [Validators.required]),
       bonusTitle: new FormControl('', [Validators.required]),
-      vendorEmail: (this.vendorEmail = new FormControl(this.vendorEmail, [
-        Validators.required,
-        Validators.email,
-      ])),
       phone: new FormControl('', [Validators.required]),
       bonusDateRange: (this.range = new FormGroup({
         start: new FormControl('', [Validators.required]),
@@ -98,7 +119,7 @@ export class AddBonusFormComponent implements OnInit {
   public onSubmit(): void {
     const formValue = this.myForm.value;
     const submitedBonus = {
-      company: this.vendorName.value.vendorId,
+      company: this.vendorName.value.vendorId || this.newVendor.vendorId,
       phone: formValue.phone,
       dateStart: formValue.bonusDateRange.start,
       dateEnd: formValue.bonusDateRange.end,
