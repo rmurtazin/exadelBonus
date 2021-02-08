@@ -14,7 +14,7 @@
         formControlName="vendorName"
         [matAutocomplete]="auto"
         (ngModelChange)="onVendorNameChange($event)"
-        [readonly]="readonlyForVendorName"
+        [readonly]="readonly"
       />
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         <mat-option *ngFor="let vendor of filteredVendors | async" [value]="vendor">
@@ -35,7 +35,7 @@
         formControlName="vendorEmail"
         autocomplete="off"
         placeholder="pat@example.com"
-        [readonly]="readonlyForVendorEmail"
+        [readonly]="readonly"
       />
     </mat-form-field>
     <button

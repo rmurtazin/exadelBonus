@@ -35,8 +35,7 @@ export class AddBonusFormComponent implements OnInit {
   public types: string[] = Object.keys(MarkersIcons);
   public vendorEmailVisible = false;
   public visibleBtnForSaveNewVendor = false;
-  public readonlyForVendorEmail = true;
-  public readonlyForVendorName = false;
+  public readonly = true;
   public visible = true;
   public selectable = true;
   public removable = true;
@@ -56,8 +55,7 @@ export class AddBonusFormComponent implements OnInit {
   public onVendorNameChange(vendorName: any): void {
     this.vendorNameChange.emit(vendorName);
     if (vendorName && vendorName.vendorId) {
-      this.readonlyForVendorEmail = true;
-      this.readonlyForVendorName = true;
+      this.readonly = true;
       this.vendorEmailVisible = true;
       this.visibleBtnForSaveNewVendor = false;
       return this.vendorInfo.get('vendorEmail').setValue(vendorName.vendorEmail);
@@ -73,13 +71,13 @@ export class AddBonusFormComponent implements OnInit {
     this.vendorInfo.get('vendorName').reset();
     this.vendorEmailVisible = true;
     this.visibleBtnForSaveNewVendor = true;
-    this.readonlyForVendorEmail = false;
-    this.readonlyForVendorName = false;
+    this.readonly = false;
   }
   public onSaveNewVendor(newVendor: any): void {
     this.createNewVendor.emit(this.vendorInfo.value);
     this.visibleBtnForSaveNewVendor = false;
-    this.readonlyForVendorEmail = true;
+    this.readonly = true;
+    
   }
   public displayFn(vendor: IVendor): string {
     return vendor && vendor.vendorName ? vendor.vendorName : '';
