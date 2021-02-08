@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IBonus } from '../../interfaces/bonus.interface';
+import { IBonus } from '../../../../core/interfaces/bonus.interface';
 
 @Component({
   selector: 'app-bonus-list-view',
