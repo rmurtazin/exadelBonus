@@ -2,38 +2,41 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Map, Marker, layerGroup, latLng } from 'leaflet';
+import { Map, Marker, layerGroup, latLng, LatLng, Control, DomUtil, Icon } from 'leaflet';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
-import { MarkerEventsService } from '@services/markers-events.service';
+import { MapEventsService } from '@services/map-events.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToasterService } from '@services/toaster.service';
 import { MarkerModel } from '@models/marker.model';
+import { LocationService } from '@services/location.service';
 import 'leaflet.markercluster';
 
 @Component({
   selector: 'app-map-container',
   templateUrl: './map-container.component.html',
   styleUrls: ['./map-container.component.scss'],
-  providers: [MarkerModel],
+  providers: [MarkerModel, LocationService],
 })
 export class MapComponent implements OnDestroy {
-  private subscription = new Subscription();
   private map: Map;
   private queryLatitude: string;
   private queryLongitude: string;
+  private subscription = new Subscription();
 
   constructor(
     private officeService: OfficesService,
     private bonusesService: BonusesService,
     private markerModel: MarkerModel,
-    private markerEvents: MarkerEventsService,
+    private mapEvents: MapEventsService,
     private activateRouter: ActivatedRoute,
     private toaster: ToasterService,
+    private locationService: LocationService,
   ) {}
 
   public mapReadyEvent(map: Map): void {
     this.map = map;
+    this.mapViewObserver();
     this.getQueryParams();
     this.displayOfficesMarkers();
     this.displayBonusesMarkers();
@@ -84,21 +87,44 @@ export class MapComponent implements OnDestroy {
     if (!targetMarker) {
       return false;
     }
-    const zoom = 11;
-    this.map.setView(targetMarker.getLatLng(), zoom);
+    this.setMapView(targetMarker.getLatLng(), false);
     targetMarker.openPopup();
     return true;
   }
 
   private officeMarkerClickObserver(): void {
     this.subscription.add(
-      this.markerEvents.officeMarkerClickObserver().subscribe((office: IOffice) => {
+      this.mapEvents.zoomToOfficeObserver().subscribe((office: IOffice) => {
         const location = latLng(office.latitude, office.longitude);
-        const zoom = 11;
-        this.map.flyTo(location, zoom);
+        this.setMapView(location);
         this.map.closePopup();
       }),
     );
+  }
+
+  private mapViewObserver(): void {
+    this.subscription.add(
+      this.mapEvents.changeMapViewObserver().subscribe((parameters) => {
+        this.setMapView(parameters.location, parameters.showUserMarker);
+      }),
+    );
+  }
+
+  public changePlace(): void {
+    this.locationService.selectPlaceDialog();
+  }
+
+  private setMapView(location: LatLng, showUserMarker?: boolean): void {
+    const zoom = 11;
+    this.map.flyTo(location, zoom);
+    if (showUserMarker) {
+      this.showUserLocation(location);
+    }
+  }
+
+  private showUserLocation(location: LatLng): void {
+    const icon: Icon = this.markerModel.getUserMarkerIco();
+    new Marker(location, { icon }).addTo(this.map);
   }
 
   public ngOnDestroy(): void {

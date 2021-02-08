@@ -13,7 +13,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { MatButtonModule } from '@angular/material/button';
-import { MarkerEventsService } from '@services/markers-events.service';
+import { MapEventsService } from '@services/map-events.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from '@services/auth.interceptor';
@@ -79,7 +79,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     ApiService,
     OfficesService,
     BonusesService,
-    MarkerEventsService,
+    MapEventsService,
     BrowserAnimationsModule,
     LayoutModule,
     FormsModule,

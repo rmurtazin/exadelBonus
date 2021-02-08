@@ -12,6 +12,11 @@ import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChoosePlaceDialogComponent } from './map/choose-place-dialog/choose-place-dialog.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,14 +27,19 @@ import { CommonModule } from '@angular/common';
     ClusterIconComponent,
     MarkerIconComponent,
     OfficePopupComponent,
+    ChoosePlaceDialogComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
+    MatButtonModule,
     TranslateModule,
     MatIconModule,
     LeafletModule,
     BonusListContainerModule,
+    MatRadioModule,
+    MatSelectModule,
+    FormsModule,
   ],
   exports: [HomeComponent],
 })
