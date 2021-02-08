@@ -1,5 +1,3 @@
-import { DatepickerModule } from './shared/components/datepicker/datepicker.module';
-import { BonusListContainerModule } from './shared/components/bonus-list-container/bonus-list-container.module';
 import { NotFound } from './features/not-found/not-found.module';
 import { HomeModule } from './features/home/home.module';
 import { FooterModule } from './core/components/footer/footer.module';
@@ -76,8 +74,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FooterModule,
     HomeModule,
     NotFound,
-    BonusListContainerModule,
-    DatepickerModule,
   ],
   providers: [
     ApiService,
