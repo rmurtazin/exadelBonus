@@ -12,15 +12,15 @@ export class ResponsiveService {
     this.checkWidth();
   }
 
-  onMobileChange(status: boolean) {
+  public onMobileChange(status: boolean): void {
     this.isMobile.next(status);
   }
 
-  getMobileStatus(): Observable<any> {
+  public getMobileStatus(): Observable<any> {
     return this.isMobile.asObservable();
   }
 
-  public checkWidth() {
+  public checkWidth(): void {
     let width = window.innerWidth;
     if (width <= 768) {
       this.screenWidth = 'sm';
