@@ -16,10 +16,10 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
-      { path: 'history', redirectTo: '', data: { roles: ['user', 'moderator', 'admin'] } },
+      { path: 'history', redirectTo: 'home', data: { roles: ['user', 'moderator', 'admin'] } },
       { path: 'add-bonus', component: AddBonusComponent, data: { roles: ['moderator', 'admin'] } },
-      { path: 'bonuses', redirectTo: '', data: { roles: ['moderator', 'admin'] } },
-      { path: 'users', redirectTo: '', data: { roles: ['admin'] } },
+      { path: 'bonuses', redirectTo: 'home', data: { roles: ['moderator', 'admin'] } },
+      { path: 'users', redirectTo: 'home', data: { roles: ['admin'] } },
     ],
   },
   { path: '**', component: NotFoundComponent },
