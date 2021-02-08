@@ -12,12 +12,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component';
-import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxMaskModule } from 'ngx-mask';
 import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.component';
-import { HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { createTranslateLoader } from 'src/app/app.module';
+import { TranslateModule } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
+import { BonusListContainerModule } from 'src/app/shared/components/bonus-list-container/bonus-list-container.module';
 
 @NgModule({
   declarations: [AddBonusComponent, AddBonusFormComponent, AddBonusButtonComponent],
@@ -36,6 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
     NgxMaskModule.forRoot(),
     TranslateModule,
     MatSelectModule,
+    BonusListContainerModule,
   ],
   providers: [BonusAddressService],
   exports: [AddBonusComponent],

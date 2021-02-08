@@ -1,6 +1,7 @@
 import { OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
 import { ILocation, INewBonus, IVendor } from '@interfaces/add-bonus.interface';
+import { IBonus } from '@interfaces/bonus.interface';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
 import { VendorsService } from '@services/vendors.service';
@@ -16,6 +17,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public locations: ILocation[] = [];
   public vendors: IVendor[] = [];
   public newVendor: IVendor;
+  public bonuses: IBonus[] = [];
   public isFormActive = false;
 
   constructor(
@@ -24,7 +26,10 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     public bonusesService: BonusesService,
   ) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.getBonuses();
+    console.log(this.bonuses)
+  }
   public ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
@@ -38,6 +43,15 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public createNewVendor(newVendor: any): any {
     console.log(newVendor);
     return this.createVendor();
+  }
+  public getBonuses(): void {
+    this.bonusesService.getBonuses().subscribe(
+      (data: IBonus[]) => {
+        if (data) {
+          this.bonuses = data;
+        }
+      },
+    );
   }
   public addAddress(myForm: any): void {
     if (myForm.value.bonusAddress) {

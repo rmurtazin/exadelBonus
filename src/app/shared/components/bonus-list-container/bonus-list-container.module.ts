@@ -19,6 +19,6 @@ import { MatIconModule } from '@angular/material/icon';
     MatExpansionModule,
     RouterModule,
   ],
-  exports: [BonusListContainerComponent, RouterModule],
+  exports: [BonusListContainerComponent, RouterModule, BonusListViewComponent],
 })
 export class BonusListContainerModule {}
