@@ -10,7 +10,7 @@ header {
     justify-content: space-between;
     margin: 0 10px;
     position: relative;
-    min-height: 40px;
+    min-height: 51px;
   }
 }
 
@@ -195,6 +195,6 @@ a:not(.active) {
   }
 
   .isLogout {
-    margin-right: 0px;
+    margin-right: 0;
   }
 }
