@@ -29,5 +29,13 @@ export interface INewBonus {
   dateStart: string;
   dateEnd: string;
   locations: ILocation[];
-  tags: ITag[];
+  tags: string[];
+}
+
+export interface IBonusFormConfig {
+  closeForm: () => void;
+  addAddress: (myForm: any) => void;
+  vendorNameChange: (vendorName: string) => IVendor[];
+  createNewVendor: (newVendor: string) => IVendor;
+  createBonus: (newBonus: INewBonus) => INewBonus;
 }

@@ -2,13 +2,9 @@
   <app-add-bonus-button *ngIf="!isFormActive" (openForm)="openForm()"></app-add-bonus-button>
   <app-add-bonus-form
     *ngIf="isFormActive"
-    (addAddress)="addAddress($event)"
-    (createBonus)="createBonus($event)"
-    (closeForm)="closeForm()"
+    [bonusFormConfig]="this"
     [locations]="locations"
     [vendors]="vendors"
     [newVendor]="newVendor"
-    (vendorNameChange)="vendorNameChange($event)"
-    (createNewVendor)="createNewVendor($event)"
   ></app-add-bonus-form>
 </div>

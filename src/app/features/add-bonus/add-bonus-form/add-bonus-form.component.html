@@ -4,7 +4,7 @@
       &#8656; {{ 'addBonus.goBack' | translate }}
     </button>
   </div>
-  <form class="add-bonus-form" (ngSubmit)="onSubmit($event)" [formGroup]="myForm">
+  <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
     <mat-form-field [formGroup]="vendorInfo" class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.vendorName' | translate }}</mat-label>
       <input
@@ -24,7 +24,7 @@
       <button type="button" (click)="onOpenEmailInput()" class="new-vendor-btn">&#43;</button>
     </mat-form-field>
     <mat-form-field
-      *ngIf="vendorEmailVisible"
+      [class.hidden]="!vendorEmailVisible"
       [formGroup]="vendorInfo"
       class="add-bonus-input"
       appearance="fill"
@@ -39,7 +39,7 @@
       />
     </mat-form-field>
     <button
-      *ngIf="visibleBtnForSaveNewVendor"
+      [class.hidden]="!visibleBtnForSaveNewVendor"
       class="vendor-info-btn"
       [disabled]="vendorInfo.invalid"
       mat-flat-button
@@ -122,7 +122,7 @@
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.bonusDateRange' | translate }}</mat-label>
-      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+      <mat-date-range-input [formGroup]="myForm" [rangePicker]="picker">
         <input matStartDate formControlName="start" placeholder="Start date" />
         <input matEndDate formControlName="end" placeholder="End date" />
       </mat-date-range-input>
