@@ -28,7 +28,6 @@ export class AddBonusComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.getBonuses();
-    console.log(this.bonuses)
   }
 
   public ngOnDestroy(): void {

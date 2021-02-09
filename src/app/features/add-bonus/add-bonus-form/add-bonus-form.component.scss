@@ -6,6 +6,17 @@
   text-align: center;
   width: 260px;
   margin: 30px auto;
+
+  @media screen and (min-width: 1280px) {
+    width: 400px;
+  }
+}
+
+.add-bonus-button {
+  @media screen and (min-width: 1280px) {
+    width: 150px;
+    font-size: 18px;
+  }
 }
 
 .add-bonus-input {
@@ -17,6 +28,10 @@
       min-height: 50px;
     }
   }
+
+  @media screen and (min-width: 1280px) {
+    width: 400px;
+  }
 }
 
 .add-bonus-input--chip {
@@ -24,6 +39,7 @@
   justify-content: space-between;
   width: 260px;
 }
+
 .form-btn-back {
   display: flex;
   justify-content: center;
@@ -32,7 +48,10 @@
   padding: 0px;
   margin: 10px;
   @media screen and (min-width: 1280px) {
+    width: 100px;
+    height: 30px;
     margin: 0px;
+    font-size: 18px;
   }
 }
 
