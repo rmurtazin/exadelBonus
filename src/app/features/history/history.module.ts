@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HistoryComponent } from './history.component';
 
 @NgModule({
   declarations: [HistoryComponent],
-  imports: [CommonModule],
+  imports: [],
   exports: [HistoryComponent],
 })
 export class HistoryModule {}
