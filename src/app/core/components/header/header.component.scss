@@ -51,6 +51,7 @@ a:not(.active) {
       width: 100%;
       height: 100%;
       opacity: 0.85;
+      cursor: pointer;
 
       &:hover {
         color: $theme-color;
@@ -63,10 +64,11 @@ a:not(.active) {
   height: 100%;
   color: $theme-color;
   display: flex;
+  cursor: pointer;
 
   .logo-img {
     display: inline-block;
-    margin: auto 5px;
+    margin: 5px;
   }
 
   .logo-text {

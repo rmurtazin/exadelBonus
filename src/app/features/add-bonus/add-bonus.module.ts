@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddBonusComponent } from './add-bonus.component';
@@ -12,11 +13,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component';
-import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxMaskModule } from 'ngx-mask';
 import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.component';
-import { HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { createTranslateLoader } from 'src/app/app.module';
+import { TranslateModule } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
@@ -36,8 +35,11 @@ import { MatSelectModule } from '@angular/material/select';
     NgxMaskModule.forRoot(),
     TranslateModule,
     MatSelectModule,
+    RouterModule.forChild([
+      { path: '', component: AddBonusComponent, data: { roles: ['moderator', 'admin'] } },
+    ]),
   ],
   providers: [BonusAddressService],
-  exports: [AddBonusComponent],
+  exports: [AddBonusComponent, RouterModule],
 })
 export class AddBonusModule {}

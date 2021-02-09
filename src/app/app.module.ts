@@ -1,5 +1,3 @@
-import { NotFound } from './features/not-found/not-found.module';
-import { HomeModule } from './features/home/home.module';
 import { FooterModule } from './core/components/footer/footer.module';
 import { HeaderModule } from './core/components/header/header.module';
 import { SharedModule } from './shared/shared.module';
@@ -19,11 +17,10 @@ import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from '@services/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { ReactiveFormsModule } from '@angular/forms';
-import { LoginModule } from './features/login/login.module';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { AddBonusModule } from './features/add-bonus/add-bonus.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -53,7 +50,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     MatButtonModule,
     MatIconModule,
     MatExpansionModule,
-    LoginModule,
     MatCardModule,
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
@@ -63,7 +59,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient],
       },
     }),
-    AddBonusModule,
     ReactiveFormsModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -72,8 +67,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     SharedModule,
     HeaderModule,
     FooterModule,
-    HomeModule,
-    NotFound,
   ],
   providers: [
     ApiService,
