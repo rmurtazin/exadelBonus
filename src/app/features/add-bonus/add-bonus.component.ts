@@ -1,7 +1,7 @@
 import { OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
-import { ILocation, INewBonus, IVendor } from '@interfaces/add-bonus.interface';
 import { IBonus } from '@interfaces/bonus.interface';
+import { ILocation, INewBonus, IVendor } from '@interfaces/add-bonus.interface';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
 import { VendorsService } from '@services/vendors.service';
@@ -30,20 +30,21 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.getBonuses();
     console.log(this.bonuses)
   }
+
   public ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
-  public vendorNameChange(vendorName: string): any {
-    if (vendorName && vendorName.length === 1) {
+
+  public vendorNameChange(vendorName: string): IVendor[] {
+    if (vendorName?.length === 1) {
       return this.getVendors();
     }
   }
-  public createNewVendor(newVendor: any): any {
-    console.log(newVendor);
+
+  public createNewVendor(newVendor: string): IVendor[] {
     return this.createVendor();
   }
+
   public getBonuses(): void {
     this.bonusesService.getBonuses().subscribe(
       (data: IBonus[]) => {
@@ -53,6 +54,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       },
     );
   }
+
   public addAddress(myForm: any): void {
     if (myForm.value.bonusAddress) {
       this.subscription.add(
@@ -76,26 +78,32 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       );
     }
   }
-  public getVendors(): void {
-    this.vendorsService.getVendors().subscribe((data) => {
-      this.vendors = data;
-    });
+
+  public getVendors(): IVendor[] | any {
+    this.subscription.add(
+      this.vendorsService.getVendors().subscribe((data) => {
+        return (this.vendors = data);
+      }),
+    );
   }
-  public createVendor(): void {
+
+  public createVendor(): IVendor | any {
     // TODO here should be post method for created new vendor
-    this.vendorsService.createVendor().subscribe((data) => {
-      this.newVendor = data;
-    });
+    this.subscription.add(
+      this.vendorsService.createVendor().subscribe((data) => {
+        this.newVendor = data;
+      }),
+    );
   }
+
   public createBonus(newBonus: INewBonus): void {
-    console.log(newBonus);
-    // this.bonusesService.addBonus().subscribe((data) => {
-    //  console.log(data)
-    // });
+    this.subscription.add(this.bonusesService.addBonus(newBonus).subscribe((data) => data));
   }
+
   public openForm(): void {
     this.isFormActive = true;
   }
+
   public closeForm(): void {
     this.isFormActive = false;
     this.locations = [];

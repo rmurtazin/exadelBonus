@@ -3,14 +3,14 @@
 }
 
 .add-bonus-form {
+  text-align: center;
   width: 260px;
   margin: 30px auto;
-  text-align: center;
 }
 
 .add-bonus-input {
-  width: 260px;
   position: relative;
+  width: 260px;
 
   &--description {
     textarea {
@@ -20,9 +20,9 @@
 }
 
 .add-bonus-input--chip {
-  width: 260px;
   display: flex;
   justify-content: space-between;
+  width: 260px;
 }
 .form-btn-back {
   display: flex;
@@ -37,24 +37,29 @@
 }
 
 .form-btn-back-container {
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 
 .new-vendor-btn {
-  width: 30px;
-  height: 30px;
   position: absolute;
-  font-size: 25px;
-  line-height: 1;
   right: 0px;
   bottom: 10px;
+  width: 30px;
+  height: 30px;
   padding: 1px;
+  font-size: 25px;
+  line-height: 1;
+  color: #0082ca;
   border-radius: 50% 50% 50% 50%;
   border: 2px solid #0082ca;
-  color: #0082ca;
+  cursor: pointer;
 }
 
 .vendor-info-btn {
   margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
 }

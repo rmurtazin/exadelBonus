@@ -22,7 +22,7 @@ export class BonusesService {
     return this.api.delete(`${this.url}/${id}`);
   }
 
-  public updateBonus(modifiedBonus: IBonus): Observable<any> {
+  public updateBonus(modifiedBonus: IBonus): Observable<IBonus> {
     return this.api.put(`${this.url}/${modifiedBonus.id}`, {
       dateStart: modifiedBonus.dateStart,
       dateEnd: modifiedBonus.dateEnd,

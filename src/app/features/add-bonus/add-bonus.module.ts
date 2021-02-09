@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddBonusComponent } from './add-bonus.component';
@@ -36,8 +37,11 @@ import { BonusListContainerModule } from 'src/app/shared/components/bonus-list-c
     TranslateModule,
     MatSelectModule,
     BonusListContainerModule,
+    RouterModule.forChild([
+      { path: '', component: AddBonusComponent, data: { roles: ['moderator', 'admin'] } },
+    ]),
   ],
   providers: [BonusAddressService],
-  exports: [AddBonusComponent],
+  exports: [AddBonusComponent, RouterModule],
 })
 export class AddBonusModule {}
