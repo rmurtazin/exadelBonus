@@ -20,7 +20,7 @@ export class PickComponent implements OnInit, OnDestroy {
 
   public onResize(): void {
     this.subscriptionResponsive = this.responsiveService.getMobileStatus()
-    .subscribe((isMobile) => {
+    .subscribe((isMobile: boolean) => {
       this.isMobile = isMobile;
     });
   }
