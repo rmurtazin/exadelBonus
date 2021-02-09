@@ -1,6 +1,6 @@
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { Input } from '@angular/core';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MarkersIcons } from '@enums/markers-icons.enum';
