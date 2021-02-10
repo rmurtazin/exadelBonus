@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddBonusComponent } from './add-bonus.component';
@@ -35,8 +36,11 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MatChipsModule,
     NgxMaskModule.forRoot(),
     TranslateModule,
+    RouterModule.forChild([
+      { path: '', component: AddBonusComponent, data: { roles: ['moderator', 'admin'] } },
+    ]),
   ],
   providers: [BonusAddressService],
-  exports: [AddBonusComponent],
+  exports: [AddBonusComponent, RouterModule],
 })
 export class AddBonusModule {}

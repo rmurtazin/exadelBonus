@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { BonusListContainerModule } from './../../shared/components/bonus-list-container/bonus-list-container.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MatIconModule } from '@angular/material/icon';
@@ -31,8 +32,10 @@ import { FilterContainerModule } from 'src/app/shared/components/filter-containe
     MatIconModule,
     LeafletModule,
     BonusListContainerModule,
-    FilterContainerModule,
+    RouterModule.forChild([
+      { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
+    ]),
   ],
-  exports: [HomeComponent],
+  exports: [HomeComponent, RouterModule],
 })
 export class HomeModule {}
