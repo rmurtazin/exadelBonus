@@ -29,7 +29,7 @@ export class BonusesService {
       company: modifiedBonus.company,
       type: modifiedBonus.type,
       rating: modifiedBonus.rating,
-      discount: modifiedBonus.discount,
+      isActive: modifiedBonus.isActive,
       locations: modifiedBonus.locations,
       tags: modifiedBonus.tags,
     });
