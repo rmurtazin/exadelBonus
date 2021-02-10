@@ -13,6 +13,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {RatingModule} from '../../shared/components/rating/rating.module';
+import {DatepickerModule} from '../../shared/components/datepicker/datepicker.module';
 
 @NgModule({
   declarations: [
@@ -24,17 +26,19 @@ import { CommonModule } from '@angular/common';
     MarkerIconComponent,
     OfficePopupComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    TranslateModule,
-    MatIconModule,
-    LeafletModule,
-    BonusListContainerModule,
-    RouterModule.forChild([
-      { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
-    ]),
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        TranslateModule,
+        MatIconModule,
+        LeafletModule,
+        BonusListContainerModule,
+        RouterModule.forChild([
+            {path: '', component: HomeComponent, data: {roles: ['user', 'moderator', 'admin']}},
+        ]),
+        RatingModule,
+        DatepickerModule,
+    ],
   exports: [HomeComponent, RouterModule],
 })
 export class HomeModule {}
