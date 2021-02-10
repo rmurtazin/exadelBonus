@@ -1,12 +1,11 @@
-  <ng-template [onlyForScreen]="'mobile'" >
-    <mat-tab-group mat-align-tabs="center">
-      <mat-tab label="Filter">Filter Component</mat-tab>
-      <mat-tab label="Sorting">Sorting Component</mat-tab>
-    </mat-tab-group>
-  </ng-template>
-  
-  <ng-template [onlyForScreen]="'desktop'">
-    <p>Filter Component</p>
-    <p>Sorting Component</p>
-  </ng-template>
+<ng-template [appResize]="'mobile'">
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Filter">Filter Component</mat-tab>
+    <mat-tab label="Sorting">Sorting Component</mat-tab>
+  </mat-tab-group>
+</ng-template>
 
+<ng-template [appResize]="'desktop'">
+  <p>Filter Component</p>
+  <p>Sorting Component</p>
+</ng-template>
