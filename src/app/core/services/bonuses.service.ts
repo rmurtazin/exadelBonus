@@ -3,6 +3,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { INewBonus } from '@interfaces/add-bonus.interface';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
@@ -14,8 +15,9 @@ export class BonusesService {
     return this.api.get(this.url);
   }
 
-  public addBonus(newBonus: INewBonus): Observable<INewBonus> {
-    return this.api.post(this.url, newBonus);
+  public addBonus(newBonus: INewBonus): Observable<IBonus> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.api.post('https://exadel-bonus-plus-app.herokuapp.com/api/Bonus', JSON.stringify(newBonus), headers);
   }
 
   public removeBonus(id: number): Observable<void> {
