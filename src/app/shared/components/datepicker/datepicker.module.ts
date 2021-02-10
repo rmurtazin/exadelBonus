@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { DatepickerComponent } from './datepicker.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [DatepickerComponent],
@@ -12,7 +13,8 @@ import { CommonModule } from '@angular/common';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDatepickerModule,
+    MatInputModule,
+    MatDatepickerModule
   ],
   exports: [DatepickerComponent],
 })
