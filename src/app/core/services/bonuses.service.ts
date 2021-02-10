@@ -15,7 +15,6 @@ export class BonusesService {
   }
 
   public addBonus(newBonus: INewBonus): Observable<INewBonus> {
-    console.log(newBonus);
     return this.api.post(this.url, newBonus);
   }
 

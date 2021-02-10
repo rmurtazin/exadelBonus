@@ -35,7 +35,7 @@ export interface INewBonus {
 export interface IBonusFormConfig {
   closeForm: () => void;
   addAddress: (myForm: any) => void;
-  vendorNameChange: (vendorName: string) => IVendor[];
-  createNewVendor: (newVendor: string) => IVendor;
-  createBonus: (newBonus: INewBonus) => INewBonus;
+  vendorNameChange: (vendorName: string) => void;
+  createNewVendor: (newVendor: IVendor) => void;
+  createBonus: (newBonus: INewBonus) => void;
 }
