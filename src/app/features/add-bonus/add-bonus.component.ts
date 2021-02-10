@@ -47,7 +47,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
         this.createVendor(newVendor);
       },
       createBonus: (newBonus: INewBonus): void => {
-        this.subscription.add(this.bonusesService.addBonus(newBonus).subscribe())
+        this.subscription.add(this.bonusesService.addBonus(newBonus).subscribe());
       },
     };
   }
