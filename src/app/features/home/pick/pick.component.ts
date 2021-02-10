@@ -1,31 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ResponsiveService } from '@services/responsive.service';
-import { Subscription } from 'rxjs';
+import { Component, ViewChild } from '@angular/core';
+import { ResizeDirective } from '../../../shared/directives/resize.directive';
 
 @Component({
   selector: 'app-pick',
   templateUrl: './pick.component.html',
   styleUrls: ['./pick.component.scss'],
 })
-export class PickComponent implements OnInit, OnDestroy {
-  public isMobile: boolean;
-  private subscriptionResponsive: Subscription;
+export class PickComponent {
+  @ViewChild(ResizeDirective)
+  set appResize (directive: ResizeDirective) {
+    this.extraIngredient = directive.ingredient;
+  };
 
-  constructor(private responsiveService: ResponsiveService) {}
-
-  public ngOnInit(): void {
-    this.onResize();
-    this.responsiveService.checkWidth();
+  ngAfterViewInit() {
+    console.log(this.extraIngredient); // mayo
   }
 
-  public onResize(): void {
-    this.subscriptionResponsive = this.responsiveService.getMobileStatus()
-    .subscribe((isMobile: boolean) => {
-      this.isMobile = isMobile;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    this.subscriptionResponsive.unsubscribe();
-  }
 }
