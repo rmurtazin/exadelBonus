@@ -1,11 +1,7 @@
-interface ICoordinates {
-  latitude: number;
-  longitude: number;
-}
-
 interface ILocation {
   id: number;
-  coordinates: ICoordinates;
+  latitude: number;
+  longitude: number;
   city: string;
   country: string;
   address: string;

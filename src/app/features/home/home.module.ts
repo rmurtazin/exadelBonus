@@ -12,6 +12,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FilterContainerModule } from 'src/app/shared/components/filter-container/filter-container.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CommonModule } from '@angular/common';
     MatIconModule,
     LeafletModule,
     BonusListContainerModule,
+    FilterContainerModule,
   ],
   exports: [HomeComponent],
 })

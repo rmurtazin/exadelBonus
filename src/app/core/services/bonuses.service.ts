@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
   constructor(private api: ApiService) {}
 
-  url = '../../../assets/static/bonuses.json'; // TODO: change url
+  url = 'https://exadel-bonus-plus-app.herokuapp.com/api/Bonus';
 
-  public getBonuses(): Observable<IBonus[]> {
-    return this.api.get(this.url);
+  public getBonuses(query?: string): Observable<IBonus[]> {
+    return this.api.get(this.url, query).pipe(map((data) => data.value));
   }
 
   public addBonus(newBonus: IBonus): Observable<IBonus> {
