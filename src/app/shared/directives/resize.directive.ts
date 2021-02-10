@@ -1,24 +1,46 @@
-import { AfterViewInit, Directive } from '@angular/core';
+import { Directive, OnInit, OnDestroy, Input, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[appResize]'
+  selector: '[onlyForScreen]'
 })
-export class ResizeDirective implements AfterViewInit{
-  public visible: boolean = false;
-  private breakpoint: number = 768;
+export class ResizeDirective implements OnInit, OnDestroy {
+  public listenFunc: Function;
+  @Input('onlyForScreen') configWidth: string;
 
-  ngAfterViewInit(){
+  constructor(
+    private renderer: Renderer2,
+    private templateRef: TemplateRef<any>,
+    private viewContainer: ViewContainerRef
+  ){}
 
+  public ngOnInit(): void {
+    this.displayElement(window.innerWidth);
+    this.renderer.listen('window', 'resize', (event) => {
+        this.displayElement(event.target.visualViewport.width);
+    });
   }
-  
-  public onResize(event) {
-    const widthElement = event.target.innerWidth;
-    if (widthElement >= this.breakpoint) {
-      this.visible = true;
+
+  public displayElement(visualViewportWidth: number): void {
+    if(this.isValidSize(visualViewportWidth)) {
+      if(!this.viewContainer.get(0)) {
+        this.viewContainer.createEmbeddedView(this.templateRef);
+      }
     } else {
-      this.visible = false;
+      this.viewContainer.clear();
     }
   }
 
+  isValidSize(viewportWidth: number): boolean {
+    if (this.configWidth === 'mobile'){
+      return viewportWidth < 768;
+    }
+    if (this.configWidth === 'desktop'){
+      return viewportWidth >= 768;
+    }
+  }
+
+  ngOnDestroy() {
+    this.listenFunc();
+  }
 
 }
