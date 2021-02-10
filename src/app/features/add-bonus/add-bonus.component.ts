@@ -17,6 +17,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public vendors: IVendor[] = [];
   public newVendor: IVendor;
   public isFormActive = false;
+  public bonusFormConfig: IBonusFormConfig;
 
   constructor(
     public bonusAddressService: BonusAddressService,
@@ -24,23 +25,38 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     public bonusesService: BonusesService,
   ) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.initialBonusFormConfig();
+  }
+
+  public initialBonusFormConfig(): void {
+    this.bonusFormConfig = {
+      vendorNameChange: (vendorName: string): void => {
+        if (vendorName?.length === 1) {
+          this.getVendors();
+        }
+      },
+      closeForm: (): void => {
+        this.isFormActive = false;
+        this.locations = [];
+      },
+      addAddress: (myForm: any): void => {
+        this.onAddAddress(myForm);
+      },
+      createNewVendor: (newVendor: IVendor): void => {
+        this.createVendor(newVendor);
+      },
+      createBonus: (newBonus: INewBonus): void => {
+        this.bonusesService.addBonus(newBonus);
+      },
+    };
+  }
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  public vendorNameChange(vendorName: string): IVendor[] {
-    if (vendorName?.length === 1) {
-      return this.getVendors();
-    }
-  }
-
-  public createNewVendor(newVendor: string): IVendor[] {
-    return this.createVendor();
-  }
-
-  public addAddress(myForm: any): void {
+  public onAddAddress(myForm: any): void {
     if (myForm.value.bonusAddress) {
       this.subscription.add(
         this.bonusAddressService.getSearchedAddress(myForm.value.bonusAddress).subscribe((data) => {
@@ -57,40 +73,30 @@ export class AddBonusComponent implements OnInit, OnDestroy {
             });
           } else {
             myForm.get('bonusAddress').reset();
-            // TODO: add notification "No such address exists or address is not complete!"
           }
         }),
       );
     }
   }
 
-  public getVendors(): IVendor[] | any {
+  public getVendors(): void {
     this.subscription.add(
       this.vendorsService.getVendors().subscribe((data) => {
-        return (this.vendors = data);
+        this.vendors = data;
       }),
     );
   }
 
-  public createVendor(): IVendor | any {
+  public createVendor(newVendor: IVendor): void {
     // TODO here should be post method for created new vendor
     this.subscription.add(
-      this.vendorsService.createVendor().subscribe((data) => {
+      this.vendorsService.createVendor(newVendor).subscribe((data) => {
         this.newVendor = data;
       }),
     );
   }
 
-  public createBonus(newBonus: INewBonus): void {
-    this.subscription.add(this.bonusesService.addBonus(newBonus).subscribe((data) => data));
-  }
-
   public openForm(): void {
     this.isFormActive = true;
-  }
-
-  public closeForm(): void {
-    this.isFormActive = false;
-    this.locations = [];
   }
 }

@@ -72,14 +72,14 @@ export class AddBonusFormComponent implements OnInit {
     this.readonly = false;
   }
 
-  public onSaveNewVendor(newVendor: string): void {
-    this.bonusFormConfig.createNewVendor(newVendor);
+  public onSaveNewVendor(): void {
+    this.bonusFormConfig.createNewVendor(this.vendorInfo.value);
     this.visibleBtnForSaveNewVendor = false;
     this.readonly = true;
   }
 
   public displayFn(vendor: IVendor): string {
-    return vendor && vendor.vendorName ? vendor.vendorName : '';
+    return vendor?.vendorName ? vendor.vendorName : '';
   }
 
   private _filter(vendor: string): IVendor[] {

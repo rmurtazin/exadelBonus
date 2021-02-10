@@ -2,7 +2,7 @@
   <app-add-bonus-button *ngIf="!isFormActive" (openForm)="openForm()"></app-add-bonus-button>
   <app-add-bonus-form
     *ngIf="isFormActive"
-    [bonusFormConfig]="this"
+    [bonusFormConfig]="bonusFormConfig"
     [locations]="locations"
     [vendors]="vendors"
     [newVendor]="newVendor"

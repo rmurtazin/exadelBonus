@@ -14,7 +14,7 @@ export class VendorsService {
     return this.apiService.get(this.url);
   }
 
-  public createVendor(): Observable<IVendor> {
+  public createVendor(newVendor: IVendor): Observable<IVendor> {
     // TODO: there must be post method: return this.apiService.get(this.url)
     return this.apiService.get(this.url).pipe(map((data) => data[0]));
   }
