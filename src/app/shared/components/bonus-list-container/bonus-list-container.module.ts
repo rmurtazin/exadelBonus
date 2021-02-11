@@ -9,19 +9,7 @@ import { BonusListContainerComponent } from './bonus-list-container.component';
 
 @NgModule({
   declarations: [BonusListContainerComponent, BonusDetailComponent, BonusListViewComponent],
-<<<<<<< HEAD
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatExpansionModule,
-    RouterModule,
-  ],
-  exports: [BonusListContainerComponent, RouterModule, BonusListViewComponent],
-=======
   imports: [MatCardModule, MatExpansionModule, RouterModule, SharedModule],
-  exports: [BonusListContainerComponent, RouterModule],
->>>>>>> 27dd699d0dad2482fbb5b9c8f41d162192091a15
+  exports: [BonusListContainerComponent, RouterModule, BonusListViewComponent],
 })
 export class BonusListContainerModule {}
