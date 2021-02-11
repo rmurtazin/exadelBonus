@@ -1,5 +1,3 @@
-import { NotFound } from './features/not-found/not-found.module';
-import { HomeModule } from './features/home/home.module';
 import { FooterModule } from './core/components/footer/footer.module';
 import { HeaderModule } from './core/components/header/header.module';
 import { SharedModule } from './shared/shared.module';
@@ -68,8 +66,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     SharedModule,
     HeaderModule,
     FooterModule,
-    HomeModule,
-    NotFound,
   ],
   providers: [
     ApiService,

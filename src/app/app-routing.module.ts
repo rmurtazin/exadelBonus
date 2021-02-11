@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-import { HistoryComponent } from './features/history/history.component';
-import { StatisticsComponent } from './features/statistics/statistics.component';
 
 const routes: Routes = [
   {
