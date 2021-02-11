@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { placeDetectionMethod } from '@enums/place-detection-method';
+import { PlaceDetectionMethod } from '@enums/place-detection-method';
 import { IOffice } from '@interfaces/office.interface';
 import { OfficesService } from '@services/offices.service';
 import { latLng, LatLng } from 'leaflet';
@@ -15,7 +15,7 @@ export class ChoosePlaceDialogComponent implements OnInit {
   public geolocationEnabled = false;
   public offices: IOffice[];
   public selectedOffice = 0;
-  public selectedPlaceDetection = '1';
+  public selectedPlaceDetection: PlaceDetectionMethod = PlaceDetectionMethod.officeLocation;
   private subscription = new Subscription();
 
   constructor(
@@ -37,7 +37,7 @@ export class ChoosePlaceDialogComponent implements OnInit {
   }
 
   apply(): void {
-    if (this.selectedPlaceDetection === placeDetectionMethod.geolocation) {
+    if (Number(this.selectedPlaceDetection) === PlaceDetectionMethod.geolocation) {
       this.dialogRef.close();
       return;
     }

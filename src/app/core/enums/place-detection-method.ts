@@ -1,4 +1,4 @@
-export enum placeDetectionMethod {
-  geolocation = '0',
-  officeLocation = '1',
+export enum PlaceDetectionMethod {
+  geolocation,
+  officeLocation,
 }
