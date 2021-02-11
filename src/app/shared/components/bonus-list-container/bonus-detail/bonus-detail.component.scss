@@ -1,0 +1,41 @@
+.bonus-card-wrapper {
+  padding: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+
+  .bonus-card {
+    .mat-card-title {
+      color: #0082ca;
+    }
+    .rating-discount-wrapper {
+      display: flex;
+
+      .spacer {
+        flex: 1 1 auto;
+      }
+    }
+
+    .button-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 10px;
+
+      .apply-button {
+        min-width: 40%;
+        margin: 20px;
+      }
+    }
+
+    .contacts {
+      box-shadow: none;
+    }
+
+    .update-img {
+      position: absolute;
+      right: 16px;
+      width: 30px;
+      border: 1px solid #0082ca;
+      border-radius: 4px;
+    }
+  }
+}
