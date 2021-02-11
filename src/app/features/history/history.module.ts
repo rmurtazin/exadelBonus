@@ -6,7 +6,7 @@ import { HistoryComponent } from './history.component';
   declarations: [HistoryComponent],
   imports: [
     RouterModule.forChild([
-      { path: '', component: HistoryComponent, data: { roles: ['user', 'moderator', 'admin'] }, }
+      { path: '', component: HistoryComponent, data: { roles: ['user', 'moderator', 'admin'] } },
     ]),
   ],
   exports: [HistoryComponent],

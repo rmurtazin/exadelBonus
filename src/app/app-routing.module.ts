@@ -19,15 +19,18 @@ const routes: Routes = [
       },
       {
         path: 'history',
-        loadChildren: () => import('./features/history/history.module').then((m) => m.HistoryModule),
+        loadChildren: () =>
+          import('./features/history/history.module').then((m) => m.HistoryModule),
       },
       {
         path: 'add-bonus',
-        loadChildren: () => import('./features/add-bonus/add-bonus.module').then((m) => m.AddBonusModule),
+        loadChildren: () =>
+          import('./features/add-bonus/add-bonus.module').then((m) => m.AddBonusModule),
       },
       {
         path: 'statistics',
-        loadChildren: () => import('./features/statistics/statistics.module').then((m) => m.StatisticsModule),
+        loadChildren: () =>
+          import('./features/statistics/statistics.module').then((m) => m.StatisticsModule),
       },
     ],
   },
