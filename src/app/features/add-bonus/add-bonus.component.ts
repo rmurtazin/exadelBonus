@@ -63,7 +63,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.bonusesService.getBonuses().subscribe(
       (data: IBonus[]) => {
         if (data) {
-          this.bonuses = data;
+          this.bonuses = data.filter((_, idx)=>idx < 5)
         }
       },
     );
