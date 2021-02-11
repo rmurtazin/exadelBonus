@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import {Observable, of} from 'rxjs';
+import {Observable, of, from} from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { map } from 'rxjs/operators';
 import { apiLinks } from './constants';
@@ -14,7 +14,8 @@ export class BonusesService {
   private url = apiLinks.bonus;
 
   public getBonuses(query?: string): Observable<IBonus[]> {
-    return this.api.get(this.url, query).pipe(map((data) => data.value));
+    // return this.api.get(this.url, query).pipe(map((data) => data.value));
+    return from(Array(bonuses.default)).pipe(delay(1000));
   }
 
   public addBonus(newBonus: IBonus): Observable<IBonus> {
