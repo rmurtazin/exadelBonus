@@ -28,8 +28,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { HistoryModule } from './features/history/history.module';
-import { StatisticsModule } from './features/statistics/statistics.module';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -72,8 +70,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FooterModule,
     HomeModule,
     NotFound,
-    HistoryModule,
-    StatisticsModule,
   ],
   providers: [
     ApiService,

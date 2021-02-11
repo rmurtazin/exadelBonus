@@ -21,15 +21,16 @@ const routes: Routes = [
       },
       {
         path: 'history',
-        component: HistoryComponent,
-        data: { roles: ['user', 'moderator', 'admin'] },
-      }, // TODO: lazy loading
+        loadChildren: () => import('./features/history/history.module').then((m) => m.HistoryModule),
+      },
       {
         path: 'add-bonus',
-        loadChildren: () =>
-          import('./features/add-bonus/add-bonus.module').then((m) => m.AddBonusModule),
+        loadChildren: () => import('./features/add-bonus/add-bonus.module').then((m) => m.AddBonusModule),
       },
-      { path: 'statistics', component: StatisticsComponent, data: { roles: ['admin'] } }, // TODO: lazy loading
+      {
+        path: 'statistics',
+        loadChildren: () => import('./features/statistics/statistics.module').then((m) => m.StatisticsModule),
+      },
     ],
   },
   {
