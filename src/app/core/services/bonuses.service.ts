@@ -3,12 +3,13 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { INewBonus } from '@interfaces/add-bonus.interface';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { apiLinks } from './constants';
+import { ToasterService } from './toaster.service';
 
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private toasterService: ToasterService) {}
 
   private url = apiLinks.bonus;
 
@@ -18,7 +19,17 @@ export class BonusesService {
 
   public addBonus(newBonus: INewBonus): Observable<IBonus> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.api.post('https://exadel-bonus-plus-app.herokuapp.com/api/Bonus', JSON.stringify(newBonus), headers);
+    return this.api
+      .post(
+        'https://exadel-bonus-plus-app.herokuapp.com/api/Bonus',
+        JSON.stringify(newBonus),
+        headers,
+      )
+      .pipe(
+        catchError(async (err) =>
+          this.toasterService.showError(err, 'Some problems with saving bonus!'),
+        ),
+      );
   }
 
   public removeBonus(id: number): Observable<void> {

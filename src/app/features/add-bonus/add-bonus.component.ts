@@ -32,7 +32,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.initialBonusFormConfig();
   }
 
-  public ngOnDestroy (): void {
+  public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
@@ -54,19 +54,16 @@ export class AddBonusComponent implements OnInit, OnDestroy {
         this.createVendor(newVendor);
       },
       createBonus: (newBonus: INewBonus): void => {
-        this.subscription.add(this.bonusesService.addBonus(newBonus).subscribe())
+        this.subscription.add(this.bonusesService.addBonus(newBonus).subscribe());
       },
     };
   }
 
   public getBonuses(): void {
-    this.bonusesService.getBonuses().subscribe(
-      (data: IBonus[]) => {
-        if (data) {
-          this.bonuses = data.filter((_, idx)=>idx < 5)
-        }
-      },
-    );
+    const bonusesCountForDisplay = '5';
+    this.bonusesService.getBonuses(bonusesCountForDisplay).subscribe((data) => {
+      this.bonuses = data;
+    });
   }
 
   public onAddAddress(myForm: any): void {
