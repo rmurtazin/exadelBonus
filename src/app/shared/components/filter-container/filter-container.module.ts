@@ -9,7 +9,7 @@ import { FilterService } from '@services/filter.service';
 
 @NgModule({
   declarations: [FilterContainerComponent],
-  imports: [CommonModule, SharedModule, CityInputModule, TagsInputModule, DatepickerModule],
+  imports: [SharedModule, CityInputModule, TagsInputModule, DatepickerModule],
   providers: [FilterService],
   exports: [FilterContainerComponent],
 })

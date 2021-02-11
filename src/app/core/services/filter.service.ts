@@ -46,7 +46,6 @@ export class FilterService {
   }
 
   public addDateToQuery(date: any): void {
-    console.log(date);
     this.queryParams.start = date?.start && new Date(date.start).toLocaleString();
     this.queryParams.end = date?.end && new Date(date.end).toLocaleString();
     this.sendFilterBonusRequest();

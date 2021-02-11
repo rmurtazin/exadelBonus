@@ -7,7 +7,9 @@
     <mat-card-title class="type" class="title">{{ bonus.type | uppercase }}</mat-card-title>
     <mat-card-content class="discription-wrapper">
       <p class="discription">{{ bonus.description }}</p>
-
+      <p>
+        Phone: <span> {{ bonus.phone }} </span>
+      </p>
       <div class="rating-discount-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
         <!-- TODO: change icons to component with rating -->
         <span class="stars">
@@ -16,7 +18,6 @@
           <mat-icon>star</mat-icon>
         </span>
         <span class="spacer"></span>
-        <span>Discount: {{ bonus.discount }}%</span>
       </div>
     </mat-card-content>
     <div class="button-wrapper">
@@ -24,19 +25,5 @@
         Apply
       </button>
     </div>
-
-    <mat-expansion-panel class="contacts">
-      <mat-expansion-panel-header> Contacts </mat-expansion-panel-header>
-      <mat-card-content>
-        <div>
-          E-mail: <span> {{ bonus.company.email }} </span>
-        </div>
-        <div>
-          Phone: <span> {{ bonus.company.phone }} </span>
-        </div>
-
-        <p>Expiration date: {{ bonus.dateEnd }}</p>
-      </mat-card-content>
-    </mat-expansion-panel>
   </mat-card>
 </div>
