@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StarsComponent } from './stars.component';
+import { FilterContainerComponent } from './filter-container.component';
 
-describe('RateComponent', () => {
-  let component: StarsComponent;
-  let fixture: ComponentFixture<StarsComponent>;
+describe('FilterContainerComponent', () => {
+  let component: FilterContainerComponent;
+  let fixture: ComponentFixture<FilterContainerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StarsComponent],
+      declarations: [FilterContainerComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StarsComponent);
+    fixture = TestBed.createComponent(FilterContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

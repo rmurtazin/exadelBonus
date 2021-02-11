@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StarsComponent } from './stars.component';
+import { CityInputComponent } from './city-input.component';
 
-describe('RateComponent', () => {
-  let component: StarsComponent;
-  let fixture: ComponentFixture<StarsComponent>;
+describe('CityInputComponent', () => {
+  let component: CityInputComponent;
+  let fixture: ComponentFixture<CityInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StarsComponent],
+      declarations: [CityInputComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StarsComponent);
+    fixture = TestBed.createComponent(CityInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

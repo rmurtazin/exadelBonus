@@ -10,9 +10,9 @@ import { MapComponent } from './map/map-container/map-container.component';
 import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {RatingModule} from '../../shared/components/rating/rating.module';
-import {DatepickerModule} from '../../shared/components/datepicker/datepicker.module';
+import { ChoosePlaceDialogModule } from 'src/app/shared/components/choose-place-dialog/choose-place-dialog.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FilterContainerModule } from 'src/app/shared/components/filter-container/filter-container.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +28,8 @@ import {DatepickerModule} from '../../shared/components/datepicker/datepicker.mo
     SharedModule,
     LeafletModule,
     BonusListContainerModule,
+    ChoosePlaceDialogModule,
+    MatDialogModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
     ]),

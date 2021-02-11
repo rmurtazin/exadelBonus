@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StarsComponent } from './stars.component';
+import { TagsInputComponent } from './tags-input.component';
 
-describe('RateComponent', () => {
-  let component: StarsComponent;
-  let fixture: ComponentFixture<StarsComponent>;
+describe('TagsInputComponent', () => {
+  let component: TagsInputComponent;
+  let fixture: ComponentFixture<TagsInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StarsComponent],
+      declarations: [TagsInputComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StarsComponent);
+    fixture = TestBed.createComponent(TagsInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

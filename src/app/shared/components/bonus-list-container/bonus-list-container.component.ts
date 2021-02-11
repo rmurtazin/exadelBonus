@@ -3,7 +3,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
-import { MarkerEventsService } from '@services/markers-events.service';
+import { MapEventsService } from '@services/map-events.service';
 
 @Component({
   selector: 'app-bonus-list-container',
@@ -19,7 +19,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
 
   constructor(
     public bonusesService: BonusesService,
-    public markerEventsService: MarkerEventsService,
+    public mapEventsService: MapEventsService,
     public toasterService: ToasterService,
   ) {}
 
@@ -40,7 +40,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   }
 
   public getBonusMap(): void {
-    this.subscriptionBonusMap = this.markerEventsService.bonusMarkerClickObserver().subscribe(
+    this.subscriptionBonusMap = this.mapEventsService.collBonusInfoObserver().subscribe(
       (bonus: IBonus) => {
         if (bonus) {
           this.bonusMap = bonus;

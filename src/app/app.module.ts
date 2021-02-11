@@ -1,3 +1,5 @@
+import { NotFound } from './features/not-found/not-found.module';
+import { HomeModule } from './features/home/home.module';
 import { FooterModule } from './core/components/footer/footer.module';
 import { HeaderModule } from './core/components/header/header.module';
 import { SharedModule } from './shared/shared.module';
@@ -11,7 +13,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { MatButtonModule } from '@angular/material/button';
-import { MarkerEventsService } from '@services/markers-events.service';
+import { MapEventsService } from '@services/map-events.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from '@services/auth.interceptor';
@@ -26,6 +28,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { HistoryModule } from './features/history/history.module';
+import { StatisticsModule } from './features/statistics/statistics.module';
 import { RatingModule } from './shared/components/rating/rating.module';
 
 const INTERCEPTOR_PROVIDER: Provider = {
@@ -67,13 +71,17 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     SharedModule,
     HeaderModule,
     FooterModule,
+    HomeModule,
+    NotFound,
+    HistoryModule,
+    StatisticsModule,
     RatingModule
   ],
   providers: [
     ApiService,
     OfficesService,
     BonusesService,
-    MarkerEventsService,
+    MapEventsService,
     BrowserAnimationsModule,
     LayoutModule,
     FormsModule,
