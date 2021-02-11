@@ -1,7 +1,6 @@
+import { RouterModule } from '@angular/router';
 import { BonusListContainerModule } from './../../shared/components/bonus-list-container/bonus-list-container.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
 import { OfficePopupComponent } from './map/office-popup/office-popup.component';
 import { MarkerIconComponent } from './map/marker-icon/marker-icon.component';
 import { ClusterIconComponent } from './map/cluster-icon/cluster-icon.component';
@@ -11,9 +10,10 @@ import { MapComponent } from './map/map-container/map-container.component';
 import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PickComponent } from './pick/pick.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ChoosePlaceDialogModule } from 'src/app/shared/components/choose-place-dialog/choose-place-dialog.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -27,14 +27,16 @@ import { MatTabsModule } from '@angular/material/tabs';
     PickComponent,
   ],
   imports: [
-    CommonModule,
     SharedModule,
-    TranslateModule,
-    MatIconModule,
     MatTabsModule,
     LeafletModule,
     BonusListContainerModule,
+    ChoosePlaceDialogModule,
+    MatDialogModule,
+    RouterModule.forChild([
+      { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
+    ]),
   ],
-  exports: [HomeComponent],
+  exports: [HomeComponent, RouterModule],
 })
 export class HomeModule {}

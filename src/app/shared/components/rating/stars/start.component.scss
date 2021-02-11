@@ -1,0 +1,42 @@
+.rating {
+  display: inline-block;
+  .slider {
+    margin: 0 auto;
+    max-width: 360px;
+    width: 200px;
+  }
+  .apply-button {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+.stars-container {
+  position: relative;
+  width: 100px;
+  margin: 0 auto;
+  height: 40px;
+  .curtain {
+    height: 40px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+  }
+  .stars {
+    width: 100px;
+    position: absolute;
+    display: flex;
+    &:not(.full) {
+      z-index: 3;
+    }
+    &.full {
+      color: yellow;
+      z-index: 1;
+    }
+    .star {
+      font-size: 37px;
+      margin-right: 8px;
+    }
+  }
+}

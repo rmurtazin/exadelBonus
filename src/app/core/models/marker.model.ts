@@ -11,6 +11,7 @@ import 'leaflet.markercluster';
 
 @Injectable({ providedIn: 'root' })
 export class MarkerModel {
+  constructor(private injector: Injector, private resolver: ComponentFactoryResolver) {}
   private iconSize: PointExpression = [32, 32];
   private iconAnchor: PointExpression = [32, 32];
   private popupAnchor: PointExpression = [-15, -35];
@@ -22,7 +23,11 @@ export class MarkerModel {
     popupAnchor: this.popupAnchor,
   });
 
-  constructor(private injector: Injector, private resolver: ComponentFactoryResolver) {}
+  private userMarkerIco = new Icon({
+    iconUrl: 'assets/icons/user-marker.ico',
+    iconAnchor: this.iconAnchor,
+    iconSize: this.iconSize,
+  });
 
   private bonusMarkerIco(type: string): DivIcon {
     let icon = MarkersIcons.default;
@@ -55,6 +60,10 @@ export class MarkerModel {
     });
   }
 
+  public getUserMarkerIco(): Icon {
+    return this.userMarkerIco;
+  }
+
   public createOfficesMarkers(offices: IOffice[]): Marker[] {
     return offices.map((office: IOffice) => {
       const component = this.resolver
@@ -74,10 +83,10 @@ export class MarkerModel {
         .resolveComponentFactory(BonusPopupComponent)
         .create(this.injector);
       component.instance.bonus = bonus;
-      component.instance.latitude = location.coordinates.latitude;
-      component.instance.longitude = location.coordinates.longitude;
+      component.instance.latitude = location.latitude;
+      component.instance.longitude = location.longitude;
       component.changeDetectorRef.detectChanges();
-      return new Marker([location.coordinates.latitude, location.coordinates.longitude], {
+      return new Marker([location.latitude, location.longitude], {
         icon: this.bonusMarkerIco(bonus.type),
         title: bonus.company.name,
         alt: bonus.company.name,

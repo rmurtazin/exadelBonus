@@ -13,7 +13,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { OfficesService } from '@services/offices.service';
 import { BonusesService } from '@services/bonuses.service';
 import { MatButtonModule } from '@angular/material/button';
-import { MarkerEventsService } from '@services/markers-events.service';
+import { MapEventsService } from '@services/map-events.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from '@services/auth.interceptor';
@@ -21,15 +21,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginModule } from './features/login/login.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { AddBonusModule } from './features/add-bonus/add-bonus.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { HistoryModule } from './features/history/history.module';
+import { StatisticsModule } from './features/statistics/statistics.module';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -53,7 +53,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     MatButtonModule,
     MatIconModule,
     MatExpansionModule,
-    LoginModule,
     MatCardModule,
     TranslateModule.forRoot({
       defaultLanguage: 'EN',
@@ -63,7 +62,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient],
       },
     }),
-    AddBonusModule,
     ReactiveFormsModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -74,12 +72,14 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FooterModule,
     HomeModule,
     NotFound,
+    HistoryModule,
+    StatisticsModule,
   ],
   providers: [
     ApiService,
     OfficesService,
     BonusesService,
-    MarkerEventsService,
+    MapEventsService,
     BrowserAnimationsModule,
     LayoutModule,
     FormsModule,
