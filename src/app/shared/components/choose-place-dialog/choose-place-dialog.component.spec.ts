@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StarsComponent } from './stars.component';
+import { ChoosePlaceDialogComponent } from './choose-place-dialog.component';
 
-describe('RateComponent', () => {
-  let component: StarsComponent;
-  let fixture: ComponentFixture<StarsComponent>;
+describe('ChoosePlaceDialogComponent', () => {
+  let component: ChoosePlaceDialogComponent;
+  let fixture: ComponentFixture<ChoosePlaceDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StarsComponent],
+      declarations: [ChoosePlaceDialogComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StarsComponent);
+    fixture = TestBed.createComponent(ChoosePlaceDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
