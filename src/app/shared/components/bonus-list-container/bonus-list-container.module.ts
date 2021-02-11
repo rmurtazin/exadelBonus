@@ -5,20 +5,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BonusListViewComponent } from './bonus-list-view/bonus-list-view.component';
-import { BonusDetailComponent } from './bonus-detail/bonus-detail.component';
 import { BonusListContainerComponent } from './bonus-list-container.component';
 import { MatIconModule } from '@angular/material/icon';
+import { BonusComponent } from './bonus/bonus.component';
+import { RatingModule } from '../rating/rating.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-  declarations: [BonusListContainerComponent, BonusDetailComponent, BonusListViewComponent],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatExpansionModule,
-    RouterModule,
-  ],
+  declarations: [BonusListContainerComponent, BonusListViewComponent, BonusComponent],
+    imports: [
+        CommonModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatExpansionModule,
+        RouterModule,
+        RatingModule,
+        MatProgressSpinnerModule
+    ],
   exports: [BonusListContainerComponent, RouterModule],
 })
 export class BonusListContainerModule {}

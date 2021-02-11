@@ -3,6 +3,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 import {Observable, of} from 'rxjs';
 import { ApiService } from '@services/api.service';
 import * as bonuses from 'src/assets/static/bonuses.json';
+import { delay } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
@@ -38,6 +39,6 @@ export class BonusesService {
 
   public rate(id: number, rating: number): Observable<any> {  // TODO: change 'Observable<any>' to 'Observable<IBonus>' when using backend
     // return this.api.post(`${this.url}/${id}/rate`, {rating});
-    return of(bonuses[1]);
+    return of(bonuses[1]).pipe(delay(1000));
   }
 }
