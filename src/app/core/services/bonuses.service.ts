@@ -2,13 +2,10 @@ import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
-<<<<<<< HEAD
 import { INewBonus } from '@interfaces/add-bonus.interface';
-
-=======
 import { map } from 'rxjs/operators';
 import { apiLinks } from './constants';
->>>>>>> develop
+
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
   constructor(private api: ApiService) {}
