@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, DoCheck, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-stars',
@@ -6,13 +6,8 @@ import {ChangeDetectionStrategy, Component, DoCheck, Input} from '@angular/core'
   styleUrls: ['./stars.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StarsComponent implements DoCheck {
+export class StarsComponent {
   @Input() widthValue: number;
-
-  ngDoCheck(): void {
-    console.log('sdsdsds'
-    );
-  }
 
   constructor() {}
 }

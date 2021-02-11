@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DoCheck, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
 import { ChangeDetectorRef } from '@angular/core';
@@ -11,7 +11,7 @@ import { LoginService } from '@services/login.service';
   styleUrls: ['./bonus.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BonusComponent implements DoCheck, OnInit {
+export class BonusComponent implements OnInit {
   @Input() bonusButtonClick: () => void;
   @Input() bonus: IBonus;
 
@@ -42,10 +42,6 @@ export class BonusComponent implements DoCheck, OnInit {
     if (this.user ?? false) {
       this.isModeratorOrAdmin = this.user.role === 'admin' || this.user.role === 'moderator';
     }
-  }
-
-  ngDoCheck(): void {
-    console.log('bonus check');
   }
 
   public onBonusButtonClick(): void {
