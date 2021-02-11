@@ -1,0 +1,25 @@
+<mat-form-field class="city-input">
+  <mat-label>City</mat-label>
+  <input
+    matInput
+    type="text"
+    [formControl]="cityInputControl"
+    [matAutocomplete]="auto"
+    (keydown.enter)="changeCity()"
+  />
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="changeCity()">
+    <mat-option *ngFor="let city of filteredCity$ | async" [value]="city">
+      {{ city }}
+    </mat-option>
+  </mat-autocomplete>
+  <button
+    mat-button
+    *ngIf="cityInputControl.dirty"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="cityInputControl.reset('')"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
