@@ -11,6 +11,7 @@ import 'leaflet.markercluster';
 
 @Injectable({ providedIn: 'root' })
 export class MarkerModel {
+  constructor(private injector: Injector, private resolver: ComponentFactoryResolver) {}
   private iconSize: PointExpression = [32, 32];
   private iconAnchor: PointExpression = [32, 32];
   private popupAnchor: PointExpression = [-15, -35];
@@ -22,7 +23,11 @@ export class MarkerModel {
     popupAnchor: this.popupAnchor,
   });
 
-  constructor(private injector: Injector, private resolver: ComponentFactoryResolver) {}
+  private userMarkerIco = new Icon({
+    iconUrl: 'assets/icons/user-marker.ico',
+    iconAnchor: this.iconAnchor,
+    iconSize: this.iconSize,
+  });
 
   private bonusMarkerIco(type: string): DivIcon {
     let icon = MarkersIcons.default;
@@ -53,6 +58,10 @@ export class MarkerModel {
       className: 'cluster-icon',
       iconAnchor: this.iconAnchor,
     });
+  }
+
+  public getUserMarkerIco(): Icon {
+    return this.userMarkerIco;
   }
 
   public createOfficesMarkers(offices: IOffice[]): Marker[] {

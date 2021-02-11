@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { MarkerEventsService } from '@services/markers-events.service';
+import { MapEventsService } from '@services/map-events.service';
 import { IBonus } from '@interfaces/bonus.interface';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -19,7 +19,7 @@ export class BonusPopupComponent implements OnInit, OnDestroy {
   constructor(
     private translate: TranslateService,
     private changeDetector: ChangeDetectorRef,
-    private markerEventsService: MarkerEventsService,
+    private mapEventsService: MapEventsService,
   ) {}
 
   public ngOnInit(): void {
@@ -33,7 +33,7 @@ export class BonusPopupComponent implements OnInit, OnDestroy {
   }
 
   public showBonusMap(): void {
-    this.markerEventsService.bonusMarkerClick(this.bonus);
+    this.mapEventsService.collBonusInfo(this.bonus);
   }
 
   private runChangeDetection(): void {

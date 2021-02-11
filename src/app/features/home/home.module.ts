@@ -10,7 +10,8 @@ import { MapComponent } from './map/map-container/map-container.component';
 import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
-import { FilterContainerModule } from 'src/app/shared/components/filter-container/filter-container.module';
+import { ChoosePlaceDialogModule } from 'src/app/shared/components/choose-place-dialog/choose-place-dialog.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { FilterContainerModule } from 'src/app/shared/components/filter-containe
     SharedModule,
     LeafletModule,
     BonusListContainerModule,
+    ChoosePlaceDialogModule,
+    MatDialogModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
     ]),
