@@ -5,10 +5,7 @@ import { SharedModule } from '../../shared.module';
 
 @NgModule({
   declarations: [CityInputComponent],
-  imports: [
-    SharedModule,
-    MatAutocompleteModule,
-  ],
+  imports: [SharedModule, MatAutocompleteModule],
   exports: [CityInputComponent],
 })
 export class CityInputModule {}

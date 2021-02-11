@@ -29,7 +29,7 @@ import { FilterContainerModule } from 'src/app/shared/components/filter-containe
     RouterModule.forChild([
       { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
     ]),
-    FilterContainerModule
+    FilterContainerModule,
   ],
   exports: [HomeComponent, RouterModule],
 })

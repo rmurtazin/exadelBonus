@@ -24,7 +24,7 @@ export class TagsInputComponent {
   constructor() {
     this.filteredFruits = this.tagsControl.valueChanges.pipe(
       startWith(''),
-      map((fruit: string | null) => (fruit ? this._filter(fruit) : this.allTags.slice())),
+      map((fruit: string | null) => (fruit ? this.tagsFilter(fruit) : this.allTags.slice())),
     );
   }
 
@@ -64,7 +64,7 @@ export class TagsInputComponent {
     this.tagsChangedEvent.emit(tagsList);
   }
 
-  private _filter(value: string): string[] {
+  private tagsFilter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.allTags.filter((tag) => tag.toLowerCase().indexOf(filterValue) === 0);
   }

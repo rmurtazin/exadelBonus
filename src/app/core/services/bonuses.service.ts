@@ -3,12 +3,12 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { map } from 'rxjs/operators';
-
+import { apiLinks } from './constants';
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
   constructor(private api: ApiService) {}
 
-  url = 'https://exadel-bonus-plus-app.herokuapp.com/api/Bonus';
+  private url = apiLinks.bonus;
 
   public getBonuses(query?: string): Observable<IBonus[]> {
     return this.api.get(this.url, query).pipe(map((data) => data.value));

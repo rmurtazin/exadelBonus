@@ -10,11 +10,7 @@ import { SharedModule } from '../../shared.module';
 
 @NgModule({
   declarations: [TagsInputComponent],
-  imports: [
-    SharedModule,
-    MatChipsModule,
-    MatAutocompleteModule,
-  ],
+  imports: [SharedModule, MatChipsModule, MatAutocompleteModule],
   exports: [TagsInputComponent],
 })
 export class TagsInputModule {}

@@ -70,7 +70,6 @@ export class MarkerModel {
 
   private nestedBonusLocationsMarkerGenerator(bonus: IBonus): Marker[] {
     return bonus.locations.map((location) => {
-      console.log(location);
       const component = this.resolver
         .resolveComponentFactory(BonusPopupComponent)
         .create(this.injector);
