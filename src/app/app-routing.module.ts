@@ -1,28 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './features/home/home.component';
-import { LoginComponent } from './features/login/login.component';
-
 import { AuthGuard } from './core/guards/auth.guard';
-import { NotFoundComponent } from './features/not-found/not-found.component';
-import { AddBonusComponent } from './features/add-bonus/add-bonus.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'login',
+    loadChildren: () => import('./features/login/login.module').then((m) => m.LoginModule),
+  },
   {
     path: '',
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
-      { path: 'history', redirectTo: '', data: { roles: ['user', 'moderator', 'admin'] } },
-      { path: 'add-bonus', component: AddBonusComponent, data: { roles: ['moderator', 'admin'] } },
-      { path: 'bonuses', redirectTo: '', data: { roles: ['moderator', 'admin'] } },
-      { path: 'users', redirectTo: '', data: { roles: ['admin'] } },
+      {
+        path: 'home',
+        loadChildren: () => import('./features/home/home.module').then((m) => m.HomeModule),
+      },
+      { path: 'history', redirectTo: 'home', data: { roles: ['user', 'moderator', 'admin'] } }, // TODO: lazy loading
+      {
+        path: 'add-bonus',
+        loadChildren: () =>
+          import('./features/add-bonus/add-bonus.module').then((m) => m.AddBonusModule),
+      },
+      { path: 'statistics', redirectTo: 'home', data: { roles: ['admin'] } }, // TODO: lazy loading
     ],
   },
-  { path: '**', component: NotFoundComponent },
+  {
+    path: '**',
+    loadChildren: () => import('./features/not-found/not-found.module').then((m) => m.NotFound),
+  },
 ];
 
 @NgModule({

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ToasterService } from './toaster.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ChoosePlaceDialogComponent } from '../../features/home/map/choose-place-dialog/choose-place-dialog.component';
+import { ChoosePlaceDialogComponent } from '../../shared/components/choose-place-dialog/choose-place-dialog.component';
 import { LatLng, latLng } from 'leaflet';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MapEventsService } from '@services/map-events.service';
 
 @Injectable()
