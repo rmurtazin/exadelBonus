@@ -1,3 +1,6 @@
+import { ToastrModule } from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MapComponent } from './map-container.component';
 
@@ -8,6 +11,7 @@ describe('MapComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MapComponent],
+      imports: [HttpClientModule, RouterTestingModule, ToastrModule.forRoot()],
     }).compileComponents();
   });
 
