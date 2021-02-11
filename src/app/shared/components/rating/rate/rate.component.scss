@@ -1,6 +1,8 @@
 .discount-row {
   display: flex;
+  align-items: center;
   position: relative;
+  height: 60px;
   app-stars {
     position: absolute;
     right: 0;
