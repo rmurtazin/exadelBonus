@@ -20,10 +20,6 @@ export class RateComponent implements OnInit {
   @Output() ratingWasChanged = new EventEmitter<number>();
   @Input() bonus: IBonus;
 
-  //
-  @Input() rating: number;
-  //
-
   public startPosition: number;
 
   constructor() {}

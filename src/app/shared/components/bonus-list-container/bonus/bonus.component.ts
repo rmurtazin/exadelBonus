@@ -53,7 +53,6 @@ export class BonusComponent implements DoCheck, OnInit {
   }
 
   public rate(rating: number): void {
-    console.log(rating);
     this.loadingProcess.start = true;
     const bonusRateSubscription = this.bonusesService
       .rate(this.bonus.id, Math.floor(rating / 10))
@@ -66,11 +65,12 @@ export class BonusComponent implements DoCheck, OnInit {
 
   public successRate(): void {
     this.loadingProcess.endLoading();
+    // if we set default change detection strategy on stars component we can remove next line
     this.changeDetection.detectChanges();
     setTimeout(() => {
       this.loadingProcess.reset();
       this.isForm = false;
       this.changeDetection.detectChanges();
     }, 1000);
-}
+  }
 }

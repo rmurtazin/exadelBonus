@@ -19,6 +19,7 @@ export interface IBonus {
   phone: string;
   type: string;
   rating: number;
+  title: string;
   isActive: number;
   locations: ILocation[];
   tags: string[];

@@ -6,7 +6,7 @@
   <div class="bonus-content">
     <app-rate [isForm]="isForm" (ratingWasChanged)="rate($event)" [bonus]="bonus">
       <img class="discount-icon" src="assets/icons/discount-icon.svg" alt="discount" />
-      <span class="discount-value">{{ bonus.discount }}%</span>
+      <span class="discount-value">{{ bonus.title }}</span>
     </app-rate>
     <div *ngIf="!isForm">
       <div>
