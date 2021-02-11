@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { map } from 'rxjs/operators';
 import { apiLinks } from './constants';
+
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
   constructor(private api: ApiService) {}

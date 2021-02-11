@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-import {HistoryComponent} from './features/history/history.component';
-import {StatisticsComponent} from './features/statistics/statistics.component';
+import { HistoryComponent } from './features/history/history.component';
+import { StatisticsComponent } from './features/statistics/statistics.component';
 
 const routes: Routes = [
   {
@@ -19,7 +19,11 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () => import('./features/home/home.module').then((m) => m.HomeModule),
       },
-      { path: 'history', component: HistoryComponent, data: { roles: ['user', 'moderator', 'admin'] } }, // TODO: lazy loading
+      {
+        path: 'history',
+        component: HistoryComponent,
+        data: { roles: ['user', 'moderator', 'admin'] },
+      }, // TODO: lazy loading
       {
         path: 'add-bonus',
         loadChildren: () =>
