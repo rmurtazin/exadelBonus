@@ -1,11 +1,6 @@
-interface ICoordinates {
+interface ILocation {
   latitude: number;
   longitude: number;
-}
-
-interface ILocation {
-  id: number;
-  coordinates: ICoordinates;
   city: string;
   country: string;
   address: string;
@@ -13,18 +8,19 @@ interface ILocation {
 
 interface ICompany {
   name: string;
-  phone: string;
   email: string;
 }
+
 export interface IBonus {
   id: number;
-  dateStart: string;
-  dateEnd: string;
+  dateStart: Date | string;
+  dateEnd: Date | string;
   description: string;
-  company: ICompany;
+  phone: string;
   type: string;
   rating: number;
-  discount: number;
+  isActive: number;
   locations: ILocation[];
   tags: string[];
+  company: ICompany;
 }
