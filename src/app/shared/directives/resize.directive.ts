@@ -1,3 +1,4 @@
+import { ElementRef } from '@angular/core';
 import {
   Directive,
   OnInit,
@@ -9,15 +10,16 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[appResize]',
+  selector: '[appResizePick]',
 })
 export class ResizeDirective implements OnInit, OnDestroy {
   public listenFunc: () => void;
-  @Input('appResize') configWidth: string;
+
+  @Input('appResizePick') configWidth: string;
 
   constructor(
     private renderer: Renderer2,
-    private templateRef: TemplateRef<any>,
+    private elementRef: ElementRef,
     private viewContainer: ViewContainerRef,
   ) {}
 
@@ -29,9 +31,9 @@ export class ResizeDirective implements OnInit, OnDestroy {
   }
 
   public displayElement(visualViewportWidth: number): void {
-    if (this.isValidSize(visualViewportWidth)) {
+    if (visualViewportWidth <  768) {
       if (!this.viewContainer.get(0)) {
-        this.viewContainer.createEmbeddedView(this.templateRef);
+        this.viewContainer.createEmbeddedView(this.elementRef.nativeElement);
       }
     } else {
       this.viewContainer.clear();
