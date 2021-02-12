@@ -27,6 +27,7 @@ export class FilterService {
   private sendFilterBonusRequest(): void {
     const newQueryString = this.buildLink();
     this.bonuses.getBonuses(newQueryString).subscribe((bonuses: IBonus[]) => {
+      console.log(bonuses);
       this.applyFilterEvent(bonuses);
     });
   }
@@ -61,15 +62,15 @@ export class FilterService {
       queriesArray.push(`Tags=${this.queryParams.tags.join('&Tags=')}`);
     }
     if (this.queryParams?.city) {
-      queriesArray.push(`city=${this.queryParams.city}`);
+      queriesArray.push(`City=${this.queryParams.city}`);
     }
     if (this.queryParams?.start) {
-      queriesArray.push(`start=${this.queryParams.start}`);
+      queriesArray.push(`Start=${this.queryParams.start}`);
     }
     if (this.queryParams?.end) {
-      queriesArray.push(`end=${this.queryParams.end}`);
+      queriesArray.push(`End=${this.queryParams.end}`);
     }
-    const resultUrl = queriesArray.join('&');
+    const resultUrl = `?${queriesArray.join('&')}`;
     return encodeURI(resultUrl);
   }
 }

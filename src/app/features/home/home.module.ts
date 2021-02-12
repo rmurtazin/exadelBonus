@@ -30,7 +30,6 @@ import { FilterContainerModule } from 'src/app/shared/components/filter-containe
     BonusListContainerModule,
     ChoosePlaceDialogModule,
     MatDialogModule,
-    FilterContainerModule, // TODO: delete
     RouterModule.forChild([
       { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
     ]),

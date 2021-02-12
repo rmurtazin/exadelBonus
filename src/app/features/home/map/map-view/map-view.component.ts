@@ -10,6 +10,8 @@ import 'leaflet.markercluster';
 export class MapViewComponent {
   @Output() public mapReady = new EventEmitter<Map>();
   @Output() public changePlaceEvent = new EventEmitter<any>();
+  @Output() public mapZoomEvent = new EventEmitter<any>();
+
   public options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -29,5 +31,9 @@ export class MapViewComponent {
 
   public changePlace(): void {
     this.changePlaceEvent.emit();
+  }
+
+  public onMapZoom(): void{
+    this.mapZoomEvent.emit();
   }
 }

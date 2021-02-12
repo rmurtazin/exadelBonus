@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ToasterService } from '@services/toaster.service';
 import { MarkerModel } from '@models/marker.model';
 import { LocationService } from '@services/location.service';
-import 'leaflet.markercluster';
 import { FilterService } from '@services/filter.service';
+import 'leaflet.markercluster';
 
 @Component({
   selector: 'app-map-container',
@@ -25,6 +25,7 @@ export class MapComponent implements OnDestroy {
   private queryLongitude: string;
   private subscription = new Subscription();
   private markersGroup: MarkerClusterGroup;
+  private markerGroopIsHiden = false;
 
   constructor(
     private officeService: OfficesService,
@@ -45,6 +46,24 @@ export class MapComponent implements OnDestroy {
     this.getMarkersSubscription();
     this.officeMarkerClickObserver();
     this.applyFilterSubscription();
+  }
+
+  public onMapZoom(): void {
+    if (this.markersGroup){
+      this.showBonusDependsOnZomm();
+    }
+  }
+
+  private showBonusDependsOnZomm(): void{
+    const isHigh =  this.map.getZoom() < 7;
+    if ( isHigh && !this.markerGroopIsHiden){
+      this.map.removeLayer(this.markersGroup);
+      this.markerGroopIsHiden = true;
+    }
+    else if (!isHigh && this.markerGroopIsHiden) {
+      this.markersGroup.addTo(this.map);
+      this.markerGroopIsHiden = false;
+    }
   }
 
   private applyFilterSubscription(): void {
