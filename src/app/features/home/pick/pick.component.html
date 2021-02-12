@@ -1,13 +1,17 @@
 <ng-template [appResizePick]="'mobile'">
   <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Filter">Filter Component</mat-tab>
-    <mat-tab label="Sorting">Sorting Component</mat-tab>
+    <mat-tab label="Filter">
+      <app-filter-container></app-filter-container>
+    </mat-tab>
+    <mat-tab label="Sorting">
+      <app-sort-container></app-sort-container>
+    </mat-tab>
   </mat-tab-group>
 </ng-template>
 
 <ng-template [appResizePick]="'desktop'">
   <div class="pick-desktop">
-    <p>Filter Component</p>
-    <p>Sorting Component</p>
+    <app-filter-container></app-filter-container>
+    <app-sort-container></app-sort-container>
   </div>
 </ng-template>
