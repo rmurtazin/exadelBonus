@@ -8,12 +8,14 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component';
-import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxMaskModule } from 'ngx-mask';
 import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.component';
 import { HttpClient } from '@angular/common/http';
 import { createTranslateLoader } from 'src/app/app.module';
  
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
+import { TranslateModule } from '@ngx-translate/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [AddBonusComponent, AddBonusFormComponent, AddBonusButtonComponent],
@@ -23,6 +25,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MatNativeDateModule,
     MatChipsModule,
     NgxMaskModule.forRoot(),
+    TranslateModule,
+    MatSelectModule,
     RouterModule.forChild([
       { path: '', component: AddBonusComponent, data: { roles: ['moderator', 'admin'] } },
     ]),
