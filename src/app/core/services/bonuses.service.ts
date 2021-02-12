@@ -12,6 +12,7 @@ export class BonusesService {
 
   public getBonuses(query?: string): Observable<IBonus[]> {
     return this.api.get(this.url, query).pipe(map((data) => data.value));
+    // return this.api.get('../../../assets/static/bonuses.json');
   }
 
   public addBonus(newBonus: IBonus): Observable<IBonus> {

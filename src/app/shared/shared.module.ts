@@ -9,9 +9,11 @@ import { RouterModule } from '@angular/router';
 import { LanguageSwitcherDirective } from './directives/language-switcher.directive';
 import { CloseMenuDirective } from './directives/close-menu.directive';
 import { NgModule } from '@angular/core';
+import { ResizePickDirective } from './directives/resize-pick.directive';
+
 
 @NgModule({
-  declarations: [CloseMenuDirective, LanguageSwitcherDirective],
+  declarations: [CloseMenuDirective, LanguageSwitcherDirective, ResizePickDirective],
   imports: [
     RouterModule,
     CommonModule,
@@ -26,6 +28,7 @@ import { NgModule } from '@angular/core';
   exports: [
     CloseMenuDirective,
     LanguageSwitcherDirective,
+    ResizePickDirective,
     RouterModule,
     CommonModule,
     FormsModule,
