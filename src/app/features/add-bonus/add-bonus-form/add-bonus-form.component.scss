@@ -13,6 +13,7 @@
 }
 
 .add-bonus-button {
+  outline: none;
   @media screen and (min-width: 1280px) {
     width: 150px;
     font-size: 18px;
@@ -73,10 +74,12 @@
   border-radius: 50% 50% 50% 50%;
   border: 2px solid #0082ca;
   cursor: pointer;
+  outline: none;
 }
 
 .vendor-info-btn {
   margin-bottom: 20px;
+  outline: none;
 }
 
 .hidden {
