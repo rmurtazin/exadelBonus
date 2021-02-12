@@ -12,6 +12,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.component';
 import { HttpClient } from '@angular/common/http';
 import { createTranslateLoader } from 'src/app/app.module';
+ 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
