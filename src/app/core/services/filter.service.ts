@@ -26,8 +26,9 @@ export class FilterService {
 
   private sendFilterBonusRequest(): void {
     const newQueryString = this.buildLink();
-    console.log(newQueryString);
-    // TODO: subscribe on getBonuses with query
+    this.bonuses.getBonuses(newQueryString).subscribe((bonuses: IBonus[]) => {
+      this.applyFilterEvent(bonuses);
+    });
   }
 
   public addOrderQuery(order: string): void {
@@ -57,8 +58,7 @@ export class FilterService {
       queriesArray.push(`order=${this.queryParams.order}`);
     }
     if (this.queryParams?.tags && this.queryParams.tags.length > 0) {
-      // join by symbol _ one tag witch consist of multiply words
-      queriesArray.push(`tags=${this.queryParams.tags.join('/')}`);
+      queriesArray.push(`Tags=${this.queryParams.tags.join('&Tags=')}`);
     }
     if (this.queryParams?.city) {
       queriesArray.push(`city=${this.queryParams.city}`);
@@ -69,7 +69,7 @@ export class FilterService {
     if (this.queryParams?.end) {
       queriesArray.push(`end=${this.queryParams.end}`);
     }
-    const resultUrl = `?${queriesArray.join('&')}`;
+    const resultUrl = queriesArray.join('&');
     return encodeURI(resultUrl);
   }
 }
