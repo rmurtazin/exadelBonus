@@ -1,3 +1,5 @@
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BonusListContainerComponent } from './bonus-list-container.component';
 
@@ -7,6 +9,7 @@ describe('BonusListContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, ToastrModule.forRoot()],
       declarations: [BonusListContainerComponent],
     }).compileComponents();
 

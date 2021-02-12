@@ -1,5 +1,3 @@
-import { NotFound } from './features/not-found/not-found.module';
-import { HomeModule } from './features/home/home.module';
 import { FooterModule } from './core/components/footer/footer.module';
 import { HeaderModule } from './core/components/header/header.module';
 import { SharedModule } from './shared/shared.module';
@@ -28,8 +26,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { HistoryModule } from './features/history/history.module';
-import { StatisticsModule } from './features/statistics/statistics.module';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -70,10 +66,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     SharedModule,
     HeaderModule,
     FooterModule,
-    HomeModule,
-    NotFound,
-    HistoryModule,
-    StatisticsModule,
   ],
   providers: [
     ApiService,
