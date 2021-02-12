@@ -12,7 +12,7 @@ import {
   selector: '[appResizePick]',
 })
 export class ResizePickDirective implements OnInit, OnDestroy {
-  public listenFunc: any;
+  public listenFunc: () => void;
   @Input('appResizePick') configWidth: string;
 
   constructor(
