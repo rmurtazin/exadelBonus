@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
+import { INewBonus } from '@interfaces/add-bonus.interface';
 import { map } from 'rxjs/operators';
 import { apiLinks } from './constants';
+
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
   constructor(private api: ApiService) {}
@@ -15,7 +17,7 @@ export class BonusesService {
     // return this.api.get('../../../assets/static/bonuses.json');
   }
 
-  public addBonus(newBonus: IBonus): Observable<IBonus> {
+  public addBonus(newBonus: INewBonus): Observable<INewBonus> {
     return this.api.post(this.url, newBonus);
   }
 

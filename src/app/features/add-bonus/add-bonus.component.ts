@@ -1,6 +1,9 @@
+import { OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
-import { ILocation } from '@interfaces/add-bonus.interface';
+import { IBonusFormConfig, ILocation, INewBonus, IVendor } from '@interfaces/add-bonus.interface';
 import { BonusAddressService } from '@services/bonus-address.service';
+import { BonusesService } from '@services/bonuses.service';
+import { VendorsService } from '@services/vendors.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -8,19 +11,52 @@ import { Subscription } from 'rxjs';
   templateUrl: './add-bonus.component.html',
   styleUrls: ['./add-bonus.component.scss'],
 })
-export class AddBonusComponent implements OnDestroy {
+export class AddBonusComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
   public locations: ILocation[] = [];
+  public vendors: IVendor[] = [];
+  public newVendor: IVendor;
   public isFormActive = false;
-  constructor(public bonusAddressService: BonusAddressService) {}
+  public bonusFormConfig: IBonusFormConfig;
 
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+  constructor(
+    public bonusAddressService: BonusAddressService,
+    public vendorsService: VendorsService,
+    public bonusesService: BonusesService,
+  ) {}
+
+  public ngOnInit(): void {
+    this.initialBonusFormConfig();
   }
 
-  public addAddress(myForm: any): void {
+  public initialBonusFormConfig(): void {
+    this.bonusFormConfig = {
+      vendorNameChange: (vendorName: string): void => {
+        if (vendorName?.length === 1) {
+          this.getVendors();
+        }
+      },
+      closeForm: (): void => {
+        this.isFormActive = false;
+        this.locations = [];
+      },
+      addAddress: (myForm: any): void => {
+        this.onAddAddress(myForm);
+      },
+      createNewVendor: (newVendor: IVendor): void => {
+        this.createVendor(newVendor);
+      },
+      createBonus: (newBonus: INewBonus): void => {
+        this.subscription.add(this.bonusesService.addBonus(newBonus).subscribe());
+      },
+    };
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  public onAddAddress(myForm: any): void {
     if (myForm.value.bonusAddress) {
       this.subscription.add(
         this.bonusAddressService.getSearchedAddress(myForm.value.bonusAddress).subscribe((data) => {
@@ -37,17 +73,30 @@ export class AddBonusComponent implements OnDestroy {
             });
           } else {
             myForm.get('bonusAddress').reset();
-            // TODO: add notification "No such address exists or address is not complete!"
           }
         }),
       );
     }
   }
 
+  public getVendors(): void {
+    this.subscription.add(
+      this.vendorsService.getVendors().subscribe((data) => {
+        this.vendors = data;
+      }),
+    );
+  }
+
+  public createVendor(newVendor: IVendor): void {
+    // TODO here should be post method for created new vendor
+    this.subscription.add(
+      this.vendorsService.createVendor(newVendor).subscribe((data) => {
+        this.newVendor = data;
+      }),
+    );
+  }
+
   public openForm(): void {
     this.isFormActive = true;
-  }
-  public closeForm(): void {
-    this.isFormActive = false;
   }
 }
