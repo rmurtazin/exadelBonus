@@ -1,10 +1,18 @@
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { Input } from '@angular/core';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Router } from '@angular/router';
-import { ILocation, ITag } from '@interfaces/add-bonus.interface';
+import { MarkersIcons } from '@enums/markers-icons.enum';
+import {
+  IBonusFormConfig,
+  ILocation,
+  INewBonus,
+  ITag,
+  IVendor,
+} from '@interfaces/add-bonus.interface';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-bonus-form',
@@ -12,70 +20,112 @@ import { ILocation, ITag } from '@interfaces/add-bonus.interface';
   styleUrls: ['./add-bonus-form.component.scss'],
 })
 export class AddBonusFormComponent implements OnInit {
-  @Output() addAddress = new EventEmitter<any>();
-  @Output() closeForm = new EventEmitter<boolean>();
+  @Input() bonusFormConfig: IBonusFormConfig;
   @Input() locations: ILocation[];
+  @Input() vendors: IVendor[];
+  @Input() newVendor: IVendor;
+
   public myForm: FormGroup;
+  public vendorInfo: FormGroup;
   public vendorName: FormControl;
-  public range: FormGroup;
-  public visible = true;
-  public selectable = true;
+  public vendorEmail: FormControl;
+  public bonusTags: ITag[] = [];
+  public types: string[] = Object.keys(MarkersIcons);
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  public filteredVendors: Observable<IVendor[]>;
+  public vendorEmailVisible = false;
+  public visibleBtnForSaveNewVendor = false;
+  public readonly = true;
   public removable = true;
   public addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  public bonusTags: ITag[] = [];
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   public ngOnInit(): void {
     this.onInitForm();
+    this.filteredVendors = this.vendorName.valueChanges.pipe(
+      startWith(''),
+      map((value) => (typeof value === 'string' ? value : '')),
+      map((name) => (name ? this._filter(name) : this.vendors.slice())),
+    );
   }
 
-  public onAddAddress(myForm: FormGroup): void {
-    this.addAddress.emit(myForm);
+  public onVendorNameChange(vendorName: any): void {
+    this.bonusFormConfig.vendorNameChange(vendorName);
+    if (vendorName?.vendorId) {
+      this.readonly = true;
+      this.vendorEmailVisible = true;
+      this.visibleBtnForSaveNewVendor = false;
+      this.vendorInfo.get('vendorEmail').setValue(vendorName.vendorEmail);
+    }
+    if (vendorName === '') {
+      this.vendorEmailVisible = false;
+      this.visibleBtnForSaveNewVendor = false;
+    }
+  }
+
+  public onOpenEmailInput(): void {
+    this.vendorInfo.get('vendorEmail').reset();
+    this.vendorInfo.get('vendorName').reset();
+    this.vendorEmailVisible = true;
+    this.visibleBtnForSaveNewVendor = true;
+    this.readonly = false;
+  }
+
+  public onSaveNewVendor(): void {
+    this.bonusFormConfig.createNewVendor(this.vendorInfo.value);
+    this.visibleBtnForSaveNewVendor = false;
+    this.readonly = true;
+  }
+
+  public displayFn(vendor: IVendor): string {
+    return vendor?.vendorName ? vendor.vendorName : '';
+  }
+
+  private _filter(vendor: string): IVendor[] {
+    const filterValue = vendor.toLowerCase();
+    return this.vendors.filter((item) => item.vendorName.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  public onAddAddress(myForm: any): void {
+    this.bonusFormConfig.addAddress(myForm);
   }
 
   public goBack(): void {
-    this.closeForm.emit(false);
+    this.bonusFormConfig.closeForm();
   }
 
   public onInitForm(): void {
     this.myForm = new FormGroup({
-      vendorName: new FormControl('', [Validators.required]),
+      vendorInfo: (this.vendorInfo = new FormGroup({
+        vendorName: (this.vendorName = new FormControl('', [Validators.required])),
+        vendorEmail: (this.vendorEmail = new FormControl('', [Validators.required])),
+      })),
       bonusAddress: new FormControl('', [Validators.required]),
       bonusType: new FormControl('', [Validators.required]),
       bonusDescription: new FormControl('', [Validators.required]),
       bonusTags: new FormControl('', [Validators.required]),
       bonusTitle: new FormControl('', [Validators.required]),
-      vendorEmail: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required]),
-      bonusDateRange: (this.range = new FormGroup({
-        start: new FormControl('', [Validators.required]),
-        end: new FormControl('', [Validators.required]),
-      })),
+      start: new FormControl('', [Validators.required]),
+      end: new FormControl('', [Validators.required]),
     });
   }
 
   public onSubmit(): void {
     const formValue = this.myForm.value;
-    const submitedBonus = {
-      company: {
-        name: formValue.vendorName,
-        phone: formValue.phone,
-        email: formValue.vendorEmail,
-      },
-      dateStart: formValue.bonusDateRange.start,
-      dateEnd: formValue.bonusDateRange.end,
+    const submitBonus: INewBonus = {
+      company: this.vendorName.value.vendorId || this.newVendor.vendorId,
+      phone: formValue.phone,
+      dateStart: formValue.start,
+      dateEnd: formValue.end,
       description: formValue.bonusDescription,
       type: formValue.bonusType,
-      title: formValue.bonusValue,
+      title: formValue.bonusTitle,
       locations: this.locations,
       tags: this.bonusTags.map((tag) => tag.name),
     };
-    console.log(submitedBonus);
-    // TODO: add service for post submitedBonus...
-    // TODO: add service to get the current vendor from the base
-    // TODO: add post new vendor if it does not existed, and change input vendor name when api will be ready
+    this.bonusFormConfig.createBonus(submitBonus);
     this.goBack();
   }
 
@@ -89,12 +139,14 @@ export class AddBonusFormComponent implements OnInit {
       input.value = '';
     }
   }
+
   public onRemoveTag(tag: ITag): void {
     const index = this.bonusTags.indexOf(tag);
     if (index >= 0) {
       this.bonusTags.splice(index, 1);
     }
   }
+
   public onAddAddressValue(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
@@ -105,6 +157,7 @@ export class AddBonusFormComponent implements OnInit {
       input.value = '';
     }
   }
+
   public onRemoveAddress(location: ILocation): void {
     const index = this.locations.indexOf(location);
     if (index >= 0) {
