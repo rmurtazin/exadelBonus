@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { INewBonus } from '@interfaces/add-bonus.interface';
 import { ToasterService } from './toaster.service';
-import { map, catchError} from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { apiLinks } from './constants';
 
 @Injectable({ providedIn: 'root' })
@@ -18,13 +18,9 @@ export class BonusesService {
   }
 
   public addBonus(newBonus: INewBonus): Observable<IBonus> {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.api
-      .post(
-        `${this.url}/api/Bonus`,
-        JSON.stringify(newBonus),
-        headers,
-      )
+      .post(`${this.url}/api/Bonus`, JSON.stringify(newBonus), headers)
       .pipe(
         catchError(async (err) =>
           this.toasterService.showError(err, 'Some problems with saving bonus!'),

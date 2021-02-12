@@ -12,7 +12,7 @@ import {
   selector: '[appResizePick]',
 })
 export class ResizePickDirective implements OnInit, OnDestroy {
-  public listenFunc: any;
+  public listenFunc: () => void;
   @Input('appResizePick') configWidth: string;
 
   constructor(
@@ -23,7 +23,7 @@ export class ResizePickDirective implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.displayElement(window.innerWidth);
-    this.listenFunc = this.renderer.listen('window', 'resize', (event) => {
+    this.renderer.listen('window', 'resize', (event) => {
       this.displayElement(event.target.visualViewport.width);
     });
   }
