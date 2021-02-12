@@ -27,7 +27,8 @@
       "bonusTagPlaceholder": "Enter new tag...",
       "bonusAddress": "Bonus Address",
       "bonusAddressPlaceholder": "Enter country, city, town, number",
-      "bonusDateRange": "Enter a bonus date range"
+      "bonusDateRange": "Enter a bonus date range",
+      "saveNewVendorBtn": "Save new vendor"
     }
   },
   "loginPage": {

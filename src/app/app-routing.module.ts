@@ -17,13 +17,21 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () => import('./features/home/home.module').then((m) => m.HomeModule),
       },
-      { path: 'history', redirectTo: 'home', data: { roles: ['user', 'moderator', 'admin'] } }, // TODO: lazy loading
+      {
+        path: 'history',
+        loadChildren: () =>
+          import('./features/history/history.module').then((m) => m.HistoryModule),
+      },
       {
         path: 'add-bonus',
         loadChildren: () =>
           import('./features/add-bonus/add-bonus.module').then((m) => m.AddBonusModule),
       },
-      { path: 'statistics', redirectTo: 'home', data: { roles: ['admin'] } }, // TODO: lazy loading
+      {
+        path: 'statistics',
+        loadChildren: () =>
+          import('./features/statistics/statistics.module').then((m) => m.StatisticsModule),
+      },
     ],
   },
   {

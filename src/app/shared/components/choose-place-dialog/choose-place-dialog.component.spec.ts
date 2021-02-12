@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChoosePlaceDialogComponent } from './choose-place-dialog.component';
@@ -9,6 +11,11 @@ describe('ChoosePlaceDialogComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ChoosePlaceDialogComponent],
+      imports: [MatDialogModule, HttpClientModule],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: [] },
+      ],
     }).compileComponents();
   });
 
