@@ -31,11 +31,6 @@ export class FilterService {
     // TODO: subscribe on getBonuses with query
   }
 
-  public addOrderQuery(order: string): void {
-    this.queryParams.order = order;
-    this.sendFilterBonusRequest();
-  }
-
   public addTagsToQuery(tags: string[]): void {
     this.queryParams.tags = tags;
     this.sendFilterBonusRequest();
