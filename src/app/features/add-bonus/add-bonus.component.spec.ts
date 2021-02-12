@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddBonusComponent } from './add-bonus.component';
@@ -9,6 +10,7 @@ describe('AddBonusComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AddBonusComponent],
+      imports: [HttpClientModule],
     }).compileComponents();
   });
 
