@@ -9,7 +9,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [StarsComponent, RateComponent],
-    imports: [MatIconModule, CommonModule, MatButtonModule, MatSliderModule, MatProgressSpinnerModule],
+  imports: [
+    MatIconModule,
+    CommonModule,
+    MatButtonModule,
+    MatSliderModule,
+    MatProgressSpinnerModule,
+  ],
   exports: [StarsComponent, RateComponent],
 })
 export class RatingModule {}

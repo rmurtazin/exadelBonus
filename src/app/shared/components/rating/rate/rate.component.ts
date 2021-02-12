@@ -7,7 +7,10 @@ import {
   OnInit,
 } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
-import {IBonus} from '@interfaces/bonus.interface';
+import { IBonus } from '@interfaces/bonus.interface';
+import { BonusesService } from '@services/bonuses.service';
+import { ToasterService } from '@services/toaster.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rate',
@@ -17,12 +20,14 @@ import {IBonus} from '@interfaces/bonus.interface';
 })
 export class RateComponent implements OnInit {
   @Input() isForm: boolean;
-  @Output() ratingWasChanged = new EventEmitter<number>();
   @Input() bonus: IBonus;
+  @Output() ratingWasSubmitted = new EventEmitter<IBonus>();
 
   public startPosition: number;
+  public disableButton = false;
+  public animationStart = false;
 
-  constructor() {}
+  constructor(private bonusesService: BonusesService, private toasterService: ToasterService) {}
 
   ngOnInit(): void {
     this.startPosition = this.bonus.rating * 10;
@@ -32,7 +37,17 @@ export class RateComponent implements OnInit {
     this.bonus.rating = slider.value / 10;
   }
 
-  public rate(): void {
-    this.ratingWasChanged.emit(this.bonus.rating);
+  public submitRating(): void {
+    this.disableButton = true;
+    this.animationStart = true;
+    this.bonusesService
+      .rate(this.bonus.id, Math.floor(this.bonus.rating / 10))
+      .pipe(take(1))
+      .subscribe((newBonus: IBonus) => {
+        this.animationStart = false;
+        this.toasterService.showSuccess('Your review has been added', 'Rated');
+        this.bonus = newBonus;
+        this.ratingWasSubmitted.emit();
+      });
   }
 }

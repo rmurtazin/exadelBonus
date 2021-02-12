@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .bonus {
   width: 520px;
@@ -6,13 +6,14 @@
   border: 1px solid $theme-color;
   display: flex;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #FFF;
+  background-color: #fff;
   margin: 0 5px 10px;
+  transition-duration: 2.5s;
 }
 
 .description-container {
   background-color: $theme-color;
-  color: #FFF;
+  color: #fff;
   flex: 1 1 33.33333%;
   font-weight: 500;
   padding: 8px 5px;
@@ -107,4 +108,45 @@
 .button-container {
   height: 42px;
   margin-top: 10px;
+}
+
+.show-form .description-container {
+  animation-name: hide;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.show-form {
+  animation: rotate 1s both;
+}
+
+@keyframes rotate {
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes hide {
+  0% {
+    position: relative;
+    z-index: 0;
+  }
+  49% {
+    position: relative;
+    z-index: 0;
+  }
+  50% {
+    position: fixed;
+    z-index: -1;
+    visibility: hidden;
+  }
+  100% {
+    display: none;
+    position: fixed;
+    z-index: -1;
+    visibility: hidden;
+  }
 }

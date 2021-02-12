@@ -1,10 +1,10 @@
-<section class="bonus">
-  <div class="description-container" *ngIf="!isForm">
+<section class="bonus" [ngClass]="{ 'show-form': isForm }">
+  <div class="description-container">
     <span class="vendor-name">{{ bonus.company.name }}</span>
     <p class="bonus-description">{{ bonus.description }}</p>
   </div>
   <div class="bonus-content">
-    <app-rate [isForm]="isForm" (ratingWasChanged)="rate($event)" [bonus]="bonus">
+    <app-rate [isForm]="isForm" (ratingWasSubmitted)="closeRateForm()" [bonus]="bonus">
       <img class="discount-icon" src="assets/icons/discount-icon.svg" alt="discount" />
       <span class="discount-value">{{ bonus.title }}</span>
     </app-rate>
@@ -21,7 +21,5 @@
         </button>
       </div>
     </div>
-    <mat-spinner diameter="20" *ngIf="loadingProcess.start"></mat-spinner>
-    <span *ngIf="loadingProcess.end" class="success-loading-msg">Success</span>
   </div>
 </section>

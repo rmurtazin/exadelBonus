@@ -1,4 +1,6 @@
-.discount-row {
+@import 'src/styles/variables';
+
+.discount-row:not(.form-stars) {
   display: flex;
   align-items: center;
   position: relative;
@@ -9,6 +11,76 @@
   }
 }
 
+.discount-row.form-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 60px;
+}
+
 .rate-button {
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rate-form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.form-stars + .rate-form,
+.form-stars {
+  animation-name: show;
+  animation-duration: 1s;
+}
+
+@keyframes show {
+  0% {
+    visibility: hidden;
+  }
+  49% {
+    visibility: hidden;
+  }
+  51% {
+    visibility: visible;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+.loading-spinner {
+  display: inline-block;
+}
+
+.status-icon {
+  margin-left: 10px;
+}
+
+.success-loading-msg {
+  text-align: center;
+  font-size: 26px;
+  color: $theme-color;
+  border: 1px solid $theme-color;
+  border-radius: 10px;
+  padding: 10px 0;
+  font-weight: 500;
+  animation: attention 1s infinite;
+}
+
+@keyframes attention {
+  0% {
+    border-color: white;
+  }
+  50% {
+    border-color: $theme-color;
+  }
+  100% {
+    border-color: white;
+  }
 }

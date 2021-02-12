@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { BonusesService } from '@services/bonuses.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { IUser } from '@interfaces/loginInterface';
 import { LoginService } from '@services/login.service';
@@ -15,27 +14,11 @@ export class BonusComponent implements OnInit {
   @Input() bonusButtonClick: () => void;
   @Input() bonus: IBonus;
 
-  public user: IUser;
-  public isModeratorOrAdmin = false;
   public isForm = false;
-  public loadingProcess = {
-    start: false,
-    end: false,
-    endLoading(): void {
-      this.start = false;
-      this.end = true;
-    },
-    reset(): void {
-      this.start = false;
-      this.end = false;
-    },
-  };
+  public isModeratorOrAdmin = false;
+  public user: IUser;
 
-  constructor(
-    private bonusesService: BonusesService,
-    private changeDetection: ChangeDetectorRef,
-    private loginService: LoginService,
-  ) {}
+  constructor(private changeDetection: ChangeDetectorRef, private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();
@@ -48,25 +31,7 @@ export class BonusComponent implements OnInit {
     this.bonusButtonClick();
   }
 
-  public rate(rating: number): void {
-    this.loadingProcess.start = true;
-    const bonusRateSubscription = this.bonusesService
-      .rate(this.bonus.id, Math.floor(rating / 10))
-      .subscribe((newBonus: IBonus) => {
-        this.bonus.rating = newBonus.rating;
-        this.successRate();
-        bonusRateSubscription.unsubscribe();
-      });
-  }
-
-  public successRate(): void {
-    this.loadingProcess.endLoading();
-    // if we set default change detection strategy on stars component we can remove next line
-    this.changeDetection.detectChanges();
-    setTimeout(() => {
-      this.loadingProcess.reset();
-      this.isForm = false;
-      this.changeDetection.detectChanges();
-    }, 1000);
+  public closeRateForm(): void {
+    this.isForm = false;
   }
 }
