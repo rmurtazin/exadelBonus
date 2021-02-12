@@ -33,7 +33,7 @@ export class MapViewComponent {
     this.changePlaceEvent.emit();
   }
 
-  public onMapZoom(): void{
+  public onMapZoom(): void {
     this.mapZoomEvent.emit();
   }
 }

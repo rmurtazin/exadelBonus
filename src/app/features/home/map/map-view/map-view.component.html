@@ -1,8 +1,10 @@
-<div 
-  style="height: 50vh" 
-  leaflet [leafletOptions]="options" 
+<div
+  style="height: 50vh"
+  leaflet
+  [leafletOptions]="options"
   (leafletMapReady)="onMapReady($event)"
-  (leafletMapZoom)="onMapZoom()">
+  (leafletMapZoom)="onMapZoom()"
+>
   <button class="change-location-button" (click)="changePlace()" icon>
     <mat-icon>share_location</mat-icon>
   </button>

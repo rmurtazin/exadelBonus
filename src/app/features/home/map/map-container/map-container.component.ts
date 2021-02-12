@@ -2,7 +2,17 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Map, Marker, layerGroup, latLng, LatLng, Control, DomUtil, Icon, MarkerClusterGroup } from 'leaflet';
+import {
+  Map,
+  Marker,
+  layerGroup,
+  latLng,
+  LatLng,
+  Control,
+  DomUtil,
+  Icon,
+  MarkerClusterGroup,
+} from 'leaflet';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
 import { MapEventsService } from '@services/map-events.service';
@@ -35,7 +45,7 @@ export class MapComponent implements OnDestroy {
     private activateRouter: ActivatedRoute,
     private toaster: ToasterService,
     private locationService: LocationService,
-    private filterService: FilterService
+    private filterService: FilterService,
   ) {}
 
   public mapReadyEvent(map: Map): void {
@@ -49,18 +59,17 @@ export class MapComponent implements OnDestroy {
   }
 
   public onMapZoom(): void {
-    if (this.markersGroup){
+    if (this.markersGroup) {
       this.showBonusDependsOnZomm();
     }
   }
 
-  private showBonusDependsOnZomm(): void{
-    const isHigh =  this.map.getZoom() < 7;
-    if ( isHigh && !this.markerGroopIsHiden){
+  private showBonusDependsOnZomm(): void {
+    const isHigh = this.map.getZoom() < 7;
+    if (isHigh && !this.markerGroopIsHiden) {
       this.map.removeLayer(this.markersGroup);
       this.markerGroopIsHiden = true;
-    }
-    else if (!isHigh && this.markerGroopIsHiden) {
+    } else if (!isHigh && this.markerGroopIsHiden) {
       this.markersGroup.addTo(this.map);
       this.markerGroopIsHiden = false;
     }
@@ -68,11 +77,9 @@ export class MapComponent implements OnDestroy {
 
   private applyFilterSubscription(): void {
     this.subscription.add(
-      this.filterService.filterAppliedObserver().subscribe(
-        (bonuses: IBonus[]) => {
-          this.displayBonusesMarkers(bonuses);
-        }
-      )
+      this.filterService.filterAppliedObserver().subscribe((bonuses: IBonus[]) => {
+        this.displayBonusesMarkers(bonuses);
+      }),
     );
   }
 
@@ -94,16 +101,16 @@ export class MapComponent implements OnDestroy {
     );
   }
 
-  private getMarkersSubscription(): void{
+  private getMarkersSubscription(): void {
     this.subscription.add(
       this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
         this.displayBonusesMarkers(bonuses);
-      })
+      }),
     );
   }
 
   private displayBonusesMarkers(bonuses: IBonus[]): void {
-    if (this.markersGroup){
+    if (this.markersGroup) {
       this.map.removeLayer(this.markersGroup);
     }
     const markers: Marker[] = this.markerModel.createBonusesMarkers(bonuses);
