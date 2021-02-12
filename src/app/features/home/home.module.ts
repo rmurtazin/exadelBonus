@@ -14,6 +14,7 @@ import { PickComponent } from './pick/pick.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ChoosePlaceDialogModule } from 'src/app/shared/components/choose-place-dialog/choose-place-dialog.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FilterContainerModule } from 'src/app/shared/components/filter-container/filter-container.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BonusListContainerModule,
     ChoosePlaceDialogModule,
     MatDialogModule,
+    MatTabsModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
     ]),
