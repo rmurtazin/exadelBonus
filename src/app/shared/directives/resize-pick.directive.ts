@@ -23,7 +23,7 @@ export class ResizePickDirective implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.displayElement(window.innerWidth);
-    this.renderer.listen('window', 'resize', (event) => {
+    this.listenFunc = this.renderer.listen('window', 'resize', (event) => {
       this.displayElement(event.target.visualViewport.width);
     });
   }
