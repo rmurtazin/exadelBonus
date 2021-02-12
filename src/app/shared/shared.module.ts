@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { LanguageSwitcherDirective } from './directives/language-switcher.directive';
 import { CloseMenuDirective } from './directives/close-menu.directive';
 import { NgModule } from '@angular/core';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [CloseMenuDirective, LanguageSwitcherDirective],
@@ -21,6 +22,7 @@ import { NgModule } from '@angular/core';
     TranslateModule,
     MatIconModule,
     MatButtonModule,
+    MatRadioModule,
     MatInputModule,
   ],
   exports: [
@@ -34,6 +36,7 @@ import { NgModule } from '@angular/core';
     TranslateModule,
     MatIconModule,
     MatButtonModule,
+    MatRadioModule,
     MatInputModule,
   ],
 })

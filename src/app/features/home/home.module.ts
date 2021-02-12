@@ -13,6 +13,7 @@ import { NgModule } from '@angular/core';
 import { ChoosePlaceDialogModule } from 'src/app/shared/components/choose-place-dialog/choose-place-dialog.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterContainerModule } from 'src/app/shared/components/filter-container/filter-container.module';
+import { SortContainerModule } from './../../shared/components/sort-container/sort-container.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FilterContainerModule } from 'src/app/shared/components/filter-containe
     LeafletModule,
     BonusListContainerModule,
     ChoosePlaceDialogModule,
+    SortContainerModule,
     MatDialogModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },

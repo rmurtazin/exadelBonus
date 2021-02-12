@@ -9,6 +9,7 @@ interface IFilterQueryParams {
   city?: string;
   start?: string;
   end?: string;
+  sortBy?: string;
 }
 @Injectable({ providedIn: 'root' })
 export class FilterService {
@@ -51,6 +52,11 @@ export class FilterService {
     this.sendFilterBonusRequest();
   }
 
+  public addSortToQuery(type: string): void {
+    this.queryParams.sortBy = type;
+    this.sendFilterBonusRequest();
+  }
+
   private buildLink(): string {
     const queriesArray = [];
     if (this.queryParams?.order) {
@@ -68,6 +74,9 @@ export class FilterService {
     }
     if (this.queryParams?.end) {
       queriesArray.push(`end=${this.queryParams.end}`);
+    }
+    if (this.queryParams?.sortBy) {
+      queriesArray.push(`sortBy=${this.queryParams.sortBy}`);
     }
     const resultUrl = `?${queriesArray.join('&')}`;
     return encodeURI(resultUrl);
