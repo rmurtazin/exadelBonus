@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Observable, of, from } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { INewBonus } from '@interfaces/add-bonus.interface';
 import { map } from 'rxjs/operators';
@@ -15,10 +15,8 @@ export class BonusesService {
   private url = apiLinks.bonus;
 
   public getBonuses(query?: string): Observable<IBonus[]> {
-    return this.api.get(this.url, query).pipe(map((data) => data.value));
-    // return this.api.get('../../../assets/static/bonuses.json');
-    // uncomment line below in non-prod mode
-    // return from(Array(bonuses.default)).pipe(delay(1000));
+    // return this.api.get(this.url, query).pipe(map((data) => data.value));
+    return this.api.get('../../../assets/static/bonuses.json').pipe(delay(1000));
   }
 
   public addBonus(newBonus: INewBonus): Observable<INewBonus> {
@@ -44,7 +42,6 @@ export class BonusesService {
   }
 
   public rate(id: number, rating: number): Observable<any> {
-    // TODO: change 'Observable<any>' to 'Observable<IBonus>' when using backend
     // return this.api.post(`${this.url}/${id}/rate`, {rating});
     return of(bonuses[1]).pipe(delay(1000));
   }
