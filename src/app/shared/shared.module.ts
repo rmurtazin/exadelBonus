@@ -12,7 +12,6 @@ import { NgModule } from '@angular/core';
 import { ResizePickDirective } from './directives/resize-pick.directive';
 import { MatRadioModule } from '@angular/material/radio';
 
-
 @NgModule({
   declarations: [CloseMenuDirective, LanguageSwitcherDirective, ResizePickDirective],
   imports: [
