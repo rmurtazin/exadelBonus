@@ -98,7 +98,6 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   }
 
   public createVendor(newVendor: IVendor): void {
-    // TODO here should be post method for created new vendor
     this.subscription.add(
       this.vendorsService.createVendor(newVendor).subscribe((data) => {
         this.newVendor = data;

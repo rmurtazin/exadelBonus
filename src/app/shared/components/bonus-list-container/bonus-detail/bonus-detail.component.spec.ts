@@ -1,3 +1,5 @@
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BonusDetailComponent } from './bonus-detail.component';
@@ -9,6 +11,7 @@ describe('BonusDetailComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BonusDetailComponent],
+      imports: [HttpClientModule, RouterTestingModule],
     }).compileComponents();
   });
 

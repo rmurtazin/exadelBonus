@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterContainerComponent } from './filter-container.component';
@@ -9,6 +10,7 @@ describe('FilterContainerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FilterContainerComponent],
+      imports: [HttpClientModule],
     }).compileComponents();
   });
 
