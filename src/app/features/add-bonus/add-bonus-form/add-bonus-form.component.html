@@ -5,25 +5,50 @@
     </button>
   </div>
   <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
-    <mat-form-field class="add-bonus-input" appearance="fill">
+    <mat-form-field [formGroup]="vendorInfo" class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.vendorName' | translate }}</mat-label>
       <input
         class="add-bonus-input"
         type="text"
         matInput
         formControlName="vendorName"
-        autocomplete="off"
+        [matAutocomplete]="auto"
+        (ngModelChange)="onVendorNameChange($event)"
+        [readonly]="readonly"
       />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let vendor of filteredVendors | async" [value]="vendor">
+          {{ vendor?.vendorName }}
+        </mat-option>
+      </mat-autocomplete>
+      <button type="button" (click)="onOpenEmailInput()" class="new-vendor-btn">&#43;</button>
     </mat-form-field>
-    <mat-form-field class="add-bonus-input" appearance="fill">
+    <mat-form-field
+      [class.hidden]="!vendorEmailVisible"
+      [formGroup]="vendorInfo"
+      class="add-bonus-input"
+      appearance="fill"
+    >
       <mat-label>{{ 'addBonus.form.vendorEmail' | translate }}</mat-label>
       <input
         matInput
         formControlName="vendorEmail"
         autocomplete="off"
         placeholder="pat@example.com"
+        [readonly]="readonly"
       />
     </mat-form-field>
+    <button
+      [class.hidden]="!visibleBtnForSaveNewVendor"
+      class="vendor-info-btn"
+      [disabled]="vendorInfo.invalid"
+      mat-flat-button
+      color="primary"
+      type="button"
+      (click)="onSaveNewVendor()"
+    >
+      {{ 'addBonus.form.saveNewVendorBtn' | translate }}
+    </button>
     <mat-form-field class="add-bonus-input" appearance="fill" aria-autocomplete="off">
       <mat-label>{{ 'addBonus.form.phone' | translate }}</mat-label>
       <input
@@ -35,14 +60,11 @@
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.bonusType' | translate }}</mat-label>
-      <input
-        matInput
-        #message
-        maxlength="30"
-        autocomplete="off"
-        formControlName="bonusType"
-        placeholder="Example: pizzeria, beauty salon, cinema..."
-      />
+      <mat-select formControlName="bonusType" name="food">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.bonusDescription' | translate }}</mat-label>
@@ -100,7 +122,7 @@
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.bonusDateRange' | translate }}</mat-label>
-      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+      <mat-date-range-input [formGroup]="myForm" [rangePicker]="picker">
         <input matStartDate formControlName="start" placeholder="Start date" />
         <input matEndDate formControlName="end" placeholder="End date" />
       </mat-date-range-input>
