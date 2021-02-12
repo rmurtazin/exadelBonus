@@ -1,12 +1,10 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {IBonus} from '@interfaces/bonus.interface';
+import { Component, Input } from '@angular/core';
+import { IBonus } from '@interfaces/bonus.interface';
 
 @Component({
   selector: 'app-bonus-list-view',
   templateUrl: './bonus-list-view.component.html',
   styleUrls: ['./bonus-list-view.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
-  // it would be better to uncomment this
 })
 export class BonusListViewComponent {
   @Input() bonusMap: IBonus;

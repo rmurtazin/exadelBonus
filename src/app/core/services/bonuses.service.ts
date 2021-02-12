@@ -14,8 +14,9 @@ export class BonusesService {
   private url = apiLinks.bonus;
 
   public getBonuses(query?: string): Observable<IBonus[]> {
-    // return this.api.get(this.url, query).pipe(map((data) => data.value));
-    return from(Array(bonuses.default)).pipe(delay(1000));
+    return this.api.get(this.url, query).pipe(map((data) => data.value));
+    // uncomment line below in non-prod mode
+    // return from(Array(bonuses.default)).pipe(delay(1000));
   }
 
   public addBonus(newBonus: IBonus): Observable<IBonus> {
