@@ -18,9 +18,8 @@ export class BonusesService {
   }
 
   public addBonus(newBonus: INewBonus): Observable<IBonus> {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.api
-      .post(`${this.url}/api/Bonus`, JSON.stringify(newBonus), headers)
+      .post(`${this.url}`, JSON.stringify(newBonus))
       .pipe(
         catchError(async (err) =>
           this.toasterService.showError(err, 'Some problems with saving bonus!'),

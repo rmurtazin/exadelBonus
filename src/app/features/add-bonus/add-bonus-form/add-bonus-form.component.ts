@@ -46,7 +46,7 @@ export class AddBonusFormComponent implements OnInit {
     this.filteredVendors = this.vendorName.valueChanges.pipe(
       startWith(''),
       map((value) => (typeof value === 'string' ? value : '')),
-      map((name) => (name ? this._filter(name) : this.vendors.slice())),
+      map((name) => (name ? this._filter(name) : this.vendors?.slice())),
     );
   }
 
