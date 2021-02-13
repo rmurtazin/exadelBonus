@@ -6,4 +6,3 @@ import { Component } from '@angular/core';
   styleUrls: ['./pick.component.scss'],
 })
 export class PickComponent {}
-

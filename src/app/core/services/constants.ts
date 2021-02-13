@@ -20,9 +20,9 @@ export const apiLinks = {
 };
 
 export const widthBreakpoints = {
-  'desktop': 960,
-  'tablet': 768,
-  'mobile-large': 640,
-  'mobile': 480,
-  'mobile-small': 320
-}
+  desktop: 960,
+  tablet: 768,
+  mobileLarge: 640,
+  mobile: 480,
+  mobileSmall: 320,
+};
