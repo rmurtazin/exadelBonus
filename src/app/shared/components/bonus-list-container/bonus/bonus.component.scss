@@ -1,42 +1,8 @@
 @import 'src/styles/variables';
 
-.bonus {
-  width: 520px;
-  height: 200px;
-  border: 1px solid $theme-color;
-  display: flex;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #fff;
-  margin: 0 5px 10px;
-  transition-duration: 2.5s;
-}
 
-.description-container {
-  background-color: $theme-color;
-  color: #fff;
-  flex: 1 1 33.33333%;
-  font-weight: 500;
-  padding: 8px 5px;
-  margin-left: -1px;
-  overflow-y: auto;
-  border-right: 5px solid $theme-color;
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: white;
-    border-radius: 5px;
-  }
-  .vendor-name {
-    text-decoration: underline;
-    font-style: normal;
-    font-size: 20px;
-  }
-  .bonus-description {
-    font-size: 18px;
-    padding-top: 10px;
-  }
-}
+
+
 
 .bonus-content {
   display: block;
@@ -148,5 +114,90 @@
     position: fixed;
     z-index: -1;
     visibility: hidden;
+  }
+}
+
+.bonus {
+  display: flex;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  transition-duration: 2.5s;
+}
+
+.description-container {
+  background-color: $theme-color;
+  color: #fff;
+  flex: 1 1 33.33333%;
+  font-weight: 500;
+  padding: 8px 5px;
+  margin-left: -1px;
+  overflow-y: auto;
+  border-right: 5px solid $theme-color;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 5px;
+  }
+  .vendor-name {
+    text-decoration: underline;
+    font-style: normal;
+    font-size: 20px;
+  }
+  .bonus-description {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+}
+
+@media (min-width: 541px), (min-device-width: 541px) {
+  .bonus {
+    width: 520px;
+    border: 1px solid $theme-color;
+    margin-bottom: 10px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 540px), (max-device-width: 540px) {
+  .bonus {
+    width: 100%;
+    border-bottom: 1px solid black;
+    flex-direction: column;
+    padding-bottom: 5px;
+  }
+  .bonus-content {
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .description-container {
+    background-color: white;
+    color: black;
+    border-right: none;
+    padding-bottom: 0;
+    .bonus-description {
+      font-size: 16px;
+      padding-top: 2px;
+      margin-bottom: 0;
+    }
+  }
+  .discount-icon {
+    display: none;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  .apply-button {
+    float: none;
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+    font-size: 22px;
+  }
+  .discount-value {
+    width: 67%;
   }
 }
