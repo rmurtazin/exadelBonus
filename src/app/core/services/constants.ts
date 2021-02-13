@@ -18,3 +18,11 @@ export const apiLinks = {
   vendor: `${apiUrl}/api/Vendor`,
   history: `${apiUrl}/api/History`,
 };
+
+export const widthBreakpoints = {
+  'desktop': 960,
+  'tablet': 768,
+  'mobile-large': 640,
+  'mobile': 480,
+  'mobile-small': 320
+}

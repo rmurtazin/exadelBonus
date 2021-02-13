@@ -1,53 +1,41 @@
-import {
-  Directive,
-  OnInit,
-  OnDestroy,
-  Input,
-  Renderer2,
-  TemplateRef,
-  ViewContainerRef,
-} from '@angular/core';
-
+import { Directive, Input, HostListener, ViewContainerRef, ElementRef, AfterViewInit } from '@angular/core';
+import { widthBreakpoints } from './../../core/services/constants';
 @Directive({
   selector: '[appResizePick]',
 })
-export class ResizePickDirective implements OnInit, OnDestroy {
-  public listenFunc: () => void;
+export class ResizePickDirective implements AfterViewInit{
+
   @Input('appResizePick') configWidth: string;
+  public width: number = window.innerWidth; 
 
   constructor(
-    private renderer: Renderer2,
-    private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef,
-  ) {}
+    public viewContainerRef: ViewContainerRef,
+    public elementRef: ElementRef
+  ){}
 
-  public ngOnInit(): void {
-    this.displayElement(window.innerWidth);
-    this.listenFunc = this.renderer.listen('window', 'resize', (event) => {
-      this.displayElement(event.target.visualViewport.width);
-    });
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.width = event.target.visualViewport.width;
+    this.displayElement();
   }
 
-  public displayElement(visualViewportWidth: number): void {
-    if (this.isValidSize(visualViewportWidth)) {
-      if (!this.viewContainer.get(0)) {
-        this.viewContainer.createEmbeddedView(this.templateRef);
-      }
-    } else {
-      this.viewContainer.clear();
+  ngAfterViewInit(){
+    this.displayElement();
+  }
+
+  public displayElement(): void {
+    if (!this.isValidSize()) {
+      let el : HTMLElement = this.elementRef.nativeElement;
+      el.parentNode.removeChild(el);
     }
   }
-
-  public isValidSize(viewportWidth: number): boolean {
+ 
+  public isValidSize(): boolean {
     if (this.configWidth === 'mobile') {
-      return viewportWidth < 768;
+      return this.width < widthBreakpoints.tablet;
     }
     if (this.configWidth === 'desktop') {
-      return viewportWidth >= 768;
+      return this.width >= widthBreakpoints.tablet;
     }
-  }
-
-  public ngOnDestroy(): void {
-    this.listenFunc();
   }
 }
