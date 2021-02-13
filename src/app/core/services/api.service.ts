@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   constructor(private http: HttpClient) {}
-  public headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+  public headers: any = new HttpHeaders().set('Content-Type', 'application/json');
 
   public get(url: string, query?: string): Observable<any> {
     return this.http.get(`${url}?${query || ''}`);
