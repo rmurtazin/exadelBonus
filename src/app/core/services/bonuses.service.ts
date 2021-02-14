@@ -17,6 +17,10 @@ export class BonusesService {
     // return this.api.get('../../../assets/static/bonuses.json');
   }
 
+  public getBonus(id: string): Observable<IBonus> {
+    return this.api.get(`${this.url}/${id}`).pipe(map((data) => data.value));
+  }
+
   public addBonus(newBonus: INewBonus): Observable<INewBonus> {
     return this.api.post(this.url, newBonus);
   }

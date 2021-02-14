@@ -1,3 +1,5 @@
+import { IBonus } from '@interfaces/bonus.interface';
+import { BonusesService } from '@services/bonuses.service';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
@@ -39,16 +41,32 @@ export class AddBonusFormComponent implements OnInit {
   public readonly = true;
   public removable = true;
   public addOnBlur = true;
+  public bonus: IBonus;
 
-  constructor() {}
+  constructor(private bonusesService: BonusesService) {}
 
   public ngOnInit(): void {
+    if (this.bonusId ?? false) {
+      this.getBonus();
+    } else {
+      this.onInitForm();
+      this.filteredVendors = this.vendorName.valueChanges.pipe(
+        startWith(''),
+        map((value) => (typeof value === 'string' ? value : '')),
+        map((name) => (name ? this._filter(name) : this.vendors.slice())),
+      );
+    }
+  }
+
+  public getBonus(): void {
+    this.bonusesService.getBonus(this.bonusId).subscribe(
+      (data: IBonus) => {
+        if (data) {
+          this.bonus = data;
+        }
+      }
+    )
     this.onInitForm();
-    this.filteredVendors = this.vendorName.valueChanges.pipe(
-      startWith(''),
-      map((value) => (typeof value === 'string' ? value : '')),
-      map((name) => (name ? this._filter(name) : this.vendors.slice())),
-    );
   }
 
   public onVendorNameChange(vendorName: any): void {
