@@ -1,8 +1,8 @@
 {
   "header": {
-    "findPlace": "Find place",
+    "home": "Home",
     "history": "History",
-    "addBonus": "Add bonus",
+    "bonuses": "Bonuses",
     "statistics": "Statistics",
     "loginAs": "You're login as:",
     "signOut": "Sign out"
@@ -35,5 +35,11 @@
     "login": "Enter your login",
     "password": "Enter your password",
     "signIn": "Sign in"
+  },
+  "home": {
+    "pick": {
+      "labelFilter": "Filter",
+      "labelSorting": "Sorting"
+    }
   }
 }

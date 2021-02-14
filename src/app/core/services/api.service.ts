@@ -7,7 +7,8 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   public get(url: string, query?: string): Observable<any> {
-    return this.http.get(`${url}?${query || ''}`);
+    console.log(`${url}${query || ''}`);
+    return this.http.get(`${url}${query || ''}`);
   }
 
   public post(url: string, body: any, options?: any): Observable<any> {

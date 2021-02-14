@@ -15,6 +15,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ChoosePlaceDialogModule } from 'src/app/shared/components/choose-place-dialog/choose-place-dialog.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterContainerModule } from 'src/app/shared/components/filter-container/filter-container.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,14 @@ import { FilterContainerModule } from 'src/app/shared/components/filter-containe
   ],
   imports: [
     SharedModule,
+    TranslateModule,
     MatTabsModule,
     LeafletModule,
     BonusListContainerModule,
     ChoosePlaceDialogModule,
     MatDialogModule,
     MatTabsModule,
+    FilterContainerModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
     ]),
