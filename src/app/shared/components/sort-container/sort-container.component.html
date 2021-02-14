@@ -1,8 +1,13 @@
-<mat-radio-group class="radio-group" text-align="right">
+<mat-radio-group class="radio-group" text-align="right" (change)="radioChange($event)">
   <mat-radio-button class="radio-button" value="title" labelPosition="before" color="primary">
     {{ 'home.pick.sorting.byTitle' | translate }}
   </mat-radio-button>
-  <mat-radio-button class="radio-button" value="company" labelPosition="before" color="primary">
+  <mat-radio-button
+    class="radio-button"
+    value="company.name"
+    labelPosition="before"
+    color="primary"
+  >
     {{ 'home.pick.sorting.byCompany' | translate }}
   </mat-radio-button>
   <mat-radio-button class="radio-button" value="dateStart" labelPosition="before" color="primary">
@@ -10,5 +15,11 @@
   </mat-radio-button>
   <mat-radio-button class="radio-button" value="dateEnd" labelPosition="before" color="primary">
     {{ 'home.pick.sorting.byDateEnd' | translate }}
+  </mat-radio-button>
+  <mat-radio-button class="radio-button" value="rating" labelPosition="before" color="primary">
+    {{ 'home.pick.sorting.byRating' | translate }}
+  </mat-radio-button>
+  <mat-radio-button class="radio-button" value="type" labelPosition="before" color="primary">
+    {{ 'home.pick.sorting.byType' | translate }}
   </mat-radio-button>
 </mat-radio-group>

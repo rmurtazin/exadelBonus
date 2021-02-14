@@ -28,7 +28,6 @@ export class FilterService {
   private sendFilterBonusRequest(): void {
     const newQueryString = this.buildLink();
     this.bonuses.getBonuses(newQueryString).subscribe((bonuses: IBonus[]) => {
-      console.log(bonuses);
       this.applyFilterEvent(bonuses);
     });
   }
@@ -72,7 +71,7 @@ export class FilterService {
       queriesArray.push(`End=${this.queryParams.end}`);
     }
     if (this.queryParams?.sortBy) {
-      queriesArray.push(`sortBy=${this.queryParams.sortBy}`);
+      queriesArray.push(`SortBy${this.queryParams.sortBy}`);
     }
     const resultUrl = `?${queriesArray.join('&')}`;
     return encodeURI(resultUrl);
