@@ -1,8 +1,8 @@
 {
   "header": {
-    "findPlace": "Найти место",
+    "home": "Домашняя страница",
     "history": "История",
-    "addBonus": "Добавить бонус",
+    "bonuses": "Бонусы",
     "statistics": "Статистика",
     "loginAs": "Вы вошли как:",
     "signOut": "Выход"

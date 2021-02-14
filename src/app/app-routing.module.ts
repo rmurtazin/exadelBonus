@@ -23,7 +23,7 @@ const routes: Routes = [
           import('./features/history/history.module').then((m) => m.HistoryModule),
       },
       {
-        path: 'add-bonus',
+        path: 'bonuses',
         loadChildren: () =>
           import('./features/add-bonus/add-bonus.module').then((m) => m.AddBonusModule),
       },
