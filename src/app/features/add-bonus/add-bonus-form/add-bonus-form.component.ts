@@ -24,6 +24,7 @@ export class AddBonusFormComponent implements OnInit {
   @Input() locations: ILocation[];
   @Input() vendors: IVendor[];
   @Input() newVendor: IVendor;
+  @Input() bonusId: string;
 
   public myForm: FormGroup;
   public vendorInfo: FormGroup;

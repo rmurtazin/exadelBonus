@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
 import { IBonusFormConfig, ILocation, INewBonus, IVendor } from '@interfaces/add-bonus.interface';
@@ -18,15 +19,19 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public newVendor: IVendor;
   public isFormActive = false;
   public bonusFormConfig: IBonusFormConfig;
+  public bonusId: string;
 
   constructor(
     public bonusAddressService: BonusAddressService,
     public vendorsService: VendorsService,
     public bonusesService: BonusesService,
+    private route: ActivatedRoute,
   ) {}
 
   public ngOnInit(): void {
     this.initialBonusFormConfig();
+    this.bonusId = this.route.snapshot.paramMap.get('id');
+    this.isFormActive = (this.bonusId ?? false) ? true : false;
   }
 
   public initialBonusFormConfig(): void {
