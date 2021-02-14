@@ -35,5 +35,19 @@
     "login": "Enter your login",
     "password": "Enter your password",
     "signIn": "Sign in"
+  },
+  "statistics": {
+    "filter": "Filter",
+    "vendor": "Vendor",
+    "bonus": "Bonus",
+    "dateStart": "Start",
+    "dateEnd": "End",
+    "dateAdd": "Add date",
+    "rating": "Rating",
+    "visits": "Visits",
+    "city": "City",
+    "country": "Country",
+    "type": "Bonus type",
+    "isActive": "Is active"
   }
 }

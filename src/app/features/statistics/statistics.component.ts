@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -237,7 +237,7 @@ const ELEMENT_DATA: StatisticElement[] = [
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss'],
 })
-export class StatisticsComponent implements OnInit, AfterViewInit {
+export class StatisticsComponent implements AfterViewInit {
   public displayedColumns: string[] = [
     'position',
     'vendor',
@@ -256,8 +256,6 @@ export class StatisticsComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) public paginator: MatPaginator;
   @ViewChild(MatSort) public sort: MatSort;
-
-  public ngOnInit(): void {}
 
   public ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
