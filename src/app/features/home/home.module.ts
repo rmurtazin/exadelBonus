@@ -35,6 +35,7 @@ import { FilterContainerModule } from 'src/app/shared/components/filter-containe
     ChoosePlaceDialogModule,
     MatDialogModule,
     MatTabsModule,
+    FilterContainerModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
     ]),
