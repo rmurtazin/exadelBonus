@@ -16,6 +16,7 @@ import { FilterContainerModule } from 'src/app/shared/components/filter-containe
 import { SortContainerModule } from 'src/app/shared/components/sort-container/sort-container.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { PickComponent } from './pick/pick.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { PickComponent } from './pick/pick.component';
   ],
   imports: [
     SharedModule,
+    TranslateModule,
     LeafletModule,
     BonusListContainerModule,
     ChoosePlaceDialogModule,
