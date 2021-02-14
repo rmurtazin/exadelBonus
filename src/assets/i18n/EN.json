@@ -35,5 +35,9 @@
     "login": "Enter your login",
     "password": "Enter your password",
     "signIn": "Sign in"
+  },
+  "rateForm": {
+    "title": "Rated",
+    "success": "Your review has been added"
   }
 }
