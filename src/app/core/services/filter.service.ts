@@ -27,7 +27,7 @@ export class FilterService {
   private sendFilterBonusRequest(): void {
     const newQueryString = this.buildLink();
     this.bonuses.getBonuses(newQueryString).subscribe((bonuses: IBonus[]) => {
-      console.log(bonuses);
+
       this.applyFilterEvent(bonuses);
     });
   }
