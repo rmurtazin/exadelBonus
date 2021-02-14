@@ -37,6 +37,7 @@ import { PickComponent } from './pick/pick.component';
     SortContainerModule,
     MatTabsModule,
     MatDialogModule,
+    FilterContainerModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
     ]),
