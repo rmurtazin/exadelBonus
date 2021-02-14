@@ -65,11 +65,13 @@ export class MapComponent implements OnDestroy {
   }
 
   private showBonusDependsOnZomm(): void {
-    const isHigh = this.map.getZoom() < 7;
+    const isHigh = this.map.getZoom() < 12;
+    console.log(this.map.getZoom());
     if (isHigh && !this.markerGroopIsHiden) {
       this.map.removeLayer(this.markersGroup);
       this.markerGroopIsHiden = true;
-    } else if (!isHigh && this.markerGroopIsHiden) {
+    }
+    if (!isHigh && this.markerGroopIsHiden) {
       this.markersGroup.addTo(this.map);
       this.markerGroopIsHiden = false;
     }
@@ -117,6 +119,7 @@ export class MapComponent implements OnDestroy {
     this.markersGroup = this.markerModel.createMarkerCluster(markers);
     this.markersGroup.addTo(this.map);
     this.navigateToMarker(markers);
+    this.showBonusDependsOnZomm();
   }
 
   private navigateToMarker(markers: Marker[]): void {
