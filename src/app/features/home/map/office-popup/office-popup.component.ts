@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { IOffice } from '@interfaces/office.interface';
 import { TranslateService } from '@ngx-translate/core';
+import { FilterService } from '@services/filter.service';
 import { MapEventsService } from '@services/map-events.service';
 import { Subscription } from 'rxjs';
 
@@ -17,6 +18,7 @@ export class OfficePopupComponent implements OnInit, OnDestroy {
     private mapEvents: MapEventsService,
     private translate: TranslateService,
     private changeDetector: ChangeDetectorRef,
+    private flilterService: FilterService
   ) {}
 
   public ngOnInit(): void {
@@ -34,6 +36,7 @@ export class OfficePopupComponent implements OnInit, OnDestroy {
 
   public clickTrigger(): void {
     this.mapEvents.zoomToOffice(this.office);
+    this.flilterService.addCityToQuery(this.office.city);
   }
 
   public ngOnDestroy(): void {

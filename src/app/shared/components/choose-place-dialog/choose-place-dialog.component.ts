@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PlaceDetectionMethod } from '@enums/place-detection-method';
 import { IOffice } from '@interfaces/office.interface';
+import { FilterService } from '@services/filter.service';
 import { OfficesService } from '@services/offices.service';
 import { latLng, LatLng } from 'leaflet';
 import { Subscription } from 'rxjs';
@@ -22,6 +23,7 @@ export class ChoosePlaceDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ChoosePlaceDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: LatLng,
     private officeService: OfficesService,
+    private filterService: FilterService,
   ) {}
 
   public ngOnInit(): void {
@@ -41,10 +43,12 @@ export class ChoosePlaceDialogComponent implements OnInit {
       this.dialogRef.close();
       return;
     }
+    const office =  this.offices[this.selectedOffice];
     const location = latLng(
-      this.offices[this.selectedOffice].latitude,
-      this.offices[this.selectedOffice].longitude,
+      office.latitude,
+      office.longitude,
     );
+    this.filterService.addCityToQuery(office.city);
     this.dialogRef.close(location);
   }
 }

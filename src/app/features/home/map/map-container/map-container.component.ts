@@ -161,7 +161,7 @@ export class MapComponent implements OnDestroy {
   }
 
   private setMapView(location: LatLng, showUserMarker?: boolean): void {
-    const zoom = 11;
+    const zoom = 12;
     this.map.flyTo(location, zoom);
     if (showUserMarker) {
       this.showUserLocation(location);
