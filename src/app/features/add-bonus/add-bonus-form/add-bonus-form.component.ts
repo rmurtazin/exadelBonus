@@ -42,11 +42,13 @@ export class AddBonusFormComponent implements OnInit {
   public removable = true;
   public addOnBlur = true;
   public bonus: IBonus;
+  public newBonus = true;
 
   constructor(private bonusesService: BonusesService) {}
 
   public ngOnInit(): void {
     if (this.bonusId ?? false) {
+      this.newBonus = false;
       this.getBonus();
     } else {
       this.onInitForm();
