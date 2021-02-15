@@ -37,7 +37,39 @@
     "signIn": "Sign in"
   },
   "rateForm": {
-    "title": "Rated",
-    "success": "Your review has been added"
+    "notification": {
+      "success": {
+        "title": "Rated",
+        "message": "Your review has been added"
+      }
+    }
+  },
+  "location": {
+    "notification": {
+      "error": {
+        "title": "Error",
+        "message": "Geolocation not available"
+      }
+    }
+  },
+  "map": {
+    "notification": {
+      "error": {
+        "title": "Error",
+        "message": "Bonus not available"
+      }
+    }
+  },
+  "bonusList": {
+    "notification": {
+      "getBonusesError": {
+        "title": "Error",
+        "message": "Some problems with getting bonuses"
+      },
+      "getBonusesFromMapError": {
+        "title": "Error",
+        "message": "Some problems with getting bonus from the map"
+      }
+    }
   }
 }

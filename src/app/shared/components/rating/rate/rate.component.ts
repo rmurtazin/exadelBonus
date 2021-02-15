@@ -11,7 +11,6 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
 import { ToasterService } from '@services/toaster.service';
 import { take } from 'rxjs/operators';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-rate',
@@ -31,7 +30,6 @@ export class RateComponent implements OnInit {
   constructor(
     private bonusesService: BonusesService,
     private toasterService: ToasterService,
-    private translate: TranslateService,
   ) {}
 
   ngOnInit(): void {
@@ -43,8 +41,6 @@ export class RateComponent implements OnInit {
   }
 
   public submitRating(): void {
-    let title: string;
-    let message: string;
     this.disableButton = true;
     this.animationStart = true;
     this.bonusesService
@@ -53,13 +49,7 @@ export class RateComponent implements OnInit {
       .subscribe((newBonus: IBonus) => {
         this.animationStart = false;
         this.bonus = newBonus;
-        this.translate
-          .get('rateForm.success')
-          .subscribe((translatedMessage) => (message = translatedMessage));
-        this.translate
-          .get('rateForm.title')
-          .subscribe((translatedTitle) => (title = translatedTitle));
-        this.toasterService.showSuccess(message, title);
+        this.toasterService.showNotification('rateForm.notification.success', 'success');
         this.ratingWasSubmitted.emit();
       });
   }

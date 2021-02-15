@@ -72,7 +72,7 @@ export class MapComponent implements OnDestroy {
           navigationSuccess = this.navigateToMarker(markers);
         }
         if (!navigationSuccess) {
-          this.toaster.showError('Bonus not available', 'Error');
+          this.toaster.showNotification('map.notification.error', 'error');
         }
       }),
     );

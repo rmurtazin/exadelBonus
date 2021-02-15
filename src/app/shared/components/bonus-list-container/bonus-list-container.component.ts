@@ -35,7 +35,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
           this.bonuses = data;
         }
       },
-      (err) => this.toasterService.showError(err.message, 'Some problems with getting bonuses'),
+      () => this.toasterService.showNotification('bonusList.notification.getBonusesError', 'error'),
     );
   }
 
@@ -46,7 +46,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
           this.bonusMap = bonus;
         }
       },
-      (err) => this.toasterService.showError(err, 'Some problems with getting bonus from the map'),
+      () => this.toasterService.showNotification('bonusList.notification.getBonusesFromMapError', 'error'),
     );
   }
 

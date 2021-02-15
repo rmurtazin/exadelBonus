@@ -37,7 +37,39 @@
     "signIn": "Войти"
   },
   "rateForm": {
-    "title": "Отправлено",
-    "success": "Ваша оценка добавлена"
+    "notification": {
+      "success": {
+        "title": "Отправлено",
+        "message": "Ваша оценка добавлена"
+      }
+    }
+  },
+  "location": {
+    "notification": {
+      "error": {
+        "title": "Ошибка",
+        "message": "Геолокация недоступна"
+      }
+    }
+  },
+  "map": {
+    "notification": {
+      "error": {
+        "title": "Ошибка",
+        "message": "Бонус недоступен"
+      }
+    }
+  },
+  "bonusList": {
+    "notification": {
+      "getBonusesError": {
+        "title": "Ошибка",
+        "message": "Ошибка при получении бонусов"
+      },
+      "getBonusesFromMapError": {
+        "title": "Ошибка",
+        "message": "Ошибка при получения бонуса с карты"
+      }
+    }
   }
 }
