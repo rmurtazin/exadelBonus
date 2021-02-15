@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { INewBonus } from '@interfaces/add-bonus.interface';
 import { ToasterService } from './toaster.service';
@@ -9,12 +9,19 @@ import { apiLinks } from './constants';
 
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
+  public bonusSubject = new Subject<IBonus[]>();
+
   constructor(private api: ApiService, private toasterService: ToasterService) {}
 
   private url = apiLinks.bonus;
 
   public getBonuses(query?: string): Observable<IBonus[]> {
-    return this.api.get(this.url, query).pipe(map((data) => data.value));
+    return this.api.get(this.url, query).pipe(
+      map((data) => {
+        this.bonusSubject.next(data.value);
+        return data.value;
+      }),
+    );
   }
 
   public addBonus(newBonus: INewBonus): Observable<IBonus> {
