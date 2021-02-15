@@ -29,6 +29,12 @@
       "bonusAddressPlaceholder": "Введите страну, город, улицу, номер",
       "bonusDateRange": "Введите диапазон даты бонуса",
       "saveNewVendorBtn": "Сохранить новый вендор"
+    },
+    "notification": {
+      "saveBonusError": {
+        "title": "Ошибка сохранения",
+        "message": "Возникли проблемы с сохранением бонуса!"
+      }
     }
   },
   "loginPage": {

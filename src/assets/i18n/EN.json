@@ -29,6 +29,12 @@
       "bonusAddressPlaceholder": "Enter country, city, town, number",
       "bonusDateRange": "Enter a bonus date range",
       "saveNewVendorBtn": "Save new vendor"
+    },
+    "notification": {
+      "saveBonusError": {
+        "title": "Save error",
+        "message": "Some problems with saving bonus!"
+      }
     }
   },
   "loginPage": {

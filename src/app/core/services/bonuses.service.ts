@@ -32,7 +32,7 @@ export class BonusesService {
       .post(`${this.url}`, JSON.stringify(newBonus))
       .pipe(
         catchError(async (err) =>
-          this.toasterService.showError(err, 'Some problems with saving bonus!'),
+          this.toasterService.showNotification( 'addBonus.notification.saveBonusError', 'error'),
         ),
       );
   }

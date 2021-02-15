@@ -27,7 +27,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { VendorsService } from '@services/vendors.service';
-import { RatingModule } from './shared/components/rating/rating.module';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -68,7 +67,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     SharedModule,
     HeaderModule,
     FooterModule,
-    RatingModule
   ],
   providers: [
     ApiService,
