@@ -1,5 +1,6 @@
 import { OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
+import { IBonus } from '@interfaces/bonus.interface';
 import { IBonusFormConfig, ILocation, INewBonus, IVendor } from '@interfaces/add-bonus.interface';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
@@ -16,6 +17,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public locations: ILocation[] = [];
   public vendors: IVendor[] = [];
   public newVendor: IVendor;
+  public bonuses: IBonus[] = [];
   public isFormActive = false;
   public bonusFormConfig: IBonusFormConfig;
 
@@ -26,7 +28,12 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
+    this.getBonuses();
     this.initialBonusFormConfig();
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   public initialBonusFormConfig(): void {
@@ -52,8 +59,11 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     };
   }
 
-  public ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  public getBonuses(): void {
+    const query = 'LastCount=5';
+    this.bonusesService.getBonuses(query).subscribe((data) => {
+      this.bonuses = data;
+    });
   }
 
   public onAddAddress(myForm: any): void {
@@ -88,7 +98,6 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   }
 
   public createVendor(newVendor: IVendor): void {
-    // TODO here should be post method for created new vendor
     this.subscription.add(
       this.vendorsService.createVendor(newVendor).subscribe((data) => {
         this.newVendor = data;
