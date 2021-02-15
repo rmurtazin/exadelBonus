@@ -36,9 +36,6 @@ describe('MapComponent', () => {
   let officeService: OfficesService;
   let fillterService: FilterService;
 
-  function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
-    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-  }
   beforeEach(async () => {
     bonusService = new MockBonusService();
     officeService = new MockOfficesService();
