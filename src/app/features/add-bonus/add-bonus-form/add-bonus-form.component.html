@@ -1,6 +1,12 @@
 <div class="container">
   <div class="form-btn-back-container">
-    <button *ngIf="newBonus" class="form-btn-back" (click)="goBack()" mat-stroked-button color="primary">
+    <button
+      *ngIf="newBonus"
+      class="form-btn-back"
+      (click)="goBack()"
+      mat-stroked-button
+      color="primary"
+    >
       &#8656; {{ 'addBonus.goBack' | translate }}
     </button>
   </div>

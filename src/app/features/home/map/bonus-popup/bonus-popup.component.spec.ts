@@ -18,6 +18,7 @@ describe('BonusPopupComponent', () => {
     fixture = TestBed.createComponent(BonusPopupComponent);
     component = fixture.componentInstance;
     component.bonus = {
+      title: 'title',
       id: 123,
       dateStart: 'dateStart',
       dateEnd: 'dateEnd',

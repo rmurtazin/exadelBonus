@@ -1,6 +1,10 @@
 <div class="bonus-card-wrapper">
   <mat-card *ngIf="bonus" class="bonus-card">
-    <a *ngIf="isModeratorOrAdmin" routerLink="/bonuses/{{bonus.id}}" [routerLinkActive]="'active'">
+    <a
+      *ngIf="isModeratorOrAdmin"
+      routerLink="/bonuses/{{ bonus.id }}"
+      [routerLinkActive]="'active'"
+    >
       <img class="update-img" src="assets/images/pencil.png" alt="update bonus" />
     </a>
     <mat-card-subtitle class="company-name"> {{ bonus.company.name }}</mat-card-subtitle>

@@ -61,14 +61,12 @@ export class AddBonusFormComponent implements OnInit {
   }
 
   public getBonus(): void {
-    this.bonusesService.getBonus(this.bonusId).subscribe(
-      (data: IBonus) => {
-        if (data) {
-          this.bonus = data;
-        }
+    this.bonusesService.getBonus(this.bonusId).subscribe((data: IBonus) => {
+      if (data) {
+        this.bonus = data;
+        this.onInitForm(data);
       }
-    )
-    this.onInitForm();
+    });
   }
 
   public onVendorNameChange(vendorName: any): void {
@@ -116,21 +114,38 @@ export class AddBonusFormComponent implements OnInit {
     this.bonusFormConfig.closeForm();
   }
 
-  public onInitForm(): void {
-    this.myForm = new FormGroup({
-      vendorInfo: (this.vendorInfo = new FormGroup({
-        vendorName: (this.vendorName = new FormControl('', [Validators.required])),
-        vendorEmail: (this.vendorEmail = new FormControl('', [Validators.required])),
-      })),
-      bonusAddress: new FormControl('', [Validators.required]),
-      bonusType: new FormControl('', [Validators.required]),
-      bonusDescription: new FormControl('', [Validators.required]),
-      bonusTags: new FormControl('', [Validators.required]),
-      bonusTitle: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
-      start: new FormControl('', [Validators.required]),
-      end: new FormControl('', [Validators.required]),
-    });
+  public onInitForm(bonus?: IBonus): void {
+    if (bonus ?? false) {
+      this.myForm = new FormGroup({
+        vendorInfo: (this.vendorInfo = new FormGroup({
+          vendorName: (this.vendorName = new FormControl('', [Validators.required])),
+          vendorEmail: (this.vendorEmail = new FormControl('', [Validators.required])),
+        })),
+        bonusAddress: new FormControl('', [Validators.required]),
+        bonusType: new FormControl(bonus.type, [Validators.required]),
+        bonusDescription: new FormControl(bonus.description, [Validators.required]),
+        bonusTags: new FormControl(bonus.tags, [Validators.required]),
+        bonusTitle: new FormControl(bonus.title, [Validators.required]),
+        phone: new FormControl(bonus.phone, [Validators.required]),
+        start: new FormControl(bonus.dateStart, [Validators.required]),
+        end: new FormControl(bonus.dateEnd, [Validators.required]),
+      });
+    } else {
+      this.myForm = new FormGroup({
+        vendorInfo: (this.vendorInfo = new FormGroup({
+          vendorName: (this.vendorName = new FormControl('', [Validators.required])),
+          vendorEmail: (this.vendorEmail = new FormControl('', [Validators.required])),
+        })),
+        bonusAddress: new FormControl('', [Validators.required]),
+        bonusType: new FormControl('', [Validators.required]),
+        bonusDescription: new FormControl('', [Validators.required]),
+        bonusTags: new FormControl('', [Validators.required]),
+        bonusTitle: new FormControl('', [Validators.required]),
+        phone: new FormControl('', [Validators.required]),
+        start: new FormControl('', [Validators.required]),
+        end: new FormControl('', [Validators.required]),
+      });
+    }
   }
 
   public onSubmit(): void {
