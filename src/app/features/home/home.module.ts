@@ -32,6 +32,7 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     SharedModule,
     TranslateModule,
+    MatTabsModule,
     LeafletModule,
     BonusListContainerModule,
     ChoosePlaceDialogModule,
