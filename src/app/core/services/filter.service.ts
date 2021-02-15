@@ -9,6 +9,7 @@ interface IFilterQueryParams {
   city?: string;
   start?: string;
   end?: string;
+  sortBy?: string;
 }
 @Injectable({ providedIn: 'root' })
 export class FilterService {
@@ -26,13 +27,9 @@ export class FilterService {
 
   private sendFilterBonusRequest(): void {
     const newQueryString = this.buildLink();
-    console.log(newQueryString);
-    // TODO: subscribe on getBonuses with query
-  }
-
-  public addOrderQuery(order: string): void {
-    this.queryParams.order = order;
-    this.sendFilterBonusRequest();
+    this.bonuses.getBonuses(newQueryString).subscribe((bonuses: IBonus[]) => {
+      this.applyFilterEvent(bonuses);
+    });
   }
 
   public addTagsToQuery(tags: string[]): void {
@@ -51,23 +48,30 @@ export class FilterService {
     this.sendFilterBonusRequest();
   }
 
+  public addSortToQuery(type: string): void {
+    this.queryParams.sortBy = type;
+    this.sendFilterBonusRequest();
+  }
+
   private buildLink(): string {
     const queriesArray = [];
     if (this.queryParams?.order) {
       queriesArray.push(`order=${this.queryParams.order}`);
     }
     if (this.queryParams?.tags && this.queryParams.tags.length > 0) {
-      // join by symbol _ one tag witch consist of multiply words
-      queriesArray.push(`tags=${this.queryParams.tags.join('/')}`);
+      queriesArray.push(`Tags=${this.queryParams.tags.join('&Tags=')}`);
     }
     if (this.queryParams?.city) {
-      queriesArray.push(`city=${this.queryParams.city}`);
+      queriesArray.push(`City=${this.queryParams.city}`);
     }
     if (this.queryParams?.start) {
-      queriesArray.push(`start=${this.queryParams.start}`);
+      queriesArray.push(`Start=${this.queryParams.start}`);
     }
     if (this.queryParams?.end) {
-      queriesArray.push(`end=${this.queryParams.end}`);
+      queriesArray.push(`End=${this.queryParams.end}`);
+    }
+    if (this.queryParams?.sortBy) {
+      queriesArray.push(`SortBy=${this.queryParams.sortBy}`);
     }
     const resultUrl = `?${queriesArray.join('&')}`;
     return encodeURI(resultUrl);

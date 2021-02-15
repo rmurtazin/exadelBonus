@@ -1,53 +1,45 @@
 import {
   Directive,
-  OnInit,
-  OnDestroy,
   Input,
-  Renderer2,
-  TemplateRef,
+  HostListener,
   ViewContainerRef,
+  ElementRef,
+  OnInit,
 } from '@angular/core';
-
+import { widthBreakpoints } from './../../core/services/constants';
 @Directive({
   selector: '[appResizePick]',
 })
-export class ResizePickDirective implements OnInit, OnDestroy {
-  public listenFunc: () => void;
+export class ResizePickDirective implements OnInit {
   @Input('appResizePick') configWidth: string;
+  public width: number = window.innerWidth;
 
-  constructor(
-    private renderer: Renderer2,
-    private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef,
-  ) {}
+  constructor(public viewContainerRef: ViewContainerRef, public elementRef: ElementRef) {}
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.width = event.target.visualViewport.width;
+  }
 
   public ngOnInit(): void {
-    this.displayElement(window.innerWidth);
-    this.renderer.listen('window', 'resize', (event) => {
-      this.displayElement(event.target.visualViewport.width);
-    });
+    this.displayElement();
   }
 
-  public displayElement(visualViewportWidth: number): void {
-    if (this.isValidSize(visualViewportWidth)) {
-      if (!this.viewContainer.get(0)) {
-        this.viewContainer.createEmbeddedView(this.templateRef);
+  public displayElement(): void {
+    if (!this.isValidSize()) {
+      const el: HTMLElement = this.elementRef.nativeElement;
+      if (el.parentNode) {
+        el.parentNode.removeChild(el);
       }
-    } else {
-      this.viewContainer.clear();
     }
   }
 
-  public isValidSize(viewportWidth: number): boolean {
+  public isValidSize(): boolean {
     if (this.configWidth === 'mobile') {
-      return viewportWidth < 768;
+      return this.width < widthBreakpoints.tablet;
     }
     if (this.configWidth === 'desktop') {
-      return viewportWidth >= 768;
+      return this.width >= widthBreakpoints.tablet;
     }
-  }
-
-  public ngOnDestroy(): void {
-    this.listenFunc();
   }
 }

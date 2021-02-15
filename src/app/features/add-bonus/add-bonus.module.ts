@@ -12,6 +12,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
+import { BonusListContainerModule } from 'src/app/shared/components/bonus-list-container/bonus-list-container.module';
 
 @NgModule({
   declarations: [AddBonusComponent, AddBonusFormComponent, AddBonusButtonComponent],
@@ -23,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
     NgxMaskModule.forRoot(),
     TranslateModule,
     MatSelectModule,
+    BonusListContainerModule,
     RouterModule.forChild([
       { path: '', component: AddBonusComponent, data: { roles: ['moderator', 'admin'] } },
     ]),

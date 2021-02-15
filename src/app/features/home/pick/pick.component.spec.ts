@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { PickComponent } from './pick.component';
 
 describe('PickComponent', () => {
@@ -9,6 +9,7 @@ describe('PickComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PickComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
