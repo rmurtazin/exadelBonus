@@ -4,13 +4,13 @@ import {
   HostListener,
   ViewContainerRef,
   ElementRef,
-  AfterViewInit,
+  OnInit,
 } from '@angular/core';
 import { widthBreakpoints } from './../../core/services/constants';
 @Directive({
   selector: '[appResizePick]',
 })
-export class ResizePickDirective implements AfterViewInit {
+export class ResizePickDirective implements OnInit {
   @Input('appResizePick') configWidth: string;
   public width: number = window.innerWidth;
 
@@ -19,10 +19,9 @@ export class ResizePickDirective implements AfterViewInit {
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
     this.width = event.target.visualViewport.width;
-    this.displayElement();
   }
 
-  public ngAfterViewInit(): void {
+  public ngOnInit(): void {
     this.displayElement();
   }
 
