@@ -25,5 +25,16 @@ describe('AddBonusFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
+  it('should create form with 10 controls', () => {
+    expect(component.myForm.contains('bonusAddress')).toBeTruthy();
+    expect(component.myForm.contains('bonusType')).toBeTruthy();
+    expect(component.myForm.contains('bonusDescription')).toBeTruthy();
+    expect(component.myForm.contains('bonusTags')).toBeTruthy();
+    expect(component.myForm.contains('bonusTitle')).toBeTruthy();
+    expect(component.myForm.contains('phone')).toBeTruthy();
+    expect(component.myForm.contains('start')).toBeTruthy();
+    expect(component.myForm.contains('end')).toBeTruthy();
+    expect(component.vendorInfo.contains('vendorName')).toBeTruthy();
+    expect(component.vendorInfo.contains('vendorEmail')).toBeTruthy();
+  });
 });
