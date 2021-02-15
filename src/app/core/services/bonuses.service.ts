@@ -16,10 +16,12 @@ export class BonusesService {
   private url = apiLinks.bonus;
 
   public getBonuses(query?: string): Observable<IBonus[]> {
-    return this.api.get(this.url, query).pipe(map((data) => {
-      this.bonusSubject.next(data.value);
-      return data.value;
-    }));
+    return this.api.get(this.url, query).pipe(
+      map((data) => {
+        this.bonusSubject.next(data.value);
+        return data.value;
+      }),
+    );
   }
 
   public addBonus(newBonus: INewBonus): Observable<IBonus> {
