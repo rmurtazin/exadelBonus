@@ -48,6 +48,6 @@ export class ResizePickDirective implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.listenFunc();
+    // this.listenFunc();
   }
 }
