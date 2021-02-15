@@ -1,5 +1,8 @@
 <div class="container">
-  <app-add-bonus-button *ngIf="!isFormActive" (openForm)="openForm()"></app-add-bonus-button>
+  <div *ngIf="!isFormActive">
+    <app-add-bonus-button (openForm)="openForm()"></app-add-bonus-button>
+    <app-bonus-list-view [bonuses]="bonuses"></app-bonus-list-view>
+  </div>
   <app-add-bonus-form
     *ngIf="isFormActive"
     [bonusFormConfig]="bonusFormConfig"

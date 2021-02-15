@@ -148,23 +148,6 @@ export class AddBonusFormComponent implements OnInit {
     }
   }
 
-  public onSubmit(): void {
-    const formValue = this.myForm.value;
-    const submitBonus: INewBonus = {
-      company: this.vendorName.value.vendorId || this.newVendor.vendorId,
-      phone: formValue.phone,
-      dateStart: formValue.start,
-      dateEnd: formValue.end,
-      description: formValue.bonusDescription,
-      type: formValue.bonusType,
-      title: formValue.bonusTitle,
-      locations: this.locations,
-      tags: this.bonusTags.map((tag) => tag.name),
-    };
-    this.bonusFormConfig.createBonus(submitBonus);
-    this.goBack();
-  }
-
   public onAddTag(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value.trim();
@@ -199,5 +182,22 @@ export class AddBonusFormComponent implements OnInit {
     if (index >= 0) {
       this.locations.splice(index, 1);
     }
+  }
+
+  public onSubmit(): void {
+    const formValue = this.myForm.value;
+    const submitBonus: INewBonus = {
+      company: this.vendorName.value.vendorId || this.newVendor.vendorId,
+      phone: formValue.phone,
+      dateStart: new Date(formValue.start).toISOString(),
+      dateEnd: new Date(formValue.end).toISOString(),
+      description: formValue.bonusDescription,
+      type: formValue.bonusType,
+      title: formValue.bonusTitle,
+      locations: this.locations,
+      tags: this.bonusTags.map((tag) => tag.name),
+    };
+    this.bonusFormConfig.createBonus(submitBonus);
+    this.goBack();
   }
 }

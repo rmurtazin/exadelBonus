@@ -1,28 +1,41 @@
 import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { INewBonus } from '@interfaces/add-bonus.interface';
-import { map } from 'rxjs/operators';
+import { ToasterService } from './toaster.service';
+import { map, catchError } from 'rxjs/operators';
 import { apiLinks } from './constants';
 
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
-  constructor(private api: ApiService) {}
+  public bonusSubject = new Subject<IBonus[]>();
+
+  constructor(private api: ApiService, private toasterService: ToasterService) {}
 
   private url = apiLinks.bonus;
 
   public getBonuses(query?: string): Observable<IBonus[]> {
-    return this.api.get(this.url, query).pipe(map((data) => data.value));
-    // return this.api.get('../../../assets/static/bonuses.json');
+    return this.api.get(this.url, query).pipe(
+      map((data) => {
+        this.bonusSubject.next(data.value);
+        return data.value;
+      }),
+    );
   }
 
   public getBonus(id: string): Observable<IBonus> {
     return this.api.get(`${this.url}/${id}`).pipe(map((data) => data.value));
   }
 
-  public addBonus(newBonus: INewBonus): Observable<INewBonus> {
-    return this.api.post(this.url, newBonus);
+  public addBonus(newBonus: INewBonus): Observable<IBonus> {
+    return this.api
+      .post(`${this.url}`, JSON.stringify(newBonus))
+      .pipe(
+        catchError(async (err) =>
+          this.toasterService.showError(err, 'Some problems with saving bonus!'),
+        ),
+      );
   }
 
   public removeBonus(id: number): Observable<void> {
