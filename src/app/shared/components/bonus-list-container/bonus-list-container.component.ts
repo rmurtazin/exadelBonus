@@ -29,7 +29,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   }
 
   public getBonuses(): void {
-    this.subscriptionBonuses = this.bonusesService.getBonuses().subscribe(
+    this.subscriptionBonuses = this.bonusesService.bonusSubject.subscribe(
       (data: IBonus[]) => {
         if (data) {
           this.bonuses = data;
