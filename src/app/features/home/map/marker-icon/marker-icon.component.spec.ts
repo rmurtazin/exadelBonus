@@ -15,10 +15,15 @@ describe('MarkerIconComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MarkerIconComponent);
     component = fixture.componentInstance;
+    component.icon = 'shop';
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display number of input markers', () => {
+    expect(fixture.nativeElement.querySelector('mat-icon').textContent).toEqual('shop');
   });
 });

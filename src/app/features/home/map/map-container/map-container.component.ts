@@ -66,7 +66,6 @@ export class MapComponent implements OnDestroy {
 
   private showBonusDependsOnZomm(): void {
     const isHigh = this.map.getZoom() < 12;
-    console.log(this.map.getZoom());
     if (isHigh && !this.markerGroopIsHiden) {
       this.map.removeLayer(this.markersGroup);
       this.markerGroopIsHiden = true;
@@ -162,7 +161,7 @@ export class MapComponent implements OnDestroy {
   }
 
   private setMapView(location: LatLng, showUserMarker?: boolean): void {
-    const zoom = 11;
+    const zoom = 12;
     this.map.flyTo(location, zoom);
     if (showUserMarker) {
       this.showUserLocation(location);

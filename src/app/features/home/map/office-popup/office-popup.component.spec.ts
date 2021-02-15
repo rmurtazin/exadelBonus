@@ -24,12 +24,16 @@ describe('OfficePopupComponent', () => {
       address: 'address',
       latitude: 123,
       longitude: 321,
-      number: '234',
+      phone: '234',
     };
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('shuld display office city', () => {
+    expect(fixture.nativeElement.querySelector('h1').textContent).toEqual('city');
   });
 });
