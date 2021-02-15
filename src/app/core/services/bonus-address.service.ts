@@ -13,7 +13,7 @@ export class BonusAddressService {
   constructor(public apiService: ApiService) {}
 
   public getSearchedAddress(place): Observable<any> {
-    const query = `q=${place}&key=${this.apiKey}`;
+    const query = `q=${place}&language=en&key=${this.apiKey}`;
     return this.apiService.get(this.baseUrl, query).pipe(
       map((data) => data.results),
       filter((data) => data.length > 0 && data[0].components.city),

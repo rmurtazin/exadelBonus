@@ -3,13 +3,15 @@
     <mat-tab label="{{ 'home.pick.labelFilter' | translate }}">
       <app-filter-container></app-filter-container>
     </mat-tab>
-    <mat-tab label="{{ 'home.pick.labelSorting' | translate }}"> Sorting component </mat-tab>
+    <mat-tab label="{{ 'home.pick.labelFilter' | translate }}">
+      <app-sort-container></app-sort-container>
+    </mat-tab>
   </mat-tab-group>
 </div>
 
 <div appResizePick="desktop">
   <div class="pick-desktop">
     <app-filter-container></app-filter-container>
-    Sorting Component
+    <app-sort-container></app-sort-container>
   </div>
 </div>

@@ -39,7 +39,15 @@
   "home": {
     "pick": {
       "labelFilter": "Filter",
-      "labelSorting": "Sorting"
+      "labelSorting": "Sorting",
+      "sorting": {
+        "byTitle": "Alphabetically by title",
+        "byCompany": "Alphabetically by company",
+        "byDateStart": "By bonus date start",
+        "byDateEnd": "By bonus date end",
+        "byRating": "By rating",
+        "byType": "By type"
+      }
     }
   }
 }

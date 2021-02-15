@@ -10,6 +10,7 @@ import { LanguageSwitcherDirective } from './directives/language-switcher.direct
 import { CloseMenuDirective } from './directives/close-menu.directive';
 import { NgModule } from '@angular/core';
 import { ResizePickDirective } from './directives/resize-pick.directive';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [CloseMenuDirective, LanguageSwitcherDirective, ResizePickDirective],
@@ -22,6 +23,7 @@ import { ResizePickDirective } from './directives/resize-pick.directive';
     TranslateModule,
     MatIconModule,
     MatButtonModule,
+    MatRadioModule,
     MatInputModule,
   ],
   exports: [
@@ -36,6 +38,7 @@ import { ResizePickDirective } from './directives/resize-pick.directive';
     TranslateModule,
     MatIconModule,
     MatButtonModule,
+    MatRadioModule,
     MatInputModule,
   ],
 })

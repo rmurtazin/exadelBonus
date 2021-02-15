@@ -10,11 +10,12 @@ import { MapComponent } from './map/map-container/map-container.component';
 import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
-import { PickComponent } from './pick/pick.component';
-import { MatTabsModule } from '@angular/material/tabs';
 import { ChoosePlaceDialogModule } from 'src/app/shared/components/choose-place-dialog/choose-place-dialog.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterContainerModule } from 'src/app/shared/components/filter-container/filter-container.module';
+import { SortContainerModule } from 'src/app/shared/components/sort-container/sort-container.module';
+import { MatTabsModule } from '@angular/material/tabs';
+import { PickComponent } from './pick/pick.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
@@ -35,8 +36,10 @@ import { TranslateModule } from '@ngx-translate/core';
     LeafletModule,
     BonusListContainerModule,
     ChoosePlaceDialogModule,
-    MatDialogModule,
+    FilterContainerModule,
+    SortContainerModule,
     MatTabsModule,
+    MatDialogModule,
     FilterContainerModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
