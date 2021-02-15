@@ -34,7 +34,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.getBonuses();
     this.initialBonusFormConfig();
     this.bonusId = this.route.snapshot.paramMap.get('id');
-    this.isFormActive = this.bonusId ?? false ? true : false;
+    this.isFormActive = Boolean(this.bonusId);
   }
 
   public ngOnDestroy(): void {
