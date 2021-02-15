@@ -1,3 +1,5 @@
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -11,7 +13,7 @@ describe('AddBonusFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AddBonusFormComponent],
-      imports: [RouterTestingModule, TranslateModule.forRoot(), MatAutocompleteModule],
+      imports: [RouterTestingModule, TranslateModule.forRoot(), MatAutocompleteModule, HttpClientModule, ToastrModule.forRoot(),],
     }).compileComponents();
   });
 
