@@ -71,7 +71,7 @@ export class FilterService {
       queriesArray.push(`End=${this.queryParams.end}`);
     }
     if (this.queryParams?.sortBy) {
-      queriesArray.push(`SortBy${this.queryParams.sortBy}`);
+      queriesArray.push(`SortBy=${this.queryParams.sortBy}`);
     }
     const resultUrl = `?${queriesArray.join('&')}`;
     return encodeURI(resultUrl);
