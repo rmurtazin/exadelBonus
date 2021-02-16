@@ -120,7 +120,7 @@ export class AddBonusFormComponent implements OnInit {
     return vendor?.name ? vendor.name : '';
   }
 
-  private _filter(vendor: string): any {
+  private _filter(vendor: string): IVendor[] {
     const filterValue = vendor.toLowerCase();
     return this.vendors.filter((item) => item.name.toLowerCase().indexOf(filterValue) === 0);
   }
