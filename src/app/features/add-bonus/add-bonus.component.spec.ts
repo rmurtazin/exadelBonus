@@ -17,7 +17,7 @@ describe('AddBonusComponent', () => {
   let fixture: ComponentFixture<AddBonusComponent>;
   let bonusAddressService: BonusAddressService;
   let bonusesService: BonusesService;
-  let toastrService: ToasterService;
+  const toastrService: ToasterService = new ToasterService(null);
   const myForm = {
     value: {
       bonusAddress: 'Ukraine Vinnitsa Soborna 100',
@@ -69,6 +69,7 @@ describe('AddBonusComponent', () => {
       ],
       tags: ['tags'],
       company: { name: 'MC', email: 'mc@gmail.com' },
+      title: 'sale'
     },
   ];
 
@@ -86,7 +87,7 @@ describe('AddBonusComponent', () => {
         AddBonusModule,
         ToastrModule.forRoot(),
         TranslateModule.forRoot(),
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
       ],
     }).compileComponents();
   });

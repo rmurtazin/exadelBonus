@@ -10,13 +10,23 @@ import { EMPTY } from 'rxjs';
 describe('AddBonusFormComponent', () => {
   let component: AddBonusFormComponent;
   let fixture: ComponentFixture<AddBonusFormComponent>;
-  const vendorNameFromDB = { vendorId: '17364634765845924816786387641', vendorName: 'MC', vendorEmail: 'mc@gmail.com' };
+  const vendorNameFromDB = {
+    vendorId: '17364634765845924816786387641',
+    vendorName: 'MC',
+    vendorEmail: 'mc@gmail.com',
+  };
   const newVendorName = 'HotelB';
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AddBonusFormComponent],
-      imports: [RouterTestingModule, TranslateModule.forRoot(), MatAutocompleteModule, HttpClientModule, ToastrModule.forRoot(),]
+      imports: [
+        RouterTestingModule,
+        TranslateModule.forRoot(),
+        MatAutocompleteModule,
+        HttpClientModule,
+        ToastrModule.forRoot(),
+      ],
     }).compileComponents();
   });
 
@@ -51,7 +61,7 @@ describe('AddBonusFormComponent', () => {
       createNewVendor: () => EMPTY,
       createBonus: () => EMPTY,
     };
-    const spy = spyOn(component.bonusFormConfig, 'vendorNameChange').and.callFake(()=>EMPTY);
+    const spy = spyOn(component.bonusFormConfig, 'vendorNameChange').and.callFake(() => EMPTY);
     component.onVendorNameChange(vendorNameFromDB);
     expect(spy).toHaveBeenCalled();
     expect(component.readonly).toBeTruthy();
@@ -68,7 +78,7 @@ describe('AddBonusFormComponent', () => {
       createNewVendor: () => EMPTY,
       createBonus: () => EMPTY,
     };
-    const spy = spyOn(component.bonusFormConfig, 'vendorNameChange').and.callFake(()=>EMPTY);
+    const spy = spyOn(component.bonusFormConfig, 'vendorNameChange').and.callFake(() => EMPTY);
     component.onVendorNameChange(newVendorName);
     expect(spy).toHaveBeenCalled();
     expect(component.vendorEmailVisible).toBeFalsy();
@@ -83,5 +93,4 @@ describe('AddBonusFormComponent', () => {
     expect(component.visibleBtnForSaveNewVendor).toBeTruthy();
     expect(component.readonly).toBeFalsy();
   });
-
 });
