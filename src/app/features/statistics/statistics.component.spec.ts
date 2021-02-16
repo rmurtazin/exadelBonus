@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatisticsComponent } from './statistics.component';
@@ -9,6 +10,7 @@ describe('StatisticsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [StatisticsComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
