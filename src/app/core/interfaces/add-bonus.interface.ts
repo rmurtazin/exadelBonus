@@ -39,4 +39,5 @@ export interface IBonusFormConfig {
   vendorNameChange: (vendorName: string) => void;
   createNewVendor: (newVendor: IVendor) => void;
   createBonus: (newBonus: INewBonus) => void;
+  removeVendors: () => void;
 }

@@ -46,7 +46,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       vendorNameChange: (vendorName: string): void => {
         if (vendorName?.length === 1) {
           this.getVendors(vendorName);
-        }
+        } 
       },
       closeForm: (): void => {
         this.isFormActive = false;
@@ -61,11 +61,14 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       createBonus: (newBonus: INewBonus): void => {
         this.subscription.add(this.bonusesService.addBonus(newBonus).subscribe());
       },
+      removeVendors: (): void => {
+        this.vendors = [];
+      }
     };
   }
 
   public getBonuses(): void {
-    const query = 'LastCount=5';
+    const query = '?LastCount=5';
     this.bonusesService.getBonuses(query).subscribe((data) => {
       this.bonuses = data;
     });
@@ -113,4 +116,5 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public openForm(): void {
     this.isFormActive = true;
   }
+
 }

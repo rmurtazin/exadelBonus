@@ -94,6 +94,7 @@ export class AddBonusFormComponent implements OnInit {
       this.vendorEmailVisible = true;
       this.visibleBtnForSaveNewVendor = false;
       this.vendorInfo.get('email').setValue(vendorName.email);
+      this.bonusFormConfig.removeVendors();
     }
     if (vendorName === '') {
       this.vendorEmailVisible = false;
@@ -111,12 +112,12 @@ export class AddBonusFormComponent implements OnInit {
 
   public onSaveNewVendor(): void {
     this.bonusFormConfig.createNewVendor(this.vendorInfo.value);
+    this.bonusFormConfig.removeVendors();
     this.visibleBtnForSaveNewVendor = false;
     this.readonly = true;
   }
 
   public displayFn(vendor: IVendor): string {
-    console.log(vendor)
     return vendor?.name ? vendor.name : '';
   }
 
