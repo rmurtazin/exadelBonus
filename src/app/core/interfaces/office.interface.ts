@@ -5,5 +5,5 @@ export interface IOffice {
   address: string;
   latitude: number;
   longitude: number;
-  number: string;
+  phone: string;
 }

@@ -36,6 +36,20 @@
     "password": "Введите пароль",
     "signIn": "Войти"
   },
+  "statistics": {
+    "filter": "Фильтр",
+    "vendor": "Компания",
+    "bonus": "Бонус",
+    "dateStart": "Начало действия",
+    "dateEnd": "Конец действия",
+    "dateAdd": "Дата добавления",
+    "rating": "Рейтинг",
+    "visits": "Кол-во визитов",
+    "city": "Город",
+    "country": "Страна",
+    "type": "Тип бонуса",
+    "isActive": "Статус"
+  },
   "home": {
     "pick": {
       "labelFilter": "Фильтр",
