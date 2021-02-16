@@ -44,7 +44,7 @@ describe('MapEventService', () => {
         };
     });
 
-    fit('#zoomToOfficeObserver should return value from observable',
+    it('#zoomToOfficeObserver should return value from observable',
     (done: DoneFn) => {
         mapEventservice.zoomToOfficeObserver().subscribe((value) => {
             expect(value).toBe(mockOffice);
@@ -53,7 +53,7 @@ describe('MapEventService', () => {
         mapEventservice.zoomToOffice(mockOffice);
     });
 
-    fit('#collBonusInfoObserver should return value from observable',
+    it('#collBonusInfoObserver should return value from observable',
     (done: DoneFn) => {
         mapEventservice.collBonusInfoObserver().subscribe((value) => {
             expect(value).toBe(mockBonus);
@@ -62,7 +62,7 @@ describe('MapEventService', () => {
         mapEventservice.collBonusInfo(mockBonus);
     });
 
-    fit('#changeMapViewObserver should return value from observable',
+    it('#changeMapViewObserver should return value from observable',
     (done: DoneFn) => {
         const location = latLng(0, 0);
         const showUserMarker = true;

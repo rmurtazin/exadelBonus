@@ -31,7 +31,10 @@ export class MockOfficesService extends OfficesService{
     }
 
     public getOffices(): Observable<IOffice[]>{
-        console.log('I colled');
         return of(this.mockBonuses);
+    }
+
+    public getMockOffices(): IOffice[]{
+        return this.mockBonuses;
     }
 }
