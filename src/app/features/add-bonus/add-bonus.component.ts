@@ -2,7 +2,13 @@ import { ActivatedRoute } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { IBonusFormConfig, ILocation, INewBonus, INewVendor, IVendor } from '@interfaces/add-bonus.interface';
+import {
+  IBonusFormConfig,
+  ILocation,
+  INewBonus,
+  INewVendor,
+  IVendor,
+} from '@interfaces/add-bonus.interface';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
 import { VendorsService } from '@services/vendors.service';
@@ -46,7 +52,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       vendorNameChange: (vendorName: string): void => {
         if (vendorName?.length === 1) {
           this.getVendors(vendorName);
-        } 
+        }
       },
       closeForm: (): void => {
         this.isFormActive = false;
@@ -63,7 +69,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       },
       removeVendors: (): void => {
         this.vendors = [];
-      }
+      },
     };
   }
 
@@ -116,5 +122,4 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public openForm(): void {
     this.isFormActive = true;
   }
-
 }
