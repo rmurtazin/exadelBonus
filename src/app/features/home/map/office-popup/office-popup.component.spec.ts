@@ -2,6 +2,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OfficePopupComponent } from './office-popup.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule} from 'ngx-toastr';
 
 describe('OfficePopupComponent', () => {
   let component: OfficePopupComponent;
@@ -10,7 +12,7 @@ describe('OfficePopupComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [OfficePopupComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [TranslateModule.forRoot(), HttpClientModule, ToastrModule.forRoot()]
     }).compileComponents();
   });
 
@@ -24,7 +26,7 @@ describe('OfficePopupComponent', () => {
       address: 'address',
       latitude: 123,
       longitude: 321,
-      number: '234',
+      phone: '234',
     };
     fixture.detectChanges();
   });
