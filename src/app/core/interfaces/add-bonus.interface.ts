@@ -1,7 +1,3 @@
-export interface IVendor {
-  name: string;
-}
-
 export interface ITag {
   name: string;
 }

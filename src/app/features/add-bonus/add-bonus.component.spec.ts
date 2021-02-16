@@ -71,6 +71,12 @@ describe('AddBonusComponent', () => {
     },
   ];
 
+  const vendors = [
+    { vendorId: '17364634765845924816786387641', vendorName: 'MC', vendorEmail: 'mc@gmail.com' },
+  ];
+
+  const newVendor = { vendorName: 'MC', vendorEmail: 'mc@gmail.com' };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AddBonusComponent, AddBonusFormComponent, AddBonusButtonComponent],
@@ -128,6 +134,30 @@ describe('AddBonusComponent', () => {
     spyOn(component.bonusesService, 'getBonuses').and.callFake(() => of(bonuses));
     component.ngOnInit();
     expect(component.bonuses.length).toBe(bonuses.length);
+  });
+
+  it('should call method getVendors from vendorsService', () => {
+    const spy = spyOn(component.vendorsService, 'getVendors').and.callFake(() => EMPTY);
+    component.getVendors();
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should update vendors length after get method', () => {
+    spyOn(component.vendorsService, 'getVendors').and.callFake(() => of(vendors));
+    component.getVendors();
+    expect(component.vendors.length).toBe(vendors.length);
+  });
+
+  it('should call method createVendor from vendorsService', () => {
+    const spy = spyOn(component.vendorsService, 'createVendor').and.callFake(() => EMPTY);
+    component.createVendor(newVendor);
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should update newVendor after post method for create', () => {
+    spyOn(component.vendorsService, 'createVendor').and.callFake(() => of(vendors[0]));
+    component.createVendor(newVendor);
+    expect(component.newVendor).toEqual(vendors[0]);
   });
 
   it('should change isFormActive to false after click', () => {
