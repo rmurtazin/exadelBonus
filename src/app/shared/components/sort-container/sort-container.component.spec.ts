@@ -6,10 +6,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { FilterService } from '@services/filter.service';
 import { By } from '@angular/platform-browser';
 
-const FilterServiceStub:  Partial<FilterService> = {
-  addSortToQuery(typeOfSort){
+const FilterServiceStub: Partial<FilterService> = {
+  addSortToQuery(typeOfSort): string {
     return typeOfSort;
-  }
+  },
 };
 
 describe('SortContainerComponent', () => {
@@ -20,10 +20,10 @@ describe('SortContainerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SortContainerComponent],
-      imports: [HttpClientModule, TranslateModule.forRoot(),  ToastrModule.forRoot()],
-      providers: [ { provide: FilterService, useValue: FilterServiceStub } ]
+      imports: [HttpClientModule, TranslateModule.forRoot(), ToastrModule.forRoot()],
+      providers: [{ provide: FilterService, useValue: FilterServiceStub }],
     }).compileComponents();
- 
+
     fixture = TestBed.createComponent(SortContainerComponent);
     component = fixture.componentInstance;
     filterService = fixture.debugElement.injector.get(FilterService);
@@ -35,19 +35,20 @@ describe('SortContainerComponent', () => {
   });
 
   it('should render radio-button', () => {
-    let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('mat-radio-button').textContent).toContain('home.pick.sorting.byTitle');
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-radio-button').textContent).toContain(
+      'home.pick.sorting.byTitle',
+    );
   });
 
   it('should send type of sort to service ', () => {
-    let spy  = spyOn(filterService, 'addSortToQuery'); 
+    const spy = spyOn(filterService, 'addSortToQuery');
     fixture.detectChanges();
     const radioGroup = fixture.debugElement.query(By.css('mat-radio-group'));
     radioGroup.triggerEventHandler('change', {
-      value: 'DateStart' 
+      value: 'DateStart',
     });
     fixture.detectChanges();
     expect(spy).toHaveBeenCalledWith('DateStart');
   });
-
 });
