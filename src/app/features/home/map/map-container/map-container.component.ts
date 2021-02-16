@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
@@ -22,6 +22,7 @@ import { MarkerModel } from '@models/marker.model';
 import { LocationService } from '@services/location.service';
 import { FilterService } from '@services/filter.service';
 import 'leaflet.markercluster';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-map-container',
@@ -29,7 +30,7 @@ import 'leaflet.markercluster';
   styleUrls: ['./map-container.component.scss'],
   providers: [MarkerModel, LocationService],
 })
-export class MapComponent implements OnDestroy {
+export class MapComponent implements OnDestroy, OnInit {
   private map: Map;
   private queryLatitude: string;
   private queryLongitude: string;
@@ -47,6 +48,12 @@ export class MapComponent implements OnDestroy {
     private locationService: LocationService,
     private filterService: FilterService,
   ) {}
+
+  ngOnInit(): void {
+    this.bonusesService.bonusSubject.pipe(take(1)).subscribe((bonuses: IBonus[]) => {
+      this.displayBonusesMarkers(bonuses);
+    });
+  }
 
   public mapReadyEvent(map: Map): void {
     this.map = map;
