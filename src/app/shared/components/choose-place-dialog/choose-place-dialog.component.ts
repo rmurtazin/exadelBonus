@@ -43,11 +43,8 @@ export class ChoosePlaceDialogComponent implements OnInit {
       this.dialogRef.close();
       return;
     }
-    const office =  this.offices[this.selectedOffice];
-    const location = latLng(
-      office.latitude,
-      office.longitude,
-    );
+    const office = this.offices[this.selectedOffice];
+    const location = latLng(office.latitude, office.longitude);
     this.filterService.addCityToQuery(office.city);
     this.dialogRef.close(location);
   }
