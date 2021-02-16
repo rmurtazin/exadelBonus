@@ -4,7 +4,7 @@ import { SortContainerComponent } from './sort-container.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { FilterService } from '@services/filter.service';
-import { MatRadioChange } from '@angular/material/radio';
+import { By } from '@angular/platform-browser';
 
 const FilterServiceStub:  Partial<FilterService> = {
   addSortToQuery(typeOfSort){
@@ -39,20 +39,15 @@ describe('SortContainerComponent', () => {
     expect(compiled.querySelector('mat-radio-button').textContent).toContain('home.pick.sorting.byTitle');
   });
 
-  it('should send type of sort to service ', fakeAsync(() => {
-    let spy  = spyOn(component, 'sortBy');
-    
-    let radioButton = fixture.debugElement.nativeElement.querySelector("mat-radio-button");
-    
+  it('should send type of sort to service ', () => {
+    let spy  = spyOn(filterService, 'addSortToQuery'); 
     fixture.detectChanges();
-
-    console.log(radioButton);
-    
-    radioButton.click();
-    
+    const radioGroup = fixture.debugElement.query(By.css('mat-radio-group'));
+    radioGroup.triggerEventHandler('change', {
+      value: 'DateStart' 
+    });
     fixture.detectChanges();
-    
-     expect(spy).toHaveBeenCalled();
-  }));
+    expect(spy).toHaveBeenCalledWith('DateStart');
+  });
 
 });

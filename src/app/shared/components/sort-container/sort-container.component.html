@@ -1,11 +1,11 @@
-<mat-radio-group class="radio-group" text-align="right" (change)="radioChange($event)">
+<mat-radio-group class="radio-group" text-align="right" (change)="radioChange($event)"  data-test="radio-group">
   <mat-radio-button class="radio-button" value="Title" labelPosition="before" color="primary">
     {{ 'home.pick.sorting.byTitle' | translate }}
   </mat-radio-button>
   <mat-radio-button class="radio-button" value="Company" labelPosition="before" color="primary">
     {{ 'home.pick.sorting.byCompany' | translate }}
   </mat-radio-button>
-  <mat-radio-button class="radio-button" value="DateStart" labelPosition="before" color="primary" data-test>
+  <mat-radio-button class="radio-button" value="DateStart" labelPosition="before" color="primary">
     {{ 'home.pick.sorting.byDateStart' | translate }}
   </mat-radio-button>
   <mat-radio-button class="radio-button" value="DateEnd" labelPosition="before" color="primary">
