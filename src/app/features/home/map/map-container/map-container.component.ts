@@ -65,6 +65,7 @@ export class MapComponent implements OnDestroy {
   }
 
   private showBonusDependsOnZomm(): void {
+    return; // TODO: applay when will be applied fetching user
     const isHigh = this.map.getZoom() < 12;
     if (isHigh && !this.markerGroopIsHiden) {
       this.map.removeLayer(this.markersGroup);
