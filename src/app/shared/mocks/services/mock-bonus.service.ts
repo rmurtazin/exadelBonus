@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { IBonus } from "@interfaces/bonus.interface";
 import { BonusesService } from "@services/bonuses.service";
+import { bounds } from "leaflet";
 import { Observable, of } from "rxjs";
 
 @Injectable({providedIn: 'root'})
@@ -53,7 +54,7 @@ export class MockBonusService extends BonusesService{
     ];
 
     constructor(){
-        super(null);
+        super(null, null);
         console.log('I colled supper');
     }
 
@@ -63,5 +64,9 @@ export class MockBonusService extends BonusesService{
             return of([this.mockBonuses[0]]);
         }
         return of(this.mockBonuses);
+    }
+
+    public getMockBonuses(): IBonus[] {
+        return this.mockBonuses;
     }
 }
