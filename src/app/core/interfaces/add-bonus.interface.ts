@@ -1,7 +1,3 @@
-export interface IVendor {
-  name: string;
-}
-
 export interface ITag {
   name: string;
 }
@@ -15,9 +11,14 @@ export interface ILocation {
 }
 
 export interface IVendor {
-  vendorId: string;
-  vendorName: string;
-  vendorEmail: string;
+  id: string;
+  name: string;
+  email: string;
+}
+
+export interface INewVendor {
+  name: string;
+  email: string;
 }
 
 export interface INewBonus {

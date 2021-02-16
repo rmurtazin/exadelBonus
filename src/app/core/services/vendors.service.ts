@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { IVendor } from '@interfaces/add-bonus.interface';
+import { INewVendor, IVendor } from '@interfaces/add-bonus.interface';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiService } from './api.service';
+import { apiLinks } from './constants';
 
 @Injectable({ providedIn: 'root' })
 export class VendorsService {
-  private url = '../../../assets/static/vendors.json';
+  private url = apiLinks.vendor;
 
   constructor(private apiService: ApiService) {}
 
-  public getVendors(): Observable<IVendor[]> {
-    return this.apiService.get(this.url);
+  public getVendors(query: string): Observable<IVendor[]> {
+    return this.apiService.get(this.url, query);
   }
 
-  public createVendor(newVendor: IVendor): Observable<IVendor> {
-    // TODO: there must be post method: return this.apiService.get(this.url)
-    return this.apiService.get(this.url).pipe(map((data) => data[0]));
+  public createVendor(newVendor: INewVendor): Observable<IVendor> {
+    return this.apiService.post(this.url, JSON.stringify(newVendor));
   }
 }

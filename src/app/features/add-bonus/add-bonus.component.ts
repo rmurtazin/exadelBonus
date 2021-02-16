@@ -2,7 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { IBonusFormConfig, ILocation, INewBonus, IVendor } from '@interfaces/add-bonus.interface';
+import { IBonusFormConfig, ILocation, INewBonus, INewVendor, IVendor } from '@interfaces/add-bonus.interface';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
 import { VendorsService } from '@services/vendors.service';
@@ -45,7 +45,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.bonusFormConfig = {
       vendorNameChange: (vendorName: string): void => {
         if (vendorName?.length === 1) {
-          this.getVendors();
+          this.getVendors(vendorName);
         }
       },
       closeForm: (): void => {
@@ -55,7 +55,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       addAddress: (myForm: any): void => {
         this.onAddAddress(myForm);
       },
-      createNewVendor: (newVendor: IVendor): void => {
+      createNewVendor: (newVendor: INewVendor): void => {
         this.createVendor(newVendor);
       },
       createBonus: (newBonus: INewBonus): void => {
@@ -94,15 +94,15 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     }
   }
 
-  public getVendors(): void {
+  public getVendors(vendorName): void {
     this.subscription.add(
-      this.vendorsService.getVendors().subscribe((data) => {
+      this.vendorsService.getVendors(vendorName).subscribe((data) => {
         this.vendors = data;
       }),
     );
   }
 
-  public createVendor(newVendor: IVendor): void {
+  public createVendor(newVendor: INewVendor): void {
     this.subscription.add(
       this.vendorsService.createVendor(newVendor).subscribe((data) => {
         this.newVendor = data;

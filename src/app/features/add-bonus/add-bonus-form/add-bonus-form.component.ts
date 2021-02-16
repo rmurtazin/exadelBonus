@@ -89,11 +89,11 @@ export class AddBonusFormComponent implements OnInit {
 
   public onVendorNameChange(vendorName: any): void {
     this.bonusFormConfig.vendorNameChange(vendorName);
-    if (vendorName?.vendorId) {
+    if (vendorName?.id) {
       this.readonly = true;
       this.vendorEmailVisible = true;
       this.visibleBtnForSaveNewVendor = false;
-      this.vendorInfo.get('vendorEmail').setValue(vendorName.vendorEmail);
+      this.vendorInfo.get('email').setValue(vendorName.email);
     }
     if (vendorName === '') {
       this.vendorEmailVisible = false;
@@ -102,8 +102,8 @@ export class AddBonusFormComponent implements OnInit {
   }
 
   public onOpenEmailInput(): void {
-    this.vendorInfo.get('vendorEmail').reset();
-    this.vendorInfo.get('vendorName').reset();
+    this.vendorInfo.get('email').reset();
+    this.vendorInfo.get('name').reset();
     this.vendorEmailVisible = true;
     this.visibleBtnForSaveNewVendor = true;
     this.readonly = false;
@@ -116,12 +116,13 @@ export class AddBonusFormComponent implements OnInit {
   }
 
   public displayFn(vendor: IVendor): string {
-    return vendor?.vendorName ? vendor.vendorName : '';
+    console.log(vendor)
+    return vendor?.name ? vendor.name : '';
   }
 
-  private _filter(vendor: string): IVendor[] {
+  private _filter(vendor: string): any {
     const filterValue = vendor.toLowerCase();
-    return this.vendors.filter((item) => item.vendorName.toLowerCase().indexOf(filterValue) === 0);
+    return this.vendors.filter((item) => item.name.toLowerCase().indexOf(filterValue) === 0);
   }
 
   public onAddAddress(myForm: any): void {
@@ -135,8 +136,8 @@ export class AddBonusFormComponent implements OnInit {
   public onInitForm(): void {
     this.myForm = new FormGroup({
       vendorInfo: (this.vendorInfo = new FormGroup({
-        vendorName: (this.vendorName = new FormControl('', [Validators.required])),
-        vendorEmail: (this.vendorEmail = new FormControl('', [Validators.required])),
+        name: (this.vendorName = new FormControl('', [Validators.required])),
+        email: (this.vendorEmail = new FormControl('', [Validators.required])),
       })),
       bonusAddress: new FormControl('', [Validators.required]),
       bonusType: new FormControl('', [Validators.required]),
@@ -188,7 +189,7 @@ export class AddBonusFormComponent implements OnInit {
   public onSubmit(): void {
     const formValue = this.myForm.value;
     const submitBonus: INewBonus = {
-      company: this.vendorName.value.vendorId || this.newVendor.vendorId,
+      company: this.vendorName.value.id || this.newVendor.id,
       phone: formValue.phone,
       dateStart: new Date(formValue.start).toISOString(),
       dateEnd: new Date(formValue.end).toISOString(),
