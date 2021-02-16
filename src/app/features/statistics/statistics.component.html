@@ -5,30 +5,26 @@
   </mat-form-field>
 
   <mat-table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef> № </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.position }} </mat-cell>
-    </ng-container>
 
-    <ng-container matColumnDef="vendor">
+    <ng-container matColumnDef="companyName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ 'statistics.vendor' | translate }}
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.vendor }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.companyName }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="bonus">
+    <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ 'statistics.bonus' | translate }}
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.bonus }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.title }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="dateAdd">
+    <ng-container matColumnDef="createdDate">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ 'statistics.dateAdd' | translate }}
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.dateAdd }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.createdDate }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="dateStart">
@@ -59,7 +55,7 @@
       <mat-cell *matCellDef="let element"> {{ element.visits }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="city">
+    <!-- <ng-container matColumnDef="city">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ 'statistics.city' | translate }}
       </mat-header-cell>
@@ -71,7 +67,7 @@
         {{ 'statistics.country' | translate }}
       </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.country }} </mat-cell>
-    </ng-container>
+    </ng-container> -->
 
     <ng-container matColumnDef="type">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
