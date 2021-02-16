@@ -23,7 +23,7 @@ import 'zone.js/dist/sync-test';
 import 'zone.js/dist/jasmine-patch';
 import 'zone.js/dist/async-test';
 import 'zone.js/dist/fake-async-test';
-import { TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -55,13 +55,13 @@ describe('MapComponent', () => {
         TranslateModule.forRoot(),
       ],
       providers: [
-        {provide: OfficesService, useValue: officeService},
-        {provide: BonusesService, useValue: bonusService},
-        {provide: FilterService, useValue: fillterService},
+        { provide: OfficesService, useValue: officeService },
+        { provide: BonusesService, useValue: bonusService },
+        { provide: FilterService, useValue: fillterService },
         LocationService,
         MapEventsService,
-        MarkerModel
-      ]
+        MarkerModel,
+      ],
     }).compileComponents();
   });
 
