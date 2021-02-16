@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
@@ -85,6 +86,7 @@ describe('AddBonusComponent', () => {
         AddBonusModule,
         ToastrModule.forRoot(),
         TranslateModule.forRoot(),
+        RouterModule.forRoot([])
       ],
     }).compileComponents();
   });

@@ -24,6 +24,10 @@ export class BonusesService {
     );
   }
 
+  public getBonus(id: string): Observable<IBonus> {
+    return this.api.get(`${this.url}/${id}`).pipe(map((data) => data.value));
+  }
+
   public addBonus(newBonus: INewBonus): Observable<IBonus> {
     return this.api
       .post(`${this.url}`, JSON.stringify(newBonus))

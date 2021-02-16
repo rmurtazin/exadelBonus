@@ -1,9 +1,10 @@
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddBonusFormComponent } from './add-bonus-form.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { AddBonusComponent } from '../add-bonus.component';
 import { EMPTY } from 'rxjs';
 
 describe('AddBonusFormComponent', () => {
@@ -14,8 +15,8 @@ describe('AddBonusFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AddBonusFormComponent, AddBonusComponent],
-      imports: [RouterTestingModule, TranslateModule.forRoot(), MatAutocompleteModule],
+      declarations: [AddBonusFormComponent],
+      imports: [RouterTestingModule, TranslateModule.forRoot(), MatAutocompleteModule, HttpClientModule, ToastrModule.forRoot(),]
     }).compileComponents();
   });
 
