@@ -24,4 +24,5 @@ export interface IBonus {
   locations: ILocation[];
   tags: string[];
   company: ICompany;
+  title: string;
 }

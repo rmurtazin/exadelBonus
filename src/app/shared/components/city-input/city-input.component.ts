@@ -31,7 +31,6 @@ export class CityInputComponent implements OnInit {
   }
 
   public changeCity(): void {
-    console.log(this.cityInputControl.value);
     this.changeCityEvent.emit(this.cityInputControl.value);
   }
 }
