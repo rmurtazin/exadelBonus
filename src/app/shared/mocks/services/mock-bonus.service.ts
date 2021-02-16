@@ -58,11 +58,9 @@ export class MockBonusService extends BonusesService {
 
   constructor() {
     super(null, null);
-    console.log('I colled supper');
   }
 
   public getBonuses(query?: string): Observable<IBonus[]> {
-    console.log('I colled bonus');
     if (query) {
       return of([this.mockBonuses[0]]);
     }
