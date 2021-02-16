@@ -1,3 +1,4 @@
+import { AddBonusComponent } from './features/add-bonus/add-bonus.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
@@ -32,6 +33,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./features/statistics/statistics.module').then((m) => m.StatisticsModule),
       },
+      { path: 'bonuses/:id', component: AddBonusComponent },
     ],
   },
   {

@@ -3,6 +3,7 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChoosePlaceDialogComponent } from './choose-place-dialog.component';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('ChoosePlaceDialogComponent', () => {
   let component: ChoosePlaceDialogComponent;
@@ -11,7 +12,7 @@ describe('ChoosePlaceDialogComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ChoosePlaceDialogComponent],
-      imports: [MatDialogModule, HttpClientModule],
+      imports: [MatDialogModule, HttpClientModule, ToastrModule.forRoot()],
       providers: [
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: [] },
