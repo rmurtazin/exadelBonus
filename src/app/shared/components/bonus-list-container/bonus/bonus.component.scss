@@ -122,6 +122,7 @@
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: #fff;
   transition-duration: 2.5s;
+  margin-right: 10px;
 }
 
 .description-container {
@@ -148,6 +149,7 @@
   .bonus-description {
     font-size: 18px;
     padding-top: 10px;
+    word-wrap: break-word;
   }
 }
 
