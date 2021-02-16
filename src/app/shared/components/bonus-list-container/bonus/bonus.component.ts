@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { ChangeDetectorRef } from '@angular/core';
 import { IUser } from '@interfaces/loginInterface';
 import { LoginService } from '@services/login.service';
 
@@ -18,7 +17,7 @@ export class BonusComponent implements OnInit {
   public isModeratorOrAdmin = false;
   public user: IUser;
 
-  constructor(private changeDetection: ChangeDetectorRef, private loginService: LoginService) {}
+  constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();
