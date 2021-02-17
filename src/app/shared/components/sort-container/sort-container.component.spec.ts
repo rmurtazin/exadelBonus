@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { SortContainerComponent } from './sort-container.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
 
 describe('SortContainerComponent', () => {
   let component: SortContainerComponent;
