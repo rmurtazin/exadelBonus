@@ -28,6 +28,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public isFormActive = false;
   public bonusFormConfig: IBonusFormConfig;
   public bonusId: string;
+  public isForm: boolean;
 
   constructor(
     public bonusAddressService: BonusAddressService,
@@ -78,7 +79,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   }
 
   public getBonuses(): void {
-    const query = '?LastCount=5';
+    const query = '?LastCount=6';
     this.bonusesService.getBonuses(query).subscribe((data) => {
       this.bonuses = data;
     });
@@ -125,5 +126,9 @@ export class AddBonusComponent implements OnInit, OnDestroy {
 
   public openForm(): void {
     this.isFormActive = true;
+  }
+
+  public onBonusButtonClick(): void {
+    this.isForm = !this.isForm;
   }
 }
