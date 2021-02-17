@@ -32,6 +32,17 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
       (data: IBonus[]) => {
         if (data) {
           this.bonuses = data;
+          if (this.bonuses.length === 0) {
+            setTimeout(() => {
+              this.toasterService.showShow(
+                'There are no bonuses for these filters yet',
+                'Sorry!',
+                'toastr-no-bonuses',
+                'toastr-no-bonuses-title',
+                'toastr-no-bonuses-message',
+              );
+            }, 0);
+          }
         }
       },
       (err) => this.toasterService.showError(err, 'Some problems with getting bonuses'),

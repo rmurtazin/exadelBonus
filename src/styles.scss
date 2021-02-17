@@ -9,3 +9,22 @@ body {
 body {
   margin: 0;
 }
+.toastr-no-bonuses {
+  left: 50%;
+  width: 300px;
+  margin: 10px auto 0;
+  padding: 30px;
+  background-color: white;
+  background-image: url(./assets/images/emptyBox.jpg);
+  background-size: 200px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  border: solid 2px #0082ca;
+}
+.toastr-no-bonuses-title {
+  padding: 10px 0 5px;
+}
+.toastr-no-bonuses-message {
+  padding: 20px 0;
+  margin-bottom: 80px;
+}

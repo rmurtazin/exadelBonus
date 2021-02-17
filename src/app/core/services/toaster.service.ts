@@ -19,9 +19,18 @@ export class ToasterService {
     });
   }
 
-  public showShow(message: string, title: string): void {
+  public showShow(
+    message: string,
+    title: string,
+    toastrCustomClass?: string,
+    toastrCustomTitle?: string,
+    toasterCustomMessage?: string,
+  ): void {
     this.toastr.show(message, title, {
       positionClass: 'toast-top-center',
+      toastClass: toastrCustomClass,
+      titleClass: toastrCustomTitle,
+      messageClass: toasterCustomMessage,
     });
   }
 }

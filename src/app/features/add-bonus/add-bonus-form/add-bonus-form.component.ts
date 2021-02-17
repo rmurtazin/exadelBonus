@@ -69,22 +69,21 @@ export class AddBonusFormComponent implements OnInit {
     });
   }
 
-  public fillPage(bonus: IBonus): void {  // TODO: fill all values
-    this.myForm.patchValue(
-      {
-        vendorInfo: {
-          vendorName: bonus.company.name,
-          vendorEmail: bonus.company.email,
-        },
-        bonusType: bonus.type,
-        bonusDescription: bonus.description,
-        bonusTags: bonus.tags,
-        bonusTitle: bonus.title,
-        phone: bonus.phone,
-        start: bonus.dateStart,
-        end: bonus.dateEnd,
-      }
-    )
+  public fillPage(bonus: IBonus): void {
+    // TODO: fill all values
+    this.myForm.patchValue({
+      vendorInfo: {
+        vendorName: bonus.company.name,
+        vendorEmail: bonus.company.email,
+      },
+      bonusType: bonus.type,
+      bonusDescription: bonus.description,
+      bonusTags: bonus.tags,
+      bonusTitle: bonus.title,
+      phone: bonus.phone,
+      start: bonus.dateStart,
+      end: bonus.dateEnd,
+    });
   }
 
   public onVendorNameChange(vendorName: any): void {
