@@ -20,11 +20,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MockMarkerModel } from 'src/app/shared/mocks/services/mock-marker.model';
-import { of } from 'rxjs';
 import { OfficePopupComponent } from '../office-popup/office-popup.component';
 import { BonusPopupComponent } from '../bonus-popup/bonus-popup.component';
 import { DivIcon, Marker } from 'leaflet';
 import { latLng } from 'leaflet';
+import { of } from 'rxjs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -32,23 +33,24 @@ describe('MapComponent', () => {
   let bonusService: BonusesService;
   let officeService: MockOfficesService;
   let fillterService: FilterService;
-  let mockMarkerModel: MockMarkerModel;
+  let markerModel: MarkerModel;
 
   beforeEach(async () => {
     bonusService = new MockBonusService();
     officeService = new MockOfficesService();
     fillterService = new FilterService(bonusService);
-    mockMarkerModel = new MockMarkerModel();
     await TestBed.configureTestingModule({
       declarations: [OfficePopupComponent, BonusPopupComponent, MapComponent, MapViewComponent],
       imports: [
+        FormsModule,
+        ReactiveFormsModule,
         HttpClientModule,
         RouterTestingModule,
         LeafletModule,
         ToastrModule.forRoot(),
+        MatFormFieldModule,
         MatDialogModule,
         MatOptionModule,
-        MatFormFieldModule,
         MatIconModule,
         BrowserAnimationsModule,
         TranslateModule.forRoot(),
@@ -56,10 +58,10 @@ describe('MapComponent', () => {
       providers: [
         { provide: OfficesService, useValue: officeService },
         { provide: BonusesService, useValue: bonusService },
-        { provide: MarkerModel, useValue: mockMarkerModel },
         { provide: FilterService, useValue: fillterService },
         LocationService,
         MapEventsService,
+        MarkerModel
       ],
     }).compileComponents();
   });
@@ -67,9 +69,10 @@ describe('MapComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MapComponent);
     component = fixture.componentInstance;
+    markerModel = TestBed.inject(MarkerModel);
   });
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
@@ -81,13 +84,11 @@ describe('MapComponent', () => {
 
 
   fit('test', () => {
-    const spy = spyOn(officeService, 'getOffices').and.returnValue(of(officeService.getMockOffices()));
-    const spy2 = spyOn(mockMarkerModel, 'createOfficesMarkers').and.returnValue([new Marker(latLng(0, 0), {icon: new DivIcon({html: '<div>Picachu</div>'})})]);
+    const officeServiceSpy = spyOn(officeService, 'getOffices').and.returnValue(of(officeService.getMockOffices()));
+    const markerModelSpy = spyOn(markerModel, 'createOfficesMarkers');
     fixture.detectChanges();
-    console.log(fixture.nativeElement.querySelector('app-map-view'));
-    expect(spy).toHaveBeenCalled();
+    expect(officeServiceSpy).toHaveBeenCalled();
     fixture.detectChanges();
-    expect(spy2).toHaveBeenCalled();
-    console.log(fixture.nativeElement.querySelector('app-map-view'));
+    expect(markerModelSpy).toHaveBeenCalled();
   });
 });
