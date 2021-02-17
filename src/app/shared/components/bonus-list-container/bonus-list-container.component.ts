@@ -46,7 +46,11 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
           this.bonusMap = bonus;
         }
       },
-      () => this.toasterService.showNotification('bonusList.notification.getBonusesFromMapError', 'error'),
+      () =>
+        this.toasterService.showNotification(
+          'bonusList.notification.getBonusesFromMapError',
+          'error',
+        ),
     );
   }
 
