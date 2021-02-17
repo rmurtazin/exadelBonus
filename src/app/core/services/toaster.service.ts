@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { IndividualConfig, ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -19,18 +19,13 @@ export class ToasterService {
     });
   }
 
-  public showShow(
-    message: string,
-    title: string,
-    toastrCustomClass?: string,
-    toastrCustomTitle?: string,
-    toasterCustomMessage?: string,
-  ): void {
+  public showShow(message: string, title: string): void {
     this.toastr.show(message, title, {
       positionClass: 'toast-top-center',
-      toastClass: toastrCustomClass,
-      titleClass: toastrCustomTitle,
-      messageClass: toasterCustomMessage,
     });
+  }
+
+  public showCustomAlert(message: string, title: string, customProperties: Partial<IndividualConfig> ): void {
+    this.toastr.show(message, title, customProperties);
   }
 }

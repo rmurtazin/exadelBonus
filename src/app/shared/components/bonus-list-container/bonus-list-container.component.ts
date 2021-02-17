@@ -33,15 +33,15 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
         if (data) {
           this.bonuses = data;
           if (this.bonuses.length === 0) {
-            setTimeout(() => {
-              this.toasterService.showShow(
-                'There are no bonuses for these filters yet',
-                'Sorry!',
-                'toastr-no-bonuses',
-                'toastr-no-bonuses-title',
-                'toastr-no-bonuses-message',
-              );
-            }, 0);
+            this.toasterService.showCustomAlert(
+              'There are no bonuses for these filters yet',
+              'Sorry!', {
+                positionClass: 'toast-top-center',
+                toastClass:'toast-no-bonuses',
+                titleClass: 'toast-no-bonuses-title',
+                messageClass:'toast-no-bonuses-message'
+              }
+            );
           }
         }
       },
