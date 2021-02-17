@@ -13,7 +13,13 @@ describe('AddBonusFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AddBonusFormComponent],
-      imports: [RouterTestingModule, TranslateModule.forRoot(), MatAutocompleteModule, HttpClientModule, ToastrModule.forRoot(),],
+      imports: [
+        RouterTestingModule,
+        TranslateModule.forRoot(),
+        MatAutocompleteModule,
+        HttpClientModule,
+        ToastrModule.forRoot(),
+      ],
     }).compileComponents();
   });
 
