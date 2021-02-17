@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
 
 import { FilterContainerComponent } from './filter-container.component';
@@ -11,7 +12,7 @@ describe('FilterContainerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FilterContainerComponent],
-      imports: [HttpClientModule, ToastrModule.forRoot()],
+      imports: [HttpClientModule, ToastrModule.forRoot(), TranslateModule.forRoot()],
     }).compileComponents();
   });
 

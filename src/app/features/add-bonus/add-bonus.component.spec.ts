@@ -17,7 +17,7 @@ describe('AddBonusComponent', () => {
   let fixture: ComponentFixture<AddBonusComponent>;
   let bonusAddressService: BonusAddressService;
   let bonusesService: BonusesService;
-  const toastrService: ToasterService = new ToasterService(null);
+  const toastrService: ToasterService = new ToasterService(null, null);
   const myForm = {
     value: {
       bonusAddress: 'Ukraine Vinnitsa Soborna 100',
@@ -73,11 +73,9 @@ describe('AddBonusComponent', () => {
     },
   ];
 
-  const vendors = [
-    { vendorId: '17364634765845924816786387641', vendorName: 'MC', vendorEmail: 'mc@gmail.com' },
-  ];
+  const vendors = [{ id: '17364634765845924816786387641', name: 'MC', email: 'mc@gmail.com' }];
 
-  const newVendor = { vendorName: 'MC', vendorEmail: 'mc@gmail.com' };
+  const newVendor = { name: 'MC', email: 'mc@gmail.com' };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -141,13 +139,13 @@ describe('AddBonusComponent', () => {
 
   it('should call method getVendors from vendorsService', () => {
     const spy = spyOn(component.vendorsService, 'getVendors').and.callFake(() => EMPTY);
-    component.getVendors();
+    component.getVendors('query');
     expect(spy).toHaveBeenCalled();
   });
 
   it('should update vendors length after get method', () => {
     spyOn(component.vendorsService, 'getVendors').and.callFake(() => of(vendors));
-    component.getVendors();
+    component.getVendors('query');
     expect(component.vendors.length).toBe(vendors.length);
   });
 
