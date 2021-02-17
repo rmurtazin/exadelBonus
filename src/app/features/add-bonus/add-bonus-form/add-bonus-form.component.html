@@ -22,7 +22,7 @@
         (ngModelChange)="onVendorNameChange($event)"
         [readonly]="readonly"
       />
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayVendors">
         <mat-option *ngFor="let vendor of filteredVendors | async" [value]="vendor">
           {{ vendor?.name }}
         </mat-option>

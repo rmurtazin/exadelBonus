@@ -116,7 +116,7 @@ export class AddBonusFormComponent implements OnInit {
     this.readonly = true;
   }
 
-  public displayFn(vendor: IVendor): string {
+  public displayVendors(vendor: IVendor): string {
     return vendor?.name ? vendor.name : '';
   }
 
