@@ -1,20 +1,20 @@
-  <div class="container">
-    <div *ngIf="!isFormActive">
-      <app-add-bonus-button (openForm)="openForm()"></app-add-bonus-button>
-      <div>
-        <app-bonus-list-view
-          [bonuses]="bonuses"
-          [onBonusButtonClick]="onBonusButtonClick"
-          class="bonus-list"
-        ></app-bonus-list-view>
-      </div>
+<div class="container">
+  <div *ngIf="!isFormActive">
+    <app-add-bonus-button (openForm)="openForm()"></app-add-bonus-button>
+    <div>
+      <app-bonus-list-view
+        [bonuses]="bonuses"
+        [onBonusButtonClick]="onBonusButtonClick"
+        class="bonus-list"
+      ></app-bonus-list-view>
     </div>
-    <app-add-bonus-form
-      *ngIf="isFormActive"
-      [bonusFormConfig]="bonusFormConfig"
-      [locations]="locations"
-      [vendors]="vendors"
-      [newVendor]="newVendor"
-      [bonusId]="bonusId"
-    ></app-add-bonus-form>
   </div>
+  <app-add-bonus-form
+    *ngIf="isFormActive"
+    [bonusFormConfig]="bonusFormConfig"
+    [locations]="locations"
+    [vendors]="vendors"
+    [newVendor]="newVendor"
+    [bonusId]="bonusId"
+  ></app-add-bonus-form>
+</div>
