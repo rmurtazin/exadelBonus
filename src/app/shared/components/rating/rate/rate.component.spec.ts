@@ -2,15 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RateComponent } from './rate.component';
 
-describe('RateWrapperComponent', () => {
+describe('RateComponent', () => {
   let component: RateComponent;
   let fixture: ComponentFixture<RateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RateComponent ]
+      declarations: [ RateComponent ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
