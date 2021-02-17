@@ -28,6 +28,7 @@ export class MockBonusService extends BonusesService {
       type: 'mockType',
       rating: 2,
       phone: '342743623674',
+      title: 'mockTitle1'
     },
     {
       id: 234,
@@ -52,6 +53,7 @@ export class MockBonusService extends BonusesService {
       type: 'mockType',
       rating: 2,
       phone: '342743623674',
+      title: 'mockTitle2'
     },
   ];
 
