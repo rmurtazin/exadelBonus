@@ -1,8 +1,29 @@
 <div class="mat-elevation-z8 table-container">
-  <mat-form-field>
-    <mat-label>{{'statistics.filter' | translate}}</mat-label>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="" />
-  </mat-form-field>
+  <div>
+    <mat-form-field>
+      <mat-label>{{'statistics.filter' | translate}}</mat-label>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="" />
+    </mat-form-field>
+  </div>
+  <div class="statistics-flters">
+    <p>Filters:</p>
+    <mat-form-field>
+      <mat-label>{{ 'statistics.vendor' | translate }}</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'statistics.bonus' | translate }}</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'statistics.type' | translate }}</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'statistics.isActive' | translate }}</mat-label>
+      <input matInput />
+    </mat-form-field>
+  </div>
 
   <mat-table [dataSource]="dataSource" matSort>
 
@@ -54,20 +75,6 @@
       </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.visits }} </mat-cell>
     </ng-container>
-
-    <!-- <ng-container matColumnDef="city">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.city' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.city }} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="country">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.country' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.country }} </mat-cell>
-    </ng-container> -->
 
     <ng-container matColumnDef="type">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
