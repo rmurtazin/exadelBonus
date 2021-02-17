@@ -11,9 +11,14 @@ export interface ILocation {
 }
 
 export interface IVendor {
-  vendorId: string;
-  vendorName: string;
-  vendorEmail: string;
+  id: string;
+  name: string;
+  email: string;
+}
+
+export interface INewVendor {
+  name: string;
+  email: string;
 }
 
 export interface INewBonus {
@@ -34,4 +39,5 @@ export interface IBonusFormConfig {
   vendorNameChange: (vendorName: string) => void;
   createNewVendor: (newVendor: IVendor) => void;
   createBonus: (newBonus: INewBonus) => void;
+  removeVendors: () => void;
 }

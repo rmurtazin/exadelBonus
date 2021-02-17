@@ -160,7 +160,7 @@ a:not(.active) {
   }
 
   .menu {
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 0 0 15px 0;
 
     .menu-item {
@@ -196,6 +196,6 @@ a:not(.active) {
   }
 
   .isLogout {
-    margin-right: 0px;
+    margin-right: 0;
   }
 }

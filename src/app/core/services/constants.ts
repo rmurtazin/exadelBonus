@@ -15,7 +15,7 @@ export const apiLinks = {
     getInfo: `${apiUrl}/Account/getInfo`,
     tokenRefresh: `${apiUrl}/Account/tokenrefresh`,
   },
-  vendor: `${apiUrl}/api/Vendor`,
+  vendor: `${apiUrl}/api/Vendor/`,
   history: `${apiUrl}/api/History`,
 };
 
