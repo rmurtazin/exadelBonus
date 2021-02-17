@@ -27,10 +27,7 @@ export class RateComponent implements OnInit {
   public disableButton = false;
   public animationStart = false;
 
-  constructor(
-    private bonusesService: BonusesService,
-    private toasterService: ToasterService,
-  ) {}
+  constructor(private bonusesService: BonusesService, private toasterService: ToasterService) {}
 
   ngOnInit(): void {
     this.startPosition = this.bonus.rating * 10;
