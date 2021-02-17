@@ -1,5 +1,5 @@
 import { ToasterService } from '@services/toaster.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
@@ -15,6 +15,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   public bonuses: IBonus[] = [];
   private subscriptionBonuses: Subscription;
   private subscriptionBonusMap: Subscription;
+  @Input() onBonusButtonClick: () => void;
 
   constructor(
     public bonusesService: BonusesService,
@@ -33,9 +34,9 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
         if (data) {
           this.bonuses = data;
           if (this.bonuses.length === 0) {
-            this.toasterService.showCustomAlert(
-              'There are no bonuses for these filters yet',
-              'Sorry!', {
+            this.toasterService.showCustomNotification(
+               'bonusList.notification.getNoBonuses',
+               {
                 positionClass: 'toast-top-center',
                 toastClass:'toast-no-bonuses',
                 titleClass: 'toast-no-bonuses-title',
@@ -45,7 +46,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
           }
         }
       },
-      (err) => this.toasterService.showError(err, 'Some problems with getting bonuses'),
+      () => this.toasterService.showNotification('bonusList.notification.getBonusesError', 'error'),
     );
   }
 
@@ -56,7 +57,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
           this.bonusMap = bonus;
         }
       },
-      (err) => this.toasterService.showError(err, 'Some problems with getting bonus from the map'),
+      () => this.toasterService.showNotification('bonusList.notification.getBonusesFromMapError', 'error'),
     );
   }
 
