@@ -66,7 +66,7 @@ export class LocationService {
           options,
         );
       } else {
-        this.toastr.showError('Geolocation not available', 'Error');
+        this.toastr.showNotification('location.notification.error', 'error');
       }
     });
   }

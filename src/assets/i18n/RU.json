@@ -29,6 +29,12 @@
       "bonusAddressPlaceholder": "Введите страну, город, улицу, номер",
       "bonusDateRange": "Введите диапазон даты бонуса",
       "saveNewVendorBtn": "Сохранить новый вендор"
+    },
+    "notification": {
+      "saveBonusError": {
+        "title": "Ошибка сохранения",
+        "message": "Возникли проблемы с сохранением бонуса!"
+      }
     }
   },
   "loginPage": {
@@ -61,6 +67,42 @@
         "byDateEnd": "По дате окончания действия",
         "byRating": "По рейтингу",
         "byType": "По типу"
+      }
+    }
+  },
+  "rateForm": {
+    "notification": {
+      "success": {
+        "title": "Отправлено",
+        "message": "Ваша оценка добавлена"
+      }
+    }
+  },
+  "location": {
+    "notification": {
+      "error": {
+        "title": "Ошибка",
+        "message": "Геолокация недоступна"
+      }
+    }
+  },
+  "map": {
+    "notification": {
+      "error": {
+        "title": "Ошибка",
+        "message": "Бонус недоступен"
+      }
+    }
+  },
+  "bonusList": {
+    "notification": {
+      "getBonusesError": {
+        "title": "Ошибка",
+        "message": "Ошибка при получении бонусов"
+      },
+      "getBonusesFromMapError": {
+        "title": "Ошибка",
+        "message": "Ошибка при получения бонуса с карты"
       }
     }
   }

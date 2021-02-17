@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { Observable, Subject } from 'rxjs';
+import { of } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { INewBonus } from '@interfaces/add-bonus.interface';
 import { ToasterService } from './toaster.service';
 import { map, catchError } from 'rxjs/operators';
 import { apiLinks } from './constants';
+import * as bonuses from 'src/assets/static/bonuses.json';
+import { delay } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
@@ -33,7 +36,7 @@ export class BonusesService {
       .post(`${this.url}`, JSON.stringify(newBonus))
       .pipe(
         catchError(async (err) =>
-          this.toasterService.showError(err, 'Some problems with saving bonus!'),
+          this.toasterService.showNotification( 'addBonus.notification.saveBonusError', 'error'),
         ),
       );
   }
@@ -54,5 +57,10 @@ export class BonusesService {
       locations: modifiedBonus.locations,
       tags: modifiedBonus.tags,
     });
+  }
+
+  public rate(id: number, rating: number): Observable<any> {
+    // return this.api.post(`${this.url}/${id}/rate`, {rating});
+    return of(bonuses[1]).pipe(delay(1000));
   }
 }

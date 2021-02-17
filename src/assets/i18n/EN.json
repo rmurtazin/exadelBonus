@@ -29,6 +29,12 @@
       "bonusAddressPlaceholder": "Enter country, city, town, number",
       "bonusDateRange": "Enter a bonus date range",
       "saveNewVendorBtn": "Save new vendor"
+    },
+    "notification": {
+      "saveBonusError": {
+        "title": "Save error",
+        "message": "Some problems with saving bonus!"
+      }
     }
   },
   "loginPage": {
@@ -61,6 +67,42 @@
         "byDateEnd": "By bonus date end",
         "byRating": "By rating",
         "byType": "By type"
+      }
+    }
+  },
+  "rateForm": {
+    "notification": {
+      "success": {
+        "title": "Rated",
+        "message": "Your review has been added"
+      }
+    }
+  },
+  "location": {
+    "notification": {
+      "error": {
+        "title": "Error",
+        "message": "Geolocation not available"
+      }
+    }
+  },
+  "map": {
+    "notification": {
+      "error": {
+        "title": "Error",
+        "message": "Bonus not available"
+      }
+    }
+  },
+  "bonusList": {
+    "notification": {
+      "getBonusesError": {
+        "title": "Error",
+        "message": "Some problems with getting bonuses"
+      },
+      "getBonusesFromMapError": {
+        "title": "Error",
+        "message": "Some problems with getting bonus from the map"
       }
     }
   }
