@@ -5,12 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { FilterService } from '@services/filter.service';
 import { By } from '@angular/platform-browser';
-
-const FilterServiceStub: Partial<FilterService> = {
-  addSortToQuery(typeOfSort): string {
-    return typeOfSort;
-  },
-};
+import { MockFilterService } from './../../../shared/mocks/services/mock-filter.service';
 
 describe('SortContainerComponent', () => {
   let component: SortContainerComponent;
@@ -21,12 +16,12 @@ describe('SortContainerComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [SortContainerComponent],
       imports: [HttpClientModule, TranslateModule.forRoot(), ToastrModule.forRoot()],
-      providers: [{ provide: FilterService, useValue: FilterServiceStub }],
+      providers: [{ provide: FilterService, useValue: MockFilterService }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SortContainerComponent);
     component = fixture.componentInstance;
-    filterService = fixture.debugElement.injector.get(FilterService);
+    filterService = TestBed.inject(FilterService);
     fixture.detectChanges();
   });
 
