@@ -1,3 +1,4 @@
+import { TestBed } from '@angular/core/testing';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IOffice } from '@interfaces/office.interface';
 import { MapEventsService } from '@services/map-events.service';
@@ -10,40 +11,10 @@ describe('MapEventService', () => {
   let mockOffice: IOffice;
   beforeEach(() => {
     mapEventservice = new MapEventsService();
-    mockBonus = {
-      id: 123,
-      company: {
-        email: 'MockEmail',
-        name: 'MockName',
-      },
-      dateStart: 'mockDateStart',
-      dateEnd: 'mockDateEnd',
-      tags: ['mock'],
-      isActive: 1,
-      description: 'mock mock mock',
-      locations: [
-        {
-          city: 'MockCity',
-          country: 'MockCountry',
-          address: 'mock addres',
-          latitude: 0.12,
-          longitude: 0.12,
-        },
-      ],
-      type: 'mockType',
-      rating: 2,
-      phone: '342743623674',
-    };
-
-    mockOffice = {
-      id: '123',
-      country: 'MockCountry',
-      city: 'MockCity',
-      address: 'mock addres',
-      longitude: 0,
-      latitude: 0,
-      phone: '33333333',
-    };
+    TestBed.configureTestingModule({
+      providers: [MapEventsService]
+    });
+    mapEventservice = TestBed.inject(MapEventsService);
   });
 
   it('#zoomToOfficeObserver should return value from observable', (done: DoneFn) => {

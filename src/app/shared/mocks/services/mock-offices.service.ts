@@ -3,7 +3,6 @@ import { IOffice } from '@interfaces/office.interface';
 import { OfficesService } from '@services/offices.service';
 import { Observable, of } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
 export class MockOfficesService extends OfficesService {
   private mockBonuses: IOffice[] = [
     {

@@ -8,8 +8,6 @@ import {
   layerGroup,
   latLng,
   LatLng,
-  Control,
-  DomUtil,
   Icon,
   MarkerClusterGroup,
 } from 'leaflet';
@@ -50,9 +48,9 @@ export class MapComponent implements OnDestroy {
 
   public mapReadyEvent(map: Map): void {
     this.map = map;
+    this.displayOfficesMarkers();
     this.mapViewObserver();
     this.getQueryParams();
-    this.displayOfficesMarkers();
     this.getMarkersSubscription();
     this.officeMarkerClickObserver();
     this.applyFilterSubscription();
@@ -94,8 +92,10 @@ export class MapComponent implements OnDestroy {
   }
 
   private displayOfficesMarkers(): void {
+    console.log('its work 1');
     this.subscription.add(
       this.officeService.getOffices().subscribe((offices: IOffice[]) => {
+        console.log('its work 2');
         const bonusesMarkers = this.markerModel.createOfficesMarkers(offices);
         layerGroup(bonusesMarkers).addTo(this.map);
       }),
