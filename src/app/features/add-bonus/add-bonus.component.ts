@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { OnInit } from '@angular/core';
+import { DoCheck, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import {
@@ -65,7 +65,11 @@ export class AddBonusComponent implements OnInit, OnDestroy {
         this.createVendor(newVendor);
       },
       createBonus: (newBonus: INewBonus): void => {
-        this.subscription.add(this.bonusesService.addBonus(newBonus).subscribe());
+        this.subscription.add(
+          this.bonusesService.addBonus(newBonus).subscribe(() => {
+            this.getBonuses();
+          }),
+        );
       },
       removeVendors: (): void => {
         this.vendors = [];
