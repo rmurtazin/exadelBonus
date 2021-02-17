@@ -20,7 +20,7 @@ describe('AddBonusComponent', () => {
         AddBonusModule,
         ToastrModule.forRoot(),
         TranslateModule.forRoot(),
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
       ],
     }).compileComponents();
   });
