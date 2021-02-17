@@ -103,9 +103,9 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     }
   }
 
-  public getVendors(vendorName): void {
+  public getVendors(query): void {
     this.subscription.add(
-      this.vendorsService.getVendors(vendorName).subscribe((data) => {
+      this.vendorsService.getVendors(query).subscribe((data) => {
         this.vendors = data;
       }),
     );
