@@ -6,7 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  public isForm: boolean;
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  public onBonusButtonClick(): void {
+    this.isForm = !this.isForm;
+  }
 }
