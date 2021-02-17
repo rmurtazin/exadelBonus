@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { DoCheck, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import {
@@ -52,7 +52,10 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.bonusFormConfig = {
       vendorNameChange: (vendorName: string): void => {
         if (vendorName?.length === 1) {
-          this.getVendors(vendorName);
+          const previousInput = this.vendors[0]?.name[0]?.toLowerCase();
+          if (previousInput !== vendorName?.toLowerCase()) {
+            this.getVendors(vendorName);
+          }
         }
       },
       closeForm: (): void => {
