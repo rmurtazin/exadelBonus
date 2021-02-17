@@ -36,7 +36,7 @@ export class BonusesService {
       .post(`${this.url}`, JSON.stringify(newBonus))
       .pipe(
         catchError(async (err) =>
-          this.toasterService.showNotification( 'addBonus.notification.saveBonusError', 'error'),
+          this.toasterService.showNotification('addBonus.notification.saveBonusError', 'error'),
         ),
       );
   }
