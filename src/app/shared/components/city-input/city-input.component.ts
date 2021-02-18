@@ -60,6 +60,11 @@ export class CityInputComponent implements OnInit, OnDestroy {
     this.changeCityEvent.emit(this.cityInputControl.value);
   }
 
+  public reset(): void{
+    this.cityInputControl.reset('');
+    this.changeCity();
+  }
+
   public ngOnDestroy(): void{
     this.subscription.unsubscribe();
   }
