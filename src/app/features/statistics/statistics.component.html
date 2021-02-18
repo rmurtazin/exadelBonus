@@ -46,73 +46,75 @@
     </button>
   </div>
 
-  <mat-table [dataSource]="dataSource" matSort class="table">
-    <ng-container matColumnDef="companyName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.vendor' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.companyName }} </mat-cell>
-    </ng-container>
+  <div class="table">
+    <mat-table [dataSource]="dataSource" matSort >
+      <ng-container matColumnDef="companyName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'statistics.vendor' | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.companyName }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.bonus' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.title }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'statistics.bonus' | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.title }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="createdDate">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.dateAdd' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.createdDate }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="createdDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'statistics.dateAdd' | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.createdDate }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="dateStart">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.dateStart' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.dateStart }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="dateStart">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'statistics.dateStart' | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.dateStart }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="dateEnd">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.dateEnd' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.dateEnd }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="dateEnd">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'statistics.dateEnd' | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.dateEnd }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="rating">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.rating' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.rating }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="rating">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'statistics.rating' | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.rating }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="visits">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.visits' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.visits }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="visits">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'statistics.visits' | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.visits }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.type' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.type }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'statistics.type' | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.type }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="isActive">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ 'statistics.isActive' | translate }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.isActive }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="isActive">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'statistics.isActive' | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.isActive }} </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-  </mat-table>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
 
   <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
 </div>
