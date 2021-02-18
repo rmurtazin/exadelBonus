@@ -22,10 +22,4 @@ describe('MapViewComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('map ready event hendler should be called', () => {
-    const spy = spyOn(component, 'onMapReady');
-    fixture.detectChanges();
-    expect(spy).toHaveBeenCalled();
-  });
 });
