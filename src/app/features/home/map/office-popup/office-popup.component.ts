@@ -18,7 +18,6 @@ export class OfficePopupComponent implements OnInit, OnDestroy {
     private mapEvents: MapEventsService,
     private translate: TranslateService,
     private changeDetector: ChangeDetectorRef,
-    private flilterService: FilterService,
   ) {}
 
   public ngOnInit(): void {
@@ -36,7 +35,6 @@ export class OfficePopupComponent implements OnInit, OnDestroy {
 
   public clickTrigger(): void {
     this.mapEvents.zoomToOffice(this.office);
-    this.flilterService.addCityToQuery(this.office.city);
   }
 
   public ngOnDestroy(): void {

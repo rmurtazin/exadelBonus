@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
-import { bounds } from 'leaflet';
 import { Observable, of } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
 export class MockBonusService extends BonusesService {
   private mockBonuses: IBonus[] = [
     {
@@ -23,13 +21,14 @@ export class MockBonusService extends BonusesService {
           city: 'MockCity',
           country: 'MockCountry',
           address: 'mock addres',
-          latitude: 0.12,
-          longitude: 0.12,
+          longitude: 46.879966,
+          latitude: -122.726988,
         },
       ],
       type: 'mockType',
       rating: 2,
       phone: '342743623674',
+      title: 'mockTitle1',
     },
     {
       id: 234,
@@ -47,13 +46,14 @@ export class MockBonusService extends BonusesService {
           city: 'MockCity',
           country: 'MockCountry',
           address: 'mock addres',
-          latitude: 0.32,
-          longitude: 0.32,
+          longitude: 46.879923,
+          latitude: -121.726923,
         },
       ],
       type: 'mockType',
       rating: 2,
       phone: '342743623674',
+      title: 'mockTitle2',
     },
   ];
 
