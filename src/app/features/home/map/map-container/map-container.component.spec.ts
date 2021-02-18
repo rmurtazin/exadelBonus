@@ -58,7 +58,7 @@ describe('MapComponent', () => {
         { provide: FilterService, useValue: fillterService },
         LocationService,
         MapEventsService,
-        MarkerModel
+        MarkerModel,
       ],
     }).compileComponents();
   });
@@ -78,7 +78,6 @@ describe('MapComponent', () => {
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
   });
-
 
   it('should add office markers', () => {
     const mockOffices = officeService.getMockOffices();

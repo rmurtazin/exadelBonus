@@ -3,18 +3,25 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { IOffice } from '@interfaces/office.interface';
 import { MapEventsService } from '@services/map-events.service';
 import { latLng } from 'leaflet';
-import { LatLng } from 'leaflet';
+import { MockBonusService } from 'src/app/shared/mocks/services/mock-bonus.service';
+import { MockOfficesService } from 'src/app/shared/mocks/services/mock-offices.service';
 
 describe('MapEventService', () => {
   let mapEventservice: MapEventsService;
+  let mockBonusService: MockBonusService;
+  let mockOfficeService: MockOfficesService;
   let mockBonus: IBonus;
   let mockOffice: IOffice;
   beforeEach(() => {
+    mockBonusService = new MockBonusService();
+    mockOfficeService = new MockOfficesService();
     mapEventservice = new MapEventsService();
     TestBed.configureTestingModule({
-      providers: [MapEventsService]
+      providers: [MapEventsService],
     });
     mapEventservice = TestBed.inject(MapEventsService);
+    [mockBonus] = mockBonusService.getMockBonuses();
+    [mockOffice] = mockOfficeService.getMockOffices();
   });
 
   it('#zoomToOfficeObserver should return value from observable', (done: DoneFn) => {
