@@ -1,3 +1,4 @@
+import { DatepickerModule } from './../../shared/components/datepicker/datepicker.module';
 import { SharedModule } from './../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    DatepickerModule,
   ],
   exports: [StatisticsComponent],
 })

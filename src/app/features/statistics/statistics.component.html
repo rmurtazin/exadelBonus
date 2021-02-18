@@ -1,32 +1,52 @@
 <div class="mat-elevation-z8 table-container">
   <div>
     <mat-form-field>
-      <mat-label>{{'statistics.filter' | translate}}</mat-label>
+      <mat-label>{{ 'statistics.filter' | translate }}</mat-label>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="" />
     </mat-form-field>
   </div>
-  <div class="statistics-flters">
-    <p>Filters:</p>
-    <mat-form-field>
+  <div>
+    <p class="filters-title">Filters:</p>
+    <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.vendor' | translate }}</mat-label>
-      <input matInput />
+      <input matInput type="text" placeholder="Vendor name" id="vendor" />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.bonus' | translate }}</mat-label>
-      <input matInput />
+      <input matInput type="text" placeholder="Bonus" id="bonus" />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.type' | translate }}</mat-label>
-      <input matInput />
+      <input matInput type="text" placeholder="Bonus type" id="type" />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.isActive' | translate }}</mat-label>
-      <input matInput />
+      <input matInput type="text" placeholder="true or false" id="isActive" />
     </mat-form-field>
+    <div class="date-inputs">
+      <app-datepicker (changeDate)="changeDate($event)" class="filter-inputs"></app-datepicker>
+    </div>
+    <button
+      mat-flat-button
+      color="primary"
+      type="button"
+      class="statistics-flters-element"
+      (click)="clearFilters()"
+    >
+      Clear filters
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      type="button"
+      class="statistics-flters-element"
+      (click)="applyFilters()"
+    >
+      Apply filters
+    </button>
   </div>
 
   <mat-table [dataSource]="dataSource" matSort>
-
     <ng-container matColumnDef="companyName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ 'statistics.vendor' | translate }}

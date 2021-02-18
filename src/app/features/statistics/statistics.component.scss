@@ -10,8 +10,14 @@ th.mat-sort-header-sorted {
   padding: 0 20px;
 }
 
-.statistics-flters {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+.filters-title {
+  margin: 0;
+}
+
+.statistics-flters-element {
+  margin-left: 10px;
+}
+
+.date-inputs {
+  width: 300px;
 }

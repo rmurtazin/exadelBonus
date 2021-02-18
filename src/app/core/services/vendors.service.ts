@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { INewVendor, IVendor } from '@interfaces/add-bonus.interface';
 import { Observable } from 'rxjs';
@@ -16,5 +17,9 @@ export class VendorsService {
 
   public createVendor(newVendor: INewVendor): Observable<IVendor> {
     return this.apiService.post(this.url, JSON.stringify(newVendor));
+  }
+
+  public getVendorByName(name: string): Observable<IVendor> {
+    return this.apiService.get(`${this.url}/${name}`).pipe(map((data) => data.value));
   }
 }
