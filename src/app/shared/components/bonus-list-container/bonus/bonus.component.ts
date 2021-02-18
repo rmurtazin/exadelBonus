@@ -15,12 +15,13 @@ export class BonusComponent implements OnInit {
   public isForm = false;
   public isModeratorOrAdmin = false;
   public user: IUser;
-  private currentComponent: HTMLElement;
-  private isParent = {
+  public isParent = {
     'APP-HOME': false,
     'APP-ADD-BONUS': false,
     'APP-HISTORY': false,
   };
+  private currentComponent: HTMLElement;
+
 
   constructor(private loginService: LoginService, private ref: ElementRef) {}
 
@@ -30,7 +31,6 @@ export class BonusComponent implements OnInit {
     if (this.user ?? false) {
       this.isModeratorOrAdmin = this.user.role === 'admin' || this.user.role === 'moderator';
     }
-    console.log(this.user);
     this.findParentElement();
   }
 
@@ -45,7 +45,7 @@ export class BonusComponent implements OnInit {
     this.isForm = false;
   }
 
-  public applyBonus(): void {
+  public openApplyForm(): void {
     // TODO: open apply form
   }
 
