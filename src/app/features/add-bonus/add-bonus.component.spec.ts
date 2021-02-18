@@ -81,7 +81,12 @@ describe('AddBonusComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AddBonusComponent, AddBonusFormComponent, AddBonusButtonComponent, BonusSearcherComponent],
+      declarations: [
+        AddBonusComponent,
+        AddBonusFormComponent,
+        AddBonusButtonComponent,
+        BonusSearcherComponent,
+      ],
       imports: [
         HttpClientModule,
         AddBonusModule,

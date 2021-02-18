@@ -10,7 +10,7 @@ describe('BonusSearcherComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BonusSearcherComponent],
-      imports: [MatAutocompleteModule, TranslateModule.forRoot()]
+      imports: [MatAutocompleteModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 
