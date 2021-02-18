@@ -22,13 +22,13 @@ export class MockBonusService extends BonusesService {
           country: 'MockCountry',
           address: 'mock addres',
           longitude: 46.879966,
-      latitude: -122.726988,
+          latitude: -122.726988,
         },
       ],
       type: 'mockType',
       rating: 2,
       phone: '342743623674',
-      title: 'mockTitle1'
+      title: 'mockTitle1',
     },
     {
       id: 234,
@@ -53,7 +53,7 @@ export class MockBonusService extends BonusesService {
       type: 'mockType',
       rating: 2,
       phone: '342743623674',
-      title: 'mockTitle2'
+      title: 'mockTitle2',
     },
   ];
 

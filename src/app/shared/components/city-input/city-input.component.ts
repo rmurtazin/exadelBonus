@@ -16,9 +16,7 @@ export class CityInputComponent implements OnInit {
   public filteredCity$: Observable<string[]>;
   @Output() changeCityEvent = new EventEmitter<string>();
 
-  constructor(
-    private citiesService: CityService
-  ) {}
+  constructor(private citiesService: CityService) {}
 
   public ngOnInit(): void {
     this.getCities();
@@ -31,7 +29,7 @@ export class CityInputComponent implements OnInit {
     this.subscription.add(
       this.citiesService.getCities().subscribe((citiesList: string[]) => {
         this.cities = citiesList;
-      })
+      }),
     );
   }
 

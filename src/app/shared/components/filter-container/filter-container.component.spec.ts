@@ -15,8 +15,14 @@ describe('FilterContainerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FilterContainerComponent],
-      imports: [BrowserAnimationsModule, MatDialogModule, HttpClientModule, ToastrModule.forRoot(), TranslateModule.forRoot()],
-      providers: [LocationService]
+      imports: [
+        BrowserAnimationsModule,
+        MatDialogModule,
+        HttpClientModule,
+        ToastrModule.forRoot(),
+        TranslateModule.forRoot(),
+      ],
+      providers: [LocationService],
     }).compileComponents();
   });
 

@@ -8,10 +8,7 @@ import { LocationService } from '@services/location.service';
   styleUrls: ['./filter-container.component.scss'],
 })
 export class FilterContainerComponent {
-  constructor(
-    private filterService: FilterService,
-    private locationService: LocationService
-  ) {}
+  constructor(private filterService: FilterService, private locationService: LocationService) {}
 
   public changeCity(city: string): void {
     this.locationService.moveToCityLocation(city);

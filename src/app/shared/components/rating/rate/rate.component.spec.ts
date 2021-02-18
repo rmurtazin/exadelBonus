@@ -10,7 +10,7 @@ describe('RateComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RateComponent],
-      imports: [HttpClientModule]
+      imports: [HttpClientModule],
     }).compileComponents();
   });
 

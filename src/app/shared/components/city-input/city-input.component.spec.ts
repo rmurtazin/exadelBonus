@@ -13,7 +13,7 @@ describe('CityInputComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [CityInputComponent],
       imports: [MatAutocompleteModule, HttpClientModule],
-      providers: [CityService]
+      providers: [CityService],
     }).compileComponents();
   });
 
