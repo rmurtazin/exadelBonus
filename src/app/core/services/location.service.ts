@@ -5,6 +5,7 @@ import { ChoosePlaceDialogComponent } from '../../shared/components/choose-place
 import { LatLng, latLng } from 'leaflet';
 import { Observable, Subscription } from 'rxjs';
 import { MapEventsService } from '@services/map-events.service';
+import { BonusAddressService } from './bonus-address.service';
 
 @Injectable()
 export class LocationService {
@@ -15,6 +16,7 @@ export class LocationService {
     private toastr: ToasterService,
     private dialog: MatDialog,
     private mapEventService: MapEventsService,
+    private address: BonusAddressService
   ) {
     if (!localStorage.getItem('currentLatitude')) {
       this.selectPlaceDialog();
@@ -47,6 +49,16 @@ export class LocationService {
     localStorage.setItem('currentLongitude', location.lng.toString());
   }
 
+  public moveToCityLocation(city: string): void{
+    this.address.getSearchedAddress(city).subscribe( (addresses) => {
+      const [firstAddress] = addresses;
+      const position = latLng(firstAddress.geometry.lat, firstAddress.geometry.lng);
+      const showUserMarker = false;
+      this.mapEventService.setMapView(position, showUserMarker);
+    });
+
+  }
+
   private getUserLocation(): Observable<LatLng> {
     return new Observable((observer) => {
       const options = {
@@ -57,7 +69,7 @@ export class LocationService {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            const location: LatLng = latLng(position.coords.latitude, position.coords.longitude);
+            const location = latLng(position.coords.latitude, position.coords.longitude);
             observer.next(location);
           },
           (error) => {

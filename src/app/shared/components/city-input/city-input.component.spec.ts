@@ -2,6 +2,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CityInputComponent } from './city-input.component';
+import { CityService } from '@services/city.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CityInputComponent', () => {
   let component: CityInputComponent;
@@ -10,7 +12,8 @@ describe('CityInputComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CityInputComponent],
-      imports: [MatAutocompleteModule],
+      imports: [MatAutocompleteModule, HttpClientModule],
+      providers: [CityService]
     }).compileComponents();
   });
 

@@ -4,6 +4,7 @@ const { apiUrl } = environment;
 
 export const apiLinks = {
   bonus: `${apiUrl}/api/Bonus`,
+  cities: `${apiUrl}/api/Bonus/cities`,
   admin: {
     user: `${apiUrl}/Admin/user`,
     role: `${apiUrl}/Admin/role`,
