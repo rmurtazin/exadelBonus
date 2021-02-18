@@ -15,9 +15,25 @@
           <span class="tag" *ngFor="let tag of bonus.tags">{{ tag }}</span>
         </div>
       </div>
-      <div class="button-container">
-        <button mat-flat-button color="primary" class="apply-button" (click)="onBonusButtonClick()">
-          <span>Button text</span>
+      <button mat-flat-button class="edit-button" *ngIf="isParent['APP-ADD-BONUS']">
+        <a
+          *ngIf="isModeratorOrAdmin"
+          routerLink="/bonuses/{{ bonus.id }}"
+          [routerLinkActive]="'active'"
+          class="edit-button-link"
+        >
+          <img class="update-img" src="assets/images/pencil.png" alt="update bonus" />
+          <span>Edit</span>
+        </a>
+      </button>
+      <div class="button-container" *ngIf="isParent['APP-HISTORY']">
+        <button mat-flat-button class="apply-button" (click)="openRateForm()">
+          <span>Rate</span>
+        </button>
+      </div>
+      <div class="button-container" *ngIf="isParent['APP-HOME']">
+        <button mat-flat-button class="apply-button" (click)="applyBonus()">
+          <span>Apply</span>
         </button>
       </div>
     </div>

@@ -9,7 +9,6 @@ import { IBonus } from '@interfaces/bonus.interface';
 export class BonusListViewComponent {
   @Input() bonusMap: IBonus;
   @Input() bonuses: IBonus[];
-  @Input() onBonusButtonClick: () => void;
 
   constructor() {}
 
