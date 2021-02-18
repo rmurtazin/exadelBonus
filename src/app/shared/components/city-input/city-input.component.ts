@@ -2,8 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { map, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { CityService } from '@services/city.service';
-import { LocationService } from '@services/location.service';
+import { BonusesService } from '@services/bonuses.service';
+
 @Component({
   selector: 'app-city-input',
   templateUrl: './city-input.component.html',
@@ -16,7 +16,7 @@ export class CityInputComponent implements OnInit {
   public filteredCity$: Observable<string[]>;
   @Output() changeCityEvent = new EventEmitter<string>();
 
-  constructor(private citiesService: CityService) {}
+  constructor(private bonusesService: BonusesService) {}
 
   public ngOnInit(): void {
     this.getCities();
@@ -27,7 +27,7 @@ export class CityInputComponent implements OnInit {
   }
   private getCities(): void {
     this.subscription.add(
-      this.citiesService.getCities().subscribe((citiesList: string[]) => {
+      this.bonusesService.getBonusesCities().subscribe((citiesList: string[]) => {
         this.cities = citiesList;
       }),
     );
