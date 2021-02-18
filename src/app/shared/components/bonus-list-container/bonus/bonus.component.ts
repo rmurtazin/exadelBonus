@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IUser } from '@interfaces/loginInterface';
 import { LoginService } from '@services/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-bonus',
@@ -15,30 +16,29 @@ export class BonusComponent implements OnInit {
   public isForm = false;
   public isModeratorOrAdmin = false;
   public user: IUser;
-  public isParent = {
-    'APP-HOME': false,
-    'APP-ADD-BONUS': false,
-    'APP-HISTORY': false,
-  };
-  private currentComponent: HTMLElement;
+  public isParentHome = false;
+  public isParentHistory = false;
+  public isParentBonuses = false;
 
 
-  constructor(private loginService: LoginService, private ref: ElementRef) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();
-    this.currentComponent = this.ref.nativeElement;
     if (this.user ?? false) {
       this.isModeratorOrAdmin = this.user.role === 'admin' || this.user.role === 'moderator';
     }
-    this.findParentElement();
+    this.checkParentComponent();
   }
 
-  private findParentElement(): void {
-    while (!Object.keys(this.isParent).includes(this.currentComponent.tagName)) {
-      this.currentComponent = this.currentComponent.parentElement;
+  private checkParentComponent(): void {
+    const currentComponent = this.router.url.split('/')[1];
+    switch (currentComponent) {
+      case 'home': this.isParentHome = true; break;
+      case 'history': this.isParentHistory = true; break;
+      case 'bonuses': this.isParentBonuses = true; break;
+      default: break;
     }
-    this.isParent[this.currentComponent.tagName] = true;
   }
 
   public closeRateForm(): void {
