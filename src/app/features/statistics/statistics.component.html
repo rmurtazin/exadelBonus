@@ -6,14 +6,14 @@
     </mat-form-field>
   </div>
   <div>
-    <p class="filters-title">Filters:</p>
+    <p class="filters-title">{{ 'statistics.filters' | translate }}:</p>
     <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.vendor' | translate }}</mat-label>
       <input matInput type="text" placeholder="Vendor name" id="vendor" />
     </mat-form-field>
     <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.bonus' | translate }}</mat-label>
-      <input matInput type="text" placeholder="Bonus" id="bonus" />
+      <input matInput type="text" placeholder="Bonus title" id="bonus" />
     </mat-form-field>
     <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.type' | translate }}</mat-label>
@@ -33,7 +33,7 @@
       class="statistics-flters-element"
       (click)="clearFilters()"
     >
-      Clear filters
+      {{ 'statistics.clear' | translate }}
     </button>
     <button
       mat-flat-button
@@ -42,7 +42,7 @@
       class="statistics-flters-element"
       (click)="applyFilters()"
     >
-      Apply filters
+    {{ 'statistics.apply' | translate }}
     </button>
   </div>
 

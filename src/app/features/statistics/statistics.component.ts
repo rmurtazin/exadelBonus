@@ -124,12 +124,10 @@ export class StatisticsComponent implements AfterViewInit, OnInit, OnDestroy {
       bonus: '',
       type: '',
       isActive: '',
-      start: '',
-      end: '',
+      start: this.dateStart ?? '',
+      end: this.dateEnd ?? '',
     };
     this.queryParams = '';
-    this.dateStart = '';
-    this.dateEnd = '';
 
     (document.getElementById('vendor') as HTMLInputElement).value = '';
     (document.getElementById('bonus') as HTMLInputElement).value = '';

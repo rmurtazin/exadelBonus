@@ -54,7 +54,10 @@
     "city": "City",
     "country": "Country",
     "type": "Bonus type",
-    "isActive": "Is active"
+    "isActive": "Is active",
+    "filters": "Filters",
+    "clear": "Clear filters",
+    "apply": "Apply filters"
   },
   "home": {
     "pick": {
