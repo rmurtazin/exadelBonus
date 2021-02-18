@@ -93,10 +93,8 @@ export class MapComponent implements OnDestroy {
   }
 
   private displayOfficesMarkers(): void {
-    console.log('its work 1');
     this.subscription.add(
       this.officeService.getOffices().subscribe((offices: IOffice[]) => {
-        console.log('its work 2');
         const bonusesMarkers = this.markerModel.createOfficesMarkers(offices);
         layerGroup(bonusesMarkers).addTo(this.map);
       }),

@@ -20,7 +20,7 @@ describe('BonusPopupComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BonusPopupComponent);
     component = fixture.componentInstance;
-    component.bonus = {
+    mockBonus = {
       title: 'title',
       id: 123,
       dateStart: 'dateStart',
@@ -37,6 +37,7 @@ describe('BonusPopupComponent', () => {
         email: 'email',
       },
     };
+    component.bonus = mockBonus;
     fixture = TestBed.createComponent(BonusPopupComponent);
     component = fixture.componentInstance;
     component.bonus = mockBonus;

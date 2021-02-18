@@ -10,8 +10,8 @@ export class MockOfficesService extends OfficesService {
       country: 'MockCountry',
       city: 'MockCity',
       address: 'mock addres',
-      longitude: 0,
-      latitude: 0,
+      longitude: 46.879966,
+      latitude: -121.726988,
       phone: '33333333',
     },
     {
@@ -19,8 +19,8 @@ export class MockOfficesService extends OfficesService {
       country: 'MockCountry',
       city: 'MockCity',
       address: 'mock addres',
-      longitude: 0,
-      latitude: 0,
+      longitude: 46.879966,
+      latitude: -121.726909,
       phone: '44444444',
     },
   ];
@@ -30,6 +30,7 @@ export class MockOfficesService extends OfficesService {
   }
 
   public getOffices(): Observable<IOffice[]> {
+    console.log('yes its my office');
     return of(this.mockBonuses);
   }
 

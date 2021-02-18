@@ -19,18 +19,15 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MockMarkerModel } from 'src/app/shared/mocks/services/mock-marker.model';
 import { OfficePopupComponent } from '../office-popup/office-popup.component';
 import { BonusPopupComponent } from '../bonus-popup/bonus-popup.component';
-import { DivIcon, Marker } from 'leaflet';
-import { latLng } from 'leaflet';
 import { of } from 'rxjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('MapComponent', () => {
   let component: MapComponent;
   let fixture: ComponentFixture<MapComponent>;
-  let bonusService: BonusesService;
+  let bonusService: MockBonusService;
   let officeService: MockOfficesService;
   let fillterService: FilterService;
   let markerModel: MarkerModel;
@@ -76,19 +73,19 @@ describe('MapComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should coll mapReadyEvent', () => {
+  it('should coll mapReadyEvent', () => {
     const spy = spyOn(component, 'mapReadyEvent');
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
   });
 
 
-  fit('test', () => {
-    const officeServiceSpy = spyOn(officeService, 'getOffices').and.returnValue(of(officeService.getMockOffices()));
-    const markerModelSpy = spyOn(markerModel, 'createOfficesMarkers');
+  it('should add office markers', () => {
+    const mockOffices = officeService.getMockOffices();
+    const officeServiceSpy = spyOn(officeService, 'getOffices').and.returnValue(of(mockOffices));
     fixture.detectChanges();
     expect(officeServiceSpy).toHaveBeenCalled();
     fixture.detectChanges();
-    expect(markerModelSpy).toHaveBeenCalled();
+    expect(fixture.nativeElement.innerHTML).toContain('office.png');
   });
 });

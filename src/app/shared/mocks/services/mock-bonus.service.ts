@@ -21,8 +21,8 @@ export class MockBonusService extends BonusesService {
           city: 'MockCity',
           country: 'MockCountry',
           address: 'mock addres',
-          latitude: 0.12,
-          longitude: 0.12,
+          longitude: 46.879966,
+      latitude: -122.726988,
         },
       ],
       type: 'mockType',
@@ -46,8 +46,8 @@ export class MockBonusService extends BonusesService {
           city: 'MockCity',
           country: 'MockCountry',
           address: 'mock addres',
-          latitude: 0.32,
-          longitude: 0.32,
+          longitude: 46.879923,
+          latitude: -121.726923,
         },
       ],
       type: 'mockType',
@@ -62,6 +62,7 @@ export class MockBonusService extends BonusesService {
   }
 
   public getBonuses(query?: string): Observable<IBonus[]> {
+    console.log('yes its my bonus');
     if (query) {
       return of([this.mockBonuses[0]]);
     }

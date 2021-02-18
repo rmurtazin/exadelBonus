@@ -1,9 +1,11 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IOffice } from '@interfaces/office.interface';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Icon, MarkerClusterGroup } from 'leaflet';
+import { ToastrModule } from 'ngx-toastr';
 import { BonusPopupComponent } from 'src/app/features/home/map/bonus-popup/bonus-popup.component';
 import { MarkerIconComponent } from 'src/app/features/home/map/marker-icon/marker-icon.component';
 import { OfficePopupComponent } from 'src/app/features/home/map/office-popup/office-popup.component';
@@ -21,7 +23,7 @@ describe('MarkerModel', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [OfficePopupComponent, MarkerIconComponent, BonusPopupComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [TranslateModule.forRoot(), HttpClientModule, ToastrModule.forRoot()],
       providers: [],
     });
     injector = TestBed.inject(Injector);
