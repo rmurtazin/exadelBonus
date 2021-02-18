@@ -106,6 +106,10 @@
       "getBonusesFromMapError": {
         "title": "Ошибка",
         "message": "Ошибка при получения бонуса с карты"
+      },
+      "getNoBonuses": {
+        "title": "Извините!",
+        "message": "По этим фильтрам бонусов пока нет"
       }
     }
   }
