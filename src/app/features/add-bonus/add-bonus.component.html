@@ -1,6 +1,11 @@
 <div class="container">
   <div *ngIf="!isFormActive">
     <app-add-bonus-button (openForm)="openForm()"></app-add-bonus-button>
+    <app-bonus-searcher
+      [bonusFormConfig]="bonusFormConfig"
+      [vendors]="vendors"
+      (getBonusesByVendorId)="getBonusesByVendorId($event)"
+    ></app-bonus-searcher>
     <app-bonus-list-view [bonuses]="bonuses"></app-bonus-list-view>
   </div>
   <app-add-bonus-form
