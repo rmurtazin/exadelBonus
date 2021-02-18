@@ -19,17 +19,18 @@ describe('BonusPopupComponent', () => {
     component = fixture.componentInstance;
     component.bonus = {
       title: 'title',
-      id: 123,
+      id: '123',
       dateStart: 'dateStart',
       dateEnd: 'dateEnd',
       description: 'description',
       phone: 'phone',
       type: 'type',
       rating: 123,
-      isActive: 1,
+      isActive: true,
       locations: [],
       tags: [],
       company: {
+        id: '',
         name: 'name',
         email: 'email',
       },

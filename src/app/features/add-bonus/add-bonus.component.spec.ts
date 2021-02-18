@@ -132,7 +132,7 @@ describe('AddBonusComponent', () => {
   });
 
   it('should update bonuses length after get method', () => {
-    spyOn(component.bonusesService, 'getBonuses').and.callFake(() => of(bonuses));
+    // spyOn(component.bonusesService, 'getBonuses').and.callFake(() => of(bonuses));
     component.ngOnInit();
     expect(component.bonuses.length).toBe(bonuses.length);
   });
