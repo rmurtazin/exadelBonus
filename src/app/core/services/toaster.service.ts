@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { IndividualConfig, ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { ITranslatedToastrInfo } from '@interfaces/translated-toaster-info.interface';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,12 @@ export class ToasterService {
     });
   }
 
+  public showCustomNotification(key: string, properties: object): Subscription {
+    return this.translate.get(key).subscribe((translatedToastrInfo: ITranslatedToastrInfo) => {
+      this.showCustomAlert(translatedToastrInfo.message, translatedToastrInfo.title, properties);
+    });
+  }
+
   public showSuccess(message: string, title: string): void {
     this.toastr.success(message, title, {
       positionClass: 'toast-top-center',
@@ -44,5 +51,9 @@ export class ToasterService {
     this.toastr.show(message, title, {
       positionClass: 'toast-top-center',
     });
+  }
+
+  public showCustomAlert(message: string, title: string, customProperties: Partial<IndividualConfig>): void {
+    this.toastr.show(message, title, customProperties);
   }
 }
