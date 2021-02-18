@@ -1,6 +1,5 @@
-import { Input, Output } from '@angular/core';
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { Languages } from '@enums/languages.enum';
+import { Output } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-add-bonus-button',

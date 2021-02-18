@@ -17,14 +17,14 @@
         class="add-bonus-input"
         type="text"
         matInput
-        formControlName="vendorName"
+        formControlName="name"
         [matAutocomplete]="auto"
         (ngModelChange)="onVendorNameChange($event)"
         [readonly]="readonly"
       />
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayVendors">
         <mat-option *ngFor="let vendor of filteredVendors | async" [value]="vendor">
-          {{ vendor?.vendorName }}
+          {{ vendor?.name }}
         </mat-option>
       </mat-autocomplete>
       <button type="button" (click)="onOpenEmailInput()" class="new-vendor-btn">&#43;</button>
@@ -38,7 +38,7 @@
       <mat-label>{{ 'addBonus.form.vendorEmail' | translate }}</mat-label>
       <input
         matInput
-        formControlName="vendorEmail"
+        formControlName="email"
         autocomplete="off"
         placeholder="pat@example.com"
         [readonly]="readonly"
