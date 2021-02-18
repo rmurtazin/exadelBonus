@@ -19,7 +19,6 @@ export class BonusesService {
 
   constructor(private api: ApiService, private toasterService: ToasterService) {}
 
-
   public getBonuses(query?: string): Observable<IBonus[]> {
     return this.api.get(this.bonusUrl, query).pipe(
       map((data) => {

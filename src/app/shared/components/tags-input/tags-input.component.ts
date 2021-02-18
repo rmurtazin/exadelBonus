@@ -1,5 +1,13 @@
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { startWith, map } from 'rxjs/operators';
@@ -23,11 +31,9 @@ export class TagsInputComponent implements OnInit, OnDestroy {
   @ViewChild('tagsInput') public tagsInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') public matAutocomplete: MatAutocomplete;
 
-  constructor(
-    private bonusesService: BonusesService
-  ) {}
+  constructor(private bonusesService: BonusesService) {}
 
-  public ngOnInit(): void{
+  public ngOnInit(): void {
     this.subscription.add(
       this.bonusesService.getBonusesTags().subscribe((tagsList) => {
         this.allTags = tagsList;
@@ -35,7 +41,7 @@ export class TagsInputComponent implements OnInit, OnDestroy {
           startWith(''),
           map((tags: string | null) => (tags ? this.tagsFilter(tags) : this.allTags.slice())),
         );
-      })
+      }),
     );
   }
 
@@ -80,7 +86,7 @@ export class TagsInputComponent implements OnInit, OnDestroy {
     return this.allTags.filter((tag) => tag.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  public ngOnDestroy(): void{
+  public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }

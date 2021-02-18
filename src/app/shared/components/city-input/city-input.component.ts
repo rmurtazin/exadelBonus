@@ -18,22 +18,19 @@ export class CityInputComponent implements OnInit, OnDestroy {
   public filteredCity$: Observable<string[]>;
   @Output() changeCityEvent = new EventEmitter<string>();
 
-  constructor(
-    private bonusesService: BonusesService,
-    private mapEventsService: MapEventsService
-  ) {}
+  constructor(private bonusesService: BonusesService, private mapEventsService: MapEventsService) {}
 
   public ngOnInit(): void {
     this.chuseOfficeObserver();
     this.getCities();
   }
 
-  private chuseOfficeObserver(): void{
+  private chuseOfficeObserver(): void {
     this.subscription.add(
       this.mapEventsService.zoomToOfficeObserver().subscribe((office: IOffice) => {
         this.cityInputControl.setValue(office.city);
         this.changeCity();
-      })
+      }),
     );
   }
 
@@ -60,12 +57,12 @@ export class CityInputComponent implements OnInit, OnDestroy {
     this.changeCityEvent.emit(this.cityInputControl.value);
   }
 
-  public reset(): void{
+  public reset(): void {
     this.cityInputControl.reset('');
     this.changeCity();
   }
 
-  public ngOnDestroy(): void{
+  public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }

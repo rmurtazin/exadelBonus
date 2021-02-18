@@ -17,7 +17,7 @@ export class OfficePopupComponent implements OnInit, OnDestroy {
   constructor(
     private mapEvents: MapEventsService,
     private translate: TranslateService,
-    private changeDetector: ChangeDetectorRef
+    private changeDetector: ChangeDetectorRef,
   ) {}
 
   public ngOnInit(): void {
