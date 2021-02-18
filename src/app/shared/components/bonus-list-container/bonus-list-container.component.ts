@@ -38,9 +38,9 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
                'bonusList.notification.getNoBonuses',
                {
                 positionClass: 'toast-top-center',
-                toastClass:'toast-no-bonuses',
+                toastClass: 'toast-no-bonuses',
                 titleClass: 'toast-no-bonuses-title',
-                messageClass:'toast-no-bonuses-message'
+                messageClass: 'toast-no-bonuses-message'
               }
             );
           }
