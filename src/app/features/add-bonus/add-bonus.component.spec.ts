@@ -34,7 +34,7 @@ describe('AddBonusComponent', () => {
     description: 'bonus description',
     type: 'bonus type',
     phone: 'bonus phone',
-    company: 'bonus company',
+    companyId: 'bonus company',
     dateStart: 'bonus dateStart',
     dateEnd: 'bonus dateEnd',
     locations: [
