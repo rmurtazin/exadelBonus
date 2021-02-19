@@ -43,7 +43,7 @@ export class BonusSearcherComponent implements OnInit {
   }
 
   public displayVendors(vendor: IVendor): string {
-    return vendor?.name ? vendor.name : '';
+    return vendor.name || '';
   }
 
   private _filter(vendor: string): IVendor[] {
