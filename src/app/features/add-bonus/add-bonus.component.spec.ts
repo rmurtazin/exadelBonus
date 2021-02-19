@@ -52,14 +52,14 @@ describe('AddBonusComponent', () => {
   };
   const bonuses = [
     {
-      id: 468378465974375,
+      id: '468378465974375',
       dateStart: '10.10.2020',
       dateEnd: '10.10.2021',
       description: 'description',
       phone: '+38(098)-333-33-33',
       type: 'hotel',
       rating: 0,
-      isActive: 1,
+      isActive: true,
       locations: [
         {
           latitude: 27,
@@ -70,7 +70,7 @@ describe('AddBonusComponent', () => {
         },
       ],
       tags: ['tags'],
-      company: { name: 'MC', email: 'mc@gmail.com' },
+      company: {id: '875678349729847', name: 'MC', email: 'mc@gmail.com' },
       title: 'sale',
     },
   ];
