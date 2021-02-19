@@ -62,7 +62,6 @@ export class MockBonusService extends BonusesService {
   }
 
   public getBonuses(query?: string): Observable<IBonus[]> {
-    console.log('yes its my bonus');
     if (query) {
       return of([this.mockBonuses[0]]);
     }

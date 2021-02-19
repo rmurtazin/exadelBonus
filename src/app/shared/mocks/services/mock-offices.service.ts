@@ -30,7 +30,6 @@ export class MockOfficesService extends OfficesService {
   }
 
   public getOffices(): Observable<IOffice[]> {
-    console.log('yes its my office');
     return of(this.mockBonuses);
   }
 
