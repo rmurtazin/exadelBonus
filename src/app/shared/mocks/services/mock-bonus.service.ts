@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 export class MockBonusService extends BonusesService {
   private mockBonuses: IBonus[] = [
     {
-      id: 123,
+      id: '123',
       company: {
         email: 'MockEmail',
         name: 'MockName',
@@ -14,7 +14,7 @@ export class MockBonusService extends BonusesService {
       dateStart: 'mockDateStart',
       dateEnd: 'mockDateEnd',
       tags: ['mock'],
-      isActive: 1,
+      isActive: true,
       description: 'mock mock mock',
       locations: [
         {
@@ -31,7 +31,7 @@ export class MockBonusService extends BonusesService {
       title: 'mockTitle1',
     },
     {
-      id: 234,
+      id: '234',
       company: {
         email: 'MockEmail',
         name: 'MockName',
@@ -39,7 +39,7 @@ export class MockBonusService extends BonusesService {
       dateStart: 'mockDateStart',
       dateEnd: 'mockDateEnd',
       tags: ['mock'],
-      isActive: 1,
+      isActive: true,
       description: 'mock mock mock',
       locations: [
         {

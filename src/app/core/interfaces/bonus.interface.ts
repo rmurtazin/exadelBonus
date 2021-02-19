@@ -7,19 +7,20 @@ interface ILocation {
 }
 
 interface ICompany {
-  name: string;
-  email: string;
+  id: string;
+  name: string | null;
+  email: string | null;
 }
 
 export interface IBonus {
-  id: number;
+  id: string;
   dateStart: Date | string;
   dateEnd: Date | string;
   description: string;
   phone: string;
   type: string;
   rating: number;
-  isActive: number;
+  isActive: boolean;
   locations: ILocation[];
   tags: string[];
   company: ICompany;
