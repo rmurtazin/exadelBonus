@@ -89,6 +89,13 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     });
   }
 
+  public getBonusesByVendorId(vendorId: string): void {
+    const query = `?CompanyId=${vendorId}`;
+    this.bonusesService.getBonuses(query).subscribe((data) => {
+      this.bonuses = data;
+    });
+  }
+
   public onAddAddress(myForm: any): void {
     if (myForm.value.bonusAddress) {
       this.subscription.add(

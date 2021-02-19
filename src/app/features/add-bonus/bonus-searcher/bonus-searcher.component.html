@@ -1,0 +1,17 @@
+<div class="bonus-searcher-container">
+  <mat-form-field [formGroup]="searcher" appearance="fill" class="bonus-searcher-input">
+    <mat-label>{{ 'addBonus.searcher' | translate }}</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="name"
+      [matAutocomplete]="auto"
+      (ngModelChange)="onVendorNameChange($event)"
+    />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayVendors">
+      <mat-option *ngFor="let vendor of filteredVendors | async" [value]="vendor">
+        {{ vendor?.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

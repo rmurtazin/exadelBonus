@@ -8,6 +8,7 @@ import { Component, EventEmitter } from '@angular/core';
 })
 export class AddBonusButtonComponent {
   @Output() openForm = new EventEmitter<boolean>();
+
   public onOpenForm(): void {
     this.openForm.emit(true);
   }
