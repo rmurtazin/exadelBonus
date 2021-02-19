@@ -6,7 +6,13 @@
       [vendors]="vendors"
       (getBonusesByVendorId)="getBonusesByVendorId($event)"
     ></app-bonus-searcher>
-    <app-bonus-list-view [bonuses]="bonuses"></app-bonus-list-view>
+    <div>
+      <app-bonus-list-view
+        [bonuses]="bonuses"
+        [onBonusButtonClick]="onBonusButtonClick"
+        class="bonus-list"
+      ></app-bonus-list-view>
+    </div>
   </div>
   <app-add-bonus-form
     *ngIf="isFormActive"
