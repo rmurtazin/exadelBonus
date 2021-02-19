@@ -103,6 +103,10 @@
       "getBonusesFromMapError": {
         "title": "Error",
         "message": "Some problems with getting bonus from the map"
+      },
+      "getNoBonuses": {
+        "title": "Sorry!",
+        "message": "There are no bonuses for these filters yet"
       }
     }
   }
