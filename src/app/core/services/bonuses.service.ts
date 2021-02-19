@@ -60,13 +60,8 @@ export class BonusesService {
     });
   }
 
-<<<<<<< HEAD
   public rate(id: string, rating: number): Observable<any> {
     // return this.api.post(`${this.url}/${id}/rate`, {rating});
-=======
-  public rate(id: number, rating: number): Observable<any> {
-    // return this.api.post(`${this.bonusUrl}/${id}/rate`, {rating});
->>>>>>> develop
     return of(bonuses[1]).pipe(delay(1000));
   }
 
