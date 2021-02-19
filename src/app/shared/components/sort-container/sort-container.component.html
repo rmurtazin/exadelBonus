@@ -1,9 +1,12 @@
+<mat-radio-group
+  class="radio-group"
+  text-align="right"
+  (change)="sortValueChange($event)"
+  data-test="radio-group"
+>
 <mat-radio-group class="radio-group" (change)="sortValueChange($event)" appResizePick="mobile">
   <mat-radio-button class="radio-button" value="Title" labelPosition="before" color="primary">
     {{ 'home.pick.sorting.byTitle' | translate }}
-  </mat-radio-button>
-  <mat-radio-button class="radio-button" value="Company" labelPosition="before" color="primary">
-    {{ 'home.pick.sorting.byCompany' | translate }}
   </mat-radio-button>
   <mat-radio-button class="radio-button" value="DateStart" labelPosition="before" color="primary">
     {{ 'home.pick.sorting.byDateStart' | translate }}
