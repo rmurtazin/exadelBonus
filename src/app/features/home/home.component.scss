@@ -1,0 +1,69 @@
+@import "src/styles/variables";
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.home {
+  height: calc(100vh - 70px);
+  position: absolute;
+  top: 70px;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 540px;
+  width: 540px;
+  margin: 0 5px;
+}
+
+.right {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bonus-list {
+  height: 100%;
+  overflow: auto;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $theme-color;
+    border-radius: 10px;
+  }
+}
+
+.filter-container {
+  padding: 20px;
+}
+
+.sort-container {
+  display: inline-block;
+  width: 100%;
+  margin-left: 10px;
+  height: 60px;
+}
+
+.sort-header {
+  display: flex;
+  align-content: center;
+  div {
+    margin: auto 0;
+    font-size: 20px;
+  }
+}
+
+h2 {
+  margin: 0 20px 0;
+  text-align: center;
+}

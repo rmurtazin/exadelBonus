@@ -1,4 +1,23 @@
-<app-map-container></app-map-container>
-<app-pick></app-pick>
-<app-bonus-list-container [onBonusButtonClick]="onBonusButtonClick"></app-bonus-list-container>
-<router-outlet></router-outlet>
+<section class="home">
+  <div appResizePick="mobile">
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="{{ 'home.pick.labelFilter' | translate }}">
+        <app-filter-container></app-filter-container>
+      </mat-tab>
+      <mat-tab label="{{ 'home.pick.labelFilter' | translate }}">
+        <app-sort-container></app-sort-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <section class="left">
+    <h1>Find place</h1>
+    <div class="sort-header"><div>Sort: </div><app-sort-container class="sort-container"></app-sort-container></div>
+    <app-bonus-list-container [onBonusButtonClick]="onBonusButtonClick" class="bonus-list"></app-bonus-list-container>
+  </section>
+  <section class="right">
+    <h2>Filter</h2>
+    <app-filter-container class="filter-container"></app-filter-container>
+    <app-map-container class="map"></app-map-container>
+  </section>
+  <router-outlet></router-outlet>
+</section>
