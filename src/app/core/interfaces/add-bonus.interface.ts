@@ -26,7 +26,7 @@ export interface INewBonus {
   description: string;
   type: string;
   phone: string;
-  company: string;
+  companyId: string;
   dateStart: string;
   dateEnd: string;
   locations: ILocation[];
