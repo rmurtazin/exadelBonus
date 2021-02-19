@@ -36,15 +36,12 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
         if (data) {
           this.bonuses = data;
           if (this.bonuses.length === 0) {
-            this.toasterService.showCustomNotification(
-               'bonusList.notification.getNoBonuses',
-               {
-                positionClass: 'toast-top-center',
-                toastClass: 'toast-no-bonuses',
-                titleClass: 'toast-no-bonuses-title',
-                messageClass: 'toast-no-bonuses-message'
-              }
-            );
+            this.toasterService.showCustomNotification('bonusList.notification.getNoBonuses', {
+              positionClass: 'toast-top-center',
+              toastClass: 'toast-no-bonuses',
+              titleClass: 'toast-no-bonuses-title',
+              messageClass: 'toast-no-bonuses-message',
+            });
           }
         }
       },
