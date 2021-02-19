@@ -17,11 +17,12 @@ describe('BonusesService (with mocks)', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
-      providers: [ bonusesService, toasterService ]
+      providers: [ toasterService ]
     });
 
     httpClient = TestBed.inject(HttpClient);
     toasterService = TestBed.inject(ToasterService);
+
     httpTestingController = TestBed.inject(HttpTestingController);
     bonusesService = TestBed.inject(BonusesService);
   });
