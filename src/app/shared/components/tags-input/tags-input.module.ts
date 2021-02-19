@@ -7,10 +7,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SharedModule } from '../../shared.module';
+import { BonusesService } from '@services/bonuses.service';
 
 @NgModule({
   declarations: [TagsInputComponent],
   imports: [SharedModule, MatChipsModule, MatAutocompleteModule],
+  providers: [BonusesService],
   exports: [TagsInputComponent],
 })
 export class TagsInputModule {}
