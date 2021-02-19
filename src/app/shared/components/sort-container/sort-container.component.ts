@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
 import { FilterService } from '@services/filter.service';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-sort-container',
@@ -10,7 +11,7 @@ import { FilterService } from '@services/filter.service';
 export class SortContainerComponent {
   constructor(private filterService: FilterService) {}
 
-  public radioChange($event: MatRadioChange): void {
+  public sortValueChange($event: MatRadioChange | MatSelectChange): void {
     this.sortBy($event.value);
   }
 

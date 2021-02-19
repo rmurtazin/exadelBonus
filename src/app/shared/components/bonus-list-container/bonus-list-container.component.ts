@@ -1,3 +1,4 @@
+import { IBonusFormConfig } from './../../../core/interfaces/add-bonus.interface';
 import { ToasterService } from '@services/toaster.service';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -13,6 +14,7 @@ import { MapEventsService } from '@services/map-events.service';
 export class BonusListContainerComponent implements OnInit, OnDestroy {
   public bonusMap: IBonus;
   public bonuses: IBonus[] = [];
+  public ifBonusFromMap: boolean = false;
   private subscriptionBonuses: Subscription;
   private subscriptionBonusMap: Subscription;
   @Input() onBonusButtonClick: () => void;
@@ -52,6 +54,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
       (bonus: IBonus) => {
         if (bonus) {
           this.bonusMap = bonus;
+          this.findBonusMapInView(bonus);
         }
       },
       () =>
@@ -60,6 +63,18 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
           'error',
         ),
     );
+  }
+
+  public findBonusMapInView(bonus: IBonus): void {
+    let indexBonusMapInView: number;
+    this.bonuses.find((bonusItem, index) => {
+      if (this.bonusMap === bonusItem) {
+        indexBonusMapInView = index;
+      }
+    });
+    this.bonuses.splice(indexBonusMapInView, 1);
+    this.bonuses.unshift(this.bonusMap);
+    this.ifBonusFromMap = true;
   }
 
   public ngOnDestroy(): void {

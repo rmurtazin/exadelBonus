@@ -12,6 +12,7 @@ import { LoginService } from '@services/login.service';
 export class BonusComponent implements OnInit {
   @Input() bonusButtonClick: () => void;
   @Input() bonus: IBonus;
+  @Input() ifBonusFromMap: boolean;
 
   public isForm = false;
   public isModeratorOrAdmin = false;

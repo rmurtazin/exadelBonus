@@ -2,17 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IOffice } from '@interfaces/office.interface';
 import { IBonus } from '@interfaces/bonus.interface';
-import {
-  Map,
-  Marker,
-  layerGroup,
-  latLng,
-  LatLng,
-  Control,
-  DomUtil,
-  Icon,
-  MarkerClusterGroup,
-} from 'leaflet';
+import { Map, Marker, layerGroup, latLng, LatLng, Icon, MarkerClusterGroup } from 'leaflet';
 import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
 import { MapEventsService } from '@services/map-events.service';
@@ -50,9 +40,9 @@ export class MapComponent implements OnDestroy {
 
   public mapReadyEvent(map: Map): void {
     this.map = map;
+    this.displayOfficesMarkers();
     this.mapViewObserver();
     this.getQueryParams();
-    this.displayOfficesMarkers();
     this.getMarkersSubscription();
     this.officeMarkerClickObserver();
     this.applyFilterSubscription();
