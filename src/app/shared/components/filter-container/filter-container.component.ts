@@ -1,5 +1,6 @@
 import { FilterService } from '@services/filter.service';
 import { Component } from '@angular/core';
+import { LocationService } from '@services/location.service';
 
 @Component({
   selector: 'app-filter-container',
@@ -7,9 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./filter-container.component.scss'],
 })
 export class FilterContainerComponent {
-  constructor(private filterService: FilterService) {}
+  constructor(private filterService: FilterService, private locationService: LocationService) {}
 
   public changeCity(city: string): void {
+    this.locationService.moveToCityLocation(city);
     this.filterService.addCityToQuery(city);
   }
 
