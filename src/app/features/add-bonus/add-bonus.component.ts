@@ -82,7 +82,8 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   }
 
   public getBonuses(): void {
-    const query = '?LastCount=6';
+    const bonusesCount = '6';
+    const query = `?LastCount=${bonusesCount}`;
     this.bonusesService.getBonuses(query).subscribe((data) => {
       this.bonuses = data;
     });
