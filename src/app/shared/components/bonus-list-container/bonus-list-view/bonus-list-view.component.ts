@@ -15,7 +15,7 @@ export class BonusListViewComponent {
 
   constructor() {}
 
-  public trackById(index: string, item: IBonus): string {
+  public trackById(index: number, item: IBonus): number {
     return item.id;
   }
 }
