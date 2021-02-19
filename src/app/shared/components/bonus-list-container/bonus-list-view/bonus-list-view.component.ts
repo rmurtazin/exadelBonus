@@ -12,7 +12,7 @@ export class BonusListViewComponent {
   @Input() bonuses: IBonus[];
   @Input() onBonusButtonClick: () => void;
   @Input() ifBonusFromMap: boolean;
-  
+
   constructor() {}
 
   public trackById(index: number, item: IBonus): number {

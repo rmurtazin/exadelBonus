@@ -74,7 +74,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
       if (this.bonusMap === bonusItem) {
         indexBonusMapInView = index;
       }
-    })
+    });
     this.bonuses.splice(indexBonusMapInView, 1);
     this.bonuses.unshift(this.bonusMap);
     this.ifBonusFromMap = true;
