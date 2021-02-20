@@ -1,6 +1,6 @@
 import { IBonusFormConfig } from './../../../core/interfaces/add-bonus.interface';
 import { ToasterService } from '@services/toaster.service';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
@@ -19,6 +19,8 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   private subscriptionBonusMap: Subscription;
   @Input() bonusButtonLabel: string;
 
+  @Output() bonusButtonClickedEvent = new EventEmitter<IBonus>();
+
   constructor(
     public bonusesService: BonusesService,
     public mapEventsService: MapEventsService,
@@ -28,6 +30,10 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.getBonusMap();
     this.getBonuses();
+  }
+
+  public bonusButtonClicked(bonus: IBonus) {
+    this.bonusButtonClickedEvent.emit(bonus);
   }
 
   public getBonuses(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {IBonus} from '@interfaces/bonus.interface';
 
 @Component({
   selector: 'app-home',
@@ -6,14 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public isForm: boolean;
-  public bonusButtonLabel = 'kek';
+  public bonusButtonLabel = 'Apply';
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  public onBonusButtonClick(): void {
-    this.isForm = !this.isForm;
+  public openApplyForm(bonus: IBonus): void {
   }
 }

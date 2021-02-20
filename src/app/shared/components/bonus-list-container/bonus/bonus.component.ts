@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IUser } from '@interfaces/loginInterface';
 import { LoginService } from '@services/login.service';
@@ -14,6 +14,8 @@ export class BonusComponent implements OnInit {
   @Input() bonus: IBonus;
   @Input() ifBonusFromMap: boolean;
 
+  @Output() bonusButtonClickedEvent = new EventEmitter<IBonus>();
+
   public isForm = false;
   public isModeratorOrAdmin = false;
   public user: IUser;
@@ -27,7 +29,8 @@ export class BonusComponent implements OnInit {
     }
   }
 
-  public onBonusButtonClick(): void {
+  public bonusButtonClick(): void {
+    this.bonusButtonClickedEvent.emit(this.bonus);
   }
 
   public closeRateForm(): void {
