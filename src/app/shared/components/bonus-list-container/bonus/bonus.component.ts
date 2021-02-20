@@ -10,7 +10,7 @@ import { LoginService } from '@services/login.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BonusComponent implements OnInit {
-  @Input() bonusButtonClick: () => void;
+  @Input() bonusButtonLabel: string;
   @Input() bonus: IBonus;
   @Input() ifBonusFromMap: boolean;
 
@@ -28,7 +28,6 @@ export class BonusComponent implements OnInit {
   }
 
   public onBonusButtonClick(): void {
-    this.bonusButtonClick();
   }
 
   public closeRateForm(): void {

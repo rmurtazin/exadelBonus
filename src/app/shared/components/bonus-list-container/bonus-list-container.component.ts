@@ -17,7 +17,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   public ifBonusFromMap: boolean = false;
   private subscriptionBonuses: Subscription;
   private subscriptionBonusMap: Subscription;
-  @Input() onBonusButtonClick: () => void;
+  @Input() bonusButtonLabel: string;
 
   constructor(
     public bonusesService: BonusesService,
