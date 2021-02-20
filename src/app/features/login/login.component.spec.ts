@@ -31,7 +31,7 @@ describe('LoginComponent', () => {
 
   beforeEach(() => {});
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
