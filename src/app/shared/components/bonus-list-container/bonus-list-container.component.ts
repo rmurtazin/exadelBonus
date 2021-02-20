@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
 import { MapEventsService } from '@services/map-events.service';
+import {BonusComponent} from './bonus/bonus.component';
 
 @Component({
   selector: 'app-bonus-list-container',
@@ -19,7 +20,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   private subscriptionBonusMap: Subscription;
   @Input() bonusButtonLabel: string;
 
-  @Output() bonusButtonClickedEvent = new EventEmitter<IBonus>();
+  @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
 
   constructor(
     public bonusesService: BonusesService,
@@ -32,7 +33,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
     this.getBonuses();
   }
 
-  public bonusButtonClicked(bonus: IBonus) {
+  public bonusButtonClicked(bonus: BonusComponent) {
     this.bonusButtonClickedEvent.emit(bonus);
   }
 

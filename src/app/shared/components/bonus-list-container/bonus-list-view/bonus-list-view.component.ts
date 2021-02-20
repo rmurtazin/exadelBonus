@@ -1,6 +1,7 @@
 import { IBonusFormConfig } from './../../../../core/interfaces/add-bonus.interface';
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
+import {BonusComponent} from '../bonus/bonus.component';
 
 @Component({
   selector: 'app-bonus-list-view',
@@ -13,7 +14,7 @@ export class BonusListViewComponent {
   @Input() bonusButtonLabel: string;
   @Input() ifBonusFromMap: boolean;
 
-  @Output() bonusButtonClickedEvent = new EventEmitter<IBonus>();
+  @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
 
   constructor() {}
 
@@ -21,7 +22,7 @@ export class BonusListViewComponent {
     return item.id;
   }
 
-  public bonusButtonClicked(bonus: IBonus) {
+  public bonusButtonClicked(bonus: BonusComponent) {
     this.bonusButtonClickedEvent.emit(bonus);
   }
 }

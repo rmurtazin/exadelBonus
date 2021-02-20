@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IBonus} from '@interfaces/bonus.interface';
+import { BonusComponent } from '../../shared/components/bonus-list-container/bonus/bonus.component';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +13,5 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public openApplyForm(bonus: IBonus): void {
-  }
+  public openApplyForm(bonus: BonusComponent): void {}
 }
