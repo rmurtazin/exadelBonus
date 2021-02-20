@@ -22,7 +22,7 @@ export class BonusListViewComponent {
     return item.id;
   }
 
-  public bonusButtonClicked(bonus: BonusComponent) {
+  public bonusButtonClicked(bonus: BonusComponent): void {
     this.bonusButtonClickedEvent.emit(bonus);
   }
 }
