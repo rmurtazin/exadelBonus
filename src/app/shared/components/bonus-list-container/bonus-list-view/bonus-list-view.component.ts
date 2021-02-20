@@ -18,4 +18,4 @@ export class BonusListViewComponent {
   public trackById(index: string, item: IBonus): string {
     return item.id;
   }
-}     
+}

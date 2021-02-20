@@ -58,6 +58,12 @@ export class ToasterService {
     title: string,
     customProperties: Partial<IndividualConfig>,
   ): void {
+    if (
+      customProperties.toastClass === 'toast-no-bonuses' &&
+      document.querySelector('.toast-no-bonuses')
+    ) {
+      document.querySelector('.toast-no-bonuses').remove();
+    }
     this.toastr.show(message, title, customProperties);
   }
 }
