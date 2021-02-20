@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BonusComponent } from '../../shared/components/bonus-list-container/bonus/bonus.component';
 
 @Component({
@@ -6,12 +6,10 @@ import { BonusComponent } from '../../shared/components/bonus-list-container/bon
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   public bonusButtonLabel = 'Apply';
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   public openApplyForm(bonus: BonusComponent): void {}
 }
