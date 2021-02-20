@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
 import { MapEventsService } from '@services/map-events.service';
-import {BonusComponent} from './bonus/bonus.component';
+import { BonusComponent } from './bonus/bonus.component';
 
 @Component({
   selector: 'app-bonus-list-container',
