@@ -7,9 +7,15 @@ import { BonusAddressService } from '@services/bonus-address.service';
 import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component';
 import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.component';
 import { BonusListContainerModule } from 'src/app/shared/components/bonus-list-container/bonus-list-container.module';
+import { BonusSearcherComponent } from './bonus-searcher/bonus-searcher.component';
 
 @NgModule({
-  declarations: [AddBonusComponent, AddBonusFormComponent, AddBonusButtonComponent],
+  declarations: [
+    AddBonusComponent,
+    AddBonusFormComponent,
+    AddBonusButtonComponent,
+    BonusSearcherComponent,
+  ],
   imports: [
     NgxMaskModule.forRoot(),
     BonusListContainerModule,

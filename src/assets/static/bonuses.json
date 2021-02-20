@@ -1,16 +1,17 @@
 [{
-  "id": 1,
+  "id": "1",
   "title": "Conference Rooms in Ice Hotel",
   "dateStart": "2021-02-02T17:07:47.975Z",
   "dateEnd": "2021-03-03T17:07:47.975Z",
   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloribus cum voluptate laborum repellat ut repudiandae architecto, blanditiis quaerat inventore.",
   "company": {
+    "id": "123-123-121",
     "name": "Ice Hotel",
     "email": "zwhitlaw0@craigslist.org"
   },
   "type": "hotel",
   "rating": 3, 
-  "isActive": 1,
+  "isActive": true,
   "phone": "+62-314-279-2102",
   "locations": [{
     "latitude": 53.8930095,
@@ -28,19 +29,20 @@
   "tags": ["pizza", "food"]
 },
 {
-  "id": 2,
+  "id": "2",
   "title": "From 10 tickets 20% discount on tickets from Cinema+",
   "dateStart": "2021-02-02T17:07:47.975Z",
   "dateEnd": "2021-03-03T17:07:47.975Z",
   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloribus cum voluptate laborum repellat ut repudiandae architecto, blanditiis quaerat inventore.",
   "company": {
+    "id": "123-123-122",
     "name": "Cinema+",
     "email": "jfearnall1@europa.eu"
   },
   "phone": "+33-219-999-3648",
   "type": "cinema",
   "rating": 3, 
-  "isActive": 1,
+  "isActive": true,
   "locations": [{
     "latitude": 23.8930095,
     "longitude": -27.5674444,
@@ -51,19 +53,20 @@
   "tags": ["tickets", "cinema"]
 },
 {
-  "id": 3,
+  "id": "3",
   "title": "Discount coupons 10%",
   "dateStart": "2021-02-02T17:07:47.975Z",
   "dateEnd": "2021-03-03T17:07:47.975Z",
   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloribus cum voluptate laborum repellat ut repudiandae architecto, blanditiis quaerat inventore.",
   "company": {
+    "id": "123-123-123",
     "name": "Mayami-Tour",
     "email": "lmiddlemass2@elpais.com"
   },
   "phone": "+86-410-930-6520",
   "type": "gas station",
   "rating": 3, 
-  "isActive": 1,
+  "isActive": true,
   "locations": [{
       "latitude": 48.9420658,
       "longitude": 25.7464148,
@@ -82,19 +85,20 @@
   "tags": ["cars", "oil"]
 },
 {
-  "id": 4,
+  "id": "4",
   "title": "Lorem, ipsum dolor sit",
   "dateStart": "2021-02-02T17:07:47.975Z",
   "dateEnd": "2021-03-03T17:07:47.975Z",
   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloribus cum voluptate laborum repellat ut repudiandae architecto, blanditiis quaerat inventore.",
   "company": {
+    "id": "123-123-124",
     "name": "Primis Teilte",
     "email": "ahuws3@bbc.co.uk"
   },
   "phone": "+86-467-269-3955",
   "type": "restaurant",
   "rating": 3, 
-  "isActive": 1,
+  "isActive": true,
   "locations": [{
     "latitude": 55.1872225,
     "longitude": 30.2051165,
@@ -105,19 +109,20 @@
   "tags": ["scelerisque", "food", "quam", "turpis", "adipiscing", "lorem", "vitae"]
 },
 {
-  "id": 5,
+  "id": "5",
   "title": "Fourth pizza free",
   "dateStart": "2021-01-02T17:07:47.975Z",
   "dateEnd": "2021-03-03T17:07:47.975Z",
   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloribus cum voluptate laborum repellat ut repudiandae architecto, blanditiis quaerat inventore.",
   "company": {
+    "id": "123-123-125",
     "name": "Mauris morbi",
     "email": "ajills4@tripod.com"
   },
   "phone": "+55-538-685-5858",
   "type": "restaurant",
   "rating": 2.5, 
-  "isActive": 1,
+  "isActive": true,
   "locations": [{
     "latitude": -53.8930095,
     "longitude": 27.5674444,
@@ -128,19 +133,20 @@
   "tags": ["pizza", "food"]
 },
 {
-  "id": 6,
+  "id": "6",
   "title": "Discounts",
   "dateStart": "2021-02-02T17:07:47.975Z",
   "dateEnd": "2021-03-03T17:07:47.975Z",
   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloribus cum voluptate laborum repellat ut repudiandae architecto, blanditiis quaerat inventore.",
   "company": {
+    "id": "123-123-126",
     "name": "Imperdiet et commodo",
     "email": "jsafe5@51.la"
   },
   "phone": "+86-141-913-2249",
   "type": "store",
   "rating": 3, 
-  "isActive": 1,
+  "isActive": true,
   "locations": [{
     "latitude": -45.1973827,
     "longitude": -33.2979082,
@@ -163,19 +169,20 @@
   "tags": ["Minsk", "hall", "hotel"]
 },
 {
-  "id": 7,
+  "id": "7",
   "title": "Discounts",
   "dateStart": "2021-02-02T17:07:47.975Z",
   "dateEnd": "2021-03-03T17:07:47.975Z",
   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloribus cum voluptate laborum repellat ut repudiandae architecto, blanditiis quaerat inventore.",
   "company": {
+    "id": "123-123-127",
     "name": "Mcdonalds",
     "email": "cthorns6@delicious.com"
   },
   "phone": "+55-369-669-8279",
   "type": "store",
   "rating": 3, 
-  "isActive": 1,
+  "isActive": true,
   "locations": [{
     "latitude": -45.1973827,
     "longitude": 33.2979082,
@@ -192,19 +199,20 @@
   "tags": ["store", "lib", "non"]
 },
 {
-  "id": 8,
+  "id": "8",
   "title": "Lorem, ipsum dolor sit",
   "dateStart": "2021-02-02T17:07:47.975Z",
   "dateEnd": "2021-03-03T17:07:47.975Z",
   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloribus cum voluptate laborum repellat ut repudiandae architecto, blanditiis quaerat inventore.",
   "company": {
+    "id": "123-123-128",
     "name": "Donec vitae",
     "email": "tmarzella7@ft.com"
   },
   "phone": "+55-846-898-5427",
   "type": "store",
   "rating": 3, 
-  "isActive": 1,
+  "isActive": true,
   "locations": [{
     "latitude": 45.1973827,
     "longitude": -33.2979082,
@@ -227,19 +235,20 @@
   "tags": ["food"]
 },
 {
-  "id": 9,
+  "id": "9",
   "title": "Lorem, ipsum dolor sit",
   "dateStart": "2021-02-02T17:07:47.975Z",
   "dateEnd": "2021-03-03T17:07:47.975Z",
   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloribus cum voluptate laborum repellat ut repudiandae architecto, blanditiis quaerat inventore.",
   "company": {
+    "id": "123-123-129",
     "name": "Adipiscing lorem",
     "email": "sbagworth8@princeton.edu"
   },
   "phone": "+48-374-688-0680",
   "type": "store",
   "rating": 3, 
-  "isActive": 1,
+  "isActive": true,
   "locations": [{
     "latitude": -3.8930095,
     "longitude": 27.5674444,
@@ -256,19 +265,20 @@
   "tags": ["food", "Minsk", "Vitsyebsk"]
 },
 {
-  "id": 10,
+  "id": "10",
   "title": "Discount on products 10%",
   "dateStart": "2021-02-02T17:07:47.975Z",
   "dateEnd": "2021-03-03T17:07:47.975Z",
   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloribus cum voluptate laborum repellat ut repudiandae architecto, blanditiis quaerat inventore.",
   "company": {
+    "id": "123-123-130",
     "name": "Quis tortor id",
     "email": "tbraunston9@hibu.com"
   },
   "phone": "+420-817-722-8369",
   "type": "store",
   "rating": 3, 
-  "isActive": 0,
+  "isActive": false,
   "locations": [{
     "latitude": 45.3273827,
     "longitude": 66.6679082,

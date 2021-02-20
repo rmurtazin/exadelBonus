@@ -28,6 +28,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public isFormActive = false;
   public bonusFormConfig: IBonusFormConfig;
   public bonusId: string;
+  public isForm: boolean;
 
   constructor(
     public bonusAddressService: BonusAddressService,
@@ -51,7 +52,10 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.bonusFormConfig = {
       vendorNameChange: (vendorName: string): void => {
         if (vendorName?.length === 1) {
-          this.getVendors(vendorName);
+          const previousInput = this.vendors[0]?.name[0]?.toLowerCase();
+          if (previousInput !== vendorName?.toLowerCase()) {
+            this.getVendors(vendorName);
+          }
         }
       },
       closeForm: (): void => {
@@ -65,7 +69,11 @@ export class AddBonusComponent implements OnInit, OnDestroy {
         this.createVendor(newVendor);
       },
       createBonus: (newBonus: INewBonus): void => {
-        this.subscription.add(this.bonusesService.addBonus(newBonus).subscribe());
+        this.subscription.add(
+          this.bonusesService.addBonus(newBonus).subscribe(() => {
+            this.getBonuses();
+          }),
+        );
       },
       removeVendors: (): void => {
         this.vendors = [];
@@ -74,7 +82,15 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   }
 
   public getBonuses(): void {
-    const query = '?LastCount=5';
+    const bonusesCount = '6';
+    const query = `?LastCount=${bonusesCount}`;
+    this.bonusesService.getBonuses(query).subscribe((data) => {
+      this.bonuses = data;
+    });
+  }
+
+  public getBonusesByVendorId(vendorId: string): void {
+    const query = `?CompanyId=${vendorId}`;
     this.bonusesService.getBonuses(query).subscribe((data) => {
       this.bonuses = data;
     });
@@ -121,5 +137,9 @@ export class AddBonusComponent implements OnInit, OnDestroy {
 
   public openForm(): void {
     this.isFormActive = true;
+  }
+
+  public onBonusButtonClick(): void {
+    this.isForm = !this.isForm;
   }
 }

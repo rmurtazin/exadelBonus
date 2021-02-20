@@ -13,13 +13,14 @@ import { delay } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
   public bonusSubject = new Subject<IBonus[]>();
+  private bonusUrl = apiLinks.bonus;
+  private citiesUrl = apiLinks.cities;
+  private tagsUrl = apiLinks.tags;
 
   constructor(private api: ApiService, private toasterService: ToasterService) {}
 
-  private url = apiLinks.bonus;
-
   public getBonuses(query?: string): Observable<IBonus[]> {
-    return this.api.get(this.url, query).pipe(
+    return this.api.get(this.bonusUrl, query).pipe(
       map((data) => {
         this.bonusSubject.next(data.value);
         return data.value;
@@ -28,25 +29,25 @@ export class BonusesService {
   }
 
   public getBonus(id: string): Observable<IBonus> {
-    return this.api.get(`${this.url}/${id}`).pipe(map((data) => data.value));
+    return this.api.get(`${this.bonusUrl}/${id}`).pipe(map((data) => data.value));
   }
 
   public addBonus(newBonus: INewBonus): Observable<IBonus> {
     return this.api
-      .post(`${this.url}`, JSON.stringify(newBonus))
+      .post(`${this.bonusUrl}`, JSON.stringify(newBonus))
       .pipe(
-        catchError(async (err) =>
+        catchError(async () =>
           this.toasterService.showNotification('addBonus.notification.saveBonusError', 'error'),
         ),
       );
   }
 
   public removeBonus(id: number): Observable<void> {
-    return this.api.delete(`${this.url}/${id}`);
+    return this.api.delete(`${this.bonusUrl}/${id}`);
   }
 
   public updateBonus(modifiedBonus: IBonus): Observable<IBonus> {
-    return this.api.put(`${this.url}/${modifiedBonus.id}`, {
+    return this.api.put(`${this.bonusUrl}/${modifiedBonus.id}`, {
       dateStart: modifiedBonus.dateStart,
       dateEnd: modifiedBonus.dateEnd,
       description: modifiedBonus.description,
@@ -59,8 +60,16 @@ export class BonusesService {
     });
   }
 
-  public rate(id: number, rating: number): Observable<any> {
+  public rate(id: string, rating: number): Observable<any> {
     // return this.api.post(`${this.url}/${id}/rate`, {rating});
     return of(bonuses[1]).pipe(delay(1000));
+  }
+
+  public getBonusesCities(): Observable<string[]> {
+    return this.api.get(this.citiesUrl).pipe(map((res) => res?.value));
+  }
+
+  public getBonusesTags(): Observable<string[]> {
+    return this.api.get(this.tagsUrl).pipe(map((res) => res?.value));
   }
 }

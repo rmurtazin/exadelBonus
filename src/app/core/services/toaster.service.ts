@@ -53,7 +53,11 @@ export class ToasterService {
     });
   }
 
-  public showCustomAlert(message: string, title: string, customProperties: Partial<IndividualConfig>): void {
+  public showCustomAlert(
+    message: string,
+    title: string,
+    customProperties: Partial<IndividualConfig>,
+  ): void {
     this.toastr.show(message, title, customProperties);
   }
 }

@@ -30,6 +30,7 @@
       "bonusDateRange": "Введите диапазон даты бонуса",
       "saveNewVendorBtn": "Сохранить новый вендор"
     },
+    "searcher": "Введите имя вендора",
     "notification": {
       "saveBonusError": {
         "title": "Ошибка сохранения",
