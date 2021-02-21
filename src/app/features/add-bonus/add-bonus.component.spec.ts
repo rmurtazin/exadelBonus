@@ -70,7 +70,7 @@ describe('AddBonusComponent', () => {
         },
       ],
       tags: ['tags'],
-      company: {id: '875678349729847', name: 'MC', email: 'mc@gmail.com' },
+      company: { id: '875678349729847', name: 'MC', email: 'mc@gmail.com' },
       title: 'sale',
     },
   ];
