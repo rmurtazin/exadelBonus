@@ -129,8 +129,8 @@
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.bonusDateRange' | translate }}</mat-label>
       <mat-date-range-input [formGroup]="myForm" [rangePicker]="picker">
-        <input matStartDate formControlName="start" placeholder="Start date" />
-        <input matEndDate formControlName="end" placeholder="End date" />
+        <input readonly="true" matStartDate formControlName="start" placeholder="Start date" />
+        <input readonly="true" matEndDate formControlName="end" placeholder="End date" />
       </mat-date-range-input>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
