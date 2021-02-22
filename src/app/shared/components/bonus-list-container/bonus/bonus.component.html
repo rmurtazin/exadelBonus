@@ -16,8 +16,8 @@
         </div>
       </div>
       <div class="button-container">
-        <button mat-flat-button color="primary" class="apply-button" (click)="onBonusButtonClick()">
-          <span>Button text</span>
+        <button mat-flat-button color="primary" class="apply-button" (click)="bonusButtonClick()">
+          <span [innerHTML]="bonusButtonLabel"></span>
         </button>
       </div>
     </div>

@@ -1,18 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { BonusComponent } from '../../shared/components/bonus-list-container/bonus/bonus.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  public isForm: boolean;
+export class HomeComponent {
+  public bonusButtonLabel = 'Apply';
 
   constructor() {}
 
-  ngOnInit(): void {}
-
-  public onBonusButtonClick(): void {
-    this.isForm = !this.isForm;
-  }
+  public openApplyForm(bonus: BonusComponent): void {}
 }
