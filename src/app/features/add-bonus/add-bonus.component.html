@@ -9,7 +9,8 @@
     <div>
       <app-bonus-list-view
         [bonuses]="bonuses"
-        [onBonusButtonClick]="onBonusButtonClick"
+        [bonusButtonLabel]="bonusButtonLabel"
+        (bonusButtonClickedEvent)="openEditForm($event)"
         class="bonus-list"
       ></app-bonus-list-view>
     </div>
