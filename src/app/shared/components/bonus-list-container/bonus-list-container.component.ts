@@ -18,6 +18,8 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   public ifBonusFromMap: boolean = false;
   private subscriptionBonuses: Subscription;
   private subscriptionBonusMap: Subscription;
+  private ifNoOldMessage: boolean = true;
+
   @Input() bonusButtonLabel: string;
 
   @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
@@ -42,13 +44,20 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
       (data: IBonus[]) => {
         if (data) {
           this.bonuses = data;
-          if (this.bonuses.length === 0) {
+          if (this.bonuses.length === 0 && this.ifNoOldMessage) {
+            if (this.ifNoOldMessage) {
             this.toasterService.showCustomNotification('bonusList.notification.getNoBonuses', {
               positionClass: 'toast-top-center',
               toastClass: 'toast-no-bonuses',
               titleClass: 'toast-no-bonuses-title',
               messageClass: 'toast-no-bonuses-message',
+              timeOut: 3000
             });
+          }
+            setInterval(()=> {
+              this.ifNoOldMessage = true;
+            }, 3000)
+            this.ifNoOldMessage = false;
           }
         }
       },
