@@ -1,3 +1,5 @@
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -10,7 +12,7 @@ describe('StatisticsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [StatisticsComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [TranslateModule.forRoot(), HttpClientModule, ToastrModule.forRoot()],
     }).compileComponents();
   });
 
