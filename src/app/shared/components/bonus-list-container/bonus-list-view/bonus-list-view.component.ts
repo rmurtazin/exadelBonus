@@ -1,4 +1,3 @@
-import { IBonusFormConfig } from './../../../../core/interfaces/add-bonus.interface';
 import { Component, Input } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 
@@ -11,8 +10,8 @@ export class BonusListViewComponent {
   @Input() bonusMap: IBonus;
   @Input() bonuses: IBonus[];
   @Input() onBonusButtonClick: () => void;
-  @Input() ifBonusFromMap: boolean;
-
+  @Input() ifBonusFromMap: boolean = false;
+  
   constructor() {}
 
   public trackById(index: string, item: IBonus): string {
