@@ -1,3 +1,4 @@
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
@@ -35,6 +36,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSelectModule,
     MatNativeDateModule,
     MatChipsModule,
+    MatDatepickerModule,
   ],
   exports: [
     CloseMenuDirective,
@@ -55,6 +57,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSelectModule,
     MatNativeDateModule,
     MatChipsModule,
+    MatDatepickerModule,
   ],
 })
 export class SharedModule {}
