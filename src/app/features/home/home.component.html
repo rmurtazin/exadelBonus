@@ -16,9 +16,11 @@
       <app-sort-container class="sort-container"></app-sort-container>
     </div>
     <app-bonus-list-container
-      [onBonusButtonClick]="onBonusButtonClick"
       class="bonus-list"
-    ></app-bonus-list-container>
+      [bonusButtonLabel]="bonusButtonLabel"
+      (bonusButtonClickedEvent)="openApplyForm($event)"
+    >
+    </app-bonus-list-container>
   </section>
   <section class="right">
     <h2>Filter</h2>
