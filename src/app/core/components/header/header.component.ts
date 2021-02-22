@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public checkRoute(): boolean {
-    const checkRoutes: (string|RegExp)[] = ['/home', '/history', /statistics$/, /\/bonuses\/[^/]+$/, /bonuses$/];
+    const checkRoutes: (string|RegExp)[] = [/home$/, /history$/, /statistics$/, /\/bonuses\/[^/]+$/, /bonuses$/];
     return checkRoutes.some((item) => {
       return this.currentRoute.match(item) !== null;
     });
