@@ -69,6 +69,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FooterModule,
   ],
   providers: [
+    INTERCEPTOR_PROVIDER,
     ApiService,
     OfficesService,
     BonusesService,
@@ -77,7 +78,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    INTERCEPTOR_PROVIDER,
     VendorsService,
   ],
   bootstrap: [AppComponent],

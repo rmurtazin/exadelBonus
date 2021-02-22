@@ -11,9 +11,11 @@ export class AuthInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.login.getToken();
     request = request.clone({
+      setParams: {
+        ...(token ? {auth: `${this.login.getToken()}`} : {})
+      },
       setHeaders: {
-        ...(token ? {Authorization: `Bearer ${this.login.getToken()}`} : {}),
-        accept: '*/*'
+        ...(token ? {Authorization: `Bearer ${this.login.getToken()}`} : {})
       }
     });
     return next.handle(request);
