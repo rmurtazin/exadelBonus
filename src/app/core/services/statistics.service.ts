@@ -35,7 +35,7 @@ export class StatisticsService {
       queriesArray.push(`Type=${filterParams.type}`);
     }
     if (filterParams.vendor !== '') {
-      queriesArray.push(`Vendor=${filterParams.vendor}`);
+      queriesArray.push(`CompanyId=${filterParams.vendorId}`);
     }
     const resultUrl = `?${queriesArray.join('&')}`;
     return encodeURI(resultUrl);

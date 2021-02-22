@@ -4,19 +4,21 @@ import { ToasterService } from '@services/toaster.service';
 import { StatisticsService } from '@services/statistics.service';
 import { Subscription } from 'rxjs';
 import { StatisticElement } from '@interfaces/statistics.interface';
-import { Component, ViewChild, AfterViewInit, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss'],
 })
-export class StatisticsComponent implements AfterViewInit, OnInit, OnDestroy {
+export class StatisticsComponent implements OnInit, OnDestroy {
   private subscriptionStatistics: Subscription;
   private subscriptionVendor: Subscription;
+  public vendors: IVendor[] = [];
   public statistics: StatisticElement[] = [];
   public displayedColumns: string[] = [
     'companyName',
@@ -35,9 +37,10 @@ export class StatisticsComponent implements AfterViewInit, OnInit, OnDestroy {
   public queryParams = '';
   public filterParams = {
     vendor: '',
+    vendorId: '',
     bonus: '',
     type: '',
-    isActive: '',
+    isActive: true,
     start: '',
     end: '',
   };
@@ -46,18 +49,13 @@ export class StatisticsComponent implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild(MatSort) public sort: MatSort;
 
   constructor(
-    public statisticsService: StatisticsService,
-    public toasterService: ToasterService,
-    public vendorsService: VendorsService,
+    private statisticsService: StatisticsService,
+    private toasterService: ToasterService,
+    private vendorsService: VendorsService,
   ) {}
 
   public ngOnInit(): void {
     this.getStatistics();
-  }
-
-  public ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
   public getStatistics(): void {
@@ -65,48 +63,33 @@ export class StatisticsComponent implements AfterViewInit, OnInit, OnDestroy {
       (data: StatisticElement[]) => {
         if (data) {
           this.statistics = data;
+          this.formatDates();
           this.dataSource = new MatTableDataSource<StatisticElement>(this.statistics);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
         }
       },
       (err) => this.toasterService.showError(err, 'Some problems with getting statistics'),
     );
   }
 
+  public formatDates(): void {
+    this.statistics.forEach((e) => {
+      e.dateStart = format(new Date(e.dateStart), 'yyyy/MM/dd');
+      e.dateEnd = format(new Date(e.dateEnd), 'yyyy/MM/dd');
+      e.createdDate = format(new Date(e.createdDate), 'yyyy/MM/dd');
+    });
+  }
+
   public applyFilter(filterValue: string): void {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  public ngOnDestroy(): void {
-    this.subscriptionStatistics.unsubscribe();
-  }
-
   public applyFilters(): void {
-    const vendorName = (document.getElementById('vendor') as HTMLInputElement).value
-      .replace(/\s+/g, ' ')
-      .trim();
-    let vendorId = '';
-    if (vendorName !== '') {
-      this.subscriptionVendor = this.vendorsService
-        .getVendorByName(vendorName)
-        .subscribe((data: IVendor) => {
-          if (data) {
-            vendorId = data.id;
-          }
-        });
-    }
-
-    this.filterParams = {
-      vendor: vendorId,
-      bonus: (document.getElementById('bonus') as HTMLInputElement).value
-        .replace(/\s+/g, ' ')
-        .trim(),
-      type: (document.getElementById('type') as HTMLInputElement).value.replace(/\s+/g, ' ').trim(),
-      isActive: (document.getElementById('isActive') as HTMLInputElement).value
-        .replace(/\s+/g, ' ')
-        .trim(),
-      start: this.dateStart ?? '',
-      end: this.dateEnd ?? '',
-    };
+    this.filterParams.bonus = this.filterParams.bonus.replace(/\s+/g, ' ').trim();
+    this.filterParams.type = this.filterParams.type.replace(/\s+/g, ' ').trim();
+    this.filterParams.start = this.dateStart ?? '';
+    this.filterParams.end = this.dateEnd ?? '';
 
     this.queryParams = this.statisticsService.buildLink(this.filterParams);
 
@@ -121,19 +104,42 @@ export class StatisticsComponent implements AfterViewInit, OnInit, OnDestroy {
   public clearFilters(): void {
     this.filterParams = {
       vendor: '',
+      vendorId: '',
       bonus: '',
       type: '',
-      isActive: '',
+      isActive: true,
       start: this.dateStart ?? '',
       end: this.dateEnd ?? '',
     };
     this.queryParams = '';
 
-    (document.getElementById('vendor') as HTMLInputElement).value = '';
-    (document.getElementById('bonus') as HTMLInputElement).value = '';
-    (document.getElementById('type') as HTMLInputElement).value = '';
-    (document.getElementById('isActive') as HTMLInputElement).value = '';
-
     this.getStatistics();
+  }
+
+  public vendorNameChange(): void {
+    if (this.filterParams.vendor !== '') {
+      this.filterParams.vendor = this.filterParams.vendor.replace(/\s+/g, ' ').trim();
+      this.getVendors(this.filterParams.vendor);
+    }
+  }
+
+  public getVendors(query): void {
+    this.subscriptionVendor = this.vendorsService.getVendors(query).subscribe(
+      (data: IVendor[]) => {
+        if (data) {
+          this.vendors = data;
+        }
+      },
+      (err) => this.toasterService.showError(err, 'Some problems with getting vendors'),
+    );
+  }
+
+  public ngOnDestroy(): void {
+    this.subscriptionStatistics.unsubscribe();
+    this.subscriptionVendor.unsubscribe();
+  }
+
+  public setVendorId(id: string): void {
+    this.filterParams.vendorId = id;
   }
 }

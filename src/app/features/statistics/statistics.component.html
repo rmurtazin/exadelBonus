@@ -9,20 +9,36 @@
     <p class="filters-title">{{ 'statistics.filters' | translate }}:</p>
     <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.vendor' | translate }}</mat-label>
-      <input matInput type="text" placeholder="Vendor name" id="vendor" />
+      <input
+        matInput
+        type="text"
+        placeholder="Vendor name"
+        [matAutocomplete]="auto"
+        [(ngModel)]="filterParams.vendor"
+        (keyup.enter)="vendorNameChange()"
+        (blur)="vendorNameChange()"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let vendor of vendors"
+          [value]="vendor.name"
+          (click)="setVendorId(vendor.id)"
+        >
+          {{ vendor?.name }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.bonus' | translate }}</mat-label>
-      <input matInput type="text" placeholder="Bonus title" id="bonus" />
+      <input matInput type="text" placeholder="Bonus title" [(ngModel)]="filterParams.bonus" />
     </mat-form-field>
     <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.type' | translate }}</mat-label>
-      <input matInput type="text" placeholder="Bonus type" id="type" />
+      <input matInput type="text" placeholder="Bonus type" [(ngModel)]="filterParams.type" />
     </mat-form-field>
-    <mat-form-field class="statistics-flters-element">
-      <mat-label>{{ 'statistics.isActive' | translate }}</mat-label>
-      <input matInput type="text" placeholder="true or false" id="isActive" />
-    </mat-form-field>
+    <mat-checkbox [(ngModel)]="filterParams.isActive" value="" color="primary">{{
+      'statistics.isActive' | translate
+    }}</mat-checkbox>
     <div class="date-inputs">
       <app-datepicker (changeDate)="changeDate($event)" class="filter-inputs"></app-datepicker>
     </div>
@@ -42,12 +58,12 @@
       class="statistics-flters-element"
       (click)="applyFilters()"
     >
-    {{ 'statistics.apply' | translate }}
+      {{ 'statistics.apply' | translate }}
     </button>
   </div>
 
   <div class="table">
-    <mat-table [dataSource]="dataSource" matSort >
+    <mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="companyName">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
           {{ 'statistics.vendor' | translate }}

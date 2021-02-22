@@ -1,3 +1,4 @@
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DatepickerModule } from './../../shared/components/datepicker/datepicker.module';
 import { SharedModule } from './../../shared/shared.module';
 import { RouterModule } from '@angular/router';
@@ -18,6 +19,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatSortModule,
     DatepickerModule,
+    MatCheckboxModule,
   ],
   exports: [StatisticsComponent],
 })
