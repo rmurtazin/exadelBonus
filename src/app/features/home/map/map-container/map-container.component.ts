@@ -40,12 +40,14 @@ export class MapComponent implements OnDestroy {
 
   public mapReadyEvent(map: Map): void {
     this.map = map;
+    this.locationService.initialise();
     this.displayOfficesMarkers();
     this.mapViewObserver();
     this.getQueryParams();
     this.getMarkersSubscription();
     this.officeMarkerClickObserver();
     this.applyFilterSubscription();
+    this.applyFilterSubscription()
   }
 
   public onMapZoom(): void {
@@ -97,7 +99,7 @@ export class MapComponent implements OnDestroy {
     this.subscription.add(
       this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
         this.displayBonusesMarkers(bonuses);
-      }),
+      })
     );
   }
 
@@ -114,6 +116,11 @@ export class MapComponent implements OnDestroy {
 
   private navigateToMarker(markers: Marker[]): void {
     if (!this.queryLatitude && !this.queryLongitude) {
+      if(markers.length >= 1){
+        const location = markers[0].getLatLng();
+        this.setMapView(location, false);
+        markers[0].openPopup();
+      }
       return;
     }
     const isRequestedLocation = (currentMarker: Marker) => {
@@ -122,7 +129,6 @@ export class MapComponent implements OnDestroy {
     };
     const [targetMarker] = markers.filter(isRequestedLocation);
     if (!targetMarker) {
-      this.toaster.showError('Bonus not available', 'Error');
       return;
     }
     this.setMapView(targetMarker.getLatLng(), false);

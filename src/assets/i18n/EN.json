@@ -110,5 +110,9 @@
         "message": "There are no bonuses for these filters yet"
       }
     }
+  },
+  "loginErrors": {
+    "invalidData": "Invalide login or password",
+    "serverError": "Something went wrong"
   }
 }

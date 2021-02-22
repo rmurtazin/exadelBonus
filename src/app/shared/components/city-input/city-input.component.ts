@@ -47,14 +47,15 @@ export class CityInputComponent implements OnInit, OnDestroy {
   }
 
   private searchFilter(value: string): string[] {
-    const filterValue = value.toLocaleLowerCase();
+    const filterValue = value.trim().toLocaleLowerCase();
     return this.cities.filter(
       (city: string) => city.toLocaleLowerCase().indexOf(filterValue) === 0,
     );
   }
 
   public changeCity(): void {
-    this.changeCityEvent.emit(this.cityInputControl.value);
+    const value = this.cityInputControl.value.trim();
+    this.changeCityEvent.emit(value);
   }
 
   public reset(): void {

@@ -23,5 +23,8 @@
         {{ 'loginPage.signIn' | translate }}
       </button>
     </div>
+    <mat-error *ngIf="invalidDataError">{{ 'loginErrors.invalidData' | translate}}</mat-error>
+    <mat-error *ngIf="serverError">{{ 'loginErrors.serverError' | translate}}</mat-error>
+    <mat-spinner class="loading-spinner" *ngIf="loginingProgres" diameter="50"></mat-spinner>
   </form>
 </div>

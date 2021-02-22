@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   public myForm: FormGroup;
   public subscription: Subscription = new Subscription();
   public hide = true;
+  public invalidDataError = false;
+  public serverError = false;
+  public loginingProgres = false;
 
   constructor(public loginService: LoginService, private router: Router) {}
 
@@ -38,10 +41,20 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
+    this.loginingProgres = true;
     this.subscription.add(
       this.loginService.onLogin(this.myForm.value).subscribe(() => {
-        // this.router.navigate(['home']);
         this.router.navigateByUrl('/home');
+        this.loginingProgres = false;
+      },
+      (error) => {
+        if (error.status === 400){
+          this.invalidDataError = true;
+        }
+        if (error.status === 500){
+          this.serverError = true;
+        }
+        this.loginingProgres = false;
       }),
     );
   }

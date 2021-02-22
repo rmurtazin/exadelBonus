@@ -6,6 +6,7 @@ import { LatLng, latLng } from 'leaflet';
 import { Observable, Subscription } from 'rxjs';
 import { MapEventsService } from '@services/map-events.service';
 import { BonusAddressService } from './bonus-address.service';
+import { FilterService } from './filter.service';
 
 @Injectable()
 export class LocationService {
@@ -16,13 +17,13 @@ export class LocationService {
     private toastr: ToasterService,
     private dialog: MatDialog,
     private mapEventService: MapEventsService,
-    private address: BonusAddressService,
-  ) {
+  ) {}
+
+  public initialise(): void {
     if (!localStorage.getItem('currentLatitude')) {
       this.selectPlaceDialog();
     }
   }
-
   public selectPlaceDialog(): void {
     this.dialogRef = this.dialog.open(ChoosePlaceDialogComponent, { disableClose: true });
     this.subscription.add(
@@ -47,15 +48,6 @@ export class LocationService {
   private saveToStorage(location: LatLng): void {
     localStorage.setItem('currentLatitude', location.lat.toString());
     localStorage.setItem('currentLongitude', location.lng.toString());
-  }
-
-  public moveToCityLocation(city: string): void {
-    this.address.getSearchedAddress(city).subscribe((addresses) => {
-      const [firstAddress] = addresses;
-      const position = latLng(firstAddress.geometry.lat, firstAddress.geometry.lng);
-      const showUserMarker = false;
-      this.mapEventService.setMapView(position, showUserMarker);
-    });
   }
 
   private getUserLocation(): Observable<LatLng> {

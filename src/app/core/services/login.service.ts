@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { ILogin, IUser } from '../interfaces/loginInterface';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, Subject, throwError } from 'rxjs';
+import { map, take, tap, catchError } from 'rxjs/operators';
+import { ILogin, IUser } from '@interfaces/loginInterface';
+import { IJwtPayload } from '@interfaces/jwt.interface';
 import { Router } from '@angular/router';
+import { apiLinks } from './constants';
+import decode from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  private currentUser: IUser = JSON.parse(localStorage.getItem('user'));
+  public error$ = new Subject<boolean>();
+  private currentUser: IUser;
+  private loginUrl = apiLinks.account.login;
+  private logoutUrl = apiLinks.account.logout;
+  private getInfoUrl = apiLinks.account.getInfo;
 
-  constructor(private http: HttpClient, private route: Router) {}
+
+  constructor(
+    private http: HttpClient,
+    private route: Router,
+  ) {}
 
   public getUser(): IUser | null {
     return this.currentUser;
@@ -20,24 +31,48 @@ export class LoginService {
   }
 
   public onLogin(userInput: ILogin): Observable<any> {
-    // here will be function like this.http.post('authApiUrl', userInput)...
-    return this.http.get('../../../assets/static/currentUser.json').pipe(
-      tap((user) => {
-        this.currentUser = user;
-        localStorage.setItem('token', this.currentUser.token);
-        return user;
+    const body = {
+      email: userInput.userLogin,
+      password: userInput.userPassword
+    };
+    return this.http.post(this.loginUrl, body).pipe(
+      tap((response: any) => {
+        localStorage.setItem('token', response.value.value);
+        this.setUser();
+        return response;
       }),
+      catchError(err => throwError(err))
     );
   }
 
-  public logout(): void {
-    localStorage.clear();
-    this.route.navigate(['login']);
+  public logout(): Observable<any> {
+    return this.http.post(this.logoutUrl, {}).pipe(
+      tap((response) => {
+        localStorage.removeItem('token');
+        this.currentUser = null;
+        return response;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
   }
 
   public getRole(): string {
-    // TODO: rewrite after integration with back
-    // return this.getUser().role;
-    return 'admin';
+    const tokenData: IJwtPayload = decode(localStorage.getItem('token'));
+    const [role] = tokenData?.role;
+    return role.toLowerCase();
+  }
+
+  public setUser(): void {
+    this.http.get(this.getInfoUrl)
+    .pipe(
+      take(1),
+      map((response: any) => {
+        return response?.value?.value;
+      })
+    ).subscribe((user: IUser) => {
+      this.currentUser = user;
+    });
   }
 }
