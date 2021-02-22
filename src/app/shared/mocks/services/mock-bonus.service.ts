@@ -8,6 +8,7 @@ export class MockBonusService extends BonusesService {
     {
       id: '123',
       company: {
+        id: 'MockId',
         email: 'MockEmail',
         name: 'MockName',
       },
@@ -33,6 +34,7 @@ export class MockBonusService extends BonusesService {
     {
       id: '234',
       company: {
+        id: 'MockId',
         email: 'MockEmail',
         name: 'MockName',
       },

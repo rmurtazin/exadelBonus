@@ -16,6 +16,11 @@ describe('AddBonusFormComponent', () => {
     email: 'mc@gmail.com',
   };
   const newVendorName = 'HotelB';
+  const vendorNameNotExist = {
+    id: '17364634765845924816786387641',
+    name: '',
+    email: 'mc@gmail.com',
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -94,5 +99,13 @@ describe('AddBonusFormComponent', () => {
     expect(component.vendorEmailVisible).toBeTruthy();
     expect(component.visibleBtnForSaveNewVendor).toBeTruthy();
     expect(component.readonly).toBeFalsy();
+  });
+
+  it('displayVendors, if vendor name exist', () => {
+    expect(component.displayVendors(vendorNameFromDB)).toBe(vendorNameFromDB.name);
+  });
+
+  it('displayVendors, if vendor name does not exist', () => {
+    expect(component.displayVendors(vendorNameNotExist)).toBe('');
   });
 });
