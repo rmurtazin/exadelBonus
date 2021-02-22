@@ -13,7 +13,12 @@ describe('StatisticsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [StatisticsComponent],
-      imports: [TranslateModule.forRoot(), HttpClientModule, ToastrModule.forRoot(), MatAutocompleteModule],
+      imports: [
+        TranslateModule.forRoot(),
+        HttpClientModule,
+        ToastrModule.forRoot(),
+        MatAutocompleteModule,
+      ],
     }).compileComponents();
   });
 
