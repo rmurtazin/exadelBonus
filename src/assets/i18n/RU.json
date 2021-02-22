@@ -44,7 +44,7 @@
     "signIn": "Войти"
   },
   "statistics": {
-    "filter": "Фильтр",
+    "filter": "Быстрый поиск",
     "vendor": "Компания",
     "bonus": "Бонус",
     "dateStart": "Начало действия",
@@ -55,7 +55,10 @@
     "city": "Город",
     "country": "Страна",
     "type": "Тип бонуса",
-    "isActive": "Статус"
+    "isActive": "Статус",
+    "filters": "Фильтры",
+    "clear": "Очистить",
+    "apply": "Применить"
   },
   "home": {
     "pick": {
