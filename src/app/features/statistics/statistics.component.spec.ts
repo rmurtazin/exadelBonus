@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatisticsComponent } from './statistics.component';
+import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete';
 
 describe('StatisticsComponent', () => {
   let component: StatisticsComponent;
@@ -12,7 +13,7 @@ describe('StatisticsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [StatisticsComponent],
-      imports: [TranslateModule.forRoot(), HttpClientModule, ToastrModule.forRoot()],
+      imports: [TranslateModule.forRoot(), HttpClientModule, ToastrModule.forRoot(), MatAutocompleteModule],
     }).compileComponents();
   });
 
