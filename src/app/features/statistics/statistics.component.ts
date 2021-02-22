@@ -74,10 +74,10 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   }
 
   public formatDates(): void {
-    this.statistics.forEach((e) => {
-      e.dateStart = format(new Date(e.dateStart), 'yyyy/MM/dd');
-      e.dateEnd = format(new Date(e.dateEnd), 'yyyy/MM/dd');
-      e.createdDate = format(new Date(e.createdDate), 'yyyy/MM/dd');
+    this.statistics.forEach((bonus) => {
+      bonus.dateStart = format(new Date(bonus.dateStart), 'yyyy/MM/dd');
+      bonus.dateEnd = format(new Date(bonus.dateEnd), 'yyyy/MM/dd');
+      bonus.createdDate = format(new Date(bonus.createdDate), 'yyyy/MM/dd');
     });
   }
 
