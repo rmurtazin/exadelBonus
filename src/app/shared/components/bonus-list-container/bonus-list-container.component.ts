@@ -1,5 +1,13 @@
 import { ToasterService } from '@services/toaster.service';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
@@ -22,7 +30,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   constructor(
     public bonusesService: BonusesService,
     public mapEventsService: MapEventsService,
-    public toasterService: ToasterService
+    public toasterService: ToasterService,
   ) {}
 
   public ngOnInit(): void {
@@ -70,7 +78,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
 
   public findBonusMapInView(bonus: IBonus): void {
     let indexBonusMapInView: number;
-    let cloneBonuses: IBonus[] = [...this.bonuses];
+    const cloneBonuses: IBonus[] = [...this.bonuses];
     cloneBonuses.find((bonusItem, index) => {
       if (bonus === bonusItem) {
         indexBonusMapInView = index;
