@@ -1,5 +1,5 @@
 import { ToasterService } from '@services/toaster.service';
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
@@ -13,7 +13,6 @@ import { BonusComponent } from './bonus/bonus.component';
 })
 export class BonusListContainerComponent implements OnInit, OnDestroy {
   public bonuses: IBonus[] = [];
-  public ifBonusFromMap: boolean = false;
   private subscriptionBonuses: Subscription;
   private subscriptionBonusMap: Subscription;
   @Input() bonusButtonLabel: string;
@@ -23,7 +22,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   constructor(
     public bonusesService: BonusesService,
     public mapEventsService: MapEventsService,
-    public toasterService: ToasterService,
+    public toasterService: ToasterService
   ) {}
 
   public ngOnInit(): void {
@@ -59,7 +58,6 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
       (bonus: IBonus) => {
         if (bonus) {
           this.findBonusMapInView(bonus);
-          this.ifBonusFromMap = true;
         }
       },
       () =>
