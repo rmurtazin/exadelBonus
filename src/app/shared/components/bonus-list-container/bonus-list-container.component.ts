@@ -1,4 +1,3 @@
-import { IBonusFormConfig } from './../../../core/interfaces/add-bonus.interface';
 import { ToasterService } from '@services/toaster.service';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';

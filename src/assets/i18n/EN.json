@@ -44,7 +44,7 @@
     "signIn": "Sign in"
   },
   "statistics": {
-    "filter": "Filter",
+    "filter": "Quick search",
     "vendor": "Vendor",
     "bonus": "Bonus",
     "dateStart": "Start",
@@ -55,7 +55,10 @@
     "city": "City",
     "country": "Country",
     "type": "Bonus type",
-    "isActive": "Is active"
+    "isActive": "Is active",
+    "filters": "Filters",
+    "clear": "Clear filters",
+    "apply": "Apply filters"
   },
   "home": {
     "pick": {
