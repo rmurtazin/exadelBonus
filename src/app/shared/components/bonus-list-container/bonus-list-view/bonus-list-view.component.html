@@ -1,3 +1,3 @@
 <div *ngFor="let bonus of bonuses; trackBy: trackById" class="bonus-container">
-  <app-bonus [bonus]="bonus" [bonusButtonClick]="onBonusButtonClick"></app-bonus>
+  <app-bonus [bonus]="bonus" [bonusButtonLabel]="bonusButtonLabel" (bonusButtonClickedEvent)="bonusButtonClicked($event)"></app-bonus>
 </div>
