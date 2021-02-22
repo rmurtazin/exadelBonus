@@ -47,7 +47,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     BrowserAnimationsModule,
     LeafletModule,
     ToastrModule.forRoot({
-      preventDuplicates: true
+      preventDuplicates: true,
     }),
     MatButtonModule,
     MatIconModule,

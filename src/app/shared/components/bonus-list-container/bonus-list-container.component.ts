@@ -47,7 +47,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
               positionClass: 'toast-top-center',
               toastClass: 'toast-no-bonuses',
               titleClass: 'toast-no-bonuses-title',
-              messageClass: 'toast-no-bonuses-message'
+              messageClass: 'toast-no-bonuses-message',
             });
           }
         }
