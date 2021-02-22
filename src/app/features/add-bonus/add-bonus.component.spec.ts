@@ -11,6 +11,8 @@ import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.com
 import { AddBonusFormComponent } from './add-bonus-form/add-bonus-form.component';
 import { AddBonusComponent } from './add-bonus.component';
 import { AddBonusModule } from './add-bonus.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BonusSearcherComponent } from './bonus-searcher/bonus-searcher.component';
 
 describe('AddBonusComponent', () => {
   let component: AddBonusComponent;
@@ -50,14 +52,14 @@ describe('AddBonusComponent', () => {
   };
   const bonuses = [
     {
-      id: 468378465974375,
+      id: '468378465974375',
       dateStart: '10.10.2020',
       dateEnd: '10.10.2021',
       description: 'description',
       phone: '+38(098)-333-33-33',
       type: 'hotel',
       rating: 0,
-      isActive: 1,
+      isActive: true,
       locations: [
         {
           latitude: 27,
@@ -68,7 +70,7 @@ describe('AddBonusComponent', () => {
         },
       ],
       tags: ['tags'],
-      company: { name: 'MC', email: 'mc@gmail.com' },
+      company: {id: '875678349729847', name: 'MC', email: 'mc@gmail.com' },
       title: 'sale',
     },
   ];
@@ -79,13 +81,19 @@ describe('AddBonusComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AddBonusComponent, AddBonusFormComponent, AddBonusButtonComponent],
+      declarations: [
+        AddBonusComponent,
+        AddBonusFormComponent,
+        AddBonusButtonComponent,
+        BonusSearcherComponent,
+      ],
       imports: [
         HttpClientModule,
         AddBonusModule,
         ToastrModule.forRoot(),
         TranslateModule.forRoot(),
         RouterModule.forRoot([]),
+        BrowserAnimationsModule,
       ],
     }).compileComponents();
   });

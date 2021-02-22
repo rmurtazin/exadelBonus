@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IUser } from '@interfaces/loginInterface';
 import { LoginService } from '@services/login.service';
@@ -10,8 +17,10 @@ import { LoginService } from '@services/login.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BonusComponent implements OnInit {
-  @Input() bonusButtonClick: () => void;
+  @Input() bonusButtonLabel: string;
   @Input() bonus: IBonus;
+
+  @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
 
   public isForm = false;
   public isModeratorOrAdmin = false;
@@ -26,8 +35,8 @@ export class BonusComponent implements OnInit {
     }
   }
 
-  public onBonusButtonClick(): void {
-    this.bonusButtonClick();
+  public bonusButtonClick(): void {
+    this.bonusButtonClickedEvent.emit(this);
   }
 
   public closeRateForm(): void {

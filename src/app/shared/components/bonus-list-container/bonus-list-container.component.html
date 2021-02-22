@@ -1,6 +1,7 @@
 <app-bonus-list-view
   [bonuses]="bonuses"
-  [onBonusButtonClick]="onBonusButtonClick"
+  [bonusButtonLabel]="bonusButtonLabel"
+  (bonusButtonClickedEvent)="bonusButtonClicked($event)"
   class="bonuses"
   [ifBonusFromMap]="ifBonusFromMap"
 ></app-bonus-list-view>
