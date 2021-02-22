@@ -35,7 +35,7 @@ describe('BonusSearcherComponent', () => {
       createBonus: () => EMPTY,
       removeVendors: () => EMPTY,
     };
-    const spy = spyOn(component.bonusFormConfig, 'vendorNameChange').and.callFake(() => vendor);
+    spyOn(component.bonusFormConfig, 'vendorNameChange').and.callFake(() => vendor);
     component.getBonusesByVendorId.subscribe((spy) => expect(spy).toEqual(vendor.id));
     component.onVendorNameChange(vendor);
   });

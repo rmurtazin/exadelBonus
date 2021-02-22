@@ -12,13 +12,10 @@ class TestLanguageSwitcherComponent {}
 describe('LanguageSwitcherDirective', () => {
   let component: TestLanguageSwitcherComponent;
   let fixture: ComponentFixture<TestLanguageSwitcherComponent>;
-  let elementRef: ElementRef;
-  let renderer: Renderer2;
-  let translate: TranslateService;
   let directive: LanguageSwitcherDirective;
 
   beforeEach(async () => {
-    directive = new LanguageSwitcherDirective(elementRef, renderer, translate);
+    directive = new LanguageSwitcherDirective(null, null, null);
     await TestBed.configureTestingModule({
       declarations: [LanguageSwitcherDirective, TestLanguageSwitcherComponent],
       imports: [TranslateModule.forRoot()],
