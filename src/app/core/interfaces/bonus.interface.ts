@@ -7,13 +7,13 @@ interface ILocation {
 }
 
 interface ICompany {
-  id?: string;
+  id: string;
   name: string | null;
   email: string | null;
 }
 
 export interface IBonus {
-  id?: string;
+  id: string;
   dateStart: Date | string;
   dateEnd: Date | string;
   description: string;

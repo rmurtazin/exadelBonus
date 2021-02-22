@@ -5,7 +5,7 @@ import { asyncData } from '../mock-async-observable';
 import { expectedBonuses } from '../constants/mock-bonuses';
 
 export const MockBonusesService: Partial<BonusesService> = {
-  getBonuses(data?: string): Observable<IBonus[]>{
+  getBonuses(data?: string): Observable<IBonus[]> {
     return asyncData(expectedBonuses);
-  }
+  },
 };

@@ -30,6 +30,7 @@
       "bonusDateRange": "Enter a bonus date range",
       "saveNewVendorBtn": "Save new vendor"
     },
+    "searcher": "Enter vendor name",
     "notification": {
       "saveBonusError": {
         "title": "Save error",
@@ -103,6 +104,10 @@
       "getBonusesFromMapError": {
         "title": "Error",
         "message": "Some problems with getting bonus from the map"
+      },
+      "getNoBonuses": {
+        "title": "Sorry!",
+        "message": "There are no bonuses for these filters yet"
       }
     }
   }

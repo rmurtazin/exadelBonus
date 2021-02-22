@@ -6,11 +6,12 @@ import { TagsInputModule } from '../tags-input/tags-input.module';
 import { DatepickerModule } from '../datepicker/datepicker.module';
 import { SharedModule } from '../../shared.module';
 import { FilterService } from '@services/filter.service';
+import { LocationService } from '@services/location.service';
 
 @NgModule({
   declarations: [FilterContainerComponent],
   imports: [SharedModule, CityInputModule, TagsInputModule, DatepickerModule],
-  providers: [FilterService],
+  providers: [FilterService, LocationService],
   exports: [FilterContainerComponent],
 })
 export class FilterContainerModule {}

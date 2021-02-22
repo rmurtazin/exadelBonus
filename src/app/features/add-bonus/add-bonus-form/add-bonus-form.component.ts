@@ -117,7 +117,7 @@ export class AddBonusFormComponent implements OnInit {
   }
 
   public displayVendors(vendor: IVendor): string {
-    return vendor?.name ? vendor.name : '';
+    return vendor.name || '';
   }
 
   private _filter(vendor: string): IVendor[] {
@@ -137,7 +137,7 @@ export class AddBonusFormComponent implements OnInit {
     this.myForm = new FormGroup({
       vendorInfo: (this.vendorInfo = new FormGroup({
         name: (this.vendorName = new FormControl('', [Validators.required])),
-        email: (this.vendorEmail = new FormControl('', [Validators.required])),
+        email: (this.vendorEmail = new FormControl('', [Validators.required, Validators.email])),
       })),
       bonusAddress: new FormControl('', [Validators.required]),
       bonusType: new FormControl('', [Validators.required]),
@@ -189,7 +189,7 @@ export class AddBonusFormComponent implements OnInit {
   public onSubmit(): void {
     const formValue = this.myForm.value;
     const submitBonus: INewBonus = {
-      company: this.vendorName.value.id || this.newVendor.id,
+      companyId: this.vendorName.value.id || this.newVendor.id,
       phone: formValue.phone,
       dateStart: new Date(formValue.start).toISOString(),
       dateEnd: new Date(formValue.end).toISOString(),

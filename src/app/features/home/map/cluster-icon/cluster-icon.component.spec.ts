@@ -15,10 +15,21 @@ describe('ClusterIconComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ClusterIconComponent);
     component = fixture.componentInstance;
+    component.childCount = 2;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display number of input markers', () => {
+    expect(fixture.nativeElement.querySelector('div').textContent).toEqual('2');
+  });
+
+  it('should display number of input markers', () => {
+    component.childCount = null;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('div').textContent).toEqual('');
   });
 });

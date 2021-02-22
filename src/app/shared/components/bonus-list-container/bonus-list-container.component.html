@@ -1,6 +1,6 @@
-<app-bonus [bonus]="bonusMap" [bonusButtonClick]="onBonusButtonClick" *ngIf="bonusMap"></app-bonus>
 <app-bonus-list-view
   [bonuses]="bonuses"
-  [onBonusButtonClick]="onBonusButtonClick"
+  [bonusButtonLabel]="bonusButtonLabel"
+  (bonusButtonClickedEvent)="bonusButtonClicked($event)"
   class="bonuses"
 ></app-bonus-list-view>
