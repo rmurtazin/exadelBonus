@@ -13,8 +13,10 @@ export class AuthInterceptor {
     request = request.clone({
       setHeaders: {
         ...(token ? {Authorization: `Bearer ${this.login.getToken()}`} : {}),
+        accept: '*/*'
       }
     });
     return next.handle(request);
   }
 }
+

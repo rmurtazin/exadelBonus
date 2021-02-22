@@ -45,6 +45,7 @@ export class ChoosePlaceDialogComponent implements OnInit {
       return;
     }
     const office = this.offices[this.selectedOffice];
+    const location = latLng(office.latitude, office.longitude);
     this.mapEventsService.zoomToOffice(office);
     this.dialogRef.close(location);
   }

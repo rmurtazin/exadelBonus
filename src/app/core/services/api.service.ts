@@ -9,7 +9,6 @@ export class ApiService {
   public headers: any = new HttpHeaders().set('Content-Type', 'application/json');
 
   public get(url: string, query?: string): Observable<any> {
-    console.log(query);
     return this.http.get(`${url}${query || ''}`).pipe(catchError(this.errorHandler));
   }
 

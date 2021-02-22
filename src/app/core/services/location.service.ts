@@ -31,7 +31,7 @@ export class LocationService {
     );
   }
 
-  private setPosition(location: LatLng): void {
+  private setPosition(location?: LatLng): void {
     if (location) {
       this.saveToStorage(location);
       const showUserLocation = false;
