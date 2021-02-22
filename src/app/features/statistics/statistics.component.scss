@@ -8,4 +8,20 @@ th.mat-sort-header-sorted {
 
 .table-container {
   padding: 0 20px;
+  width: 100%;
+  min-width: 700px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.filters-title {
+  margin: 0;
+}
+
+.statistics-flters-element {
+  margin-left: 10px;
+}
+
+.date-inputs {
+  width: 300px;
 }

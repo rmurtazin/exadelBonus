@@ -13,8 +13,8 @@ import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
 import { VendorsService } from '@services/vendors.service';
 import { Subscription } from 'rxjs';
-import { BonusComponent } from '../../shared/components/bonus-list-container/bonus/bonus.component';
 import { Router } from '@angular/router';
+import { BonusComponent } from 'src/app/shared/components/bonus-list-container/bonus/bonus.component';
 
 @Component({
   selector: 'app-add-bonus',
