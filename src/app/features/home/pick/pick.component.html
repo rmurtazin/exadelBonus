@@ -1,17 +1,8 @@
-<div appResizePick="mobile">
-  <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="{{ 'home.pick.labelFilter' | translate }}">
-      <app-filter-container></app-filter-container>
-    </mat-tab>
-    <mat-tab label="{{ 'home.pick.labelSorting' | translate }}">
-      <app-sort-container></app-sort-container>
-    </mat-tab>
-  </mat-tab-group>
-</div>
-
-<div appResizePick="desktop">
-  <div class="pick-desktop">
-    <app-filter-container></app-filter-container>
-    <app-sort-container></app-sort-container>
-  </div>
-</div>
+<mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
+  <mat-tab label="{{ 'home.pick.labelFilter' | translate }}" class="tab-label">
+    <app-filter-container class="filter"></app-filter-container>
+  </mat-tab>
+  <mat-tab label="{{ 'home.pick.labelSorting' | translate }}" class="tab-label">
+    <app-sort-container class="sort"></app-sort-container>
+  </mat-tab>
+</mat-tab-group>
