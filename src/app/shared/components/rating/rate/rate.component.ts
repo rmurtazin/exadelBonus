@@ -21,16 +21,18 @@ import { take } from 'rxjs/operators';
 export class RateComponent implements OnInit {
   @Input() isForm: boolean;
   @Input() bonus: IBonus;
-  @Output() ratingWasSubmitted = new EventEmitter<IBonus>();
+  @Output() backToBonusEvent = new EventEmitter<void>();
 
   public startPosition: number;
   public disableButton = false;
   public animationStart = false;
+  private bonusUnchangedRating: number;
 
   constructor(private bonusesService: BonusesService, private toasterService: ToasterService) {}
 
   ngOnInit(): void {
     this.startPosition = this.bonus.rating * 10;
+    this.bonusUnchangedRating = this.bonus.rating;
   }
 
   public onMatSliderChange(slider: MatSliderChange): void {
@@ -47,7 +49,12 @@ export class RateComponent implements OnInit {
         this.animationStart = false;
         this.bonus = newBonus;
         this.toasterService.showNotification('rateForm.notification.success', 'success');
-        this.ratingWasSubmitted.emit();
+        this.backToBonusEvent.emit();
       });
+  }
+
+  public backToBonus(): void {
+    this.bonus.rating = this.bonusUnchangedRating;
+    this.backToBonusEvent.emit();
   }
 }
