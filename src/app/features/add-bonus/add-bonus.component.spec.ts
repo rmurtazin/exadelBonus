@@ -2,9 +2,6 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { BonusAddressService } from '@services/bonus-address.service';
-import { BonusesService } from '@services/bonuses.service';
-import { ToasterService } from '@services/toaster.service';
 import { ToastrModule } from 'ngx-toastr';
 import { EMPTY, of } from 'rxjs';
 import { AddBonusButtonComponent } from './add-bonus-button/add-bonus-button.component';
@@ -18,10 +15,7 @@ import { VendorsService } from '@services/vendors.service';
 describe('AddBonusComponent', () => {
   let component: AddBonusComponent;
   let fixture: ComponentFixture<AddBonusComponent>;
-  let bonusAddressService: BonusAddressService;
-  let bonusesService: BonusesService;
-  let vendorsService: VendorsService;
-  const toastrService: ToasterService = new ToasterService(null, null);
+
   const myForm = {
     value: {
       bonusAddress: 'Ukraine Vinnitsa Soborna 100',
@@ -104,12 +98,6 @@ describe('AddBonusComponent', () => {
     fixture = TestBed.createComponent(AddBonusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  beforeEach(() => {
-    bonusAddressService = new BonusAddressService(null, null);
-    bonusesService = new BonusesService(null, toastrService);
-    vendorsService = new VendorsService(null, null);
   });
 
   it('should create', () => {
