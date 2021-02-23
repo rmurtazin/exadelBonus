@@ -1,17 +1,5 @@
-table {
-  width: 100%;
-}
-
-th.mat-sort-header-sorted {
-  color: black;
-}
-
 .table-container {
   padding: 0 20px;
-  width: 100%;
-  min-width: 700px;
-  overflow-x: scroll;
-  white-space: nowrap;
 }
 
 .filters-title {
@@ -24,4 +12,29 @@ th.mat-sort-header-sorted {
 
 .date-inputs {
   width: 300px;
+}
+
+.table {
+  width: 100%;
+  min-width: 680px;
+}
+
+mat-cell:last-of-type,
+mat-header-cell:last-of-type,
+mat-footer-cell:last-of-type {
+  padding-right: 0px;
+}
+
+mat-cell:first-of-type,
+mat-header-cell:first-of-type,
+mat-footer-cell:first-of-type {
+  padding-left: 0px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-cell {
+  padding: 0 2px;
 }
