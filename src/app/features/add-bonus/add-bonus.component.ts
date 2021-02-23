@@ -58,7 +58,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
             this.getVendors(vendorName);
           }
         }
-        if(vendorName === '') {
+        if (vendorName === '') {
           this.getBonuses();
         }
       },
@@ -111,7 +111,9 @@ export class AddBonusComponent implements OnInit, OnDestroy {
               longitude: result.geometry.lng,
               city: result.components.city,
               country: result.components.country,
-              address: `${result.components.highway || result.components.road || ''} ${result.components.house_number || ''}`
+              address: `${result.components.highway || result.components.road || ''} ${
+                result.components.house_number || ''
+              }`,
             });
           } else {
             myForm.get('bonusAddress').reset();

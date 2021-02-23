@@ -53,7 +53,6 @@ export class AddBonusFormComponent implements OnInit {
       this.newBonus = false;
       this.getBonus();
     }
-    console.log(this.newVendor);
   }
 
   public onFilteredVendors(): void {
