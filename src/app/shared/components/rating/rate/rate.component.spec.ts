@@ -13,11 +13,7 @@ describe('RateComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RateComponent],
-      imports: [
-        HttpClientModule,
-        ToastrModule.forRoot(),
-        TranslateModule.forRoot()
-      ],
+      imports: [HttpClientModule, ToastrModule.forRoot(), TranslateModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RateComponent);
