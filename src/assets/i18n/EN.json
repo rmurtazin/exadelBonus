@@ -35,6 +35,26 @@
       "saveBonusError": {
         "title": "Save error",
         "message": "Some problems with saving bonus!"
+      },
+      "saveBonusSuccess": {
+        "title": "Successfully!",
+        "message": "A new bonus has been saved!"
+      },
+      "getAddress": {
+        "title": "Response error",
+        "message": "Some problems with getting address!"
+      },
+      "getVendors": {
+        "title": "Response error",
+        "message": "Some problems with getting vendors!"
+      },
+      "saveVendorError": {
+        "title": "Save error",
+        "message": "Some problems with saving vendor!"
+      },
+      "saveVendorSuccess": {
+        "title": "Successfully!",
+        "message": "A new vendor has been saved!"
       }
     }
   },
