@@ -203,7 +203,6 @@ export class AddBonusFormComponent implements OnInit {
       locations: this.locations,
       tags: this.bonusTags.map((tag) => tag.name),
     };
-    console.log(submitBonus);
     this.bonusFormConfig.createBonus(submitBonus);
     this.goBack();
   }

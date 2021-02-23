@@ -58,6 +58,9 @@ export class AddBonusComponent implements OnInit, OnDestroy {
             this.getVendors(vendorName);
           }
         }
+        if(vendorName === '') {
+          this.getBonuses();
+        }
       },
       closeForm: (): void => {
         this.isFormActive = false;
