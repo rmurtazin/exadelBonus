@@ -13,12 +13,7 @@
   >
   </mat-slider>
   <div class="buttons-container">
-    <button
-      class="rate-form-button"
-      (click)="backToBonus()"
-      color="primary"
-      mat-raised-button
-    >
+    <button class="rate-form-button" (click)="backToBonus()" color="primary" mat-raised-button>
       Back
     </button>
     <button
@@ -28,15 +23,15 @@
       (click)="submitRating()"
       [disabled]="disableButton"
     >
-    <span class="rate-button">
-      Apply
-      <mat-spinner
-        diameter="20"
-        *ngIf="animationStart"
-        color="warn"
-        class="loading-spinner status-icon"
-      ></mat-spinner>
-    </span>
+      <span class="rate-button">
+        Apply
+        <mat-spinner
+          diameter="20"
+          *ngIf="animationStart"
+          color="warn"
+          class="loading-spinner status-icon"
+        ></mat-spinner>
+      </span>
     </button>
   </div>
 </div>

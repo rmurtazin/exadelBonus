@@ -32,7 +32,7 @@ export class RateComponent implements OnInit {
 
   ngOnInit(): void {
     this.startPosition = this.bonus?.rating * 10;
-    this.bonusUnchangedRating = this.bonus.rating;
+    this.bonusUnchangedRating = this.bonus?.rating;
   }
 
   public onMatSliderChange(slider: MatSliderChange): void {
