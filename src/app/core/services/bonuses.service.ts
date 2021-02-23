@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { INewBonus } from '@interfaces/add-bonus.interface';
 import { ToasterService } from './toaster.service';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { apiLinks } from './constants';
 import * as bonuses from 'src/assets/static/bonuses.json';
 import { delay } from 'rxjs/operators';
@@ -33,13 +33,14 @@ export class BonusesService {
   }
 
   public addBonus(newBonus: INewBonus): Observable<IBonus> {
-    return this.api
-      .post(`${this.bonusUrl}`, JSON.stringify(newBonus))
-      .pipe(
-        catchError(async () =>
-          this.toasterService.showNotification('addBonus.notification.saveBonusError', 'error'),
-        ),
-      );
+    return this.api.post(`${this.bonusUrl}`, JSON.stringify(newBonus)).pipe(
+      tap(() =>
+        this.toasterService.showNotification('addBonus.notification.saveBonusSuccess', 'success'),
+      ),
+      catchError(async () =>
+        this.toasterService.showNotification('addBonus.notification.saveBonusError', 'error'),
+      ),
+    );
   }
 
   public removeBonus(id: string): Observable<void> {

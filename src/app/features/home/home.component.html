@@ -1,12 +1,12 @@
 <section class="home">
   <section class="left">
-    <h1>Find place</h1>
     <app-pick class="pick-container"></app-pick>
     <app-bonus-list-container
       class="bonus-list"
       [bonusButtonLabel]="bonusButtonLabel"
       (bonusButtonClickedEvent)="openApplyForm($event)"
-    ></app-bonus-list-container>
+    >
+    </app-bonus-list-container>
   </section>
   <section class="right">
     <app-map-container class="map"></app-map-container>
