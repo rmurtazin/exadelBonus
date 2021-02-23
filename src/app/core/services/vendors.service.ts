@@ -14,8 +14,8 @@ export class VendorsService {
 
   public getVendors(query: string): Observable<IVendor[]> {
     return this.apiService.get(this.url, query).pipe(
-      map((data) => {
-        return data.value;
+      map(({value}) => {
+        return value;
       }),
       catchError(async () =>
         this.toasterService.showNotification('addBonus.notification.getVendors', 'error'),
