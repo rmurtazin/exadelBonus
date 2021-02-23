@@ -30,7 +30,7 @@
       "bonusDateRange": "Enter a bonus date range",
       "saveNewVendorBtn": "Save new vendor"
     },
-    "searcher": "Enter vendor name",
+    "searcher": "Filter by vendor name",
     "notification": {
       "saveBonusError": {
         "title": "Save error",
