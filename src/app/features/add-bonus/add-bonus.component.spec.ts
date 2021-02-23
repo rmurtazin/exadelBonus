@@ -105,7 +105,7 @@ describe('AddBonusComponent', () => {
   });
 
   beforeEach(() => {
-    bonusAddressService = new BonusAddressService(null);
+    bonusAddressService = new BonusAddressService(null, null);
     bonusesService = new BonusesService(null, toastrService);
   });
 

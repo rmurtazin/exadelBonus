@@ -1,5 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
 
 import { RateComponent } from './rate.component';
 
@@ -10,7 +12,7 @@ describe('RateComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RateComponent],
-      imports: [HttpClientModule],
+      imports: [HttpClientModule, ToastrModule.forRoot(), TranslateModule.forRoot()],
     }).compileComponents();
   });
 
