@@ -11,7 +11,7 @@ export class BonusAddressService {
   private apiKey = '977dc027c5554e86b7bbe1ba4732e7e0'; // TODO: hide key to .env file
   private baseUrl = 'https://api.opencagedata.com/geocode/v1/json';
 
-  constructor(public apiService: ApiService, private toasterService: ToasterService) {}
+  constructor(private apiService: ApiService, private toasterService: ToasterService) {}
 
   public getSearchedAddress(place): Observable<any> {
     const query = `?q=${place}&language=en&key=${this.apiKey}`;
