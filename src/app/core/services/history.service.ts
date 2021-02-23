@@ -17,10 +17,10 @@ export class HistoryService {
   public applyBonus(reqBody: IHistoryReqBody): Observable<IHistoryBonus> {
     return this.apiService.post(this.url, JSON.stringify(reqBody)).pipe(
       tap(() =>
-        this.toasterService.showNotification('addBonus.notification.saveBonusSuccess', 'success'),
+        this.toasterService.showNotification('history.notification.applySuccess', 'success'),
       ),
       catchError(async () =>
-        this.toasterService.showNotification('addBonus.notification.saveBonusError', 'error'),
+        this.toasterService.showNotification('history.notification.applyError', 'error'),
       ),
     );
   }
