@@ -11,7 +11,7 @@ export interface IUser {
   role: string;
   token: string;
 }
-export interface IUserHistory {
+export interface IUserInfo {
   id: string;
   email: string;
   firstName: string;
