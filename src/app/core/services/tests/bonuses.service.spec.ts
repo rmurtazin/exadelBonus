@@ -50,7 +50,7 @@ describe('BonusesService', () => {
     });
   }));
 
-  it('should return expected bonus', fakeAsync(() => {
+  it('should return bonuses without deleted bonus', fakeAsync(() => {
     bonusesService.removeBonus(bonusIDForTestRemove);
     bonusesService.getBonuses().subscribe((data) => {
       expect(data.length).toBeGreaterThan(expectedBonuses.length - 1);
