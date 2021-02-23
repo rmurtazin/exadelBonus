@@ -13,6 +13,7 @@ import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
 import { VendorsService } from '@services/vendors.service';
 import { Subscription } from 'rxjs';
+import { BonusComponent } from 'src/app/shared/components/bonus-list-container/bonus/bonus.component';
 
 @Component({
   selector: 'app-add-bonus',
@@ -28,7 +29,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public isFormActive = false;
   public bonusFormConfig: IBonusFormConfig;
   public bonusId: string;
-  public isForm: boolean;
+  public bonusButtonLabel = 'Apply';
 
   constructor(
     private bonusAddressService: BonusAddressService,
@@ -56,6 +57,9 @@ export class AddBonusComponent implements OnInit, OnDestroy {
           if (previousInput !== vendorName?.toLowerCase()) {
             this.getVendors(vendorName);
           }
+        }
+        if (vendorName === '') {
+          this.getBonuses();
         }
       },
       closeForm: (): void => {
@@ -100,16 +104,16 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     if (myForm.value.bonusAddress) {
       this.subscription.add(
         this.bonusAddressService.getSearchedAddress(myForm.value.bonusAddress).subscribe((data) => {
+          const result = data[0];
           if (data) {
             this.locations.push({
-              latitude: data[0].geometry.lat,
-              longitude: data[0].geometry.lng,
-              city: data[0].components.city,
-              country: data[0].components.country,
-              address:
-                data[0].components.road && data[0].components.house_number
-                  ? `${data[0].components.road}, ${data[0].components.house_number}`
-                  : '',
+              latitude: result.geometry.lat,
+              longitude: result.geometry.lng,
+              city: result.components.city,
+              country: result.components.country,
+              address: `${result.components.highway || result.components.road || ''} ${
+                result.components.house_number || ''
+              }`,
             });
           } else {
             myForm.get('bonusAddress').reset();
@@ -139,7 +143,5 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.isFormActive = true;
   }
 
-  public onBonusButtonClick(): void {
-    this.isForm = !this.isForm;
-  }
+  public openApplyForm(bonus: BonusComponent): void {}
 }

@@ -1,6 +1,6 @@
 <div class="discount-row" [ngClass]="{ 'form-stars': isForm }">
   <ng-content *ngIf="!isForm"></ng-content>
-  <app-stars [widthValue]="bonus.rating * 10"></app-stars>
+  <app-stars [widthValue]="bonus?.rating * 10"></app-stars>
 </div>
 <div *ngIf="isForm" class="rate-form">
   <mat-slider

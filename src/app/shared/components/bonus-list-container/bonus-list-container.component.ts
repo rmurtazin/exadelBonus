@@ -1,10 +1,10 @@
-import { IBonusFormConfig } from './../../../core/interfaces/add-bonus.interface';
 import { ToasterService } from '@services/toaster.service';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
 import { MapEventsService } from '@services/map-events.service';
+import { BonusComponent } from './bonus/bonus.component';
 
 @Component({
   selector: 'app-bonus-list-container',
@@ -12,12 +12,13 @@ import { MapEventsService } from '@services/map-events.service';
   styleUrls: ['./bonus-list-container.component.scss'],
 })
 export class BonusListContainerComponent implements OnInit, OnDestroy {
-  public bonusMap: IBonus;
   public bonuses: IBonus[] = [];
-  public ifBonusFromMap: boolean = false;
   private subscriptionBonuses: Subscription;
   private subscriptionBonusMap: Subscription;
-  @Input() onBonusButtonClick: () => void;
+
+  @Input() bonusButtonLabel: string;
+
+  @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
 
   constructor(
     public bonusesService: BonusesService,
@@ -28,6 +29,10 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.getBonusMap();
     this.getBonuses();
+  }
+
+  public bonusButtonClicked(bonus: BonusComponent): void {
+    this.bonusButtonClickedEvent.emit(bonus);
   }
 
   public getBonuses(): void {
@@ -53,7 +58,6 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
     this.subscriptionBonusMap = this.mapEventsService.collBonusInfoObserver().subscribe(
       (bonus: IBonus) => {
         if (bonus) {
-          this.bonusMap = bonus;
           this.findBonusMapInView(bonus);
         }
       },
@@ -67,14 +71,15 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
 
   public findBonusMapInView(bonus: IBonus): void {
     let indexBonusMapInView: number;
-    this.bonuses.find((bonusItem, index) => {
-      if (this.bonusMap === bonusItem) {
+    const cloneBonuses: IBonus[] = [...this.bonuses];
+    cloneBonuses.find((bonusItem, index) => {
+      if (bonus === bonusItem) {
         indexBonusMapInView = index;
       }
     });
-    this.bonuses.splice(indexBonusMapInView, 1);
-    this.bonuses.unshift(this.bonusMap);
-    this.ifBonusFromMap = true;
+    cloneBonuses.splice(indexBonusMapInView, 1);
+    cloneBonuses.unshift(bonus);
+    this.bonuses = cloneBonuses;
   }
 
   public ngOnDestroy(): void {

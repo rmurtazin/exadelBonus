@@ -1,23 +1,23 @@
 <section class="bonus" [ngClass]="{ 'show-form': isForm }">
   <div class="description-container">
-    <span class="vendor-name">{{ bonus.company.name }}</span>
-    <p class="bonus-description">{{ bonus.description }}</p>
+    <span class="vendor-name">{{ bonus?.company.name }}</span>
+    <p class="bonus-description">{{ bonus?.description }}</p>
   </div>
   <div class="bonus-content">
     <app-rate [isForm]="isForm" (ratingWasSubmitted)="closeRateForm()" [bonus]="bonus">
       <img class="discount-icon" src="assets/icons/discount-icon.svg" alt="discount" />
-      <span class="discount-value">{{ bonus.title }}</span>
+      <span class="discount-value">{{ bonus?.title }}</span>
     </app-rate>
     <div *ngIf="!isForm" class="interactive-container">
       <div>
-        <div class="bonus-name">{{ bonus.type }}</div>
+        <div class="bonus-name">{{ bonus?.type }}</div>
         <div class="tags">
-          <span class="tag" *ngFor="let tag of bonus.tags">{{ tag }}</span>
+          <span class="tag" *ngFor="let tag of bonus?.tags">{{ tag }}</span>
         </div>
       </div>
       <div class="button-container">
-        <button mat-flat-button color="primary" class="apply-button" (click)="onBonusButtonClick()">
-          <span>Button text</span>
+        <button mat-flat-button color="primary" class="apply-button" (click)="bonusButtonClick()">
+          <span [innerHTML]="bonusButtonLabel"></span>
         </button>
       </div>
     </div>
