@@ -49,8 +49,7 @@ describe('BonusesService', () => {
   });
 
   it('should be created', () => {
-    let service = TestBed.inject(BonusesService);
-    expect(service).toBeTruthy();
+    expect(bonusesService).toBeTruthy();
   });
 
   it('should return expected bonuses', () => {
