@@ -16,7 +16,7 @@ export class ApiService {
     return this.http.post(url, body, { headers: this.headers }).pipe(catchError(this.errorHandler));
   }
 
-  public put(url: string, body: any): Observable<any> {
+  public put(url: string, body?: any): Observable<any> {
     return this.http.put(url, body, { headers: this.headers }).pipe(catchError(this.errorHandler));
   }
 

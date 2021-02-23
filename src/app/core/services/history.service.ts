@@ -15,7 +15,7 @@ export class HistoryService {
   constructor(private apiService: ApiService, private toasterService: ToasterService) {}
 
   public applyBonus(reqBody: IHistoryReqBody): Observable<IHistoryBonus> {
-    return this.apiService.post(`${this.url}`, JSON.stringify(reqBody)).pipe(
+    return this.apiService.post(this.url, JSON.stringify(reqBody)).pipe(
       tap(() =>
         this.toasterService.showNotification('addBonus.notification.saveBonusSuccess', 'success'),
       ),
@@ -24,4 +24,13 @@ export class HistoryService {
       ),
     );
   }
+
+  public getHistoryBonuses(): Observable<IHistoryBonus[]> {
+    return this.apiService.get(this.url);
+  }
+
+  public rateBonus(historyId: string, estimate: number): Observable<IHistoryBonus> {
+    return this.apiService.put(`${this.url}/estimate/${historyId}?estimate=${estimate}`);
+  }
+
 }

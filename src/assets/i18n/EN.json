@@ -62,7 +62,11 @@
     "notification": {
       "applySuccess" : {
         "title": "Successfully!",
-        "message": "Your order has been successfully sent!"
+        "message": "Your application has been successfully sent!"
+      },
+      "applyError" : {
+        "title": "Response error!",
+        "message": "Some problem with your apply!"
       }
     }
   },
