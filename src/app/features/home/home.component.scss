@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .map {
   width: 100%;
@@ -66,4 +66,9 @@
 h2 {
   margin: 0 20px 0;
   text-align: center;
+}
+
+.pick-container {
+  width: 100%;
+  min-height: 270px;
 }

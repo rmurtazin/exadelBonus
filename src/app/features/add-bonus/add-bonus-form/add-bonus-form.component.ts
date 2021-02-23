@@ -48,16 +48,19 @@ export class AddBonusFormComponent implements OnInit {
 
   public ngOnInit(): void {
     this.onInitForm();
+    this.onFilteredVendors();
+    if (this.bonusId ?? false) {
+      this.newBonus = false;
+      this.getBonus();
+    }
+  }
+
+  public onFilteredVendors(): void {
     this.filteredVendors = this.vendorName.valueChanges.pipe(
       startWith(''),
       map((value) => (typeof value === 'string' ? value : '')),
       map((name) => (name ? this._filter(name) : this.vendors?.slice())),
     );
-
-    if (this.bonusId ?? false) {
-      this.newBonus = false;
-      this.getBonus();
-    }
   }
 
   public getBonus(): void {

@@ -13,6 +13,7 @@ import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
 import { VendorsService } from '@services/vendors.service';
 import { Subscription } from 'rxjs';
+import { BonusComponent } from 'src/app/shared/components/bonus-list-container/bonus/bonus.component';
 
 @Component({
   selector: 'app-add-bonus',
@@ -28,7 +29,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public isFormActive = false;
   public bonusFormConfig: IBonusFormConfig;
   public bonusId: string;
-  public isForm: boolean;
+  public bonusButtonLabel = 'Apply';
 
   constructor(
     public bonusAddressService: BonusAddressService,
@@ -137,7 +138,5 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.isFormActive = true;
   }
 
-  public onBonusButtonClick(): void {
-    this.isForm = !this.isForm;
-  }
+  public openApplyForm(bonus: BonusComponent): void {}
 }

@@ -124,7 +124,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   }
 
   public getVendors(query): void {
-    this.subscriptionVendor = this.vendorsService.getVendors(query).subscribe(
+    this.vendorsService.getVendors(query).subscribe(
       (data: IVendor[]) => {
         if (data) {
           this.vendors = data;
@@ -136,7 +136,6 @@ export class StatisticsComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.subscriptionStatistics.unsubscribe();
-    this.subscriptionVendor.unsubscribe();
   }
 
   public setVendorId(id: string): void {
