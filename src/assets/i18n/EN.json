@@ -58,6 +58,14 @@
       }
     }
   },
+  "history": {
+    "notification": {
+      "applySuccess" : {
+        "title": "Successfully!",
+        "message": "Your order has been successfully sent!"
+      }
+    }
+  },
   "loginPage": {
     "login": "Enter your login",
     "password": "Enter your password",
