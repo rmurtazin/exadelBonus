@@ -188,6 +188,7 @@ export class AddBonusFormComponent implements OnInit {
 
   public onSubmit(): void {
     const formValue = this.myForm.value;
+    console.log(this.vendorName?.value?.id, this.newVendor?.id);
     const submitBonus: INewBonus = {
       companyId: this.vendorName.value.id || this.newVendor.id,
       phone: formValue.phone,
@@ -199,6 +200,7 @@ export class AddBonusFormComponent implements OnInit {
       locations: this.locations,
       tags: this.bonusTags.map((tag) => tag.name),
     };
+    console.log(submitBonus);
     this.bonusFormConfig.createBonus(submitBonus);
     this.goBack();
   }
