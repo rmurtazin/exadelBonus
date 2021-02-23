@@ -53,6 +53,7 @@ export class AddBonusFormComponent implements OnInit {
       this.newBonus = false;
       this.getBonus();
     }
+    console.log(this.newVendor);
   }
 
   public onFilteredVendors(): void {
@@ -191,7 +192,6 @@ export class AddBonusFormComponent implements OnInit {
 
   public onSubmit(): void {
     const formValue = this.myForm.value;
-    console.log(this.vendorName?.value?.id, this.newVendor?.id);
     const submitBonus: INewBonus = {
       companyId: this.vendorName.value.id || this.newVendor.id,
       phone: formValue.phone,

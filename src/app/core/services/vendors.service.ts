@@ -28,6 +28,7 @@ export class VendorsService {
       tap(() =>
         this.toasterService.showNotification('addBonus.notification.saveVendorSuccess', 'success'),
       ),
+      map(({value})=>value),
       catchError(async () =>
         this.toasterService.showNotification('addBonus.notification.saveVendorError', 'error'),
       ),
