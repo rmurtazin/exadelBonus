@@ -32,9 +32,9 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public bonusButtonLabel = 'Apply';
 
   constructor(
-    public bonusAddressService: BonusAddressService,
-    public vendorsService: VendorsService,
-    public bonusesService: BonusesService,
+    private bonusAddressService: BonusAddressService,
+    private vendorsService: VendorsService,
+    private bonusesService: BonusesService,
     private route: ActivatedRoute,
   ) {}
 
