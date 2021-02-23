@@ -1,3 +1,6 @@
+import { expectedBonus } from './../../../mocks/constants/bonuses';
+import { TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -10,13 +13,16 @@ describe('RateComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RateComponent],
-      imports: [HttpClientModule],
+      imports: [
+        HttpClientModule,
+        ToastrModule.forRoot(),
+        TranslateModule.forRoot()
+      ],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(RateComponent);
     component = fixture.componentInstance;
+    component.bonus = expectedBonus;
     fixture.detectChanges();
   });
 
