@@ -30,7 +30,7 @@ export class RateComponent implements OnInit {
   constructor(private bonusesService: BonusesService, private toasterService: ToasterService) {}
 
   ngOnInit(): void {
-    this.startPosition = this.bonus.rating * 10;
+    this.startPosition = this.bonus?.rating * 10;
   }
 
   public onMatSliderChange(slider: MatSliderChange): void {

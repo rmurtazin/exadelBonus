@@ -7,7 +7,7 @@ import { apiLinks } from './constants';
 import { ToasterService } from './toaster.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HistoryService {
   private url = apiLinks.history;
@@ -32,5 +32,4 @@ export class HistoryService {
   public rateBonus(historyId: string, estimate: number): Observable<IHistoryBonus> {
     return this.apiService.put(`${this.url}/estimate/${historyId}?estimate=${estimate}`);
   }
-
 }
