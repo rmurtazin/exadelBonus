@@ -11,3 +11,11 @@ export interface IUser {
   role: string;
   token: string;
 }
+export interface IUserHistory {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  city: string;
+  phoneNumber: string;
+}
