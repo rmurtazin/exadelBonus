@@ -12,13 +12,22 @@
     [value]="startPosition"
   >
   </mat-slider>
-  <button
-    class=""
-    color="primary"
-    mat-raised-button
-    (click)="submitRating()"
-    [disabled]="disableButton"
-  >
+  <div class="buttons-container">
+    <button
+      class="rate-form-button"
+      (click)="backToBonus()"
+      color="primary"
+      mat-raised-button
+    >
+      Back
+    </button>
+    <button
+      class="rate-form-button"
+      color="primary"
+      mat-raised-button
+      (click)="submitRating()"
+      [disabled]="disableButton"
+    >
     <span class="rate-button">
       Apply
       <mat-spinner
@@ -28,5 +37,6 @@
         class="loading-spinner status-icon"
       ></mat-spinner>
     </span>
-  </button>
+    </button>
+  </div>
 </div>
