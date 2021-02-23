@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Observable, Subject } from 'rxjs';
+import {from, Observable, Subject} from 'rxjs';
 import { of } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { INewBonus } from '@interfaces/add-bonus.interface';
@@ -9,6 +9,7 @@ import { map, catchError } from 'rxjs/operators';
 import { apiLinks } from './constants';
 import * as bonuses from 'src/assets/static/bonuses.json';
 import { delay } from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
@@ -17,9 +18,16 @@ export class BonusesService {
   private citiesUrl = apiLinks.cities;
   private tagsUrl = apiLinks.tags;
 
-  constructor(private api: ApiService, private toasterService: ToasterService) {}
+  constructor(private api: ApiService, private toasterService: ToasterService, private http: HttpClient) {}
 
   public getBonuses(query?: string): Observable<IBonus[]> {
+    const kek = from([bonuses[1]]).pipe(map(
+      data => {
+        this.bonusSubject.next([bonuses[1], bonuses[2], bonuses[3], bonuses[4]]);
+        return [bonuses[1], bonuses[2]];
+      }));
+    kek.subscribe(data => console.log(data));
+    return kek;
     return this.api.get(this.bonusUrl, query).pipe(
       map((data) => {
         this.bonusSubject.next(data.value);

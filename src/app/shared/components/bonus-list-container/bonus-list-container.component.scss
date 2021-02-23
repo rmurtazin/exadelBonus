@@ -2,3 +2,10 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+@media (max-width: 540px), (max-device-width: 540px) {
+  .bonuses {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}

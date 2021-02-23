@@ -5,9 +5,10 @@
   align-items: center;
   position: relative;
   height: 60px;
+  justify-content: space-between;
   app-stars {
-    position: absolute;
-    right: 6px;
+    //position: absolute;
+    //right: 6px;
   }
 }
 
@@ -82,5 +83,11 @@
   }
   100% {
     border-color: white;
+  }
+}
+
+@media (max-width: 540px), (max-device-width: 540px) {
+  .discount-row {
+    flex-direction: row-reverse;
   }
 }
