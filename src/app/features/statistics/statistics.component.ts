@@ -1,268 +1,144 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { IVendor } from '@interfaces/add-bonus.interface';
+import { VendorsService } from '@services/vendors.service';
+import { ToasterService } from '@services/toaster.service';
+import { StatisticsService } from '@services/statistics.service';
+import { Subscription } from 'rxjs';
+import { StatisticElement } from '@interfaces/statistics.interface';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
-export interface StatisticElement {
-  position: number;
-  vendor: string;
-  bonus: string;
-  dateStart: Date | string;
-  dateEnd: Date | string;
-  dateAdd: Date | string;
-  rating: number;
-  visits: number;
-  city: string;
-  country: string;
-  type: string;
-  isActive: number;
-}
-
-const ELEMENT_DATA: StatisticElement[] = [
-  // TODO: add get request
-  {
-    position: 1,
-    vendor: 'Pizza mania',
-    bonus: 'Pizza',
-    dateStart: '2020-02-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-01-17',
-    rating: 4,
-    visits: 10,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'food',
-    isActive: 1,
-  },
-  {
-    position: 2,
-    vendor: 'Pizza mania',
-    bonus: 'Sushi',
-    dateStart: '2020-04-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-02-17',
-    rating: 2,
-    visits: 3,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'food',
-    isActive: 1,
-  },
-  {
-    position: 3,
-    vendor: 'Cinema October',
-    bonus: 'tickets',
-    dateStart: '2020-02-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-01-17',
-    rating: 5,
-    visits: 100,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'cinema',
-    isActive: 1,
-  },
-  {
-    position: 4,
-    vendor: 'Shina Vitebsk',
-    bonus: 'Shina service',
-    dateStart: '2020-03-01',
-    dateEnd: '2020-12-31',
-    dateAdd: '2020-01-01',
-    rating: 2,
-    visits: 17,
-    city: 'Vitebsk',
-    country: 'Belarus',
-    type: 'service',
-    isActive: 1,
-  },
-  {
-    position: 5,
-    vendor: 'Pizza mania',
-    bonus: 'Pizza',
-    dateStart: '2020-02-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-01-17',
-    rating: 4,
-    visits: 10,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'food',
-    isActive: 1,
-  },
-  {
-    position: 6,
-    vendor: 'Pizza mania',
-    bonus: 'Pizza',
-    dateStart: '2020-02-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-01-17',
-    rating: 4,
-    visits: 10,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'food',
-    isActive: 1,
-  },
-  {
-    position: 7,
-    vendor: 'Pizza mania',
-    bonus: 'Sushi',
-    dateStart: '2020-04-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-02-17',
-    rating: 2,
-    visits: 3,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'food',
-    isActive: 1,
-  },
-  {
-    position: 8,
-    vendor: 'Cinema October',
-    bonus: 'tickets',
-    dateStart: '2020-02-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-01-17',
-    rating: 5,
-    visits: 100,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'cinema',
-    isActive: 1,
-  },
-  {
-    position: 9,
-    vendor: 'Shina Vitebsk',
-    bonus: 'Shina service',
-    dateStart: '2020-03-01',
-    dateEnd: '2020-12-31',
-    dateAdd: '2020-01-01',
-    rating: 2,
-    visits: 17,
-    city: 'Vitebsk',
-    country: 'Belarus',
-    type: 'service',
-    isActive: 1,
-  },
-  {
-    position: 10,
-    vendor: 'Pizza mania',
-    bonus: 'Pizza',
-    dateStart: '2020-02-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-01-17',
-    rating: 4,
-    visits: 10,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'food',
-    isActive: 1,
-  },
-  {
-    position: 11,
-    vendor: 'Pizza mania',
-    bonus: 'Pizza',
-    dateStart: '2020-02-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-01-17',
-    rating: 4,
-    visits: 10,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'food',
-    isActive: 1,
-  },
-  {
-    position: 12,
-    vendor: 'Pizza mania',
-    bonus: 'Sushi',
-    dateStart: '2020-04-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-02-17',
-    rating: 2,
-    visits: 3,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'food',
-    isActive: 1,
-  },
-  {
-    position: 13,
-    vendor: 'Cinema October',
-    bonus: 'tickets',
-    dateStart: '2020-02-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-01-17',
-    rating: 5,
-    visits: 100,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'cinema',
-    isActive: 1,
-  },
-  {
-    position: 14,
-    vendor: 'Shina Vitebsk',
-    bonus: 'Shina service',
-    dateStart: '2020-03-01',
-    dateEnd: '2020-12-31',
-    dateAdd: '2020-01-01',
-    rating: 2,
-    visits: 17,
-    city: 'Vitebsk',
-    country: 'Belarus',
-    type: 'service',
-    isActive: 1,
-  },
-  {
-    position: 15,
-    vendor: 'Pizza mania',
-    bonus: 'Pizza',
-    dateStart: '2020-02-01',
-    dateEnd: '2020-06-30',
-    dateAdd: '2020-01-17',
-    rating: 4,
-    visits: 10,
-    city: 'Minsk',
-    country: 'Belarus',
-    type: 'food',
-    isActive: 1,
-  },
-];
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss'],
 })
-export class StatisticsComponent implements AfterViewInit {
+export class StatisticsComponent implements OnInit, OnDestroy {
+  private subscriptionStatistics: Subscription;
+  private subscriptionVendor: Subscription;
+  public vendors: IVendor[] = [];
+  public statistics: StatisticElement[] = [];
   public displayedColumns: string[] = [
-    'position',
-    'vendor',
-    'bonus',
-    'dateAdd',
+    'companyName',
+    'title',
+    'createdDate',
     'dateStart',
     'dateEnd',
     'rating',
     'visits',
-    'city',
-    'country',
     'type',
     'isActive',
   ];
-  public dataSource = new MatTableDataSource<StatisticElement>(ELEMENT_DATA);
+  public dataSource = new MatTableDataSource<StatisticElement>(this.statistics);
+  public dateStart = '';
+  public dateEnd = '';
+  public queryParams = '';
+  public filterParams = {
+    vendor: '',
+    vendorId: '',
+    bonus: '',
+    type: '',
+    isActive: true,
+    start: '',
+    end: '',
+  };
 
   @ViewChild(MatPaginator) public paginator: MatPaginator;
   @ViewChild(MatSort) public sort: MatSort;
 
-  public ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  constructor(
+    private statisticsService: StatisticsService,
+    private toasterService: ToasterService,
+    private vendorsService: VendorsService,
+  ) {}
+
+  public ngOnInit(): void {
+    this.getStatistics();
+  }
+
+  public getStatistics(): void {
+    this.subscriptionStatistics = this.statisticsService.getStatistics(this.queryParams).subscribe(
+      (data: StatisticElement[]) => {
+        if (data) {
+          this.statistics = data;
+          this.formatDates();
+          this.dataSource = new MatTableDataSource<StatisticElement>(this.statistics);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }
+      },
+      (err) => this.toasterService.showError(err, 'Some problems with getting statistics'),
+    );
+  }
+
+  public formatDates(): void {
+    this.statistics.forEach((bonus) => {
+      bonus.dateStart = format(new Date(bonus.dateStart), 'yyyy/MM/dd');
+      bonus.dateEnd = format(new Date(bonus.dateEnd), 'yyyy/MM/dd');
+      bonus.createdDate = format(new Date(bonus.createdDate), 'yyyy/MM/dd');
+    });
   }
 
   public applyFilter(filterValue: string): void {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public applyFilters(): void {
+    this.filterParams.bonus = this.filterParams.bonus.replace(/\s+/g, ' ').trim();
+    this.filterParams.type = this.filterParams.type.replace(/\s+/g, ' ').trim();
+    this.filterParams.start = this.dateStart ?? '';
+    this.filterParams.end = this.dateEnd ?? '';
+
+    this.queryParams = this.statisticsService.buildLink(this.filterParams);
+
+    this.getStatistics();
+  }
+
+  public changeDate(date: any): void {
+    this.dateStart = date?.start && new Date(date.start).toISOString();
+    this.dateEnd = date?.end && new Date(date.end).toISOString();
+  }
+
+  public clearFilters(): void {
+    this.filterParams = {
+      vendor: '',
+      vendorId: '',
+      bonus: '',
+      type: '',
+      isActive: true,
+      start: this.dateStart ?? '',
+      end: this.dateEnd ?? '',
+    };
+    this.queryParams = '';
+
+    this.getStatistics();
+  }
+
+  public vendorNameChange(): void {
+    if (this.filterParams.vendor !== '') {
+      this.filterParams.vendor = this.filterParams.vendor.replace(/\s+/g, ' ').trim();
+      this.getVendors(this.filterParams.vendor);
+    }
+  }
+
+  public getVendors(query): void {
+    this.vendorsService.getVendors(query).subscribe(
+      (data: IVendor[]) => {
+        if (data) {
+          this.vendors = data;
+        }
+      },
+      (err) => this.toasterService.showError(err, 'Some problems with getting vendors'),
+    );
+  }
+
+  public ngOnDestroy(): void {
+    this.subscriptionStatistics.unsubscribe();
+  }
+
+  public setVendorId(id: string): void {
+    this.filterParams.vendorId = id;
   }
 }
