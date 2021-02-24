@@ -15,6 +15,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   public bonuses: IBonus[] = [];
   private subscriptionBonuses: Subscription;
   private subscriptionBonusMap: Subscription;
+
   @Input() bonusButtonLabel: string;
 
   @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();

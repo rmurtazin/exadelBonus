@@ -1,6 +1,6 @@
 <div class="discount-row" [ngClass]="{ 'form-stars': isForm }">
   <ng-content *ngIf="!isForm"></ng-content>
-  <app-stars [widthValue]="bonus.rating * 10"></app-stars>
+  <app-stars [widthValue]="bonus?.rating * 10"></app-stars>
 </div>
 <div *ngIf="isForm" class="rate-form">
   <mat-slider
@@ -12,21 +12,26 @@
     [value]="startPosition"
   >
   </mat-slider>
-  <button
-    class=""
-    color="primary"
-    mat-raised-button
-    (click)="submitRating()"
-    [disabled]="disableButton"
-  >
-    <span class="rate-button">
-      Apply
-      <mat-spinner
-        diameter="20"
-        *ngIf="animationStart"
-        color="warn"
-        class="loading-spinner status-icon"
-      ></mat-spinner>
-    </span>
-  </button>
+  <div class="buttons-container">
+    <button class="rate-form-button" (click)="backToBonus()" color="primary" mat-raised-button>
+      Back
+    </button>
+    <button
+      class="rate-form-button"
+      color="primary"
+      mat-raised-button
+      (click)="submitRating()"
+      [disabled]="disableButton"
+    >
+      <span class="rate-button">
+        Apply
+        <mat-spinner
+          diameter="20"
+          *ngIf="animationStart"
+          color="warn"
+          class="loading-spinner status-icon"
+        ></mat-spinner>
+      </span>
+    </button>
+  </div>
 </div>

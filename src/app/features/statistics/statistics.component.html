@@ -36,9 +36,13 @@
       <mat-label>{{ 'statistics.type' | translate }}</mat-label>
       <input matInput type="text" placeholder="Bonus type" [(ngModel)]="filterParams.type" />
     </mat-form-field>
-    <mat-checkbox [(ngModel)]="filterParams.isActive" value="" color="primary">{{
-      'statistics.isActive' | translate
-    }}</mat-checkbox>
+    <mat-checkbox
+      class="statistics-flters-element"
+      [(ngModel)]="filterParams.isActive"
+      value=""
+      color="primary"
+      >{{ 'statistics.isActive' | translate }}</mat-checkbox
+    >
     <div class="date-inputs">
       <app-datepicker (changeDate)="changeDate($event)" class="filter-inputs"></app-datepicker>
     </div>

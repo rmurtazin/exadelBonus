@@ -6,10 +6,6 @@
   position: relative;
   height: 60px;
   justify-content: space-between;
-  app-stars {
-    //position: absolute;
-    //right: 6px;
-  }
 }
 
 .discount-row.form-stars {
@@ -90,4 +86,14 @@
   .discount-row {
     flex-direction: row-reverse;
   }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rate-form-button {
+  width: 45%;
+  font-size: 18px;
 }
