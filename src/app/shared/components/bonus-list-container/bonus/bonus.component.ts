@@ -19,7 +19,6 @@ import { LoginService } from '@services/login.service';
 export class BonusComponent implements OnInit {
   @Input() bonusButtonLabel: string;
   @Input() bonus: IBonus;
-  @Input() ifBonusFromMap: boolean;
 
   @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
 

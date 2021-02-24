@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public serverError = false;
   public loginingProgres = false;
 
-  constructor(public loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {
     this.onInitForm();

@@ -1,11 +1,40 @@
-table {
+.table-container {
+  padding: 0 20px;
+}
+
+.filters-title {
+  margin: 0;
+}
+
+.statistics-flters-element {
+  margin-left: 10px;
+}
+
+.date-inputs {
+  width: 300px;
+}
+
+.table {
   width: 100%;
+  min-width: 680px;
+}
+
+mat-cell:last-of-type,
+mat-header-cell:last-of-type,
+mat-footer-cell:last-of-type {
+  padding-right: 0px;
+}
+
+mat-cell:first-of-type,
+mat-header-cell:first-of-type,
+mat-footer-cell:first-of-type {
+  padding-left: 0px;
 }
 
 th.mat-sort-header-sorted {
   color: black;
 }
 
-.table-container {
-  padding: 0 20px;
+.mat-cell {
+  padding: 0 2px;
 }

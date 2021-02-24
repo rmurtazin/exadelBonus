@@ -14,7 +14,7 @@ export class ResizePickDirective implements OnInit {
   @Input('appResizePick') configWidth: string;
   public width: number = window.innerWidth;
 
-  constructor(public viewContainerRef: ViewContainerRef, public elementRef: ElementRef) {}
+  constructor(private viewContainerRef: ViewContainerRef, private elementRef: ElementRef) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
