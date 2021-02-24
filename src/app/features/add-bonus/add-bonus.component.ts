@@ -30,7 +30,6 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public isFormActive = false;
   public bonusFormConfig: IBonusFormConfig;
   public bonusId: string;
-  public isForm: boolean;
   public bonusButtonLabel = '<img class="update-img" src="assets/images/pencil.png" alt="update bonus" /><span>Edit</span>';
 
   constructor(
@@ -144,10 +143,6 @@ export class AddBonusComponent implements OnInit, OnDestroy {
 
   public openForm(): void {
     this.isFormActive = true;
-  }
-
-  public onBonusButtonClick(): void {
-    this.isForm = !this.isForm;
   }
 
   public openEditForm(bonusComponent: BonusComponent): void {
