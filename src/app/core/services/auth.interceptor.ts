@@ -10,9 +10,9 @@ export class AuthInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     request = request.clone({
-      // setParams: {
-      //   auth: this.login.getToken(),
-      // },
+      setParams: {
+        auth: this.login.getToken(),
+      },
       setHeaders: {
         Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiY2EzMTMwZC03MmVhLTQxNzctOTMzNC0xMTJkYzQ5OGFkNzgiLCJleHAiOjE2MTQxNjQ2ODMsImVtYWlsIjoiTWFyaWFAZ21haWwuY29tIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3QiLCJpYXQiOjE2MTQxNjQ2ODMsInJvbGUiOlsiQWRtaW4iXX0.t9VAPtLYfxDodRRX48IedmWgva4ZLToPLdI_ByMA6B8kil_8UctCaiJf2ql4xFEtotL1RgrSy5MeUJd4v0cL5A'
       }
