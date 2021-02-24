@@ -8,7 +8,8 @@ import { BonusDetailComponent } from './bonus-detail/bonus-detail.component';
 import { BonusListContainerComponent } from './bonus-list-container.component';
 import { BonusComponent } from './bonus/bonus.component';
 import { RatingModule } from '../rating/rating.module';
-import { TransitionGroupDirective, TransitionGroupItemDirective } from '../../directives/transition-group.directive';
+import { TransitionGroupDirective } from '../../directives/transition-group.directive';
+import { TransitionGroupItemDirective } from '../../directives/transition-group-item.directive';
 
 @NgModule({
   declarations: [
