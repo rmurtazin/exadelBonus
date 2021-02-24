@@ -24,15 +24,13 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   public getBonuses(): void {
     this.subscription.add(
-      this.historyService.getHistoryBonuses().subscribe(data => {
+      this.historyService.getHistoryBonuses().subscribe((data) => {
         this.bonuses = data;
-      })
-    )
+      }),
+    );
   }
 
   public rateBonus(historyId: string, estimate: number): void {
-    this.subscription.add(
-      this.historyService.rateBonus(historyId, estimate).subscribe()
-    )
+    this.subscription.add(this.historyService.rateBonus(historyId, estimate).subscribe());
   }
 }

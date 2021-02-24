@@ -26,7 +26,7 @@ export class HistoryService {
   }
 
   public getHistoryBonuses(): Observable<IHistoryBonus[]> {
-    return this.apiService.get(this.url).pipe(map(({value})=> value));
+    return this.apiService.get(this.url).pipe(map(({ value }) => value));
   }
 
   public rateBonus(historyId: string, estimate: number): Observable<IHistoryBonus> {
