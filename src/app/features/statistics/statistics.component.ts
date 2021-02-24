@@ -63,7 +63,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
       (data: StatisticElement[]) => {
         if (data) {
           this.statistics = data;
-          this.formatDates();
+          this.formatData();
           this.dataSource = new MatTableDataSource<StatisticElement>(this.statistics);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
@@ -73,11 +73,12 @@ export class StatisticsComponent implements OnInit, OnDestroy {
     );
   }
 
-  public formatDates(): void {
+  public formatData(): void {
     this.statistics.forEach((bonus) => {
       bonus.dateStart = format(new Date(bonus.dateStart), 'yyyy/MM/dd');
       bonus.dateEnd = format(new Date(bonus.dateEnd), 'yyyy/MM/dd');
       bonus.createdDate = format(new Date(bonus.createdDate), 'yyyy/MM/dd');
+      bonus.rating = Number(bonus.rating.toFixed(2));
     });
   }
 
@@ -124,7 +125,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   }
 
   public getVendors(query): void {
-    this.subscriptionVendor = this.vendorsService.getVendors(query).subscribe(
+    this.vendorsService.getVendors(query).subscribe(
       (data: IVendor[]) => {
         if (data) {
           this.vendors = data;
@@ -136,7 +137,6 @@ export class StatisticsComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.subscriptionStatistics.unsubscribe();
-    this.subscriptionVendor.unsubscribe();
   }
 
   public setVendorId(id: string): void {
