@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { map, take, tap, catchError } from 'rxjs/operators';
 import { ILogin, IUser } from '@interfaces/loginInterface';
-import { IJwtPayload } from '@interfaces/jwt.interface';
 import { Router } from '@angular/router';
 import { apiLinks } from './constants';
-import decode from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
@@ -48,9 +46,7 @@ export class LoginService {
         this.currentUser = null;
         return response;
       }),
-      catchError((err) => {
-        return err;
-      }),
+      catchError((err) => throwError(err)),
     );
   }
 
@@ -59,7 +55,7 @@ export class LoginService {
   }
 
   public getRole(): string {
-    if (this.currentUser) {
+    if (this.isAuthorised()) {
       const [role] = this.currentUser.roles;
       return role;
     }
