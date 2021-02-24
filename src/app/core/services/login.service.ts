@@ -22,23 +22,23 @@ export class LoginService {
     private route: Router,
   ) {}
 
-  public getUser(): IUser | null {
-    return this.currentUser;
+  public getUser(): Observable<IUser> {
+    return this.fetchUser();
   }
 
   public getToken(): string | null {
     return localStorage.getItem('token');
   }
 
-  public onLogin(userInput: ILogin): Observable<any> {
+  public onLogin(userInput: ILogin) {
     const body = {
       email: userInput.userLogin,
       password: userInput.userPassword
     };
     return this.http.post(this.loginUrl, body).pipe(
       tap((response: any) => {
-        localStorage.setItem('token', response.value.value);
-        this.setUser();
+        localStorage.setItem('token', response.value);
+        this.fetchUser();
         return response;
       }),
       catchError(err => throwError(err))
@@ -46,7 +46,6 @@ export class LoginService {
   }
 
   public logout(): Observable<any> {
-    console.log(this.logoutUrl);
     return this.http.post(this.logoutUrl, {}).pipe(
       tap((response) => {
         localStorage.removeItem('token');
@@ -60,20 +59,20 @@ export class LoginService {
   }
 
   public getRole(): string {
-    const tokenData: IJwtPayload = decode(localStorage.getItem('token'));
-    const [role] = tokenData?.role;
-    return role.toLowerCase();
+    if (this.currentUser){
+      const [role] = this.currentUser.roles;
+      return role;
+    }
   }
 
-  public setUser(): void {
-    this.http.get(this.getInfoUrl)
+  public fetchUser(): Observable<IUser> {
+    return this.http.get(this.getInfoUrl)
     .pipe(
       take(1),
-      map((response: any) => {
-        return response?.value?.value;
+      map((response: {value: IUser}) => {
+        this.currentUser = response.value;
+        return this.currentUser;
       })
-    ).subscribe((user: IUser) => {
-      this.currentUser = user;
-    });
+    );
   }
 }

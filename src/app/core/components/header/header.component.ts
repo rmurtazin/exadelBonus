@@ -30,7 +30,10 @@ export class HeaderComponent implements OnInit {
       });
   }
   ngOnInit(): void {
-    this.user = this.loginService.getUser();
+    this.loginService.getUser().subscribe(user => {
+      console.log(user);
+      this.user = user;
+    });
     this.translate.use(this.language);
   }
   public toggleMenu(): void {

@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public onSubmit(): void {
     this.loginingProgres = true;
     this.subscription.add(
-      this.loginService.onLogin(this.myForm.value).subscribe(() => {
+      this.loginService.onLogin(this.myForm.value).subscribe((result) => {
         this.router.navigateByUrl('/home');
         this.loginingProgres = false;
       },
