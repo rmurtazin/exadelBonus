@@ -15,6 +15,9 @@ import { VendorsService } from '@services/vendors.service';
 describe('AddBonusComponent', () => {
   let component: AddBonusComponent;
   let fixture: ComponentFixture<AddBonusComponent>;
+  const bonusAddressService = 'bonusAddressService';
+  const bonusesService = 'bonusesService';
+  const vendorsService = 'vendorsService';
 
   const myForm = {
     value: {
@@ -105,7 +108,7 @@ describe('AddBonusComponent', () => {
   });
 
   it('should call bonusAddressService', () => {
-    const spy = spyOn(component['bonusAddressService'], 'getSearchedAddress').and.callFake(
+    const spy = spyOn(component[bonusAddressService], 'getSearchedAddress').and.callFake(
       () => EMPTY,
     );
     component.onAddAddress(myForm);
@@ -113,51 +116,49 @@ describe('AddBonusComponent', () => {
   });
 
   it('should update locations length after get method', () => {
-    spyOn(component['bonusAddressService'], 'getSearchedAddress').and.callFake(() =>
-      of(dataAddress),
-    );
+    spyOn(component[bonusAddressService], 'getSearchedAddress').and.callFake(() => of(dataAddress));
     component.onAddAddress(myForm);
     expect(component.locations.length).toBe(dataAddress.length);
   });
 
   it('should call method addBonus from bonusesService', () => {
-    const spy = spyOn(component['bonusesService'], 'addBonus').and.callFake(() => EMPTY);
+    const spy = spyOn(component[bonusesService], 'addBonus').and.callFake(() => EMPTY);
     component.bonusFormConfig.createBonus(bonus);
     expect(spy).toHaveBeenCalled();
   });
 
   it('should call method getBonus from bonusesService', () => {
-    const spy = spyOn(component['bonusesService'], 'getBonuses').and.callFake(() => EMPTY);
+    const spy = spyOn(component[bonusesService], 'getBonuses').and.callFake(() => EMPTY);
     component.ngOnInit();
     expect(spy).toHaveBeenCalled();
   });
 
   it('should update bonuses length after get method', () => {
-    spyOn(component['bonusesService'], 'getBonuses').and.callFake(() => of(bonuses));
+    spyOn(component[bonusesService], 'getBonuses').and.callFake(() => of(bonuses));
     component.ngOnInit();
     expect(component.bonuses.length).toBe(bonuses.length);
   });
 
   it('should call method getVendors from vendorsService', () => {
-    const spy = spyOn(component['vendorsService'], 'getVendors').and.callFake(() => EMPTY);
+    const spy = spyOn(component[vendorsService], 'getVendors').and.callFake(() => EMPTY);
     component.getVendors('query');
     expect(spy).toHaveBeenCalled();
   });
 
   it('should update vendors length after get method', () => {
-    spyOn(component['vendorsService'], 'getVendors').and.callFake(() => of(vendors));
+    spyOn(component[vendorsService], 'getVendors').and.callFake(() => of(vendors));
     component.getVendors('query');
     expect(component.vendors.length).toBe(vendors.length);
   });
 
   it('should call method createVendor from vendorsService', () => {
-    const spy = spyOn(component['vendorsService'], 'createVendor').and.callFake(() => EMPTY);
+    const spy = spyOn(component[vendorsService], 'createVendor').and.callFake(() => EMPTY);
     component.createVendor(newVendor);
     expect(spy).toHaveBeenCalled();
   });
 
   it('should update newVendor after post method for create', () => {
-    spyOn(component['vendorsService'], 'createVendor').and.callFake(() => of(vendors[0]));
+    spyOn(component[vendorsService], 'createVendor').and.callFake(() => of(vendors[0]));
     component.createVendor(newVendor);
     expect(component.newVendor).toEqual(vendors[0]);
   });

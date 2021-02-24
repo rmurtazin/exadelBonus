@@ -44,9 +44,12 @@ export class HeaderComponent implements OnInit {
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
   }
+
   public checkRoute(): boolean {
-    const checkRoutes: string[] = ['/home', '/bonuses', '/history', '/statistics'];
-    return checkRoutes.includes(this.currentRoute);
+    const checkRoutes: (string|RegExp)[] = [/home$/, /history$/, /statistics$/, /\/bonuses\/[^/]+$/, /bonuses$/];
+    return checkRoutes.some((item) => {
+      return this.currentRoute.match(item) !== null;
+    });
   }
 
   public logout(): void {
