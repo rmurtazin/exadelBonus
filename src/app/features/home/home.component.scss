@@ -88,3 +88,18 @@ h2 {
     height: auto;
   }
 }
+
+@media (max-device-width: 1150px), (max-width: 1150px) {
+  .home {
+    height: auto;
+    flex-direction: column-reverse;
+  }
+
+  .right {
+    height: 500px;
+  }
+
+  .left {
+    width: 100%;
+  }
+}
