@@ -16,11 +16,7 @@ export class LoginService {
   private logoutUrl = apiLinks.account.logout;
   private getInfoUrl = apiLinks.account.getInfo;
 
-
-  constructor(
-    private http: HttpClient,
-    private route: Router,
-  ) {}
+  constructor(private http: HttpClient, private route: Router) {}
 
   public getUser(): Observable<IUser> {
     return this.fetchUser();
@@ -33,7 +29,7 @@ export class LoginService {
   public onLogin(userInput: ILogin) {
     const body = {
       email: userInput.userLogin,
-      password: userInput.userPassword
+      password: userInput.userPassword,
     };
     return this.http.post(this.loginUrl, body).pipe(
       tap((response: any) => {
@@ -41,7 +37,7 @@ export class LoginService {
         this.fetchUser();
         return response;
       }),
-      catchError(err => throwError(err))
+      catchError((err) => throwError(err)),
     );
   }
 
@@ -50,34 +46,32 @@ export class LoginService {
       tap((response) => {
         localStorage.removeItem('token');
         this.currentUser = null;
-        console.log(response);
         return response;
       }),
       catchError((err) => {
         return err;
-      })
+      }),
     );
   }
 
-  public isAuthorised(): boolean{
+  public isAuthorised(): boolean {
     return !!this.currentUser;
   }
 
   public getRole(): string {
-    if (this.currentUser){
+    if (this.currentUser) {
       const [role] = this.currentUser.roles;
       return role;
     }
   }
 
   public fetchUser(): Observable<IUser> {
-    return this.http.get(this.getInfoUrl)
-    .pipe(
+    return this.http.get(this.getInfoUrl).pipe(
       take(1),
-      map((response: {value: IUser}) => {
+      map((response: { value: IUser }) => {
         this.currentUser = response.value;
         return this.currentUser;
-      })
+      }),
     );
   }
 }

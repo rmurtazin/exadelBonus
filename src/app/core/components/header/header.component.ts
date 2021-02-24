@@ -35,8 +35,8 @@ export class HeaderComponent implements OnInit {
   }
 
   private getUser(): void {
-    if (this.loginService.isAuthorised()){
-      this.loginService.getUser().subscribe(user => {
+    if (this.loginService.isAuthorised()) {
+      this.loginService.getUser().subscribe((user) => {
         this.user = user;
       });
     }

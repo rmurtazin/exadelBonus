@@ -24,7 +24,7 @@ export class ChoosePlaceDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ChoosePlaceDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: LatLng,
     private officeService: OfficesService,
-    private mapEventsService: MapEventsService
+    private mapEventsService: MapEventsService,
   ) {}
 
   public ngOnInit(): void {

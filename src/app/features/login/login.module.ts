@@ -11,7 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HttpClientModule,
     RouterModule.forChild([{ path: '', component: LoginComponent }]),
     SharedModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   exports: [LoginComponent, RouterModule],
 })

@@ -31,7 +31,6 @@ export class ToasterService {
 
   public showCustomNotification(key: string, properties: object): Subscription {
     return this.translate.get(key).subscribe((translatedToastrInfo: ITranslatedToastrInfo) => {
-      console.log(translatedToastrInfo);
       this.showCustomAlert(translatedToastrInfo.message, translatedToastrInfo.title, properties);
     });
   }

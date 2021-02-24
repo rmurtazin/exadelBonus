@@ -113,7 +113,9 @@ describe('AddBonusComponent', () => {
   });
 
   it('should update locations length after get method', () => {
-    spyOn(component['bonusAddressService'], 'getSearchedAddress').and.callFake(() => of(dataAddress));
+    spyOn(component['bonusAddressService'], 'getSearchedAddress').and.callFake(() =>
+      of(dataAddress),
+    );
     component.onAddAddress(myForm);
     expect(component.locations.length).toBe(dataAddress.length);
   });

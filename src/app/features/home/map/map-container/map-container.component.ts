@@ -47,7 +47,7 @@ export class MapComponent implements OnDestroy {
     this.getMarkersSubscription();
     this.officeMarkerClickObserver();
     this.applyFilterSubscription();
-    this.applyFilterSubscription()
+    this.applyFilterSubscription();
   }
 
   public onMapZoom(): void {
@@ -99,7 +99,7 @@ export class MapComponent implements OnDestroy {
     this.subscription.add(
       this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
         this.displayBonusesMarkers(bonuses);
-      })
+      }),
     );
   }
 
@@ -116,7 +116,7 @@ export class MapComponent implements OnDestroy {
 
   private navigateToMarker(markers: Marker[]): void {
     if (!this.queryLatitude && !this.queryLongitude) {
-      if(markers.length >= 1){
+      if (markers.length >= 1) {
         const location = markers[0].getLatLng();
         this.setMapView(location, false);
         markers[0].openPopup();
