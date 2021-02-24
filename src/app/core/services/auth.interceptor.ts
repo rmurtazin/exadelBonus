@@ -14,7 +14,7 @@ export class AuthInterceptor {
       //   auth: this.login.getToken(),
       // },
       setHeaders: {
-        Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiY2EzMTMwZC03MmVhLTQxNzctOTMzNC0xMTJkYzQ5OGFkNzgiLCJleHAiOjE2MTQxNjQzMDgsImVtYWlsIjoiTWFyaWFAZ21haWwuY29tIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3QiLCJpYXQiOjE2MTQxNjQzMDgsInJvbGUiOlsiQWRtaW4iXX0.13LNKv29clWinEHHEkcE90S0XjnbdlppYd4cEKJpnePldXdLMyTU3URiclFNabouNo0MfwNgDTKsgBS5DGACAw'
+        Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiY2EzMTMwZC03MmVhLTQxNzctOTMzNC0xMTJkYzQ5OGFkNzgiLCJleHAiOjE2MTQxNjQ0MzksImVtYWlsIjoiTWFyaWFAZ21haWwuY29tIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3QiLCJpYXQiOjE2MTQxNjQ0MzksInJvbGUiOlsiQWRtaW4iXX0.dPv3yFh2hsMBr4UjaFKP6zZCe6skGy6quD1UMciNcrrsSMDx0Nc1m65X42dX_ledpUDcnk_AJxND98DcQJxFMA'
       }
     });
     return next.handle(request);
