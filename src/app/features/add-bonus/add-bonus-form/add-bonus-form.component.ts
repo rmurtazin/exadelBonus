@@ -43,6 +43,7 @@ export class AddBonusFormComponent implements OnInit {
   public addOnBlur = true;
   public bonus: IBonus;
   public newBonus = true;
+  public vendorNameToChange = '';
 
   constructor(private bonusesService: BonusesService) {}
 
@@ -73,20 +74,24 @@ export class AddBonusFormComponent implements OnInit {
   }
 
   public fillPage(bonus: IBonus): void {
-    // TODO: fill all values
     this.myForm.patchValue({
-      vendorInfo: {
-        vendorName: bonus.company.name,
-        vendorEmail: bonus.company.email,
-      },
       bonusType: bonus.type,
       bonusDescription: bonus.description,
-      bonusTags: bonus.tags,
       bonusTitle: bonus.title,
       phone: bonus.phone,
       start: bonus.dateStart,
       end: bonus.dateEnd,
+      bonusAddress: ' ',
+      bonusTags: ' ',
     });
+    this.vendorEmailVisible = true;
+    this.vendorInfo.get('name').setValue(bonus.company.name);
+    this.vendorInfo.get('email').setValue(bonus.company.email);
+    this.vendorNameToChange = bonus.company.name;
+    bonus.tags.forEach((tag) => {
+      this.bonusTags.push({ name: tag });
+    });
+    this.locations = bonus.locations;
   }
 
   public onVendorNameChange(vendorName: any): void {

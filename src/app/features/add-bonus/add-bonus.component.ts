@@ -30,7 +30,8 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public isFormActive = false;
   public bonusFormConfig: IBonusFormConfig;
   public bonusId: string;
-  public bonusButtonLabel = '<img class="update-img" src="assets/images/pencil.png" alt="update bonus" /><span>Edit</span>';
+  public bonusButtonLabel =
+    '<img class="update-img" src="assets/images/pencil.png" alt="update bonus" /><span>Edit</span>';
 
   constructor(
     private bonusAddressService: BonusAddressService,
