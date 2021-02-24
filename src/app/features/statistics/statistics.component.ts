@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { format } from 'date-fns';
+import {DatepickerComponent} from '../../shared/components/datepicker/datepicker.component';
 
 @Component({
   selector: 'app-statistics',
@@ -47,6 +48,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator) public paginator: MatPaginator;
   @ViewChild(MatSort) public sort: MatSort;
+  @ViewChild(DatepickerComponent) private datepicker: DatepickerComponent;
 
   constructor(
     private statisticsService: StatisticsService,
@@ -111,9 +113,9 @@ export class StatisticsComponent implements OnInit, OnDestroy {
       isActive: true,
       start: this.dateStart ?? '',
       end: this.dateEnd ?? '',
-    };
+  };
+    this.datepicker.range.reset();
     this.queryParams = '';
-
     this.getStatistics();
   }
 
