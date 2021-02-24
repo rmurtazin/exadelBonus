@@ -27,6 +27,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0 20px 20px 0;
 }
 
 .bonus-list {
@@ -86,6 +87,10 @@ h2 {
   .left {
     margin: 0;
     height: auto;
+    width: 100% !important;
+  }
+  .pick-container {
+    width: 100vw !important;
   }
 }
 
@@ -96,7 +101,7 @@ h2 {
   }
 
   .right {
-    height: 500px;
+    height: 50vh;
   }
 
   .left {

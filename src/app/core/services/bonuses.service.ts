@@ -9,7 +9,6 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { apiLinks } from './constants';
 import * as bonuses from 'src/assets/static/bonuses.json';
 import { delay } from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class BonusesService {
