@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { IBonus } from '@interfaces/bonus.interface';
 import { IHistoryBonus } from '@interfaces/history.interface';
 import { HistoryService } from '@services/history.service';
 import { Subscription } from 'rxjs';
@@ -10,7 +11,9 @@ import { Subscription } from 'rxjs';
 })
 export class HistoryComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
-  public bonuses: IHistoryBonus[] = [];
+  public historyBonuses: IHistoryBonus[] = [];
+  public bonuses: IBonus[] = [];
+  public bonusButtonLabel = 'Rate';
 
   constructor(private historyService: HistoryService) {}
 
@@ -25,7 +28,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public getBonuses(): void {
     this.subscription.add(
       this.historyService.getHistoryBonuses().subscribe((data) => {
-        this.bonuses = data;
+        this.historyBonuses = data;
+        this.bonuses = data.map(item=>item.bonus);
       }),
     );
   }
@@ -33,4 +37,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public rateBonus(historyId: string, estimate: number): void {
     this.subscription.add(this.historyService.rateBonus(historyId, estimate).subscribe());
   }
+
+  public openRateBonusForm(event): void {}
 }

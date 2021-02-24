@@ -12,7 +12,7 @@ import { IBonus } from '@interfaces/bonus.interface';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnDestroy{
+export class HomeComponent implements OnDestroy {
   public subscription: Subscription = new Subscription();
   public bonusButtonLabel = 'Apply';
 

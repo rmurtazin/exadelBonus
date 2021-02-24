@@ -106,7 +106,7 @@
       }
     },
     "confirm": {
-    "question": "Are you sure you want to apply?",
+    "question": "Do you want to apply?",
     "yes": "Yes",
     "no": "No"}
   },

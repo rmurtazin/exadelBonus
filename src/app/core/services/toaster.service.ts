@@ -60,5 +60,4 @@ export class ToasterService {
   ): void {
     this.toastr.show(message, title, customProperties);
   }
-
 }

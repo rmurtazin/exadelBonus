@@ -1,1 +1,8 @@
-<p>history works!</p>
+<div>
+  <app-bonus-list-view
+    [bonuses]="bonuses"
+    [bonusButtonLabel]="bonusButtonLabel"
+    (bonusButtonClickedEvent)="openRateBonusForm($event)"
+    class="bonus-list"
+  ></app-bonus-list-view>
+</div>
