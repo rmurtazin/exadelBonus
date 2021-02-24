@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { Observable, Subject} from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { of } from 'rxjs';
 import { ApiService } from '@services/api.service';
 import { INewBonus } from '@interfaces/add-bonus.interface';
@@ -62,7 +62,6 @@ export class BonusesService {
   }
 
   public rate(id: string, rating: number): Observable<any> {
-    // return this.api.post(`${this.url}/${id}/rate`, {rating});
     return of(bonuses[1]).pipe(delay(1000));
   }
 
