@@ -50,12 +50,17 @@ export class LoginService {
       tap((response) => {
         localStorage.removeItem('token');
         this.currentUser = null;
+        console.log(response);
         return response;
       }),
       catchError((err) => {
         return err;
       })
     );
+  }
+
+  public isAuthorised(): boolean{
+    return !!this.currentUser;
   }
 
   public getRole(): string {

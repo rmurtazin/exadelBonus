@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { LoginService } from '../../core/services/login.service';
 import { Router } from '@angular/router';
+import { ToasterService } from '@services/toaster.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   public serverError = false;
   public loginingProgres = false;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private toastr: ToasterService) {}
 
   ngOnInit(): void {
     this.onInitForm();
@@ -49,7 +53,15 @@ export class LoginComponent implements OnInit, OnDestroy {
       },
       (error) => {
         if (error.status === 400){
-          this.invalidDataError = true;
+          this.toastr.showCustomNotification(
+            'loginErrors.invalidData',
+            {
+              positionClass: 'toast-bottom-center',
+              toastClass: 'toast-login-error',
+              titleClass: 'toast-login-error-title',
+              messageClass: 'toast-login-error-message',
+            }
+          );
         }
         if (error.status === 500){
           this.serverError = true;

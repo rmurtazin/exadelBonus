@@ -147,7 +147,13 @@
     }
   },
   "loginErrors": {
-    "invalidData": "Invalide login or password",
-    "serverError": "Something went wrong"
+    "invalidData": {
+      "title": "Login error",
+      "message" : "Invalide login or password"
+    },
+    "serverError": {
+      "title": "Login error",
+      "message" : "Something went wrong"
+    }
   }
 }

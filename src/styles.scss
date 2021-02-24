@@ -28,3 +28,24 @@ body {
   padding: 20px 0;
   margin-bottom: 80px;
 }
+
+.toast-login-error {
+  left: 50%;
+  width: 300px;
+  margin: 0 auto 10px;
+  padding: 30px;
+  background-color: white;
+  background-image: url(./assets/images/warning.jpg);
+  background-size: 100px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  border: solid 2px #0082ca;
+}
+
+.toast-login-error-title {
+  padding: 10px 0 5px;
+}
+.toast-login-error-message {
+  padding: 20px 0;
+  margin-bottom: 80px;
+}
