@@ -84,3 +84,13 @@
     border-color: white;
   }
 }
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rate-form-button {
+  width: 45%;
+  font-size: 18px;
+}

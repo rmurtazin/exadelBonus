@@ -43,7 +43,7 @@ export class BonusesService {
     );
   }
 
-  public removeBonus(id: number): Observable<void> {
+  public removeBonus(id: string): Observable<void> {
     return this.api.delete(`${this.bonusUrl}/${id}`);
   }
 

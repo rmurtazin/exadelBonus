@@ -4,7 +4,7 @@
     <p class="bonus-description">{{ bonus?.description }}</p>
   </div>
   <div class="bonus-content">
-    <app-rate [isForm]="isForm" (ratingWasSubmitted)="closeRateForm()" [bonus]="bonus">
+    <app-rate [isForm]="isForm" (backToBonusEvent)="closeRateForm()" [bonus]="bonus">
       <img class="discount-icon" src="assets/icons/discount-icon.svg" alt="discount" />
       <span class="discount-value">{{ bonus?.title }}</span>
     </app-rate>
@@ -17,7 +17,7 @@
       </div>
       <div class="button-container">
         <button mat-flat-button color="primary" class="apply-button" (click)="bonusButtonClick()">
-          <span [innerHTML]="bonusButtonLabel"></span>
+          <span [innerHTML]="bonusButtonLabel" class="bonus-button-content"></span>
         </button>
       </div>
     </div>

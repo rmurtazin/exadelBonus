@@ -13,6 +13,7 @@ import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
 import { VendorsService } from '@services/vendors.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import { BonusComponent } from 'src/app/shared/components/bonus-list-container/bonus/bonus.component';
 
 @Component({
@@ -29,13 +30,14 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public isFormActive = false;
   public bonusFormConfig: IBonusFormConfig;
   public bonusId: string;
-  public bonusButtonLabel = 'Apply';
+  public bonusButtonLabel = '<img class="update-img" src="assets/images/pencil.png" alt="update bonus" /><span>Edit</span>';
 
   constructor(
-    public bonusAddressService: BonusAddressService,
-    public vendorsService: VendorsService,
-    public bonusesService: BonusesService,
+    private bonusAddressService: BonusAddressService,
+    private vendorsService: VendorsService,
+    private bonusesService: BonusesService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   public ngOnInit(): void {
@@ -143,5 +145,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.isFormActive = true;
   }
 
-  public openApplyForm(bonus: BonusComponent): void {}
+  public openEditForm(bonusComponent: BonusComponent): void {
+    this.router.navigate([`/bonuses/${bonusComponent.bonus.id}`]).then();
+  }
 }
