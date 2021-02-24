@@ -14,7 +14,7 @@ export class AuthInterceptor {
       //   auth: this.login.getToken(),
       // },
       setHeaders: {
-        Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiY2EzMTMwZC03MmVhLTQxNzctOTMzNC0xMTJkYzQ5OGFkNzgiLCJleHAiOjE2MTQxNTU2MjcsImVtYWlsIjoiTWFyaWFAZ21haWwuY29tIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3QiLCJpYXQiOjE2MTQxNTU2MjcsInJvbGUiOlsiQWRtaW4iXX0.s-mcRMrsYtCBPISh_Su2riNBzhK1dEUbn7CHFdTvC4eSvd7d7kEUfCHossNgB4hV2bFIn_XuvAj-4cdSfDmlnA'
+        Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiY2EzMTMwZC03MmVhLTQxNzctOTMzNC0xMTJkYzQ5OGFkNzgiLCJleHAiOjE2MTQxNjQzMDgsImVtYWlsIjoiTWFyaWFAZ21haWwuY29tIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3QiLCJpYXQiOjE2MTQxNjQzMDgsInJvbGUiOlsiQWRtaW4iXX0.13LNKv29clWinEHHEkcE90S0XjnbdlppYd4cEKJpnePldXdLMyTU3URiclFNabouNo0MfwNgDTKsgBS5DGACAw'
       }
     });
     return next.handle(request);
