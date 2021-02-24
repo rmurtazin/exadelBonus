@@ -13,7 +13,7 @@ export class BonusListViewComponent {
   @Input() bonusButtonLabel: string;
 
   @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
-
+ 
   constructor() {}
 
   public trackById(index: string, item: IBonus): string {

@@ -1,3 +1,4 @@
+<div appTransitionGroup="'flip-list'">
   <div *ngFor="let bonus of bonuses; trackBy: trackById" class="bonus-container" appTransitionGroupItem>
     <app-bonus
       [bonus]="bonus"
@@ -5,3 +6,4 @@
       (bonusButtonClickedEvent)="bonusButtonClicked($event)"
     ></app-bonus>
   </div>
+</div>
