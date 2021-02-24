@@ -1,4 +1,3 @@
-import { IBonusFormConfig } from './../../../../core/interfaces/add-bonus.interface';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusComponent } from '../bonus/bonus.component';

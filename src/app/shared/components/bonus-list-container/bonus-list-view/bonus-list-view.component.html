@@ -1,7 +1,7 @@
-<div *ngFor="let bonus of bonuses; trackBy: trackById" class="bonus-container">
-  <app-bonus
-    [bonus]="bonus"
-    [bonusButtonLabel]="bonusButtonLabel"
-    (bonusButtonClickedEvent)="bonusButtonClicked($event)"
-  ></app-bonus>
-</div>
+  <div *ngFor="let bonus of bonuses; trackBy: trackById" class="bonus-container" appTransitionGroupItem>
+    <app-bonus
+      [bonus]="bonus"
+      [bonusButtonLabel]="bonusButtonLabel"
+      (bonusButtonClickedEvent)="bonusButtonClicked($event)"
+    ></app-bonus>
+  </div>

@@ -3,27 +3,3 @@
     width: 100%;
   }
 }
-
-.bonus-container:first-child{
-  z-index: 300;
-  animation: show 20s linear 1;
-  animation-fill-mode: forwards;
-  
-  
-}
-@keyframes show{
-  0% {
-    position: absolute;
-    top: 50vh;
-    left: 50vw;
-  }
-  90%{
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  100%{
-    position: relative;
-
-  }
-}

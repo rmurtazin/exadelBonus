@@ -8,6 +8,10 @@ import { BonusDetailComponent } from './bonus-detail/bonus-detail.component';
 import { BonusListContainerComponent } from './bonus-list-container.component';
 import { BonusComponent } from './bonus/bonus.component';
 import { RatingModule } from '../rating/rating.module';
+import {
+  TransitionGroupComponent,
+  TransitionGroupItemDirective
+} from '../../directives/transition-group.directive';
 
 @NgModule({
   declarations: [
@@ -15,6 +19,8 @@ import { RatingModule } from '../rating/rating.module';
     BonusDetailComponent,
     BonusListViewComponent,
     BonusComponent,
+    TransitionGroupComponent,
+    TransitionGroupItemDirective,
   ],
   imports: [MatCardModule, MatExpansionModule, RouterModule, SharedModule, RatingModule],
   exports: [BonusListContainerComponent, RouterModule, BonusListViewComponent],
