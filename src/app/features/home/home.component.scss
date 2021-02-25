@@ -27,6 +27,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0 20px 20px 0;
 }
 
 .bonus-list {
@@ -35,6 +36,7 @@
   scroll-behavior: smooth;
   &::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
     opacity: 0;
   }
   &::-webkit-scrollbar-thumb {
@@ -71,4 +73,38 @@ h2 {
 .pick-container {
   width: 100%;
   min-height: 270px;
+}
+
+@media (max-width: 540px), (max-device-width: 540px) {
+  .home {
+    height: auto;
+  }
+  .bonus-list {
+    display: block;
+    height: auto;
+    width: 100vw;
+  }
+  .left {
+    margin: 0;
+    height: auto;
+    width: 100% !important;
+  }
+  .pick-container {
+    width: 100vw !important;
+  }
+}
+
+@media (max-device-width: 1150px), (max-width: 1150px) {
+  .home {
+    height: auto;
+    flex-direction: column-reverse;
+  }
+
+  .right {
+    height: 50vh;
+  }
+
+  .left {
+    width: 100%;
+  }
 }
