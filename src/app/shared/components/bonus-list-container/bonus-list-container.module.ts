@@ -17,10 +17,6 @@ import { RatingModule } from '../rating/rating.module';
     BonusComponent,
   ],
   imports: [MatCardModule, MatExpansionModule, RouterModule, SharedModule, RatingModule],
-  exports: [
-    BonusListContainerComponent,
-    RouterModule,
-    BonusListViewComponent,
-  ],
+  exports: [BonusListContainerComponent, RouterModule, BonusListViewComponent],
 })
 export class BonusListContainerModule {}

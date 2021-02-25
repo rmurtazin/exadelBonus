@@ -28,10 +28,7 @@ export class BonusComponent implements OnInit, OnChanges {
   public isModeratorOrAdmin = false;
   public user: IUser;
 
-  constructor(
-    private loginService: LoginService,
-    private elementRef: ElementRef
-  ) {}
+  constructor(private loginService: LoginService, private elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();
@@ -54,12 +51,11 @@ export class BonusComponent implements OnInit, OnChanges {
 
   public scrollToBonusMap(): void {
     if (this.ifBonusFromMap) {
-      console.log('h123');
       this.elementRef.nativeElement.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
         inline: 'start',
       });
-    } 
+    }
   }
 }
