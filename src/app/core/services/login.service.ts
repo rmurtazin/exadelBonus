@@ -1,43 +1,76 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { ILogin, IUser } from '../interfaces/loginInterface';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, Subject, throwError } from 'rxjs';
+import { map, take, tap, catchError } from 'rxjs/operators';
+import { ILogin, IUser } from '@interfaces/loginInterface';
 import { Router } from '@angular/router';
+import { apiLinks } from './constants';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  private currentUser: IUser = JSON.parse(localStorage.getItem('user'));
+  public error$ = new Subject<boolean>();
+  private currentUser: IUser;
+  private loginUrl = apiLinks.account.login;
+  private logoutUrl = apiLinks.account.logout;
+  private getInfoUrl = apiLinks.account.getInfo;
 
   constructor(private http: HttpClient, private route: Router) {}
 
-  public getUser(): IUser | null {
-    return this.currentUser;
+  public getUser(): Observable<IUser> {
+    return this.fetchUser();
   }
 
   public getToken(): string | null {
     return localStorage.getItem('token');
   }
 
-  public onLogin(userInput: ILogin): Observable<any> {
-    // here will be function like this.http.post('authApiUrl', userInput)...
-    return this.http.get('../../../assets/static/currentUser.json').pipe(
-      tap((user) => {
-        this.currentUser = user;
-        localStorage.setItem('token', this.currentUser.token);
-        return user;
+  public onLogin(userInput: ILogin) {
+    const body = {
+      email: userInput.userLogin,
+      password: userInput.userPassword,
+    };
+    return this.http.post(this.loginUrl, body).pipe(
+      tap((response: any) => {
+        localStorage.setItem('token', response.value);
+        this.fetchUser();
+        return response;
       }),
+      catchError((err) => throwError(err)),
     );
   }
 
-  public logout(): void {
-    localStorage.clear();
-    this.route.navigate(['login']);
+  public logout(): Observable<any> {
+    return this.http.post(this.logoutUrl, {}).pipe(
+      tap((response) => {
+        localStorage.removeItem('token');
+        this.currentUser = null;
+        return response;
+      }),
+      catchError((err) => throwError(err)),
+    );
   }
 
   public getRole(): string {
-    // TODO: rewrite after integration with back
-    // return this.getUser().role;
-    return 'admin';
+    if (this.currentUser) {
+      const [role] = this.currentUser.roles;
+      return role;
+    }
+  }
+
+  public fetchUser(): Observable<IUser> {
+    return this.http.get(this.getInfoUrl).pipe(
+      take(1),
+      map((response: { value: IUser }) => {
+        this.currentUser = response.value;
+        return this.currentUser;
+      }),
+      catchError((err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.logout();
+          this.route.navigate(['login']);
+        }
+        return throwError(err);
+      }),
+    );
   }
 }

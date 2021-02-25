@@ -153,5 +153,15 @@
         "message": "There are no bonuses for these filters yet"
       }
     }
+  },
+  "loginErrors": {
+    "invalidData": {
+      "title": "Login error",
+      "message" : "Invalide login or password"
+    },
+    "serverError": {
+      "title": "Login error",
+      "message" : "Something went wrong"
+    }
   }
 }
