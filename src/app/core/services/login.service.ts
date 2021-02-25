@@ -5,6 +5,8 @@ import { map, take, tap, catchError } from 'rxjs/operators';
 import { ILogin, IUser } from '@interfaces/loginInterface';
 import { Router } from '@angular/router';
 import { apiLinks } from './constants';
+import jwt_decode from 'jwt-decode';
+import { IJwtDecoded } from '@interfaces/jwt-decodet.interface';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
@@ -22,6 +24,13 @@ export class LoginService {
 
   public getToken(): string | null {
     return localStorage.getItem('token');
+  }
+
+  public getRole(): string {
+    const token = this.getToken();
+    const jwtDecoded: IJwtDecoded = jwt_decode(token);
+    const [role] =  jwtDecoded.role;
+    return role;
   }
 
   public onLogin(userInput: ILogin) {
@@ -48,13 +57,6 @@ export class LoginService {
       }),
       catchError((err) => throwError(err)),
     );
-  }
-
-  public getRole(): string {
-    if (this.currentUser) {
-      const [role] = this.currentUser.roles;
-      return role;
-    }
   }
 
   public fetchUser(): Observable<IUser> {
