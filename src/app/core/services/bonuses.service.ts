@@ -73,8 +73,4 @@ export class BonusesService {
   public getBonusesTags(): Observable<string[]> {
     return this.api.get(this.tagsUrl).pipe(map((res) => res?.value));
   }
-
-  public ifBonusMapClick(): Observable<boolean> {
-    return of(this.ifBonusMap).pipe();
-  }
 }
