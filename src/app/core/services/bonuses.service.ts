@@ -16,6 +16,7 @@ export class BonusesService {
   private bonusUrl = apiLinks.bonus;
   private citiesUrl = apiLinks.cities;
   private tagsUrl = apiLinks.tags;
+  public ifBonusMap: boolean = false;
 
   constructor(private api: ApiService, private toasterService: ToasterService) {}
 
@@ -72,5 +73,9 @@ export class BonusesService {
 
   public getBonusesTags(): Observable<string[]> {
     return this.api.get(this.tagsUrl).pipe(map((res) => res?.value));
+  }
+
+  public ifBonusMapClick(): Observable<boolean> {
+    return of(this.ifBonusMap).pipe();
   }
 }

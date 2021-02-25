@@ -21,10 +21,10 @@ import { animate, AUTO_STYLE, style, transition, trigger } from '@angular/animat
   ],
 })
 export class BonusListViewComponent {
-  @Input() ifBonusMap: boolean;
   @Input() bonuses: IBonus[];
   @Input() bonusButtonLabel: string;
-
+  @Input() ifBonusMap: boolean;
+  
   @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
 
   constructor() {}

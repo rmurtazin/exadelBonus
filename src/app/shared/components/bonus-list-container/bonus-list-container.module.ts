@@ -8,7 +8,6 @@ import { BonusDetailComponent } from './bonus-detail/bonus-detail.component';
 import { BonusListContainerComponent } from './bonus-list-container.component';
 import { BonusComponent } from './bonus/bonus.component';
 import { RatingModule } from '../rating/rating.module';
-import { ScrollToFirstDirective } from '../../directives/scroll-to-first.directive';
 
 @NgModule({
   declarations: [
@@ -16,14 +15,12 @@ import { ScrollToFirstDirective } from '../../directives/scroll-to-first.directi
     BonusDetailComponent,
     BonusListViewComponent,
     BonusComponent,
-    ScrollToFirstDirective,
   ],
   imports: [MatCardModule, MatExpansionModule, RouterModule, SharedModule, RatingModule],
   exports: [
     BonusListContainerComponent,
     RouterModule,
     BonusListViewComponent,
-    ScrollToFirstDirective,
   ],
 })
 export class BonusListContainerModule {}

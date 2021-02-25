@@ -33,7 +33,6 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
     public bonusesService: BonusesService,
     public mapEventsService: MapEventsService,
     public toasterService: ToasterService,
-    private renderer: Renderer2,
   ) {}
 
   public ngOnInit(): void {
