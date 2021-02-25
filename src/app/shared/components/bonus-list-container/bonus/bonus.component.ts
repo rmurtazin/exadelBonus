@@ -25,7 +25,7 @@ export class BonusComponent implements OnInit {
   public isModeratorOrAdmin = false;
   public user: IUser;
 
-  constructor(private loginService: LoginService ) {}
+  constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();
