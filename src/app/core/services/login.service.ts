@@ -29,7 +29,7 @@ export class LoginService {
   public getRole(): string {
     const token = this.getToken();
     const jwtDecoded: IJwtDecoded = jwt_decode(token);
-    const [role] =  jwtDecoded.role;
+    const [role] = jwtDecoded.role;
     return role;
   }
 
