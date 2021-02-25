@@ -33,6 +33,7 @@ describe('BonusSearcherComponent', () => {
       vendorNameChange: () => EMPTY,
       createNewVendor: () => EMPTY,
       createBonus: () => EMPTY,
+      updateBonus: () => EMPTY,
       removeVendors: () => EMPTY,
     };
     spyOn(component.bonusFormConfig, 'vendorNameChange').and.callFake(() => vendor);
