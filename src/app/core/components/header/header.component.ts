@@ -18,8 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public ifShowMenuButtons: boolean;
   public isMenuHide = true;
   public user: IUser;
-  private userSybscription : Subscription;
-
+  private userSybscription: Subscription;
 
   constructor(
     private loginService: LoginService,

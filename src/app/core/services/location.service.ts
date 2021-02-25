@@ -17,7 +17,7 @@ export class LocationService {
     private toastr: ToasterService,
     private dialog: MatDialog,
     private mapEventService: MapEventsService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {
     if (localStorage.getItem('currentLatitude') && localStorage.getItem('currentLongitude')) {
       const lat = Number(localStorage.getItem('currentLatitude'));
@@ -27,7 +27,7 @@ export class LocationService {
     }
   }
 
-  public changeLocationObserver(): Observable<string>{
+  public changeLocationObserver(): Observable<string> {
     return this.geolocationSubject.asObservable();
   }
 
@@ -82,9 +82,12 @@ export class LocationService {
 
   private getCityByLocation(location: LatLng): void {
     const url = cityByLocationUrl(location.lat, location.lng);
-    this.http.get(url).pipe(map((response: any) => response?.city)).subscribe((city: string) => {
-      this.mapEventService.setMapView(location);
-      this.geolocationSubject.next(city);
-    });
+    this.http
+      .get(url)
+      .pipe(map((response: any) => response?.city))
+      .subscribe((city: string) => {
+        this.mapEventService.setMapView(location);
+        this.geolocationSubject.next(city);
+      });
   }
 }

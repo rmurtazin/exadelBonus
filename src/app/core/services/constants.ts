@@ -21,7 +21,7 @@ export const apiLinks = {
 };
 
 export const cityByLocationUrl = (lat: number, lng: number) =>
- `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`;
+  `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`;
 
 export const widthBreakpoints = {
   desktop: 960,

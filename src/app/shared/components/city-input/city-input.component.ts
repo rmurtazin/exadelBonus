@@ -22,7 +22,8 @@ export class CityInputComponent implements OnInit, OnDestroy {
   constructor(
     private bonusesService: BonusesService,
     private mapEventsService: MapEventsService,
-    private locationService: LocationService) {}
+    private locationService: LocationService,
+  ) {}
 
   public ngOnInit(): void {
     this.chuseOfficeObserver();

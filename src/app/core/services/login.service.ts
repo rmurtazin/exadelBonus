@@ -51,7 +51,7 @@ export class LoginService {
   }
 
   public getRole(): string {
-    if (this.currentUser){
+    if (this.currentUser) {
       const [role] = this.currentUser.roles;
       return role;
     }
@@ -65,12 +65,12 @@ export class LoginService {
         return this.currentUser;
       }),
       catchError((err: HttpErrorResponse) => {
-        if (err.status === 401){
+        if (err.status === 401) {
           this.logout();
           this.route.navigate(['login']);
         }
         return throwError(err);
-      })
+      }),
     );
   }
 }
