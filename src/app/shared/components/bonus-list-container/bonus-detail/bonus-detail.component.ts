@@ -16,10 +16,10 @@ export class BonusDetailComponent implements OnInit {
   constructor(private loginService: LoginService) {}
 
   public ngOnInit(): void {
-    this.user = this.loginService.getUser();
-    if (this.user ?? false) {
-      this.isModeratorOrAdmin = this.user.role === 'admin' || this.user.role === 'moderator';
-    }
+    this.loginService.getUser().subscribe((user: IUser) => {
+      const [role] = this.user.roles;
+      this.isModeratorOrAdmin = role === 'admin' || role === 'moderator';
+    });
   }
 
   public writeEmail(): boolean {

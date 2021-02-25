@@ -30,7 +30,9 @@ export class MapEventsService {
     return this.bonusSubject.asObservable();
   }
 
-  public setMapView(location: LatLng, showUserMarker: boolean): void {
+  public setMapView(location: LatLng, showUserMarker: boolean = false): void {
+    localStorage.setItem('currentLatitude', location.lat.toString());
+    localStorage.setItem('currentLongitude', location.lng.toString());
     this.locationSubject.next({ location, showUserMarker });
   }
 
