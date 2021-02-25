@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public ifShowMenuButtons: boolean;
   public isMenuHide = true;
   public user: IUser;
-  private userSybscription: Subscription;
+  private userSubscription: Subscription;
 
   constructor(
     private loginService: LoginService,
@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private getUser(): void {
-    this.userSybscription = this.loginService.getUser().subscribe((user) => {
+    this.userSubscription = this.loginService.getUser().subscribe((user) => {
       this.user = user;
     });
   }
@@ -66,6 +66,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.userSybscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
 }

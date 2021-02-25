@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       this.router.navigate(['login']);
       return false;
     }
-    if (this.loginService.getUser() || true) {
+    if (this.loginService.getUser()) {
       return true;
     }
   }
@@ -32,11 +32,16 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const userRole = this.loginService.getRole();
-
-    // TODO: rewrite after integration with back
-    // return childRoute.data.roles.include(userRole);
-    return true;
+    if (this.loginService.getUser()) {
+      const userRole = this.loginService.getRole();
+      // console.log('userRole',userRole);
+      // console.log(childRoute);
+      // console.log(childRoute.data.roles.include('admin'));
+      // TODO: rewrite after integration with back
+      // return childRoute.data.roles.include(userRole);
+      return true;
+    }
+    return false;
   }
 
   constructor(private loginService: LoginService, private router: Router) {}
