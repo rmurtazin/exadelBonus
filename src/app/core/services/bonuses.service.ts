@@ -16,7 +16,6 @@ export class BonusesService {
   private bonusUrl = apiLinks.bonus;
   private citiesUrl = apiLinks.cities;
   private tagsUrl = apiLinks.tags;
-  public ifBonusMap: boolean = false;
 
   constructor(private api: ApiService, private toasterService: ToasterService) {}
 
