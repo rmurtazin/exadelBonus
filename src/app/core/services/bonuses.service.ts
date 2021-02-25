@@ -3,7 +3,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { Observable, Subject } from 'rxjs';
 import { of } from 'rxjs';
 import { ApiService } from '@services/api.service';
-import { INewBonus } from '@interfaces/add-bonus.interface';
+import { INewBonus, IUpdateBonus } from '@interfaces/add-bonus.interface';
 import { ToasterService } from './toaster.service';
 import { map, catchError, tap } from 'rxjs/operators';
 import { apiLinks } from './constants';
@@ -47,18 +47,15 @@ export class BonusesService {
     return this.api.delete(`${this.bonusUrl}/${id}`);
   }
 
-  public updateBonus(modifiedBonus: IBonus): Observable<IBonus> {
-    return this.api.put(`${this.bonusUrl}/${modifiedBonus.id}`, {
-      dateStart: modifiedBonus.dateStart,
-      dateEnd: modifiedBonus.dateEnd,
-      description: modifiedBonus.description,
-      company: modifiedBonus.company,
-      type: modifiedBonus.type,
-      rating: modifiedBonus.rating,
-      isActive: modifiedBonus.isActive,
-      locations: modifiedBonus.locations,
-      tags: modifiedBonus.tags,
-    });
+  public updateBonus(modifiedBonus: IUpdateBonus): Observable<IBonus> {
+    return this.api.put(`${this.bonusUrl}/${modifiedBonus.id}`, JSON.stringify(modifiedBonus)).pipe(
+      tap(() =>
+        this.toasterService.showNotification('addBonus.notification.saveUpdateBonus', 'success'),
+      ),
+      catchError(async () =>
+        this.toasterService.showNotification('addBonus.notification.UpdateBonusError', 'error'),
+      ),
+    );
   }
 
   public rate(id: string, rating: number): Observable<any> {

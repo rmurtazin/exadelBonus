@@ -12,6 +12,7 @@ import {
   INewBonus,
   ITag,
   IVendor,
+  IUpdateBonus,
 } from '@interfaces/add-bonus.interface';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -196,18 +197,34 @@ export class AddBonusFormComponent implements OnInit {
 
   public onSubmit(): void {
     const formValue = this.myForm.value;
-    const submitBonus: INewBonus = {
-      companyId: this.vendorName.value.id || this.newVendor.id,
-      phone: formValue.phone,
-      dateStart: new Date(formValue.start).toISOString(),
-      dateEnd: new Date(formValue.end).toISOString(),
-      description: formValue.bonusDescription,
-      type: formValue.bonusType,
-      title: formValue.bonusTitle,
-      locations: this.locations,
-      tags: this.bonusTags.map((tag) => tag.name),
-    };
-    this.bonusFormConfig.createBonus(submitBonus);
-    this.goBack();
+    if (this.newBonus) {
+      const submitBonus: INewBonus = {
+        companyId: this.vendorName.value.id || this.newVendor.id,
+        phone: formValue.phone,
+        dateStart: new Date(formValue.start).toISOString(),
+        dateEnd: new Date(formValue.end).toISOString(),
+        description: formValue.bonusDescription,
+        type: formValue.bonusType,
+        title: formValue.bonusTitle,
+        locations: this.locations,
+        tags: this.bonusTags.map((tag) => tag.name),
+      };
+      this.bonusFormConfig.createBonus(submitBonus);
+      this.goBack();
+    } else {
+      const submitBonus: IUpdateBonus = {
+        id: this.bonusId,
+        companyId: this.bonus.company.id,
+        phone: formValue.phone,
+        dateStart: new Date(formValue.start).toISOString(),
+        dateEnd: new Date(formValue.end).toISOString(),
+        description: formValue.bonusDescription,
+        type: formValue.bonusType,
+        title: formValue.bonusTitle,
+        locations: this.locations,
+        tags: this.bonusTags.map((tag) => tag.name),
+      };
+      this.bonusFormConfig.updateBonus(submitBonus);
+    }
   }
 }
