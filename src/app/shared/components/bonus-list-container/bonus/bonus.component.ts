@@ -29,10 +29,11 @@ export class BonusComponent implements OnInit {
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.user = this.loginService.getUser();
-    if (this.user ?? false) {
-      this.isModeratorOrAdmin = this.user.role === 'admin' || this.user.role === 'moderator';
-    }
+    this.loginService.getUser().subscribe((user: IUser) => {
+      const [role] = user.roles;
+      this.user = user;
+      this.isModeratorOrAdmin = role === 'admin' || role === 'moderator';
+    });
   }
 
   public bonusButtonClick(): void {

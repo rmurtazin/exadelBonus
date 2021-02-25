@@ -5,10 +5,10 @@ export interface ILogin {
 
 export interface IUser {
   id: string;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   city: string;
-  role: string;
+  roles: string[];
   token: string;
 }
 export interface IUserInfo {

@@ -11,7 +11,6 @@ export class FilterContainerComponent {
   constructor(private filterService: FilterService, private locationService: LocationService) {}
 
   public changeCity(city: string): void {
-    this.locationService.moveToCityLocation(city);
     this.filterService.addCityToQuery(city);
   }
 
