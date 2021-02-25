@@ -21,7 +21,7 @@ describe('CityInputComponent', () => {
         HttpClientModule,
         ToastrModule.forRoot(),
         TranslateModule.forRoot(),
-        MatDialogModule
+        MatDialogModule,
       ],
       providers: [BonusesService, LocationService],
     }).compileComponents();

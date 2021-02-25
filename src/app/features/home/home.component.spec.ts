@@ -19,7 +19,7 @@ describe('HomeComponent', () => {
         TranslateModule.forRoot(),
         ToastrModule.forRoot(),
         MatDialogModule,
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
       ],
     }).compileComponents();
   });

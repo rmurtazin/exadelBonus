@@ -5,6 +5,7 @@ import {
   Output,
   Input,
   OnInit,
+  OnDestroy,
 } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 import { IBonus } from '@interfaces/bonus.interface';
@@ -18,7 +19,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./rate.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RateComponent implements OnInit {
+export class RateComponent implements OnInit, OnDestroy {
   @Input() isForm: boolean;
   @Input() bonus: IBonus;
   @Output() backToBonusEvent = new EventEmitter<void>();
