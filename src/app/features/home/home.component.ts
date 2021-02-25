@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { BonusComponent } from '../../shared/components/bonus-list-container/bonus/bonus.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmComponent } from './confirm/confirm.component';
-import { IBonus } from '@interfaces/bonus.interface';
 import { LoginService } from '@services/login.service';
 
 @Component({

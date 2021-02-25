@@ -50,6 +50,7 @@ export class RateComponent implements OnInit, OnDestroy {
     this.disableButton = true;
     this.animationStart = true;
     this.onRateBonus(this.bonus);
+    this.backToBonusEvent.emit();
   }
 
   public onRateBonus(bonus: IBonus): void {
@@ -67,7 +68,6 @@ export class RateComponent implements OnInit, OnDestroy {
       this.historyService.rateBonus(this.historyBonus.id, rate).subscribe(() => {
         this.animationStart = false;
         this.bonus = bonus;
-        this.backToBonusEvent.emit();
       }),
     );
   }
