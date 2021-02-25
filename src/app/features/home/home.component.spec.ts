@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -18,6 +19,7 @@ describe('HomeComponent', () => {
         TranslateModule.forRoot(),
         ToastrModule.forRoot(),
         MatDialogModule,
+        RouterModule.forRoot([])
       ],
     }).compileComponents();
   });

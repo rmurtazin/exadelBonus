@@ -6,6 +6,7 @@ import { BonusComponent } from '../../shared/components/bonus-list-container/bon
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { IBonus } from '@interfaces/bonus.interface';
+import { LoginService } from '@services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,11 @@ export class HomeComponent implements OnDestroy {
   public subscription: Subscription = new Subscription();
   public bonusButtonLabel = 'Apply';
 
-  constructor(private historyService: HistoryService, private dialog: MatDialog) {}
+  constructor(
+    private historyService: HistoryService,
+    private loginService: LoginService,
+    private dialog: MatDialog,
+  ) {}
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -27,17 +32,21 @@ export class HomeComponent implements OnDestroy {
     this.subscription.add(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          this.onApplyBonus(bonus);
+          this.onApplyBonus(bonus.id);
         }
       }),
     );
   }
 
-  public onApplyBonus(bonus: IBonus): void {
-    const reg = {
-      userId: 'bca3130d-72ea-4177-9334-112dc498ad78', // TODO: get user id
-      bonusId: bonus.id,
-    };
-    this.subscription.add(this.historyService.applyBonus(reg).subscribe());
+  public onApplyBonus(bonusId: string): void {
+    this.subscription.add(
+      this.loginService.getUser().subscribe((user) => {
+        const regBody = {
+          userId: user.id,
+          bonusId,
+        };
+        this.subscription.add(this.historyService.applyBonus(regBody).subscribe());
+      }),
+    );
   }
 }

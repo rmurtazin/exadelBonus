@@ -9,11 +9,8 @@ import {
 import { MatSliderChange } from '@angular/material/slider';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IHistoryBonus } from '@interfaces/history.interface';
-import { BonusesService } from '@services/bonuses.service';
 import { HistoryService } from '@services/history.service';
-import { ToasterService } from '@services/toaster.service';
-import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-rate',
@@ -26,6 +23,7 @@ export class RateComponent implements OnInit {
   @Input() bonus: IBonus;
   @Output() backToBonusEvent = new EventEmitter<void>();
 
+  public subscription: Subscription = new Subscription();
   public startPosition: number;
   public disableButton = false;
   public animationStart = false;
@@ -33,6 +31,10 @@ export class RateComponent implements OnInit {
   public historyBonus: IHistoryBonus;
 
   constructor(private historyService: HistoryService) {}
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.startPosition = this.bonus?.rating * 10;
@@ -46,19 +48,27 @@ export class RateComponent implements OnInit {
   public submitRating(): void {
     this.disableButton = true;
     this.animationStart = true;
-    this.rateBonus(this.bonus);
+    this.onRateBonus(this.bonus);
   }
 
-  public rateBonus(bonus): void {
-    this.historyService.getHistoryBonuses().subscribe((data) => {
-      const rate = Math.floor(bonus.rating);
-      this.historyBonus = data.find((item) => item.bonus.id === bonus.id);
+  public onRateBonus(bonus: IBonus): void {
+    this.subscription.add(
+      this.historyService.getHistoryBonuses().subscribe((data) => {
+        const rate = Math.floor(bonus.rating);
+        this.historyBonus = data.find((item) => item.bonus.id === bonus.id);
+        this.rateBonus(bonus, rate);
+      }),
+    );
+  }
+
+  public rateBonus(bonus: IBonus, rate: number): void {
+    this.subscription.add(
       this.historyService.rateBonus(this.historyBonus.id, rate).subscribe(() => {
         this.animationStart = false;
         this.bonus = bonus;
         this.backToBonusEvent.emit();
-      });
-    });
+      }),
+    );
   }
 
   public backToBonus(): void {
