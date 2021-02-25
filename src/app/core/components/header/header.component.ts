@@ -30,17 +30,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((event: NavigationEnd) => {
         this.currentRoute = event.urlAfterRedirects;
         this.ifShowMenuButtons = this.checkRoute();
+        if (this.ifShowMenuButtons) {
+          this.getUser();
+        }
       });
   }
   ngOnInit(): void {
-    this.getUser();
     this.translate.use(this.language);
   }
 
   private getUser(): void {
-    this.userSubscription = this.loginService.getUser().subscribe((user) => {
-      this.user = user;
-    });
+    if (this.loginService.getToken()) {
+      this.userSubscription = this.loginService.getUser().subscribe((user) => {
+        this.user = user;
+      });
+    }
   }
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;

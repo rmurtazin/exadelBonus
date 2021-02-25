@@ -7,7 +7,7 @@ import {
   Router,
   CanActivateChild,
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { LoginService } from './../services/login.service';
 
