@@ -3,6 +3,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { IHistoryBonus } from '@interfaces/history.interface';
 import { HistoryService } from '@services/history.service';
 import { Subscription } from 'rxjs';
+import { BonusComponent } from 'src/app/shared/components/bonus-list-container/bonus/bonus.component';
 
 @Component({
   selector: 'app-history',
@@ -12,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class HistoryComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
   public historyBonuses: IHistoryBonus[] = [];
+  public bonusHistory: IHistoryBonus;
   public bonuses: IBonus[] = [];
   public bonusButtonLabel = 'Rate';
 
@@ -29,7 +31,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.historyService.getHistoryBonuses().subscribe((data) => {
         this.historyBonuses = data;
-        this.bonuses = data.map(item=>item.bonus);
+        this.bonuses = data.map((item) => item.bonus);
       }),
     );
   }
@@ -38,5 +40,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.subscription.add(this.historyService.rateBonus(historyId, estimate).subscribe());
   }
 
-  public openRateBonusForm(event): void {}
+  public openRateBonusForm(bonus: BonusComponent): void {
+    this.bonusHistory = this.historyBonuses.find((item) => item.bonus.id === bonus.bonus.id);
+    bonus.isForm = !bonus.isForm;
+  }
 }

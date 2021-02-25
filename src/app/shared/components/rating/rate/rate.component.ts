@@ -8,8 +8,11 @@ import {
 } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 import { IBonus } from '@interfaces/bonus.interface';
+import { IHistoryBonus } from '@interfaces/history.interface';
 import { BonusesService } from '@services/bonuses.service';
+import { HistoryService } from '@services/history.service';
 import { ToasterService } from '@services/toaster.service';
+import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -27,8 +30,9 @@ export class RateComponent implements OnInit {
   public disableButton = false;
   public animationStart = false;
   private bonusUnchangedRating: number;
+  public historyBonus: IHistoryBonus;
 
-  constructor(private bonusesService: BonusesService, private toasterService: ToasterService) {}
+  constructor(private historyService: HistoryService) {}
 
   ngOnInit(): void {
     this.startPosition = this.bonus?.rating * 10;
@@ -42,15 +46,19 @@ export class RateComponent implements OnInit {
   public submitRating(): void {
     this.disableButton = true;
     this.animationStart = true;
-    this.bonusesService
-      .rate(this.bonus.id, Math.floor(this.bonus.rating / 10))
-      .pipe(take(1))
-      .subscribe((newBonus: IBonus) => {
+    this.rateBonus(this.bonus);
+  }
+
+  public rateBonus(bonus): void {
+    this.historyService.getHistoryBonuses().subscribe((data) => {
+      const rate = Math.floor(bonus.rating);
+      this.historyBonus = data.find((item) => item.bonus.id === bonus.id);
+      this.historyService.rateBonus(this.historyBonus.id, rate).subscribe(() => {
         this.animationStart = false;
-        this.bonus = newBonus;
-        this.toasterService.showNotification('rateForm.notification.success', 'success');
+        this.bonus = bonus;
         this.backToBonusEvent.emit();
       });
+    });
   }
 
   public backToBonus(): void {
