@@ -7,7 +7,6 @@ import { BonusesService } from '@services/bonuses.service';
 import { OfficesService } from '@services/offices.service';
 import { MapEventsService } from '@services/map-events.service';
 import { ActivatedRoute } from '@angular/router';
-import { ToasterService } from '@services/toaster.service';
 import { MarkerModel } from '@models/marker.model';
 import { LocationService } from '@services/location.service';
 import { FilterService } from '@services/filter.service';
@@ -33,14 +32,12 @@ export class MapComponent implements OnDestroy {
     private markerModel: MarkerModel,
     private mapEvents: MapEventsService,
     private activateRouter: ActivatedRoute,
-    private toaster: ToasterService,
     private locationService: LocationService,
     private filterService: FilterService,
   ) {}
 
   public mapReadyEvent(map: Map): void {
     this.map = map;
-    this.locationService.initialise();
     this.displayOfficesMarkers();
     this.mapViewObserver();
     this.getQueryParams();
@@ -115,14 +112,6 @@ export class MapComponent implements OnDestroy {
   }
 
   private navigateToMarker(markers: Marker[]): void {
-    if (!this.queryLatitude && !this.queryLongitude) {
-      if (markers.length >= 1) {
-        const location = markers[0].getLatLng();
-        this.setMapView(location, false);
-        markers[0].openPopup();
-      }
-      return;
-    }
     const isRequestedLocation = (currentMarker: Marker) => {
       const { lat, lng } = currentMarker.getLatLng();
       return lng === Number(this.queryLongitude) && lat === Number(this.queryLatitude);

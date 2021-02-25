@@ -5,6 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { BonusesService } from '@services/bonuses.service';
 import { MapEventsService } from '@services/map-events.service';
 import { IOffice } from '@interfaces/office.interface';
+import { LocationService } from '@services/location.service';
 
 @Component({
   selector: 'app-city-input',
@@ -18,10 +19,14 @@ export class CityInputComponent implements OnInit, OnDestroy {
   public filteredCity$: Observable<string[]>;
   @Output() changeCityEvent = new EventEmitter<string>();
 
-  constructor(private bonusesService: BonusesService, private mapEventsService: MapEventsService) {}
+  constructor(
+    private bonusesService: BonusesService,
+    private mapEventsService: MapEventsService,
+    private locationService: LocationService) {}
 
   public ngOnInit(): void {
     this.chuseOfficeObserver();
+    this.changeLocationObserver();
     this.getCities();
   }
 
@@ -29,6 +34,15 @@ export class CityInputComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.mapEventsService.zoomToOfficeObserver().subscribe((office: IOffice) => {
         this.cityInputControl.setValue(office.city);
+        this.changeCity();
+      }),
+    );
+  }
+
+  private changeLocationObserver(): void {
+    this.subscription.add(
+      this.locationService.changeLocationObserver().subscribe((city: string) => {
+        this.cityInputControl.setValue(city);
         this.changeCity();
       }),
     );

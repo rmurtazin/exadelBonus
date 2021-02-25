@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { map, take, tap, catchError } from 'rxjs/operators';
 import { ILogin, IUser } from '@interfaces/loginInterface';
@@ -50,12 +50,8 @@ export class LoginService {
     );
   }
 
-  public isAuthorised(): boolean {
-    return !!this.currentUser;
-  }
-
   public getRole(): string {
-    if (this.isAuthorised()) {
+    if (this.currentUser){
       const [role] = this.currentUser.roles;
       return role;
     }
@@ -68,6 +64,13 @@ export class LoginService {
         this.currentUser = response.value;
         return this.currentUser;
       }),
+      catchError((err: HttpErrorResponse) => {
+        if (err.status === 401){
+          this.logout();
+          this.route.navigate(['login']);
+        }
+        return throwError(err);
+      })
     );
   }
 }

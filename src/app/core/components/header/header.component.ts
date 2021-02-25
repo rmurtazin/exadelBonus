@@ -1,22 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from '@services/login.service';
 import { IUser } from '@interfaces/loginInterface';
 import { Languages } from '../../enums/languages.enum';
 import { Router, RouterEvent, Event, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   public language = localStorage.getItem('language') || Languages.English;
   public currentRoute: string;
   public ifShowMenuButtons: boolean;
-  isMenuHide = true;
-  user: IUser;
+  public isMenuHide = true;
+  public user: IUser;
+  private userSybscription : Subscription;
+
+
   constructor(
     private loginService: LoginService,
     private route: Router,
@@ -35,11 +39,9 @@ export class HeaderComponent implements OnInit {
   }
 
   private getUser(): void {
-    if (this.loginService.isAuthorised()) {
-      this.loginService.getUser().subscribe((user) => {
-        this.user = user;
-      });
-    }
+    this.userSybscription = this.loginService.getUser().subscribe((user) => {
+      this.user = user;
+    });
   }
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
@@ -62,5 +64,9 @@ export class HeaderComponent implements OnInit {
     this.loginService.logout().subscribe(() => {
       this.route.navigate(['/login']);
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.userSybscription.unsubscribe();
   }
 }

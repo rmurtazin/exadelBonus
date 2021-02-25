@@ -20,6 +20,9 @@ export const apiLinks = {
   history: `${apiUrl}/api/History/`,
 };
 
+export const cityByLocationUrl = (lat: number, lng: number) =>
+ `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`;
+
 export const widthBreakpoints = {
   desktop: 960,
   tablet: 768,
