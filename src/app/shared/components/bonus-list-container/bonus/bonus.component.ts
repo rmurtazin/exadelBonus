@@ -19,14 +19,13 @@ import { LoginService } from '@services/login.service';
 export class BonusComponent implements OnInit {
   @Input() bonusButtonLabel: string;
   @Input() bonus: IBonus;
-
   @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
 
   public isForm = false;
   public isModeratorOrAdmin = false;
   public user: IUser;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService ) {}
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();

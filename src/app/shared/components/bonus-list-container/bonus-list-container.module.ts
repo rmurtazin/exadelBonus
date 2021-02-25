@@ -8,8 +8,7 @@ import { BonusDetailComponent } from './bonus-detail/bonus-detail.component';
 import { BonusListContainerComponent } from './bonus-list-container.component';
 import { BonusComponent } from './bonus/bonus.component';
 import { RatingModule } from '../rating/rating.module';
-import { TransitionGroupDirective } from '../../directives/transition-group.directive';
-import { TransitionGroupItemDirective } from '../../directives/transition-group-item.directive';
+import { ScrollToFirstDirective } from '../../directives/scroll-to-first.directive';
 
 @NgModule({
   declarations: [
@@ -17,16 +16,14 @@ import { TransitionGroupItemDirective } from '../../directives/transition-group-
     BonusDetailComponent,
     BonusListViewComponent,
     BonusComponent,
-    TransitionGroupDirective,
-    TransitionGroupItemDirective,
+    ScrollToFirstDirective,
   ],
   imports: [MatCardModule, MatExpansionModule, RouterModule, SharedModule, RatingModule],
   exports: [
     BonusListContainerComponent,
     RouterModule,
     BonusListViewComponent,
-    TransitionGroupDirective,
-    TransitionGroupItemDirective,
+    ScrollToFirstDirective,
   ],
 })
 export class BonusListContainerModule {}

@@ -4,6 +4,22 @@
   }
 }
 
-.flip-list-move {
-  transition: transform 1s;
+.bonus-container:first-child {
+  animation: pulse 1s;
+}
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  30% {
+    background-color: rgb(250, 121, 74);
+    border-top: 4px solid rgb(250, 121, 74);
+    opacity: 0.3;
+    transform: scale(0.92, 0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
 }
