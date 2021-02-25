@@ -5,10 +5,7 @@
   align-items: center;
   position: relative;
   height: 60px;
-  app-stars {
-    position: absolute;
-    right: 6px;
-  }
+  justify-content: space-between;
 }
 
 .discount-row.form-stars {
@@ -82,6 +79,12 @@
   }
   100% {
     border-color: white;
+  }
+}
+
+@media (max-width: 540px), (max-device-width: 540px) {
+  .discount-row {
+    flex-direction: row-reverse;
   }
 }
 

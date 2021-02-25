@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { IOffice } from '@interfaces/office.interface';
 import { TranslateService } from '@ngx-translate/core';
-import { FilterService } from '@services/filter.service';
 import { MapEventsService } from '@services/map-events.service';
 import { Subscription } from 'rxjs';
 

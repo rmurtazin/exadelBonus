@@ -31,10 +31,11 @@ export class BonusComponent implements OnInit, OnChanges {
   constructor(private loginService: LoginService, private elementRef: ElementRef) {}
 
   ngOnInit(): void {
-    this.user = this.loginService.getUser();
-    if (this.user ?? false) {
-      this.isModeratorOrAdmin = this.user.role === 'admin' || this.user.role === 'moderator';
-    }
+    this.loginService.getUser().subscribe((user: IUser) => {
+      const [role] = user.roles;
+      this.user = user;
+      this.isModeratorOrAdmin = role === 'admin' || role === 'moderator';
+    });
   }
 
   public ngOnChanges(): void {

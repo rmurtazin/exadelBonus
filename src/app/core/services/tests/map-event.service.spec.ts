@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IOffice } from '@interfaces/office.interface';
+import { LocationService } from '@services/location.service';
 import { MapEventsService } from '@services/map-events.service';
 import { latLng } from 'leaflet';
 import { MockBonusService } from 'src/app/shared/mocks/services/mock-bonus.service';
@@ -17,7 +18,7 @@ describe('MapEventService', () => {
     mockOfficeService = new MockOfficesService();
     mapEventservice = new MapEventsService();
     TestBed.configureTestingModule({
-      providers: [MapEventsService],
+      providers: [MapEventsService, LocationService],
     });
     mapEventservice = TestBed.inject(MapEventsService);
     [mockBonus] = mockBonusService.getMockBonuses();
