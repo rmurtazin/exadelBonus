@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((event: NavigationEnd) => {
         this.currentRoute = event.urlAfterRedirects;
         this.ifShowMenuButtons = this.checkRoute();
-        if (this.ifShowMenuButtons){
+        if (this.ifShowMenuButtons) {
           this.getUser();
         }
       });
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private getUser(): void {
-    if (this.loginService.getToken()){
+    if (this.loginService.getToken()) {
       this.userSubscription = this.loginService.getUser().subscribe((user) => {
         this.user = user;
       });
