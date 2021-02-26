@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isMenuHide = true;
   public user: IUser;
   private userSubscription: Subscription;
-  public roleType = RoleType; 
+  public roleType = RoleType;
 
   constructor(
     private loginService: LoginService,

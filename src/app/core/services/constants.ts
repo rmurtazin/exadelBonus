@@ -5,7 +5,7 @@ const { apiUrl } = environment;
 export enum RoleType {
   user = 'user',
   moderator = 'moderator',
-  admin = 'admin'
+  admin = 'admin',
 }
 
 export const apiLinks = {
