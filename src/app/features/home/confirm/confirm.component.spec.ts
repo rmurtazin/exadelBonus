@@ -12,9 +12,7 @@ describe('ConfirmComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ConfirmComponent],
       imports: [TranslateModule.forRoot(), MatDialogModule],
-      providers: [
-          { provide: MAT_DIALOG_DATA, useValue: {} },
-      ]
+      providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }],
     }).compileComponents();
   });
 
