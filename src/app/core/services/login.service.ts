@@ -30,7 +30,7 @@ export class LoginService {
     const token = this.getToken();
     const jwtDecoded: IJwtDecoded = jwt_decode(token);
     const [role] = jwtDecoded.role;
-    return role;
+    return role.toLowerCase();
   }
 
   public onLogin(userInput: ILogin) {

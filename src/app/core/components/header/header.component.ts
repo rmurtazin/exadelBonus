@@ -6,6 +6,7 @@ import { Router, RouterEvent, Event, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { RoleType } from '../../services/constants';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isMenuHide = true;
   public user: IUser;
   private userSubscription: Subscription;
+  public roleType = RoleType;
 
   constructor(
     private loginService: LoginService,
@@ -67,6 +69,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.loginService.logout().subscribe(() => {
       this.route.navigate(['/login']);
     });
+  }
+
+  public hasRole(role: string): boolean {
+    return this.loginService.getRole() === role;
   }
 
   public ngOnDestroy(): void {

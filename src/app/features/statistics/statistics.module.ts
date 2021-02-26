@@ -11,9 +11,7 @@ import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [StatisticsComponent],
   imports: [
-    RouterModule.forChild([
-      { path: '', component: StatisticsComponent, data: { roles: ['admin'] } },
-    ]),
+    RouterModule.forChild([{ path: '', component: StatisticsComponent }]),
     SharedModule,
     MatTableModule,
     MatPaginatorModule,

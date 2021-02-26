@@ -5,16 +5,18 @@ import {
   RouterStateSnapshot,
   UrlTree,
   Router,
-  CanActivateChild,
+  CanLoad,
+  Route,
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
-
+import { Observable } from 'rxjs';
 import { LoginService } from './../services/login.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate, CanLoad {
+  constructor(private loginService: LoginService, private router: Router) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
@@ -23,18 +25,15 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       this.router.navigate(['login']);
       return false;
     }
-    if (this.loginService.getUser() || true) {
-      return true;
-    }
-  }
-
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const userRole = this.loginService.getRole();
     return true;
   }
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  canLoad(route: Route): boolean {
+    const userRole = this.loginService.getRole();
+    if (route.data.roles.includes(userRole)) {
+      return true;
+    }
+    this.router.navigate(['404']);
+    return false;
+  }
 }
