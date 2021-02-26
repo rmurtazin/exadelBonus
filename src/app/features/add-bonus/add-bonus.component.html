@@ -6,7 +6,7 @@
       [vendors]="vendors"
       (getBonusesByVendorId)="getBonusesByVendorId($event)"
     ></app-bonus-searcher>
-    <div class="box">
+    <div class="bonus-container">
       <app-bonus-list-view
         [bonuses]="bonuses"
         (bonusButtonClickedEvent)="openEditForm($event)"
