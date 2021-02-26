@@ -8,6 +8,7 @@ import {
   INewBonus,
   INewVendor,
   IVendor,
+  IUpdateBonus,
 } from '@interfaces/add-bonus.interface';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
@@ -78,6 +79,13 @@ export class AddBonusComponent implements OnInit, OnDestroy {
       createBonus: (newBonus: INewBonus): void => {
         this.subscription.add(
           this.bonusesService.addBonus(newBonus).subscribe(() => {
+            this.getBonuses();
+          }),
+        );
+      },
+      updateBonus: (modifiedBonus: IUpdateBonus): void => {
+        this.subscription.add(
+          this.bonusesService.updateBonus(modifiedBonus).subscribe(() => {
             this.getBonuses();
           }),
         );
