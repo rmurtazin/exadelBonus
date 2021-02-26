@@ -65,6 +65,7 @@ describe('AddBonusFormComponent', () => {
       vendorNameChange: () => EMPTY,
       createNewVendor: () => EMPTY,
       createBonus: () => EMPTY,
+      updateBonus: () => EMPTY,
       removeVendors: () => EMPTY,
     };
     const spy = spyOn(component.bonusFormConfig, 'vendorNameChange').and.callFake(() => EMPTY);
@@ -83,6 +84,7 @@ describe('AddBonusFormComponent', () => {
       vendorNameChange: () => EMPTY,
       createNewVendor: () => EMPTY,
       createBonus: () => EMPTY,
+      updateBonus: () => EMPTY,
       removeVendors: () => EMPTY,
     };
     const spy = spyOn(component.bonusFormConfig, 'vendorNameChange').and.callFake(() => EMPTY);

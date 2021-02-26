@@ -21,13 +21,16 @@
         [matAutocomplete]="auto"
         (ngModelChange)="onVendorNameChange($event)"
         [readonly]="readonly"
+        [value]="vendorNameToChange"
       />
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayVendors">
         <mat-option *ngFor="let vendor of filteredVendors | async" [value]="vendor">
           {{ vendor?.name }}
         </mat-option>
       </mat-autocomplete>
-      <button type="button" (click)="onOpenEmailInput()" class="new-vendor-btn">&#43;</button>
+      <button *ngIf="newBonus" type="button" (click)="onOpenEmailInput()" class="new-vendor-btn">
+        &#43;
+      </button>
     </mat-form-field>
     <mat-form-field
       [class.hidden]="!vendorEmailVisible"

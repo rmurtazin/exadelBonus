@@ -1,3 +1,4 @@
+import { IBonus } from './bonus.interface';
 export interface ITag {
   name: string;
 }
@@ -33,11 +34,25 @@ export interface INewBonus {
   tags: string[];
 }
 
+export interface IUpdateBonus {
+  id: string;
+  title: string;
+  description: string;
+  type: string;
+  phone: string;
+  companyId: string;
+  dateStart: string;
+  dateEnd: string;
+  locations: ILocation[];
+  tags: string[];
+}
+
 export interface IBonusFormConfig {
   closeForm: () => void;
   addAddress: (myForm: any) => void;
   vendorNameChange: (vendorName: string) => void;
   createNewVendor: (newVendor: IVendor) => void;
   createBonus: (newBonus: INewBonus) => void;
+  updateBonus: (modifiedBonus: IUpdateBonus) => void;
   removeVendors: () => void;
 }

@@ -12,6 +12,7 @@ import {
   INewBonus,
   ITag,
   IVendor,
+  IUpdateBonus,
 } from '@interfaces/add-bonus.interface';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -43,6 +44,7 @@ export class AddBonusFormComponent implements OnInit {
   public addOnBlur = true;
   public bonus: IBonus;
   public newBonus = true;
+  public vendorNameToChange = '';
 
   constructor(private bonusesService: BonusesService) {}
 
@@ -73,20 +75,24 @@ export class AddBonusFormComponent implements OnInit {
   }
 
   public fillPage(bonus: IBonus): void {
-    // TODO: fill all values
     this.myForm.patchValue({
-      vendorInfo: {
-        vendorName: bonus.company.name,
-        vendorEmail: bonus.company.email,
-      },
       bonusType: bonus.type,
       bonusDescription: bonus.description,
-      bonusTags: bonus.tags,
       bonusTitle: bonus.title,
       phone: bonus.phone,
       start: bonus.dateStart,
       end: bonus.dateEnd,
+      bonusAddress: ' ',
+      bonusTags: ' ',
     });
+    this.vendorEmailVisible = true;
+    this.vendorInfo.get('name').setValue(bonus.company.name);
+    this.vendorInfo.get('email').setValue(bonus.company.email);
+    this.vendorNameToChange = bonus.company.name;
+    bonus.tags.forEach((tag) => {
+      this.bonusTags.push({ name: tag });
+    });
+    this.locations = bonus.locations;
   }
 
   public onVendorNameChange(vendorName: any): void {
@@ -191,18 +197,34 @@ export class AddBonusFormComponent implements OnInit {
 
   public onSubmit(): void {
     const formValue = this.myForm.value;
-    const submitBonus: INewBonus = {
-      companyId: this.vendorName.value.id || this.newVendor.id,
-      phone: formValue.phone,
-      dateStart: new Date(formValue.start).toISOString(),
-      dateEnd: new Date(formValue.end).toISOString(),
-      description: formValue.bonusDescription,
-      type: formValue.bonusType,
-      title: formValue.bonusTitle,
-      locations: this.locations,
-      tags: this.bonusTags.map((tag) => tag.name),
-    };
-    this.bonusFormConfig.createBonus(submitBonus);
-    this.goBack();
+    if (this.newBonus) {
+      const submitBonus: INewBonus = {
+        companyId: this.vendorName.value.id || this.newVendor.id,
+        phone: formValue.phone,
+        dateStart: new Date(formValue.start).toISOString(),
+        dateEnd: new Date(formValue.end).toISOString(),
+        description: formValue.bonusDescription,
+        type: formValue.bonusType,
+        title: formValue.bonusTitle,
+        locations: this.locations,
+        tags: this.bonusTags.map((tag) => tag.name),
+      };
+      this.bonusFormConfig.createBonus(submitBonus);
+      this.goBack();
+    } else {
+      const submitBonus: IUpdateBonus = {
+        id: this.bonusId,
+        companyId: this.bonus.company.id,
+        phone: formValue.phone,
+        dateStart: new Date(formValue.start).toISOString(),
+        dateEnd: new Date(formValue.end).toISOString(),
+        description: formValue.bonusDescription,
+        type: formValue.bonusType,
+        title: formValue.bonusTitle,
+        locations: this.locations,
+        tags: this.bonusTags.map((tag) => tag.name),
+      };
+      this.bonusFormConfig.updateBonus(submitBonus);
+    }
   }
 }
