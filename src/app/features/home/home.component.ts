@@ -1,6 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
 import { HistoryService } from '@services/history.service';
-import { ToasterService } from '@services/toaster.service';
 import { Subscription } from 'rxjs';
 import { BonusComponent } from '../../shared/components/bonus-list-container/bonus/bonus.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,7 +18,7 @@ export class HomeComponent implements OnDestroy {
   constructor(
     private historyService: HistoryService,
     private loginService: LoginService,
-    private dialog: MatDialog,
+    public dialog: MatDialog,
   ) {}
 
   public ngOnDestroy(): void {
@@ -27,7 +26,7 @@ export class HomeComponent implements OnDestroy {
   }
 
   public openApplyForm({ bonus }: BonusComponent): void {
-    const dialogRef = this.dialog.open(ConfirmComponent);
+    const dialogRef = this.dialog.open(ConfirmComponent, { data: bonus });
     this.subscription.add(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
