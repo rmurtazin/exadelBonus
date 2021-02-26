@@ -2,6 +2,12 @@ import { environment } from 'src/environments/environment';
 
 const { apiUrl } = environment;
 
+export enum RoleType {
+  user = 'user',
+  moderator = 'moderator',
+  admin = 'admin'
+}
+
 export const apiLinks = {
   bonus: `${apiUrl}/api/Bonus`,
   cities: `${apiUrl}/api/Bonus/cities`,
