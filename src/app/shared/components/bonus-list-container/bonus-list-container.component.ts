@@ -15,6 +15,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   public bonuses: IBonus[] = [];
   private subscriptionBonuses: Subscription;
   private subscriptionBonusMap: Subscription;
+  public loading = false;
 
   @Input() bonusButtonLabel: string;
 
@@ -36,6 +37,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   }
 
   public getBonuses(): void {
+    this.loading = true;
     this.subscriptionBonuses = this.bonusesService.bonusSubject.subscribe(
       (data: IBonus[]) => {
         if (data) {
@@ -49,6 +51,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
             });
           }
         }
+        this.loading = false;
       },
       () => this.toasterService.showNotification('bonusList.notification.getBonusesError', 'error'),
     );

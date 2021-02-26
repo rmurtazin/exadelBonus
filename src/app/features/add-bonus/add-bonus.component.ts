@@ -22,6 +22,7 @@ import { BonusComponent } from 'src/app/shared/components/bonus-list-container/b
   styleUrls: ['./add-bonus.component.scss'],
 })
 export class AddBonusComponent implements OnInit, OnDestroy {
+  public loading = false;
   public subscription: Subscription = new Subscription();
   public locations: ILocation[] = [];
   public vendors: IVendor[] = [];
@@ -91,8 +92,10 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public getBonuses(): void {
     const bonusesCount = '6';
     const query = `?LastCount=${bonusesCount}`;
+    this.loading = true;
     this.bonusesService.getBonuses(query).subscribe((data) => {
       this.bonuses = data;
+      this.loading = false;
     });
   }
 

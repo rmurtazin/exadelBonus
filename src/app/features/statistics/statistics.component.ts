@@ -18,7 +18,7 @@ import { DatepickerComponent } from '../../shared/components/datepicker/datepick
 })
 export class StatisticsComponent implements OnInit, OnDestroy {
   private subscriptionStatistics: Subscription;
-  private subscriptionVendor: Subscription;
+  public loading = false;
   public vendors: IVendor[] = [];
   public statistics: StatisticElement[] = [];
   public displayedColumns: string[] = [
@@ -61,6 +61,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   }
 
   public getStatistics(): void {
+    this.loading = true;
     this.subscriptionStatistics = this.statisticsService.getStatistics(this.queryParams).subscribe(
       (data: StatisticElement[]) => {
         if (data) {
@@ -70,6 +71,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
         }
+        this.loading = false;
       },
       (err) => this.toasterService.showError(err, 'Some problems with getting statistics'),
     );
