@@ -41,9 +41,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatTabsModule,
     MatDialogModule,
     FilterContainerModule,
-    RouterModule.forChild([
-      { path: '', component: HomeComponent },
-    ]),
+    RouterModule.forChild([{ path: '', component: HomeComponent }]),
   ],
   exports: [HomeComponent, RouterModule],
 })

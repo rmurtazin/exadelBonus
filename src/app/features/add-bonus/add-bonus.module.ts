@@ -19,9 +19,7 @@ import { BonusSearcherComponent } from './bonus-searcher/bonus-searcher.componen
   imports: [
     NgxMaskModule.forRoot(),
     BonusListContainerModule,
-    RouterModule.forChild([
-      { path: '', component: AddBonusComponent },
-    ]),
+    RouterModule.forChild([{ path: '', component: AddBonusComponent }]),
     SharedModule,
   ],
   providers: [BonusAddressService],

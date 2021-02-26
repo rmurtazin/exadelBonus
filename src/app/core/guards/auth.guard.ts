@@ -14,7 +14,6 @@ import { LoginService } from './../services/login.service';
 @Injectable({
   providedIn: 'root',
 })
-
 export class AuthGuard implements CanActivate, CanLoad {
   constructor(private loginService: LoginService, private router: Router) {}
 
@@ -29,7 +28,7 @@ export class AuthGuard implements CanActivate, CanLoad {
     return true;
   }
 
-  canLoad(route : Route): boolean {  
+  canLoad(route: Route): boolean {
     const userRole = this.loginService.getRole();
     if (route.data.roles.includes(userRole)) {
       return true;

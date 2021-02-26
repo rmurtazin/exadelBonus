@@ -17,33 +17,34 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () => import('./features/home/home.module').then((m) => m.HomeModule),
         canLoad: [AuthGuard],
-        data: { roles: ['user', 'moderator', 'admin'] }
+        data: { roles: ['user', 'moderator', 'admin'] },
       },
       {
         path: 'history',
         loadChildren: () =>
           import('./features/history/history.module').then((m) => m.HistoryModule),
-          canLoad: [AuthGuard],
-        data: { roles: ['user', 'moderator', 'admin'] }
+        canLoad: [AuthGuard],
+        data: { roles: ['user', 'moderator', 'admin'] },
       },
       {
         path: 'bonuses',
         loadChildren: () =>
           import('./features/add-bonus/add-bonus.module').then((m) => m.AddBonusModule),
         canLoad: [AuthGuard],
-        data: { roles: ['moderator', 'admin'] }
+        data: { roles: ['moderator', 'admin'] },
       },
       {
         path: 'statistics',
         loadChildren: () =>
           import('./features/statistics/statistics.module').then((m) => m.StatisticsModule),
         canLoad: [AuthGuard],
-        data: { roles: ['admin'] }
+        data: { roles: ['admin'] },
       },
-      { 
-        path: 'bonuses/:id', component: AddBonusComponent,
+      {
+        path: 'bonuses/:id',
+        component: AddBonusComponent,
         canLoad: [AuthGuard],
-        data: { roles: ['moderator', 'admin'] }
+        data: { roles: ['moderator', 'admin'] },
       },
     ],
   },
