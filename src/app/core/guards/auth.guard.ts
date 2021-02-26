@@ -33,9 +33,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot,
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const userRole = this.loginService.getRole();
-
-    // TODO: rewrite after integration with back
-    // return childRoute.data.roles.include(userRole);
     return true;
   }
 
