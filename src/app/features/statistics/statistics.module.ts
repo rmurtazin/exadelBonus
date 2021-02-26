@@ -12,7 +12,7 @@ import { MatSortModule } from '@angular/material/sort';
   declarations: [StatisticsComponent],
   imports: [
     RouterModule.forChild([
-      { path: '', component: StatisticsComponent, data: { roles: ['admin'] } },
+      { path: '', component: StatisticsComponent },
     ]),
     SharedModule,
     MatTableModule,

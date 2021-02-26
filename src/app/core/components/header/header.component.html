@@ -26,12 +26,12 @@
               'header.history' | translate
             }}</a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item" *ngIf="hasRole('moderator') || hasRole('admin')">
             <a [routerLink]="['bonuses']" [routerLinkActive]="'active'">{{
               'header.bonuses' | translate
             }}</a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item" *ngIf="hasRole('admin')">
             <a [routerLink]="['statistics']" [routerLinkActive]="'active'">{{
               'header.statistics' | translate
             }}</a>

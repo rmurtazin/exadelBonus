@@ -20,7 +20,7 @@ import { BonusSearcherComponent } from './bonus-searcher/bonus-searcher.componen
     NgxMaskModule.forRoot(),
     BonusListContainerModule,
     RouterModule.forChild([
-      { path: '', component: AddBonusComponent, data: { roles: ['moderator', 'admin'] } },
+      { path: '', component: AddBonusComponent },
     ]),
     SharedModule,
   ],

@@ -42,7 +42,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDialogModule,
     FilterContainerModule,
     RouterModule.forChild([
-      { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
+      { path: '', component: HomeComponent },
     ]),
   ],
   exports: [HomeComponent, RouterModule],

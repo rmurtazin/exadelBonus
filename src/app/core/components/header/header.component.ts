@@ -69,6 +69,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
+  public hasRole(role: string): boolean {
+    return this.loginService.getRole() === role;
+  }
+
   public ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }

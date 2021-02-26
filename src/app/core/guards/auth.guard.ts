@@ -5,16 +5,19 @@ import {
   RouterStateSnapshot,
   UrlTree,
   Router,
-  CanActivateChild,
+  CanLoad,
+  Route,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-
 import { LoginService } from './../services/login.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+
+export class AuthGuard implements CanActivate, CanLoad {
+  constructor(private loginService: LoginService, private router: Router) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
@@ -23,26 +26,15 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       this.router.navigate(['login']);
       return false;
     }
-    if (this.loginService.getUser()) {
-      return true;
-    }
+    return true;
   }
 
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.loginService.getUser()) {
-      const userRole = this.loginService.getRole();
-      // console.log('userRole',userRole);
-      // console.log(childRoute);
-      // console.log(childRoute.data.roles.include('admin'));
-      // TODO: rewrite after integration with back
-      // return childRoute.data.roles.include(userRole);
+  canLoad(route : Route): boolean {  
+    const userRole = this.loginService.getRole();
+    if (route.data.roles.includes(userRole)) {
       return true;
     }
+    this.router.navigate(['404']);
     return false;
   }
-
-  constructor(private loginService: LoginService, private router: Router) {}
 }
