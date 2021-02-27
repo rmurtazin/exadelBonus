@@ -4,11 +4,7 @@ import { HistoryComponent } from './history.component';
 
 @NgModule({
   declarations: [HistoryComponent],
-  imports: [
-    RouterModule.forChild([
-      { path: '', component: HistoryComponent, data: { roles: ['user', 'moderator', 'admin'] } },
-    ]),
-  ],
+  imports: [RouterModule.forChild([{ path: '', component: HistoryComponent }])],
   exports: [HistoryComponent],
 })
 export class HistoryModule {}
