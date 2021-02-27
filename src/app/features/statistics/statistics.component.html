@@ -34,11 +34,7 @@
     <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.type' | translate }}</mat-label>
       <mat-select [(ngModel)]="filterParams.type">
-        <mat-option
-          *ngFor="let type of types"
-          [value]="type"
-          (click)="setType(type)"
-        >
+        <mat-option *ngFor="let type of types" [value]="type" (click)="setType(type)">
           {{ type }}
         </mat-option>
       </mat-select>
