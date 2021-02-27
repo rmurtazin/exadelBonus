@@ -43,9 +43,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
     MatTabsModule,
     MatDialogModule,
     FilterContainerModule,
-    RouterModule.forChild([
-      { path: '', component: HomeComponent, data: { roles: ['user', 'moderator', 'admin'] } },
-    ]),
+    RouterModule.forChild([{ path: '', component: HomeComponent }]),
   ],
   exports: [HomeComponent, RouterModule],
 })
