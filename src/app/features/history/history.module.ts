@@ -5,7 +5,10 @@ import { BonusListContainerModule } from 'src/app/shared/components/bonus-list-c
 
 @NgModule({
   declarations: [HistoryComponent],
-  imports: [BonusListContainerModule, RouterModule.forChild([{ path: '', component: HistoryComponent }])],
+  imports: [
+    BonusListContainerModule,
+    RouterModule.forChild([{ path: '', component: HistoryComponent }]),
+  ],
   exports: [HistoryComponent],
 })
 export class HistoryModule {}
