@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IHistoryBonus } from '@interfaces/history.interface';
 import { HistoryService } from '@services/history.service';
+import { LoginService } from '@services/login.service';
 import { Subscription } from 'rxjs';
 import { BonusComponent } from 'src/app/shared/components/bonus-list-container/bonus/bonus.component';
 
@@ -17,7 +18,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public bonuses: IBonus[] = [];
   public bonusButtonLabel = 'Rate';
 
-  constructor(private historyService: HistoryService) {}
+  constructor(private historyService: HistoryService, private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.getBonuses();
@@ -28,8 +29,9 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public getBonuses(): void {
+    // console.log(this.loginService.getUser().subscribe());
     this.subscription.add(
-      this.historyService.getHistoryBonuses().subscribe((data) => {
+      this.historyService.getHistoryBonuses('777').subscribe((data) => {
         this.historyBonuses = data;
         this.bonuses = data.map((item) => item.bonus);
       }),
