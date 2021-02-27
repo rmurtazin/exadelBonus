@@ -26,8 +26,8 @@ export class HistoryService {
     );
   }
 
-  public getHistoryBonuses(id: string): Observable<IHistoryBonus[]> {
-    return this.apiService.get(`${this.url}user/${id}/withoutrepetitions`).pipe(
+  public getHistoryBonuses(): Observable<IHistoryBonus[]> {
+    return this.apiService.get(this.url).pipe(
       map(({ value }) => {
         this.historyBonusSubject.next(value);
         return value;
