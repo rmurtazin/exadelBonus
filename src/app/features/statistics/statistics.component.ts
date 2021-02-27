@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { format } from 'date-fns';
 import { DatepickerComponent } from '../../shared/components/datepicker/datepicker.component';
+import { MarkersIcons } from '@enums/markers-icons.enum';
 
 @Component({
   selector: 'app-statistics',
@@ -33,6 +34,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
     'isActive',
   ];
   public dataSource = new MatTableDataSource<StatisticElement>(this.statistics);
+  public types: string[] = Object.keys(MarkersIcons);
   public dateStart = '';
   public dateEnd = '';
   public queryParams = '';
@@ -145,5 +147,9 @@ export class StatisticsComponent implements OnInit, OnDestroy {
 
   public setVendorId(id: string): void {
     this.filterParams.vendorId = id;
+  }
+
+  public setType(type: string): void {
+    this.filterParams.type = type;
   }
 }
