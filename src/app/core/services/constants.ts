@@ -17,13 +17,14 @@ export const apiLinks = {
     role: `${apiUrl}/Admin/role`,
   },
   account: {
-    login: `${apiUrl}/Account/login/`,
-    register: `${apiUrl}/Account/register/`,
-    logout: `${apiUrl}/Account/logout/`,
+    login: `${apiUrl}/Account/login`,
+    register: `${apiUrl}/Account/register`,
+    logout: `${apiUrl}/Account/logout`,
     getInfo: `${apiUrl}/Account/getInfo`,
+    refreshToken: `${apiUrl}/account/tokenrefresh`,
   },
-  vendor: `${apiUrl}/api/Vendor/`,
-  history: `${apiUrl}/api/History/`,
+  vendor: `${apiUrl}/api/Vendor`,
+  history: `${apiUrl}/api/History`,
 };
 
 export const cityByLocationUrl = (lat: number, lng: number) =>

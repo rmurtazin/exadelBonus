@@ -15,15 +15,12 @@ export class LoginService {
   private loginUrl = apiLinks.account.login;
   private logoutUrl = apiLinks.account.logout;
   private getInfoUrl = apiLinks.account.getInfo;
+  private refreshTokenUrl = apiLinks.account.refreshToken;
 
   constructor(private http: HttpClient, private route: Router) {}
 
-  public getUser(): Observable<IUser> {
-    return this.fetchUser();
-  }
-
   public getToken(): string | null {
-    return localStorage.getItem('token');
+    return localStorage.getItem('accessToken');
   }
 
   public getRole(): string {
@@ -40,8 +37,9 @@ export class LoginService {
     };
     return this.http.post(this.loginUrl, body).pipe(
       tap((response: any) => {
-        localStorage.setItem('token', response.value);
-        this.fetchUser();
+        localStorage.setItem('accessToken', response.value.accessToken);
+        localStorage.setItem('refreshToken', response.value.refreshToken);
+        this.getUser();
         return response;
       }),
       catchError((err) => throwError(err)),
@@ -51,7 +49,7 @@ export class LoginService {
   public logout(): Observable<any> {
     return this.http.post(this.logoutUrl, {}).pipe(
       tap((response) => {
-        localStorage.removeItem('token');
+        localStorage.clear();
         this.currentUser = null;
         return response;
       }),
@@ -59,7 +57,7 @@ export class LoginService {
     );
   }
 
-  public fetchUser(): Observable<IUser> {
+  public getUser(): Observable<IUser> {
     return this.http.get(this.getInfoUrl).pipe(
       take(1),
       map((response: { value: IUser }) => {
@@ -74,5 +72,10 @@ export class LoginService {
         return throwError(err);
       }),
     );
+  }
+
+  public refreshToken(refreshToken: string): Observable<any> {
+    const token = encodeURI(refreshToken);
+    return this.http.post(`${this.refreshTokenUrl}?refreshToken=${token}`, {});
   }
 }
