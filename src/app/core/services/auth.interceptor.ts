@@ -44,22 +44,24 @@ export class AuthInterceptor {
 
   private handle401Error(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     if (!this.isTokenRefreshing) {
+      //console.log(1);
       this.isTokenRefreshing = true;
       this.tokenSubject.next(null);
-      const refreshToken = `${localStorage.getItem('refreshToken')}`;
-      return this.loginService.refreshToken(refreshToken).pipe(
-        map((response: any) => response.value),
+      return this.loginService.refreshToken().pipe(
+        map((response: any) => {//console.log('2', response); return response.value;}),
         switchMap((value: any) => {
+          //console.log('3', value);
           if (value.accessToken) {
             localStorage.setItem('accessToken', value.accessToken);
             localStorage.setItem('refreshToken', value.refreshToken);
             return next.handle(this.injectToken(req));
           }
           this.loginService.logout();
-          return throwError('');
+          return throwError('not get token');
         }),
         catchError((error) => {
           this.loginService.logout();
+          //console.log('4', error.status);
           return throwError(error);
         }),
         finalize(() => {
@@ -75,7 +77,7 @@ export class AuthInterceptor {
           return next.handle(this.injectToken(req));
         }),
       );
-      return throwError('');
+      return throwError('this refreshing');
     }
   }
 
