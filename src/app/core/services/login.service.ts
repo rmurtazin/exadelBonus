@@ -39,7 +39,6 @@ export class LoginService {
     };
     return this.http.post(this.loginUrl, body).pipe(
       tap((response: any) => {
-        //console.log(response);
         localStorage.setItem('accessToken', response.value.accessToken);
         localStorage.setItem('refreshToken', response.value.refreshToken);
         this.getUser();
@@ -84,9 +83,8 @@ export class LoginService {
 
   public refreshToken(): Observable<any> {
     const refreshToken = `${localStorage.getItem('refreshToken')}`;
-    //console.log(encodeURIComponent(`${this.refreshTokenUrl}?refreshToken=${refreshToken}`));
     return this.http.post(
-      encodeURIComponent(`${this.refreshTokenUrl}?refreshToken=${refreshToken}`),
+      `${this.refreshTokenUrl}?refreshToken=${encodeURIComponent(refreshToken)}`,
       {},
     );
   }
