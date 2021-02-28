@@ -48,7 +48,7 @@ export class AuthInterceptor {
       this.isTokenRefreshing = true;
       this.tokenSubject.next(null);
       return this.loginService.refreshToken().pipe(
-        map((response: any) => {//console.log('2', response); return response.value;}),
+        map((response: any) => { return response.value;}),
         switchMap((value: any) => {
           //console.log('3', value);
           if (value.accessToken) {

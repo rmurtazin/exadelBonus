@@ -84,7 +84,7 @@ export class LoginService {
 
   public refreshToken(): Observable<any> {
     const refreshToken = `${localStorage.getItem('refreshToken')}`;
-    //console.log(encodeURI(`${this.refreshTokenUrl}?refreshToken=${refreshToken}`));
-    return this.http.post(encodeURI(`${this.refreshTokenUrl}?refreshToken=${refreshToken}`), {});
+    //console.log(encodeURIComponent(`${this.refreshTokenUrl}?refreshToken=${refreshToken}`));
+    return this.http.post(encodeURIComponent(`${this.refreshTokenUrl}?refreshToken=${refreshToken}`), {});
   }
 }
