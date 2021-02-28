@@ -57,4 +57,8 @@ export class RateComponent implements OnInit {
     this.bonus.rating = this.bonusUnchangedRating;
     this.backToBonusEvent.emit();
   }
+
+  public getUnchangedRating(): number {
+    return this.bonusUnchangedRating;
+  }
 }
