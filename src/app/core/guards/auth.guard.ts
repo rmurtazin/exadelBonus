@@ -1,3 +1,4 @@
+import { IUser } from './../interfaces/loginInterface';
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -30,10 +31,14 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   canLoad(route: Route): boolean {
     const userRole = this.loginService.getRole();
-    if (route.data.roles.includes(userRole)) {
-      return true;
+    if (this.loginService.getToken()) {
+      if (route.data.roles.includes(userRole)) {
+        return true;
+      }
+      this.router.navigate(['404']);
+      return false;
     }
-    this.router.navigate(['404']);
+    this.router.navigate(['login']);
     return false;
   }
 }
