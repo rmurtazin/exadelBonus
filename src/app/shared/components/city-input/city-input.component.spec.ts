@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BonusesService } from '@services/bonuses.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
+import { LocationService } from '@services/location.service';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('CityInputComponent', () => {
   let component: CityInputComponent;
@@ -14,12 +16,13 @@ describe('CityInputComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [CityInputComponent],
       imports: [
+        MatDialogModule,
         MatAutocompleteModule,
         HttpClientModule,
         ToastrModule.forRoot(),
         TranslateModule.forRoot(),
       ],
-      providers: [BonusesService],
+      providers: [BonusesService, LocationService],
     }).compileComponents();
   });
 
