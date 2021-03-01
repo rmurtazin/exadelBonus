@@ -4,8 +4,8 @@
     aria-label="Select an option"
     [(ngModel)]="selectedPlaceDetection"
   >
-    <mat-radio-button class="radio-button" value="0"> Geolocation </mat-radio-button>
-    <mat-radio-button class="radio-button" value="1" #officeOption>Choose office</mat-radio-button>
+    <mat-radio-button class="radio-button" value="0" (click)="changeFlagPlaceChoosen()"> Geolocation </mat-radio-button>
+    <mat-radio-button class="radio-button" value="1" #officeOption (click)="changeFlagPlaceChoosen()">Choose office</mat-radio-button>
   </mat-radio-group>
   <mat-form-field appearance="fill">
     <mat-select appearance="fill" [disabled]="!officeOption.checked" [(ngModel)]="selectedOffice">
@@ -17,5 +17,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-flat-button color="primary" (click)="apply()">OK</button>
+  <div class="button-container">
+    <button mat-flat-button class="geoButton" color="primary" (click)="apply()" [disabled]="!placeChoosen">OK</button>
+    <button mat-flat-button class="geoButton" color="primary" (click)="cancel()" >Cancel</button>
+  </div>
 </div>
