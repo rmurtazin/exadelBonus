@@ -16,7 +16,6 @@
         [matAutocomplete]="auto"
         [(ngModel)]="filterParams.vendor"
         (keyup.enter)="vendorNameChange()"
-        (blur)="vendorNameChange()"
       />
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option
@@ -34,7 +33,11 @@
     </mat-form-field>
     <mat-form-field class="statistics-flters-element">
       <mat-label>{{ 'statistics.type' | translate }}</mat-label>
-      <input matInput type="text" placeholder="Bonus type" [(ngModel)]="filterParams.type" />
+      <mat-select [(ngModel)]="filterParams.type">
+        <mat-option *ngFor="let type of types" [value]="type" (click)="setType(type)">
+          {{ type }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-checkbox
       class="statistics-flters-element"
@@ -66,7 +69,7 @@
     </button>
   </div>
 
-  <div class="table">
+  <div class="table" *ngIf="!loading; else loadingBlock">
     <mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="companyName">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -93,14 +96,16 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header>
           {{ 'statistics.dateStart' | translate }}
         </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.dateStart }} </mat-cell>
+        <mat-cell *matCellDef="let element" class="start-column">
+          {{ element.dateStart }}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="dateEnd">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
           {{ 'statistics.dateEnd' | translate }}
         </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.dateEnd }} </mat-cell>
+        <mat-cell *matCellDef="let element" class="end-column"> {{ element.dateEnd }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="rating">
@@ -135,6 +140,10 @@
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
   </div>
+
+  <ng-template #loadingBlock>
+    <mat-spinner class="spinner"></mat-spinner>
+  </ng-template>
 
   <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
 </div>

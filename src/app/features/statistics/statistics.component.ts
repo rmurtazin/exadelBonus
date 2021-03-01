@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { format } from 'date-fns';
 import { DatepickerComponent } from '../../shared/components/datepicker/datepicker.component';
+import { MarkersIcons } from '@enums/markers-icons.enum';
 
 @Component({
   selector: 'app-statistics',
@@ -18,7 +19,7 @@ import { DatepickerComponent } from '../../shared/components/datepicker/datepick
 })
 export class StatisticsComponent implements OnInit, OnDestroy {
   private subscriptionStatistics: Subscription;
-  private subscriptionVendor: Subscription;
+  public loading = false;
   public vendors: IVendor[] = [];
   public statistics: StatisticElement[] = [];
   public displayedColumns: string[] = [
@@ -33,6 +34,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
     'isActive',
   ];
   public dataSource = new MatTableDataSource<StatisticElement>(this.statistics);
+  public types: string[] = Object.keys(MarkersIcons);
   public dateStart = '';
   public dateEnd = '';
   public queryParams = '';
@@ -61,6 +63,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   }
 
   public getStatistics(): void {
+    this.loading = true;
     this.subscriptionStatistics = this.statisticsService.getStatistics(this.queryParams).subscribe(
       (data: StatisticElement[]) => {
         if (data) {
@@ -70,6 +73,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
         }
+        this.loading = false;
       },
       (err) => this.toasterService.showError(err, 'Some problems with getting statistics'),
     );
@@ -143,5 +147,9 @@ export class StatisticsComponent implements OnInit, OnDestroy {
 
   public setVendorId(id: string): void {
     this.filterParams.vendorId = id;
+  }
+
+  public setType(type: string): void {
+    this.filterParams.type = type;
   }
 }

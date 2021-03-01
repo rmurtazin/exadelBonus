@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -11,7 +10,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HttpClientModule,
     RouterModule.forChild([{ path: '', component: LoginComponent }]),
     SharedModule,
-    MatProgressSpinnerModule,
   ],
   exports: [LoginComponent, RouterModule],
 })
