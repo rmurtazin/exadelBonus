@@ -5,7 +5,6 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
 } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
@@ -18,7 +17,7 @@ import { LoginService } from '@services/login.service';
   styleUrls: ['./bonus.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BonusComponent implements OnInit, OnChanges {
+export class BonusComponent implements OnChanges {
   @Input() bonusButtonLabel: string;
   @Input() bonus: IBonus;
   @Input() ifBonusFromMap: boolean;
@@ -29,14 +28,6 @@ export class BonusComponent implements OnInit, OnChanges {
   public user: IUser;
 
   constructor(private loginService: LoginService, private elementRef: ElementRef) {}
-
-  ngOnInit(): void {
-    this.loginService.getUser().subscribe((user: IUser) => {
-      const [role] = user.roles;
-      this.user = user;
-      this.isModeratorOrAdmin = role === 'admin' || role === 'moderator';
-    });
-  }
 
   public ngOnChanges(): void {
     this.scrollToBonusMap();
