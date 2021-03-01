@@ -9,13 +9,7 @@ import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [StarsComponent, RateComponent],
-  imports: [
-    MatIconModule,
-    CommonModule,
-    MatButtonModule,
-    MatSliderModule,
-    SharedModule,
-  ],
+  imports: [MatIconModule, CommonModule, MatButtonModule, MatSliderModule, SharedModule],
   exports: [StarsComponent, RateComponent],
 })
 export class RatingModule {}
