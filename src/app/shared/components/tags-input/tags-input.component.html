@@ -1,5 +1,5 @@
 <mat-form-field class="tag-chips-input">
-  <mat-label>Tags</mat-label>
+  <mat-label> {{ 'tagsInput.tags' | translate }} </mat-label>
   <mat-chip-list #chipList aria-label="Tags Selection" aria-multiline="false">
     <mat-chip
       *ngFor="let tag of selectedTags"
@@ -11,7 +11,7 @@
       <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
     </mat-chip>
     <input
-      placeholder="New tags..."
+      placeholder="{{ 'tagsInput.newTags' | translate }}" 
       #tagsInput
       [formControl]="tagsControl"
       [matAutocomplete]="auto"
