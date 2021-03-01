@@ -4,8 +4,17 @@
     aria-label="Select an option"
     [(ngModel)]="selectedPlaceDetection"
   >
-    <mat-radio-button class="radio-button" value="0" (click)="changeFlagPlaceChoosen()"> {{ 'choosePlace.geolocation' | translate }} </mat-radio-button>
-    <mat-radio-button class="radio-button" value="1" #officeOption (click)="changeFlagPlaceChoosen()"> {{ 'choosePlace.office' | translate }} </mat-radio-button>
+    <mat-radio-button class="radio-button" value="0" (click)="changeFlagPlaceChoosen()">
+      {{ 'choosePlace.geolocation' | translate }}
+    </mat-radio-button>
+    <mat-radio-button
+      class="radio-button"
+      value="1"
+      #officeOption
+      (click)="changeFlagPlaceChoosen()"
+    >
+      {{ 'choosePlace.office' | translate }}
+    </mat-radio-button>
   </mat-radio-group>
   <mat-form-field appearance="fill">
     <mat-select appearance="fill" [disabled]="!officeOption.checked" [(ngModel)]="selectedOffice">
@@ -18,7 +27,17 @@
     </mat-select>
   </mat-form-field>
   <div class="button-container">
-    <button mat-flat-button class="geoButton" color="primary" (click)="apply()" [disabled]="!placeChoosen"> OK </button>
-    <button mat-flat-button class="geoButton" color="primary" (click)="cancel()" > {{ 'choosePlace.cancel' | translate }} </button>
+    <button
+      mat-flat-button
+      class="geoButton"
+      color="primary"
+      (click)="apply()"
+      [disabled]="!placeChoosen"
+    >
+      OK
+    </button>
+    <button mat-flat-button class="geoButton" color="primary" (click)="cancel()">
+      {{ 'choosePlace.cancel' | translate }}
+    </button>
   </div>
 </div>
