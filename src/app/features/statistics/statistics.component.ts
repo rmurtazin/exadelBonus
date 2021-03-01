@@ -70,8 +70,10 @@ export class StatisticsComponent implements OnInit, OnDestroy {
           this.statistics = data;
           this.formatData();
           this.dataSource = new MatTableDataSource<StatisticElement>(this.statistics);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
+          setTimeout(() => {
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+          });
         }
         this.loading = false;
       },
