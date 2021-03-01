@@ -156,12 +156,17 @@
   },
   "loginErrors": {
     "invalidData": {
-      "title": "Ошыбка входа",
+      "title": "Ошибка входа",
       "message" : "Неверный логин или пароль"
     },
     "serverError": {
-      "title": "Ошыбка входа",
+      "title": "Ошибка входа",
       "message" : "Что-то пошло не так"
     }
+  },
+  "choosePlace": {
+    "geolocation": "Геолокация",
+    "office": "Выберите офис",
+    "cancel": "Отмена"
   }
 }
