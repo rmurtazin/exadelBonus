@@ -8,8 +8,6 @@ import {
   Output,
 } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
-import { IUser } from '@interfaces/loginInterface';
-import { LoginService } from '@services/login.service';
 
 @Component({
   selector: 'app-bonus',
@@ -24,10 +22,8 @@ export class BonusComponent implements OnChanges {
   @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
 
   public isForm = false;
-  public isModeratorOrAdmin = false;
-  public user: IUser;
 
-  constructor(private loginService: LoginService, private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef) {}
 
   public ngOnChanges(): void {
     this.scrollToBonusMap();
