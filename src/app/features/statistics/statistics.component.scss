@@ -36,5 +36,17 @@ th.mat-sort-header-sorted {
 }
 
 .mat-cell {
-  padding: 0 2px;
+  padding: 0 4px;
+}
+
+.start-column {
+  color: green;
+}
+
+.end-column {
+  color: red;
+}
+
+.spinner {
+  margin: auto;
 }
