@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RateComponent } from './rate.component';
+import { RouterModule } from '@angular/router';
 
 describe('RateComponent', () => {
   let component: RateComponent;
@@ -13,7 +14,7 @@ describe('RateComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RateComponent],
-      imports: [HttpClientModule, ToastrModule.forRoot(), TranslateModule.forRoot()],
+      imports: [HttpClientModule, ToastrModule.forRoot(), TranslateModule.forRoot(), RouterModule.forRoot([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RateComponent);

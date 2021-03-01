@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -12,7 +13,7 @@ describe('HistoryComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HistoryComponent],
-      imports: [HttpClientModule, ToastrModule.forRoot(), TranslateModule.forRoot()],
+      imports: [HttpClientModule, ToastrModule.forRoot(), TranslateModule.forRoot(), RouterModule.forRoot([])],
     }).compileComponents();
   });
 
