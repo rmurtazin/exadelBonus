@@ -14,10 +14,7 @@ export class HistoryService {
   private url = apiLinks.history;
   // public historyBonusSubject = new Subject<IHistoryBonus[]>();
 
-  constructor(
-    private apiService: ApiService,
-    private toasterService: ToasterService,
-  ) {}
+  constructor(private apiService: ApiService, private toasterService: ToasterService) {}
 
   public applyBonus(reqBody: IHistoryReqBody): Observable<IHistoryBonus> {
     return this.apiService.post(this.url, JSON.stringify(reqBody)).pipe(
