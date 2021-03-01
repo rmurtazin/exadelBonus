@@ -34,7 +34,7 @@ export class HistoryService {
   }
 
   public rateBonus(historyId: string, estimate: number): Observable<IHistoryBonus> {
-    return this.apiService.put(`${this.url}estimate/${historyId}?estimate=${estimate}`).pipe(
+    return this.apiService.put(`${this.url}/estimate/${historyId}?estimate=${estimate}`).pipe(
       tap(() => {
         this.toasterService.showNotification('rateForm.notification.success', 'success');
       }),
