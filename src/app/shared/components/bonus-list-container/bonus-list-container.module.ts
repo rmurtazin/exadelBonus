@@ -9,11 +9,7 @@ import { BonusComponent } from './bonus/bonus.component';
 import { RatingModule } from '../rating/rating.module';
 
 @NgModule({
-  declarations: [
-    BonusListContainerComponent,
-    BonusListViewComponent,
-    BonusComponent,
-  ],
+  declarations: [BonusListContainerComponent, BonusListViewComponent, BonusComponent],
   imports: [MatCardModule, MatExpansionModule, RouterModule, SharedModule, RatingModule],
   exports: [BonusListContainerComponent, RouterModule, BonusListViewComponent],
 })
