@@ -12,12 +12,11 @@ import { ToasterService } from './toaster.service';
 })
 export class HistoryService {
   private url = apiLinks.history;
-  public historyBonusSubject = new Subject<IHistoryBonus[]>();
+  // public historyBonusSubject = new Subject<IHistoryBonus[]>();
 
   constructor(
     private apiService: ApiService,
     private toasterService: ToasterService,
-    private loginService: LoginService,
   ) {}
 
   public applyBonus(reqBody: IHistoryReqBody): Observable<IHistoryBonus> {
@@ -34,7 +33,7 @@ export class HistoryService {
   public getHistoryBonuses(userId: string): Observable<IHistoryBonus[]> {
     return this.apiService.get(`${this.url}/user/${userId}/withoutrepetitions`).pipe(
       map(({ value }) => {
-        this.historyBonusSubject.next(value);
+        // this.historyBonusSubject.next(value);
         return value;
       }),
     );
