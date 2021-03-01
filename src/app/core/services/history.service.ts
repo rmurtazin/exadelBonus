@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IHistoryBonus, IHistoryReqBody } from '@interfaces/history.interface';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { apiLinks } from './constants';
-import { LoginService } from './login.service';
 import { ToasterService } from './toaster.service';
 
 @Injectable({
@@ -12,7 +11,6 @@ import { ToasterService } from './toaster.service';
 })
 export class HistoryService {
   private url = apiLinks.history;
-  // public historyBonusSubject = new Subject<IHistoryBonus[]>();
 
   constructor(private apiService: ApiService, private toasterService: ToasterService) {}
 
@@ -30,7 +28,6 @@ export class HistoryService {
   public getHistoryBonuses(userId: string): Observable<IHistoryBonus[]> {
     return this.apiService.get(`${this.url}/user/${userId}/withoutrepetitions`).pipe(
       map(({ value }) => {
-        // this.historyBonusSubject.next(value);
         return value;
       }),
     );
