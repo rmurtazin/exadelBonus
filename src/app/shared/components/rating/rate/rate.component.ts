@@ -11,6 +11,7 @@ import { MatSliderChange } from '@angular/material/slider';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IHistoryBonus } from '@interfaces/history.interface';
 import { HistoryService } from '@services/history.service';
+import { LoginService } from '@services/login.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -31,7 +32,7 @@ export class RateComponent implements OnInit, OnDestroy {
   private bonusUnchangedRating: number;
   public historyBonus: IHistoryBonus;
 
-  constructor(private historyService: HistoryService) {}
+  constructor(private historyService: HistoryService, private loginService: LoginService) {}
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -54,22 +55,24 @@ export class RateComponent implements OnInit, OnDestroy {
   }
 
   public onRateBonus(bonus: IBonus): void {
-    this.subscription.add(
-      this.historyService.getHistoryBonuses().subscribe((data) => {
-        const rate = Math.floor(bonus.rating);
-        this.historyBonus = data.find((item) => item.bonus.id === bonus.id);
-        this.rateBonus(bonus, rate);
-      }),
-    );
+    this.loginService.getUser().subscribe((data) => {
+      this.subscription.add(
+        this.historyService.getHistoryBonuses(data.id).subscribe((bonuses) => {
+          const rate = Math.floor(bonus.rating);
+          this.historyBonus = bonuses.find((item) => item.bonusDto.id === bonus.id);
+          this.rateBonus(bonus, rate);
+        }),
+      );
+    });
   }
 
   public rateBonus(bonus: IBonus, rate: number): void {
-    this.subscription.add(
-      this.historyService.rateBonus(this.historyBonus.id, rate).subscribe(() => {
-        this.animationStart = false;
-        this.bonus = bonus;
-      }),
-    );
+    // this.subscription.add(
+    //   this.historyService.rateBonus(this.historyBonus, rate).subscribe(() => {
+    //     this.animationStart = false;
+    //     this.bonus = bonus;
+    //   }),
+    // );
   }
 
   public backToBonus(): void {

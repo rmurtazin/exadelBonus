@@ -1,5 +1,4 @@
 import { IBonus } from './bonus.interface';
-import { IUserInfo } from './loginInterface';
 
 export interface IHistoryReqBody {
   userId: string;
@@ -7,9 +6,7 @@ export interface IHistoryReqBody {
 }
 
 export interface IHistoryBonus {
-  id: string;
-  userInfo: IUserInfo;
-  bonus: IBonus;
+  bonusDto: IBonus;
   usegeDate: string;
   rating: number;
 }

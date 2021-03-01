@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { apiLinks } from './constants';
+import { LoginService } from './login.service';
 import { ToasterService } from './toaster.service';
 
 @Injectable({
@@ -13,7 +14,11 @@ export class HistoryService {
   private url = apiLinks.history;
   public historyBonusSubject = new Subject<IHistoryBonus[]>();
 
-  constructor(private apiService: ApiService, private toasterService: ToasterService) {}
+  constructor(
+    private apiService: ApiService,
+    private toasterService: ToasterService,
+    private loginService: LoginService,
+  ) {}
 
   public applyBonus(reqBody: IHistoryReqBody): Observable<IHistoryBonus> {
     return this.apiService.post(this.url, JSON.stringify(reqBody)).pipe(
@@ -26,8 +31,8 @@ export class HistoryService {
     );
   }
 
-  public getHistoryBonuses(): Observable<IHistoryBonus[]> {
-    return this.apiService.get(this.url).pipe(
+  public getHistoryBonuses(userId: string): Observable<IHistoryBonus[]> {
+    return this.apiService.get(`${this.url}user/${userId}/withoutrepetitions`).pipe(
       map(({ value }) => {
         this.historyBonusSubject.next(value);
         return value;

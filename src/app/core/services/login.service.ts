@@ -42,7 +42,7 @@ export class LoginService {
     };
     return this.http.post(this.loginUrl, body).pipe(
       tap((response: any) => {
-        localStorage.setItem('token', response.value);
+        localStorage.setItem('token', response.value.accessToken);
         this.fetchUser();
         return response;
       }),
