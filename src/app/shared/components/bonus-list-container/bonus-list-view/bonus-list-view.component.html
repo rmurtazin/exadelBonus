@@ -1,7 +1,12 @@
-<div *ngFor="let bonus of bonuses; trackBy: trackById" class="bonus-container">
+<div
+  *ngFor="let bonus of bonuses; trackBy: trackById; first as isFirst"
+  class="bonus-container"
+  [@inOutAnimation]
+>
   <app-bonus
     [bonus]="bonus"
     [bonusButtonLabel]="bonusButtonLabel"
     (bonusButtonClickedEvent)="bonusButtonClicked($event)"
+    [ifBonusFromMap]="isFirst && ifBonusMap"
   ></app-bonus>
 </div>
