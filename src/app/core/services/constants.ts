@@ -2,6 +2,12 @@ import { environment } from 'src/environments/environment';
 
 const { apiUrl } = environment;
 
+export enum RoleType {
+  user = 'user',
+  moderator = 'moderator',
+  admin = 'admin',
+}
+
 export const apiLinks = {
   bonus: `${apiUrl}/api/Bonus`,
   cities: `${apiUrl}/api/Bonus/cities`,
@@ -11,13 +17,14 @@ export const apiLinks = {
     role: `${apiUrl}/Admin/role`,
   },
   account: {
-    login: `${apiUrl}/Account/login/`,
-    register: `${apiUrl}/Account/register/`,
-    logout: `${apiUrl}/Account/logout/`,
+    login: `${apiUrl}/Account/login`,
+    register: `${apiUrl}/Account/register`,
+    logout: `${apiUrl}/Account/logout`,
     getInfo: `${apiUrl}/Account/getInfo`,
+    refreshToken: `${apiUrl}/account/tokenrefresh`,
   },
-  vendor: `${apiUrl}/api/Vendor/`,
-  history: `${apiUrl}/api/History/`,
+  vendor: `${apiUrl}/api/Vendor`,
+  history: `${apiUrl}/api/History`,
 };
 
 export const cityByLocationUrl = (lat: number, lng: number) =>

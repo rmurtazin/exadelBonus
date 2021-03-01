@@ -6,6 +6,7 @@ import { Router, RouterEvent, Event, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { RoleType } from '../../services/constants';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public ifShowMenuButtons: boolean;
   public isMenuHide = true;
   public user: IUser;
-  private userSybscription: Subscription;
+  private userSubscription: Subscription;
+  public roleType = RoleType;
 
   constructor(
     private loginService: LoginService,
@@ -30,17 +32,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((event: NavigationEnd) => {
         this.currentRoute = event.urlAfterRedirects;
         this.ifShowMenuButtons = this.checkRoute();
+        if (this.ifShowMenuButtons) {
+          this.getUser();
+        }
       });
   }
   ngOnInit(): void {
-    this.getUser();
     this.translate.use(this.language);
   }
 
   private getUser(): void {
-    this.userSybscription = this.loginService.getUser().subscribe((user) => {
-      this.user = user;
-    });
+    if (this.loginService.getToken()) {
+      this.userSubscription = this.loginService.getUser().subscribe((user) => {
+        this.user = user;
+      });
+    }
   }
   public toggleMenu(): void {
     this.isMenuHide = !this.isMenuHide;
@@ -60,12 +66,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public logout(): void {
-    this.loginService.logout().subscribe(() => {
-      this.route.navigate(['/login']);
-    });
+    this.loginService.logout().subscribe(
+      () => {
+        this.route.navigate(['/login']);
+      },
+      () => this.route.navigate(['/login']),
+    );
+  }
+
+  public hasRole(role: string): boolean {
+    return this.loginService.getRole() === role;
   }
 
   public ngOnDestroy(): void {
-    this.userSybscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
 }

@@ -1,5 +1,13 @@
 import { ToasterService } from '@services/toaster.service';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  Renderer2,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IBonus } from '@interfaces/bonus.interface';
 import { BonusesService } from '@services/bonuses.service';
@@ -15,6 +23,8 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   public bonuses: IBonus[] = [];
   private subscriptionBonuses: Subscription;
   private subscriptionBonusMap: Subscription;
+  public loading = false;
+  public ifBonusMap: boolean = false;
 
   @Input() bonusButtonLabel: string;
 
@@ -36,6 +46,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
   }
 
   public getBonuses(): void {
+    this.loading = true;
     this.subscriptionBonuses = this.bonusesService.bonusSubject.subscribe(
       (data: IBonus[]) => {
         if (data) {
@@ -49,6 +60,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
             });
           }
         }
+        this.loading = false;
       },
       () => this.toasterService.showNotification('bonusList.notification.getBonusesError', 'error'),
     );
@@ -80,6 +92,7 @@ export class BonusListContainerComponent implements OnInit, OnDestroy {
     cloneBonuses.splice(indexBonusMapInView, 1);
     cloneBonuses.unshift(bonus);
     this.bonuses = cloneBonuses;
+    this.ifBonusMap = true;
   }
 
   public ngOnDestroy(): void {

@@ -40,6 +40,14 @@
         "title": "Successfully!",
         "message": "A new bonus has been saved!"
       },
+      "saveUpdateBonus": {
+        "title": "Successfully!",
+        "message": "Bonus has been updated!"
+      },
+      "UpdateBonusError": {
+        "title": "Update error",
+        "message": "Some problems with saving bonus!"
+      },
       "getAddress": {
         "title": "Response error",
         "message": "Some problems with getting address!"

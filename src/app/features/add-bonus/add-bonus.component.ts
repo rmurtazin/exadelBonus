@@ -8,6 +8,7 @@ import {
   INewBonus,
   INewVendor,
   IVendor,
+  IUpdateBonus,
 } from '@interfaces/add-bonus.interface';
 import { BonusAddressService } from '@services/bonus-address.service';
 import { BonusesService } from '@services/bonuses.service';
@@ -22,6 +23,7 @@ import { BonusComponent } from 'src/app/shared/components/bonus-list-container/b
   styleUrls: ['./add-bonus.component.scss'],
 })
 export class AddBonusComponent implements OnInit, OnDestroy {
+  public loading = false;
   public subscription: Subscription = new Subscription();
   public locations: ILocation[] = [];
   public vendors: IVendor[] = [];
@@ -82,6 +84,13 @@ export class AddBonusComponent implements OnInit, OnDestroy {
           }),
         );
       },
+      updateBonus: (modifiedBonus: IUpdateBonus): void => {
+        this.subscription.add(
+          this.bonusesService.updateBonus(modifiedBonus).subscribe(() => {
+            this.getBonuses();
+          }),
+        );
+      },
       removeVendors: (): void => {
         this.vendors = [];
       },
@@ -91,8 +100,10 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public getBonuses(): void {
     const bonusesCount = '6';
     const query = `?LastCount=${bonusesCount}`;
+    this.loading = true;
     this.bonusesService.getBonuses(query).subscribe((data) => {
       this.bonuses = data;
+      this.loading = false;
     });
   }
 
