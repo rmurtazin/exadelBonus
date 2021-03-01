@@ -1,3 +1,4 @@
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -37,6 +38,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatNativeDateModule,
     MatChipsModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     CloseMenuDirective,
@@ -58,6 +60,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatNativeDateModule,
     MatChipsModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class SharedModule {}
