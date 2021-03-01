@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of, Subject, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { map, take, tap, catchError } from 'rxjs/operators';
 import { ILogin, IUser } from '@interfaces/loginInterface';
 import { Router } from '@angular/router';
@@ -10,19 +10,15 @@ import { IJwtDecoded } from '@interfaces/jwt-decoded.interface';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  public error$ = new Subject<boolean>();
   private loginUrl = apiLinks.account.login;
   private logoutUrl = apiLinks.account.logout;
   private getInfoUrl = apiLinks.account.getInfo;
+  private refreshTokenUrl = apiLinks.account.refreshToken;
 
   constructor(private http: HttpClient, private route: Router) {}
 
-  public getUser(): Observable<IUser> {
-    return this.fetchUser();
-  }
-
   public getToken(): string | null {
-    return localStorage.getItem('token');
+    return localStorage.getItem('accessToken');
   }
 
   public getRole(): string {
@@ -42,8 +38,9 @@ export class LoginService {
     };
     return this.http.post(this.loginUrl, body).pipe(
       tap((response: any) => {
-        localStorage.setItem('token', response.value.accessToken);
-        this.fetchUser();
+        localStorage.setItem('accessToken', response.value.accessToken);
+        localStorage.setItem('refreshToken', response.value.refreshToken);
+        this.getUser();
         return response;
       }),
       catchError((err) => throwError(err)),
@@ -57,14 +54,17 @@ export class LoginService {
           localStorage.clear();
           return response;
         }),
-        catchError((err) => throwError(err)),
+        catchError((err) => {
+          localStorage.clear();
+          return throwError(err);
+        }),
       );
     }
     localStorage.clear();
     return of(null);
   }
 
-  public fetchUser(): Observable<IUser> {
+  public getUser(): Observable<IUser> {
     return this.http.get(this.getInfoUrl).pipe(
       take(1),
       map((response: { value: IUser }) => {
@@ -77,6 +77,14 @@ export class LoginService {
         }
         return throwError(err);
       }),
+    );
+  }
+
+  public refreshToken(): Observable<any> {
+    const refreshToken = `${localStorage.getItem('refreshToken')}`;
+    return this.http.post(
+      `${this.refreshTokenUrl}?refreshToken=${encodeURIComponent(refreshToken)}`,
+      {},
     );
   }
 }
