@@ -67,12 +67,12 @@ export class RateComponent implements OnInit, OnDestroy {
   }
 
   public rateBonus(bonus: IBonus, rate: number): void {
-    // this.subscription.add(
-    //   this.historyService.rateBonus(this.historyBonus, rate).subscribe(() => {
-    //     this.animationStart = false;
-    //     this.bonus = bonus;
-    //   }),
-    // );
+    this.subscription.add(
+      this.historyService.rateBonus(this.historyBonus.historyId, rate).subscribe(() => {
+        this.animationStart = false;
+        this.bonus = bonus;
+      }),
+    );
   }
 
   public backToBonus(): void {

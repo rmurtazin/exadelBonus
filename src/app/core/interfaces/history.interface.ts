@@ -9,4 +9,5 @@ export interface IHistoryBonus {
   bonusDto: IBonus;
   usegeDate: string;
   rating: number;
+  historyId: string;
 }

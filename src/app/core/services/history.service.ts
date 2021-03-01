@@ -32,7 +32,7 @@ export class HistoryService {
   }
 
   public getHistoryBonuses(userId: string): Observable<IHistoryBonus[]> {
-    return this.apiService.get(`${this.url}user/${userId}/withoutrepetitions`).pipe(
+    return this.apiService.get(`${this.url}/user/${userId}/withoutrepetitions`).pipe(
       map(({ value }) => {
         this.historyBonusSubject.next(value);
         return value;

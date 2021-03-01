@@ -13,7 +13,7 @@ import { LoginService } from '@services/login.service';
 })
 export class HomeComponent implements OnDestroy {
   public subscription: Subscription = new Subscription();
-  public bonusButtonLabel = 'Apply';
+  public bonusButtonLabel = 'Details';
 
   constructor(
     private historyService: HistoryService,

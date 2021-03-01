@@ -3,17 +3,27 @@
   font-size: 18px;
   font-weight: bold;
 }
+
 .apply {
+  margin-top: 25px;
+  text-align: right;
   line-height: 1.2;
+  @media screen and(max-width: 400px) {
+    text-align: center;
+  }
 }
 
 .header,
-.description-title,
-.bonus-phone,
-.bonus-address,
 .company-name {
   text-decoration: underline;
 }
+
+.description-title,
+.bonus-phone,
+.bonus-address {
+  font-weight: bold;
+}
+
 .company-name {
   color: #0082ca;
   font-weight: bold;

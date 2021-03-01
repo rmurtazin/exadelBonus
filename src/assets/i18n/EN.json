@@ -116,7 +116,11 @@
     "confirm": {
     "question": "Do you want to apply?",
     "yes": "Yes",
-    "no": "No"}
+    "no": "No",
+    "description": "Description: ",
+    "phone": "Phone: ",
+    "address": "Address"
+  }
   },
   "rateForm": {
     "notification": {

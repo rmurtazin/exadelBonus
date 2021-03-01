@@ -116,7 +116,10 @@
     "confirm": {
     "question": "Вы хотите отправить заявку?",
     "yes": "Да",
-    "no": "Нет"}
+    "no": "Нет",
+    "description": "Описание: ",
+    "phone": "Телефон: ",
+    "address": "Адрес: "}
   },
   "rateForm": {
     "notification": {
