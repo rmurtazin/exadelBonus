@@ -13,7 +13,12 @@ describe('HistoryComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HistoryComponent],
-      imports: [HttpClientModule, ToastrModule.forRoot(), TranslateModule.forRoot(), RouterModule.forRoot([])],
+      imports: [
+        HttpClientModule,
+        ToastrModule.forRoot(),
+        TranslateModule.forRoot(),
+        RouterModule.forRoot([]),
+      ],
     }).compileComponents();
   });
 
