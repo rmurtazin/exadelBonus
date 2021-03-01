@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
 } from '@angular/core';
@@ -16,17 +18,17 @@ import { LoginService } from '@services/login.service';
   styleUrls: ['./bonus.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BonusComponent implements OnInit {
+export class BonusComponent implements OnInit, OnChanges {
   @Input() bonusButtonLabel: string;
   @Input() bonus: IBonus;
-
+  @Input() ifBonusFromMap: boolean;
   @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
 
   public isForm = false;
   public isModeratorOrAdmin = false;
   public user: IUser;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.loginService.getUser().subscribe((user: IUser) => {
@@ -36,11 +38,25 @@ export class BonusComponent implements OnInit {
     });
   }
 
+  public ngOnChanges(): void {
+    this.scrollToBonusMap();
+  }
+
   public bonusButtonClick(): void {
     this.bonusButtonClickedEvent.emit(this);
   }
 
   public closeRateForm(): void {
     this.isForm = false;
+  }
+
+  public scrollToBonusMap(): void {
+    if (this.ifBonusFromMap) {
+      this.elementRef.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start',
+      });
+    }
   }
 }
