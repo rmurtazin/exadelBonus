@@ -1,7 +1,12 @@
 <app-bonus-list-view
+  *ngIf="!loading; else loadingBlock"
   [bonuses]="bonuses"
   [bonusButtonLabel]="bonusButtonLabel"
   (bonusButtonClickedEvent)="bonusButtonClicked($event)"
   class="bonuses"
   [ifBonusMap]="ifBonusMap"
 ></app-bonus-list-view>
+
+<ng-template #loadingBlock>
+  <mat-spinner class="spinner"></mat-spinner>
+</ng-template>
