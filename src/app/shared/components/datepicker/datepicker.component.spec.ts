@@ -10,7 +10,7 @@ describe('DatepickerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DatepickerComponent],
-      imports: [TranslateModule.forRoot()]
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
