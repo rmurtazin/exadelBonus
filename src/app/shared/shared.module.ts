@@ -16,11 +16,10 @@ import { RouterModule } from '@angular/router';
 import { LanguageSwitcherDirective } from './directives/language-switcher.directive';
 import { CloseMenuDirective } from './directives/close-menu.directive';
 import { NgModule } from '@angular/core';
-import { ResizePickDirective } from './directives/resize-pick.directive';
 import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
-  declarations: [CloseMenuDirective, LanguageSwitcherDirective, ResizePickDirective],
+  declarations: [CloseMenuDirective, LanguageSwitcherDirective],
   imports: [
     RouterModule,
     CommonModule,
@@ -43,7 +42,6 @@ import { MatRadioModule } from '@angular/material/radio';
   exports: [
     CloseMenuDirective,
     LanguageSwitcherDirective,
-    ResizePickDirective,
     RouterModule,
     CommonModule,
     FormsModule,

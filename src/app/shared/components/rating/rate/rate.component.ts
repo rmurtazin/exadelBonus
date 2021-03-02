@@ -5,12 +5,14 @@ import {
   Output,
   Input,
   OnInit,
+  OnDestroy,
 } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 import { IBonus } from '@interfaces/bonus.interface';
-import { BonusesService } from '@services/bonuses.service';
-import { ToasterService } from '@services/toaster.service';
-import { take } from 'rxjs/operators';
+import { IHistoryBonus } from '@interfaces/history.interface';
+import { HistoryService } from '@services/history.service';
+import { LoginService } from '@services/login.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-rate',
@@ -18,17 +20,23 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./rate.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RateComponent implements OnInit {
+export class RateComponent implements OnInit, OnDestroy {
   @Input() isForm: boolean;
   @Input() bonus: IBonus;
   @Output() backToBonusEvent = new EventEmitter<void>();
 
+  public subscription: Subscription = new Subscription();
   public startPosition: number;
   public disableButton = false;
   public animationStart = false;
   private bonusUnchangedRating: number;
+  public historyBonus: IHistoryBonus;
 
-  constructor(private bonusesService: BonusesService, private toasterService: ToasterService) {}
+  constructor(private historyService: HistoryService, private loginService: LoginService) {}
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.startPosition = this.bonus?.rating * 10;
@@ -42,15 +50,29 @@ export class RateComponent implements OnInit {
   public submitRating(): void {
     this.disableButton = true;
     this.animationStart = true;
-    this.bonusesService
-      .rate(this.bonus.id, Math.floor(this.bonus.rating / 10))
-      .pipe(take(1))
-      .subscribe((newBonus: IBonus) => {
+    this.onRateBonus(this.bonus);
+    this.backToBonusEvent.emit();
+  }
+
+  public onRateBonus(bonus: IBonus): void {
+    this.loginService.getUser().subscribe((data) => {
+      this.subscription.add(
+        this.historyService.getHistoryBonuses(data.id).subscribe((bonuses) => {
+          const rate = Math.floor(bonus.rating);
+          this.historyBonus = bonuses.find((item) => item.bonusDto.id === bonus.id);
+          this.rateBonus(bonus, rate);
+        }),
+      );
+    });
+  }
+
+  public rateBonus(bonus: IBonus, rate: number): void {
+    this.subscription.add(
+      this.historyService.rateBonus(this.historyBonus.historyId, rate).subscribe(() => {
         this.animationStart = false;
-        this.bonus = newBonus;
-        this.toasterService.showNotification('rateForm.notification.success', 'success');
-        this.backToBonusEvent.emit();
-      });
+        this.bonus = bonus;
+      }),
+    );
   }
 
   public backToBonus(): void {
