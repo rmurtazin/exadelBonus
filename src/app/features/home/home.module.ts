@@ -17,6 +17,7 @@ import { SortContainerModule } from 'src/app/shared/components/sort-container/so
 import { MatTabsModule } from '@angular/material/tabs';
 import { PickComponent } from './pick/pick.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MarkerIconComponent,
     OfficePopupComponent,
     PickComponent,
+    ConfirmComponent,
   ],
   imports: [
     SharedModule,

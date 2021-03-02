@@ -23,6 +23,6 @@ import { BonusSearcherComponent } from './bonus-searcher/bonus-searcher.componen
     SharedModule,
   ],
   providers: [BonusAddressService],
-  exports: [AddBonusComponent, RouterModule],
+  exports: [AddBonusComponent],
 })
 export class AddBonusModule {}
