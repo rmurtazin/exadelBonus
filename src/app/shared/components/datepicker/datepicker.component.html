@@ -1,7 +1,7 @@
 <form>
   <section class="datepicker-container" [formGroup]="range">
     <mat-form-field appearance="fill" class="datepicker-field">
-      <mat-label>Start date</mat-label>
+      <mat-label> {{ 'datepicker.dateStart' | translate }} </mat-label>
       <input
         matInput
         [matDatepicker]="pickerStart"
@@ -14,7 +14,7 @@
     </mat-form-field>
     <span class="wide-dash">&#8212;</span>
     <mat-form-field appearance="fill" class="datepicker-field">
-      <mat-label>End date</mat-label>
+      <mat-label>{{ 'datepicker.dateEnd' | translate }}</mat-label>
       <input
         matInput
         (dateChange)="onDateChange()"

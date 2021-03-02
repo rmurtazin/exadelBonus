@@ -103,15 +103,7 @@
   "home": {
     "pick": {
       "labelFilter": "Filter",
-      "labelSorting": "Sorting",
-      "sorting": {
-        "byTitle": "Alphabetically by title",
-        "byCompany": "Alphabetically by company",
-        "byDateStart": "By bonus date start",
-        "byDateEnd": "By bonus date end",
-        "byRating": "By rating",
-        "byType": "By type"
-      }
+      "labelSorting": "Sorting"
     },
     "confirm": {
     "question": "Do you want to apply?",
@@ -121,6 +113,25 @@
     "phone": "Phone: ",
     "address": "Address"
   }
+  },
+  "tagsInput": {
+    "tags": "Tags",
+    "newTags": "New tags..."
+  },
+  "cityInput": {
+    "city": "City"
+  },
+  "datepicker": {
+    "dateStart": "Start date",
+    "dateEnd": "End date"
+  },
+  "sorting": {
+    "byTitle": "Alphabetically by title",
+    "byCompany": "Alphabetically by company",
+    "byDateStart": "By bonus date start",
+    "byDateEnd": "By bonus date end",
+    "byRating": "By rating",
+    "byType": "By type"
   },
   "rateForm": {
     "notification": {
@@ -165,7 +176,7 @@
   "loginErrors": {
     "invalidData": {
       "title": "Login error",
-      "message" : "Invalide login or password"
+      "message" : "Invalid login or password"
     },
     "serverError": {
       "title": "Login error",

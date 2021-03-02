@@ -103,15 +103,7 @@
   "home": {
     "pick": {
       "labelFilter": "Фильтр",
-      "labelSorting": "Сортировка",
-      "sorting": {
-        "byTitle": "По заголовку",
-        "byCompany": "По имени компании",
-        "byDateStart": "По дате начала действия",
-        "byDateEnd": "По дате окончания действия",
-        "byRating": "По рейтингу",
-        "byType": "По типу"
-      }
+      "labelSorting": "Сортировка"
     },
     "confirm": {
     "question": "Вы хотите отправить заявку?",
@@ -120,6 +112,25 @@
     "description": "Описание: ",
     "phone": "Телефон: ",
     "address": "Адрес: "}
+  },
+  "tagsInput": {
+    "tags": "Теги",
+    "newTags": "Новые теги..."
+  },
+  "cityInput": {
+    "city": "Город"
+  },
+  "datepicker": {
+    "dateStart": "Начальная дата",
+    "dateEnd": "Конечная дата"
+  },
+  "sorting": {
+    "byTitle": "По заголовку",
+    "byCompany": "По имени компании",
+    "byDateStart": "По дате начала действия",
+    "byDateEnd": "По дате окончания действия",
+    "byRating": "По рейтингу",
+    "byType": "По типу"
   },
   "rateForm": {
     "notification": {
