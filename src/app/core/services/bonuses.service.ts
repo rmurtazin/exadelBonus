@@ -16,7 +16,7 @@ export class BonusesService {
   private bonusUrl = apiLinks.bonus;
   private citiesUrl = apiLinks.cities;
   private tagsUrl = apiLinks.tags;
-  
+
   constructor(private api: ApiService, private toasterService: ToasterService) {}
 
   public getBonuses(query: string = defaultQuery): Observable<IBonus[]> {
