@@ -1,4 +1,4 @@
-<div class="container">
+<div class="add-bonus-container">
   <div *ngIf="!isFormActive">
     <app-add-bonus-button (openForm)="openForm()"></app-add-bonus-button>
     <app-bonus-searcher
@@ -6,7 +6,7 @@
       [vendors]="vendors"
       (getBonusesByVendorId)="getBonusesByVendorId($event)"
     ></app-bonus-searcher>
-    <div>
+    <div class="bonus-container">
       <app-bonus-list-view
         *ngIf="!loading; else loadingBlock"
         [bonuses]="bonuses"

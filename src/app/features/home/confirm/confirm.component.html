@@ -1,0 +1,28 @@
+<mat-dialog-content class="mat-typography content">
+  <h4 class="company-name">{{ data?.company?.name }}</h4>
+  <div class="title-container">
+    <img class="discount-icon" src="assets/icons/discount-icon.svg" alt="discount" />
+    <span class="bonus-title"> {{ data?.title }}</span>
+  </div>
+  <p class="bonus-description">
+    <span class="description-title">{{ 'home.confirm.description' | translate }}</span>
+    {{ data?.description }}
+  </p>
+  <div class="phone-container">
+    <span class="bonus-phone">{{ 'home.confirm.phone' | translate }}</span
+    ><a class="phone-link" href="tel:+{{ data?.phone }}"> +{{ data?.phone }}</a>
+  </div>
+  <ul class="address-list">
+    <span class="bonus-address">{{ 'home.confirm.address' | translate }}</span>
+    <li *ngFor="let location of data?.locations">
+      <p>{{ location?.country }}, {{ location?.city }} {{ location?.address }}</p>
+    </li>
+  </ul>
+</mat-dialog-content>
+<h2 class="apply" mat-dialog-title>{{ 'home.confirm.question' | translate }}</h2>
+<mat-dialog-actions align="end">
+  <button class="apply-btn" mat-button mat-dialog-close>{{ 'home.confirm.no' | translate }}</button>
+  <button class="apply-btn" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+    {{ 'home.confirm.yes' | translate }}
+  </button>
+</mat-dialog-actions>

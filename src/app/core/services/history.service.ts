@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IHistoryBonus, IHistoryReqBody } from '@interfaces/history.interface';
 import { Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { apiLinks } from './constants';
 import { ToasterService } from './toaster.service';
@@ -25,11 +25,19 @@ export class HistoryService {
     );
   }
 
-  public getHistoryBonuses(): Observable<IHistoryBonus[]> {
-    return this.apiService.get(this.url);
+  public getHistoryBonuses(userId: string): Observable<IHistoryBonus[]> {
+    return this.apiService.get(`${this.url}/user/${userId}/withoutrepetitions`).pipe(
+      map(({ value }) => {
+        return value;
+      }),
+    );
   }
 
   public rateBonus(historyId: string, estimate: number): Observable<IHistoryBonus> {
-    return this.apiService.put(`${this.url}/estimate/${historyId}?estimate=${estimate}`);
+    return this.apiService.put(`${this.url}/estimate/${historyId}?estimate=${estimate}`).pipe(
+      tap(() => {
+        this.toasterService.showNotification('rateForm.notification.success', 'success');
+      }),
+    );
   }
 }
