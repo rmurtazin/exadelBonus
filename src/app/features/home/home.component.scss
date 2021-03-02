@@ -91,6 +91,7 @@ h2 {
     display: block;
     height: auto;
     width: 100vw;
+    scroll-snap-type: x mandatory;
   }
   .left {
     margin: 0;
@@ -106,10 +107,12 @@ h2 {
   .home {
     height: auto;
     flex-direction: column-reverse;
+    top: 55px;
   }
 
   .right {
     height: 50vh;
+    padding-bottom: 0;
   }
 
   .left {
