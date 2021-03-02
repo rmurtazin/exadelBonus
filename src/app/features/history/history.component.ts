@@ -3,6 +3,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { IHistoryBonus } from '@interfaces/history.interface';
 import { HistoryService } from '@services/history.service';
 import { LoginService } from '@services/login.service';
+import { ToasterService } from '@services/toaster.service';
 import { Subscription } from 'rxjs';
 import { BonusComponent } from 'src/app/shared/components/bonus-list-container/bonus/bonus.component';
 
@@ -17,8 +18,9 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public bonusHistory: IHistoryBonus;
   public bonuses: IBonus[] = [];
   public bonusButtonLabel = 'Rate';
+  public loading = false;
 
-  constructor(private historyService: HistoryService, private loginService: LoginService) {}
+  constructor(private historyService: HistoryService, private loginService: LoginService, private toasterService: ToasterService) {}
 
   ngOnInit(): void {
     this.getBonuses();
@@ -29,11 +31,16 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public getBonuses(): void {
+    this.loading = true;
     this.loginService.getUser().subscribe((data) => {
       this.subscription.add(
         this.historyService.getHistoryBonuses(data.id).subscribe((bonuses) => {
+          if(bonuses.length === 0){
+            this.toasterService.showNotification('history.notification.noBonuses', 'success');
+          }
           this.historyBonuses = bonuses;
           this.bonuses = bonuses.map((item) => item.bonusDto);
+          this.loading = false;
         }),
       );
     });
