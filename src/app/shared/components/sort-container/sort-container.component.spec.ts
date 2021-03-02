@@ -32,7 +32,7 @@ describe('SortContainerComponent', () => {
   it('should render radio-button', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('mat-radio-button').textContent).toContain(
-      'home.pick.sorting.byTitle',
+      'sorting.byTitle',
     );
   });
 
