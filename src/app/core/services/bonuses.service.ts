@@ -6,7 +6,7 @@ import { ApiService } from '@services/api.service';
 import { INewBonus, IUpdateBonus } from '@interfaces/add-bonus.interface';
 import { ToasterService } from './toaster.service';
 import { map, catchError, tap } from 'rxjs/operators';
-import { apiLinks } from './constants';
+import { apiLinks, defaultQuery } from './constants';
 import * as bonuses from 'src/assets/static/bonuses.json';
 import { delay } from 'rxjs/operators';
 
@@ -16,10 +16,10 @@ export class BonusesService {
   private bonusUrl = apiLinks.bonus;
   private citiesUrl = apiLinks.cities;
   private tagsUrl = apiLinks.tags;
-
+  
   constructor(private api: ApiService, private toasterService: ToasterService) {}
 
-  public getBonuses(query?: string): Observable<IBonus[]> {
+  public getBonuses(query: string = defaultQuery): Observable<IBonus[]> {
     return this.api.get(this.bonusUrl, query).pipe(
       map((data) => {
         this.bonusSubject.next(data.value);
