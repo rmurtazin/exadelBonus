@@ -20,7 +20,11 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public bonusButtonLabel = 'Rate';
   public loading = false;
 
-  constructor(private historyService: HistoryService, private loginService: LoginService, private toasterService: ToasterService) {}
+  constructor(
+    private historyService: HistoryService,
+    private loginService: LoginService,
+    private toasterService: ToasterService,
+  ) {}
 
   ngOnInit(): void {
     this.getBonuses();
@@ -35,7 +39,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.loginService.getUser().subscribe((data) => {
       this.subscription.add(
         this.historyService.getHistoryBonuses(data.id).subscribe((bonuses) => {
-          if(bonuses.length === 0){
+          if (bonuses.length === 0) {
             this.toasterService.showNotification('history.notification.noBonuses', 'success');
           }
           this.historyBonuses = bonuses;

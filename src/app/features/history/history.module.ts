@@ -11,7 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     BonusListContainerModule,
     RouterModule.forChild([{ path: '', component: HistoryComponent }]),
     CommonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   exports: [HistoryComponent],
 })

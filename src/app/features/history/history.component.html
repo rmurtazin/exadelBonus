@@ -1,6 +1,6 @@
-<div class="bonus-container" >
+<div class="bonus-container">
   <app-bonus-list-view
-  *ngIf="!loading; else loadingBlock"
+    *ngIf="!loading; else loadingBlock"
     [bonuses]="bonuses"
     [bonusButtonLabel]="bonusButtonLabel"
     (bonusButtonClickedEvent)="openRateBonusForm($event)"
@@ -10,4 +10,3 @@
     <mat-spinner class="spinner"></mat-spinner>
   </ng-template>
 </div>
-
