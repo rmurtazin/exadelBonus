@@ -34,7 +34,7 @@
       (click)="apply()"
       [disabled]="!placeChoosen"
     >
-      OK
+    {{ 'choosePlace.ok' | translate }}
     </button>
     <button mat-flat-button class="geoButton" color="primary" (click)="cancel()">
       {{ 'choosePlace.cancel' | translate }}

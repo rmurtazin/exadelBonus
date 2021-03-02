@@ -185,6 +185,7 @@
   "choosePlace": {
     "geolocation": "Геолокация",
     "office": "Выберите офис",
-    "cancel": "Отмена"
+    "cancel": "Отмена",
+    "ok": "Принять"
   }
 }

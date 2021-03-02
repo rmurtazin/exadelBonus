@@ -186,6 +186,7 @@
   "choosePlace": {
     "geolocation": "Geolocation",
     "office": "Choose office",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "ok": "Ok"
   }
 }
