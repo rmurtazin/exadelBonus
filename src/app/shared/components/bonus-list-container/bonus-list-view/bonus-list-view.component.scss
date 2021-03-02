@@ -5,6 +5,10 @@
     padding-top: 10px;
     scroll-snap-align: start;
   }
+
+  app-bonus {
+    height: 100%;
+  }
 }
 
 .bonus-container:first-child {
