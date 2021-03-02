@@ -13,7 +13,7 @@ export class VendorsService {
   constructor(private apiService: ApiService, private toasterService: ToasterService) {}
 
   public getVendors(query: string): Observable<IVendor[]> {
-    return this.apiService.get(this.url, query).pipe(
+    return this.apiService.get(`${this.url}/`, query).pipe(
       map(({ value }) => {
         return value;
       }),

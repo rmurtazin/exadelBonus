@@ -1,0 +1,81 @@
+.apply,
+.apply-btn {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.apply {
+  margin-top: 25px;
+  text-align: right;
+  line-height: 1.2;
+  @media screen and(max-width: 400px) {
+    text-align: center;
+  }
+}
+
+.header,
+.company-name {
+  text-decoration: underline;
+}
+
+.description-title,
+.bonus-phone,
+.bonus-address {
+  font-weight: bold;
+}
+
+.company-name {
+  color: #0082ca;
+  font-weight: bold;
+}
+
+.address-list {
+  padding-left: 0px;
+  margin: 0px;
+  li {
+    margin-left: 15px;
+    list-style: circle;
+    p {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.phone-link {
+  padding-right: 5px;
+  margin-left: 5px;
+  color: #000000de;
+  border-radius: 25px 25px 25px 25px;
+  background-color: #64606011;
+  text-decoration: none;
+  border: 1px solid #6460603b;
+}
+
+.header,
+.company-name {
+  margin-bottom: 0px;
+}
+
+.bonus-description,
+.phone-container,
+.title-container {
+  margin-bottom: 5px;
+}
+.header {
+  font-weight: bold;
+}
+
+.bonus-title {
+  font-weight: bold;
+}
+
+.discount-icon {
+  position: relative;
+  top: 7px;
+  width: 25px;
+}
+
+.content {
+  max-width: 500px;
+  max-height: 300px;
+}
