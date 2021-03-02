@@ -104,7 +104,14 @@
     "pick": {
       "labelFilter": "Фильтр",
       "labelSorting": "Сортировка"
-    }
+    },
+    "confirm": {
+    "question": "Вы хотите отправить заявку?",
+    "yes": "Да",
+    "no": "Нет",
+    "description": "Описание: ",
+    "phone": "Телефон: ",
+    "address": "Адрес: "}
   },
   "tagsInput": {
     "tags": "Теги",

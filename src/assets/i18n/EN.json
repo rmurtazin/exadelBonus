@@ -104,7 +104,15 @@
     "pick": {
       "labelFilter": "Filter",
       "labelSorting": "Sorting"
-    }
+    },
+    "confirm": {
+    "question": "Do you want to apply?",
+    "yes": "Yes",
+    "no": "No",
+    "description": "Description: ",
+    "phone": "Phone: ",
+    "address": "Address"
+  }
   },
   "tagsInput": {
     "tags": "Tags",
