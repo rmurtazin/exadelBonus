@@ -12,7 +12,7 @@
   width: 36px;
 }
 
-.in-mobile {
+.mobile-visible {
   display: none;
 }
 
@@ -123,6 +123,7 @@
   background-color: #fff;
   transition-duration: 2.5s;
   margin-right: 10px;
+  height: 100%;
 }
 
 .description-container {
@@ -171,10 +172,10 @@
     box-shadow: 10px -4px 8px rgba(0, 0, 0, 0.25);
     box-sizing: border-box;
   }
-  .in-mobile {
+  .mobile-visible {
     display: block;
   }
-  .in-pc {
+  .pc-visible {
     display: none;
   }
   .bonus-content {
@@ -188,6 +189,7 @@
     color: black;
     border-right: none;
     margin-left: 0;
+    flex: 1 1 100%;
     .bonus-description {
       font-size: 16px;
       padding-top: 2px;
@@ -210,6 +212,9 @@
   }
   .discount-value {
     width: 60%;
+    text-align: right;
+    display: block;
+    margin-right: 5px;
   }
   .tags {
     display: none;

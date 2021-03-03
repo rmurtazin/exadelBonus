@@ -1,5 +1,5 @@
 import { RouterModule } from '@angular/router';
-import { BonusListContainerModule } from './../../shared/components/bonus-list-container/bonus-list-container.module';
+import { BonusListContainerModule } from '../../shared/components/bonus-list-container/bonus-list-container.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { OfficePopupComponent } from './map/office-popup/office-popup.component';
 import { MarkerIconComponent } from './map/marker-icon/marker-icon.component';
@@ -18,6 +18,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { PickComponent } from './pick/pick.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { FooterModule } from '@components/footer/footer.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
     MatDialogModule,
     FilterContainerModule,
     RouterModule.forChild([{ path: '', component: HomeComponent }]),
+    FooterModule,
   ],
   exports: [HomeComponent, RouterModule],
 })
