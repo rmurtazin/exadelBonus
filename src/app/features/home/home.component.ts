@@ -26,11 +26,11 @@ export class HomeComponent implements OnDestroy, OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.translate.get('home.details').subscribe((res) => (this.bonusButtonLabel = res));
+    this.getBonusButtonLabel();
     this.runChangeDetection();
     this.subscription.add(
       this.translate.onLangChange.subscribe(() => {
-        this.translate.get('home.details').subscribe((res) => (this.bonusButtonLabel = res));
+        this.getBonusButtonLabel();
         this.runChangeDetection();
       }),
     );
@@ -38,6 +38,10 @@ export class HomeComponent implements OnDestroy, OnInit {
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private getBonusButtonLabel(): void {
+    this.translate.get('home.details').subscribe((res) => (this.bonusButtonLabel = res));
   }
 
   private runChangeDetection(): void {

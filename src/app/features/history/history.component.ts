@@ -32,11 +32,10 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getBonuses();
-    this.translate.get('home.rate').subscribe((res) => (this.bonusButtonLabel = res));
-    this.runChangeDetection();
+    this.getButtonLabel();
     this.subscription.add(
       this.translate.onLangChange.subscribe(() => {
-        this.translate.get('home.rate').subscribe((res) => (this.bonusButtonLabel = res));
+        this.getButtonLabel();
         this.runChangeDetection();
       }),
     );
@@ -48,6 +47,10 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   private runChangeDetection(): void {
     this.changeDetector.detectChanges();
+  }
+
+  private getButtonLabel(): void {
+    this.translate.get('home.rate').subscribe((res) => (this.bonusButtonLabel = res));
   }
 
   public getBonuses(): void {
