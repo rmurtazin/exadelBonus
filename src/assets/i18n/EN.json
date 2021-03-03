@@ -112,7 +112,10 @@
     "description": "Description: ",
     "phone": "Phone: ",
     "address": "Address"
-  }
+  },
+  "details": "Details",
+  "edit": "Edit",
+  "rate": "Rate"
   },
   "tagsInput": {
     "tags": "Tags",

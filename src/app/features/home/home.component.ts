@@ -5,6 +5,7 @@ import { BonusComponent } from '../../shared/components/bonus-list-container/bon
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { LoginService } from '@services/login.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -13,13 +14,16 @@ import { LoginService } from '@services/login.service';
 })
 export class HomeComponent implements OnDestroy {
   public subscription: Subscription = new Subscription();
-  public bonusButtonLabel = 'Details';
+  public bonusButtonLabel: string;
 
   constructor(
     private historyService: HistoryService,
     private loginService: LoginService,
     public dialog: MatDialog,
-  ) {}
+    private translate: TranslateService,
+  ) {
+    this.translate.get('home.details').subscribe(res=>this.bonusButtonLabel = res)
+  }
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
