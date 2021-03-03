@@ -4,14 +4,14 @@
     aria-label="Select an option"
     [(ngModel)]="selectedPlaceDetection"
   >
-    <mat-radio-button class="radio-button" value="0" (click)="changeFlagPlaceChoosen()">
+    <mat-radio-button class="radio-button" value="0" (click)="changeFlagPlaceChosen()">
       {{ 'choosePlace.geolocation' | translate }}
     </mat-radio-button>
     <mat-radio-button
       class="radio-button"
       value="1"
       #officeOption
-      (click)="changeFlagPlaceChoosen()"
+      (click)="changeFlagPlaceChosen()"
     >
       {{ 'choosePlace.office' | translate }}
     </mat-radio-button>
@@ -32,9 +32,9 @@
       class="geoButton"
       color="primary"
       (click)="apply()"
-      [disabled]="!placeChoosen"
+      [disabled]="!placeChosen"
     >
-    {{ 'choosePlace.ok' | translate }}
+      {{ 'choosePlace.ok' | translate }}
     </button>
     <button mat-flat-button class="geoButton" color="primary" (click)="cancel()">
       {{ 'choosePlace.cancel' | translate }}

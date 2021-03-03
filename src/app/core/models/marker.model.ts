@@ -89,7 +89,7 @@ export class MarkerModel {
       return new Marker([location.latitude, location.longitude], {
         icon: this.bonusMarkerIco(bonus.type),
         title: bonus.company.name,
-        alt: bonus.company.name,
+        alt: location.city,
       }).bindPopup(component.location.nativeElement);
     });
   }

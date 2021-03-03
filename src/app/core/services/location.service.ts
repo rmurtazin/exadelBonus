@@ -3,11 +3,13 @@ import { ToasterService } from './toaster.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ChoosePlaceDialogComponent } from '../../shared/components/choose-place-dialog/choose-place-dialog.component';
 import { LatLng, latLng } from 'leaflet';
-import { from, Observable, Subject, Subscription } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { MapEventsService } from '@services/map-events.service';
 import { cityByLocationUrl } from './constants';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { IOffice } from '@interfaces/office.interface';
+
 @Injectable()
 export class LocationService {
   private geolocationSubject = new Subject<string>();
@@ -18,14 +20,7 @@ export class LocationService {
     private dialog: MatDialog,
     private mapEventService: MapEventsService,
     private http: HttpClient,
-  ) {
-    if (localStorage.getItem('currentLatitude') && localStorage.getItem('currentLongitude')) {
-      const lat = Number(localStorage.getItem('currentLatitude'));
-      const lng = Number(localStorage.getItem('currentLongitude'));
-      const location = latLng(lat, lng);
-      this.getCityByLocation(location);
-    }
-  }
+  ) {}
 
   public changeLocationObserver(): Observable<string> {
     return this.geolocationSubject.asObservable();
@@ -33,27 +28,22 @@ export class LocationService {
 
   public selectPlaceDialog(): void {
     this.dialogRef = this.dialog.open(ChoosePlaceDialogComponent, { disableClose: true });
-    this.dialogRef.afterClosed().subscribe((location) => this.setPosition(location));
+    this.dialogRef.afterClosed().subscribe((result: boolean | IOffice) => this.setPosition(result));
   }
 
-  private setPosition(location?: LatLng): void {
-    if (location) {
-      this.saveToStorage(location);
-      this.getCityByLocation(location);
-      this.mapEventService.setMapView(location);
-      return;
+  private setPosition(result?: IOffice | boolean): void {
+    if (result) {
+      if (typeof result === 'object') {
+        localStorage.setItem('currentCity', result.city);
+        this.mapEventService.zoomToOffice(result);
+        return;
+      }
+      this.getUserLocation().subscribe((geolocation) => {
+        this.getCityByLocation(geolocation);
+        const showUserLocation = true;
+        this.mapEventService.setMapView(geolocation, showUserLocation);
+      });
     }
-    this.getUserLocation().subscribe((geolocation) => {
-      this.saveToStorage(geolocation);
-      this.getCityByLocation(geolocation);
-      const showUserLocation = true;
-      this.mapEventService.setMapView(geolocation, showUserLocation);
-    });
-  }
-
-  public saveToStorage(location: LatLng): void {
-    localStorage.setItem('currentLatitude', location.lat.toString());
-    localStorage.setItem('currentLongitude', location.lng.toString());
   }
 
   private getUserLocation(): Observable<LatLng> {
@@ -86,6 +76,9 @@ export class LocationService {
       .get(url)
       .pipe(map((response: any) => response?.city))
       .subscribe((city: string) => {
+        if (city) {
+          localStorage.setItem('currentCity', city);
+        }
         this.mapEventService.setMapView(location);
         this.geolocationSubject.next(city);
       });

@@ -6,6 +6,8 @@ import { BonusesService } from '@services/bonuses.service';
 import { MapEventsService } from '@services/map-events.service';
 import { IOffice } from '@interfaces/office.interface';
 import { LocationService } from '@services/location.service';
+import { LoginService } from '@services/login.service';
+import { IUser } from '@interfaces/loginInterface';
 
 @Component({
   selector: 'app-city-input',
@@ -23,17 +25,35 @@ export class CityInputComponent implements OnInit, OnDestroy {
     private bonusesService: BonusesService,
     private mapEventsService: MapEventsService,
     private locationService: LocationService,
+    private loginService: LoginService,
   ) {}
 
   public ngOnInit(): void {
-    this.chuseOfficeObserver();
+    const currentCity = localStorage.getItem('currentCity');
+    if (!currentCity) {
+      this.getUserCity();
+    } else {
+      this.cityInputControl.setValue(currentCity);
+      this.changeCity();
+    }
+    this.chooseOfficeObserver();
     this.changeLocationObserver();
     this.getCities();
   }
 
-  private chuseOfficeObserver(): void {
+  private getUserCity(): void {
+    this.subscription.add(
+      this.loginService.getUser().subscribe((user: IUser) => {
+        this.cityInputControl.setValue(user.city);
+        this.changeCity();
+      }),
+    );
+  }
+
+  private chooseOfficeObserver(): void {
     this.subscription.add(
       this.mapEventsService.zoomToOfficeObserver().subscribe((office: IOffice) => {
+        localStorage.setItem('currentCity', office.city);
         this.cityInputControl.setValue(office.city);
         this.changeCity();
       }),
@@ -44,6 +64,7 @@ export class CityInputComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.locationService.changeLocationObserver().subscribe((city: string) => {
         this.cityInputControl.setValue(city);
+        localStorage.setItem('currentCity', city);
         this.changeCity();
       }),
     );
@@ -70,6 +91,7 @@ export class CityInputComponent implements OnInit, OnDestroy {
 
   public changeCity(): void {
     const value = this.cityInputControl.value.trim();
+    localStorage.setItem('currentCity', value);
     this.changeCityEvent.emit(value);
   }
 

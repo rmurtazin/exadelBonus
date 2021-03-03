@@ -11,6 +11,7 @@ export class MapViewComponent {
   @Output() public mapReady = new EventEmitter<Map>();
   @Output() public changePlaceEvent = new EventEmitter<any>();
   @Output() public mapZoomEvent = new EventEmitter<any>();
+  @Output() public mapMoveEndEvent = new EventEmitter<any>();
 
   public options = {
     layers: [
@@ -35,5 +36,9 @@ export class MapViewComponent {
 
   public onMapZoom(): void {
     this.mapZoomEvent.emit();
+  }
+
+  public onMapMoveEnd(): void {
+    this.mapMoveEndEvent.emit();
   }
 }
