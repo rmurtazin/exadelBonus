@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HistoryService } from '@services/history.service';
 import { Subscription } from 'rxjs';
 import { BonusComponent } from '../../shared/components/bonus-list-container/bonus/bonus.component';
@@ -6,13 +6,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { LoginService } from '@services/login.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent implements OnDestroy, OnInit {
   public subscription: Subscription = new Subscription();
   public bonusButtonLabel: string;
 
@@ -21,12 +22,26 @@ export class HomeComponent implements OnDestroy {
     private loginService: LoginService,
     public dialog: MatDialog,
     private translate: TranslateService,
-  ) {
+    private changeDetector: ChangeDetectorRef,
+  ) {}
+
+  public ngOnInit(): void {
     this.translate.get('home.details').subscribe((res) => (this.bonusButtonLabel = res));
+    this.runChangeDetection();
+    this.subscription.add(
+      this.translate.onLangChange.subscribe(() => {
+        this.translate.get('home.details').subscribe((res) => (this.bonusButtonLabel = res));
+        this.runChangeDetection();
+      }),
+    );
   }
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private runChangeDetection(): void {
+    this.changeDetector.detectChanges();
   }
 
   public openApplyForm({ bonus }: BonusComponent): void {
