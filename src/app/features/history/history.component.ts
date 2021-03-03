@@ -33,7 +33,11 @@ export class HistoryComponent implements OnInit, OnDestroy {
       this.subscription.add(
         this.historyService.getHistoryBonuses(data.id).subscribe((bonuses) => {
           this.historyBonuses = bonuses;
-          this.bonuses = bonuses.map((item) => item.bonusDto);
+          this.bonuses = bonuses.map((item) => {
+            const bonus = item.bonusDto;
+            bonus.isRated = item.rating;
+            return bonus;
+          });
         }),
       );
     });
