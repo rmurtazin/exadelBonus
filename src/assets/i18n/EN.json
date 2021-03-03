@@ -186,5 +186,11 @@
       "title": "Login error",
       "message" : "Something went wrong"
     }
+  },
+  "choosePlace": {
+    "geolocation": "Geolocation",
+    "office": "Choose office",
+    "cancel": "Cancel",
+    "ok": "Ok"
   }
 }
