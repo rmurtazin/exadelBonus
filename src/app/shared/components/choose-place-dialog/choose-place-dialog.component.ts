@@ -18,6 +18,7 @@ export class ChoosePlaceDialogComponent implements OnInit {
   public offices: IOffice[];
   public selectedOffice = 0;
   public selectedPlaceDetection: PlaceDetectionMethod = PlaceDetectionMethod.officeLocation;
+  public placeChoosen = false;
   private subscription = new Subscription();
 
   constructor(
@@ -48,5 +49,13 @@ export class ChoosePlaceDialogComponent implements OnInit {
     const location = latLng(office.latitude, office.longitude);
     this.mapEventsService.zoomToOffice(office);
     this.dialogRef.close(location);
+  }
+
+  public changeFlagPlaceChoosen(): void {
+    this.placeChoosen = true;
+  }
+
+  public cancel(): void {
+    this.dialogRef.close();
   }
 }

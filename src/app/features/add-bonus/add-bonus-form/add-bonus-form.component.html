@@ -1,7 +1,7 @@
 <div class="container">
   <div class="form-btn-back-container">
     <button
-      *ngIf="newBonus"
+      *ngIf="newBonus; else updateBonusGoBack"
       class="form-btn-back"
       (click)="goBack()"
       mat-stroked-button
@@ -9,6 +9,11 @@
     >
       &#8656; {{ 'addBonus.goBack' | translate }}
     </button>
+    <ng-template #updateBonusGoBack>
+      <button class="form-btn-back" mat-stroked-button color="primary" [routerLink]="['/bonuses']">
+        &#8656; {{ 'addBonus.goBack' | translate }}
+      </button>
+    </ng-template>
   </div>
   <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
     <mat-form-field [formGroup]="vendorInfo" class="add-bonus-input" appearance="fill">

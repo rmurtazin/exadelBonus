@@ -69,7 +69,7 @@
     </button>
   </div>
 
-  <div class="table" *ngIf="!loading; else loadingBlock">
+  <div class="table" [hidden]="loading">
     <mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="companyName">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -141,9 +141,9 @@
     </mat-table>
   </div>
 
-  <ng-template #loadingBlock>
+  <div [hidden]="!loading">
     <mat-spinner class="spinner"></mat-spinner>
-  </ng-template>
+  </div>
 
   <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
 </div>

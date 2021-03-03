@@ -75,6 +75,10 @@
       "applyError" : {
         "title": "Response error!",
         "message": "Some problem with your apply!"
+      },
+      "noBonuses": {
+        "title": "",
+        "message": "You don't have any bonuses yet!"
       }
     }
   },
@@ -185,5 +189,11 @@
       "title": "Login error",
       "message" : "Something went wrong"
     }
+  },
+  "choosePlace": {
+    "geolocation": "Geolocation",
+    "office": "Choose office",
+    "cancel": "Cancel",
+    "ok": "Ok"
   }
 }
