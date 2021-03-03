@@ -22,7 +22,7 @@ export class HomeComponent implements OnDestroy {
     public dialog: MatDialog,
     private translate: TranslateService,
   ) {
-    this.translate.get('home.details').subscribe(res=>this.bonusButtonLabel = res)
+    this.translate.get('home.details').subscribe((res) => (this.bonusButtonLabel = res));
   }
 
   public ngOnDestroy(): void {
