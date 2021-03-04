@@ -24,9 +24,9 @@ export class MarkerModel {
   });
 
   private userMarkerIco = new Icon({
-    iconUrl: 'assets/icons/user-marker.ico',
+    iconUrl: 'assets/icons/user-marker.png',
     iconAnchor: this.iconAnchor,
-    iconSize: this.iconSize,
+    iconSize:  [42, 42],
   });
 
   private bonusMarkerIco(type: string): DivIcon {
