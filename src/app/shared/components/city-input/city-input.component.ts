@@ -8,6 +8,7 @@ import { IOffice } from '@interfaces/office.interface';
 import { LocationService } from '@services/location.service';
 import { LoginService } from '@services/login.service';
 import { IUser } from '@interfaces/loginInterface';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-city-input',
@@ -26,6 +27,7 @@ export class CityInputComponent implements OnInit, OnDestroy {
     private mapEventsService: MapEventsService,
     private locationService: LocationService,
     private loginService: LoginService,
+    private translate: TranslateService,
   ) {}
 
   public ngOnInit(): void {
@@ -53,9 +55,11 @@ export class CityInputComponent implements OnInit, OnDestroy {
   private chooseOfficeObserver(): void {
     this.subscription.add(
       this.mapEventsService.zoomToOfficeObserver().subscribe((office: IOffice) => {
-        localStorage.setItem('currentCity', office.city);
-        this.cityInputControl.setValue(office.city);
-        this.changeCity();
+        this.translate.getTranslation('EN').subscribe(({ cities }) => {
+          localStorage.setItem('currentCity', cities[office.city]);
+          this.cityInputControl.setValue(cities[office.city]);
+          this.changeCity();
+        });
       }),
     );
   }
