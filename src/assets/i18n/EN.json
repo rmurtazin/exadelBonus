@@ -9,7 +9,7 @@
   },
   "popup": {
     "go": "Go",
-    "detail": "Detail"
+    "forward": "Forward"
   },
   "notFound": "Not found",
   "addBonus": {

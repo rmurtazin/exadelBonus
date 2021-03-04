@@ -57,7 +57,7 @@ export const expectedBonuses: IBonus[] = [
         longitude: 28.467975,
       },
       {
-        city: 'Odesa',
+        city: 'Odessa',
         country: 'Ukraine',
         address: ' ',
         latitude: 46.4873195,
@@ -199,7 +199,7 @@ export const expectedBonuses: IBonus[] = [
     isActive: true,
     locations: [
       {
-        city: 'Odesa',
+        city: 'Odessa',
         country: 'Ukraine',
         address: 'Mariinska Street, 5/1',
         latitude: 46.4657709,

@@ -6,11 +6,11 @@ import { LatLng, latLng } from 'leaflet';
 import { Observable, Subject } from 'rxjs';
 import { MapEventsService } from '@services/map-events.service';
 import { cityByLocationUrl } from './constants';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { IOffice } from '@interfaces/office.interface';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LocationService {
   private geolocationSubject = new Subject<string>();
   private dialogRef: MatDialogRef<ChoosePlaceDialogComponent>;
@@ -39,7 +39,13 @@ export class LocationService {
         return;
       }
       this.getUserLocation().subscribe((geolocation) => {
-        this.getCityByLocation(geolocation);
+        this.getCityByLocation(geolocation).subscribe((city: string) => {
+          if (city) {
+            localStorage.setItem('currentCity', city);
+            this.geolocationSubject.next(city);
+            this.geolocationSubject.complete();
+          }
+        });
         const showUserLocation = true;
         this.mapEventService.setMapView(geolocation, showUserLocation);
       });
@@ -70,17 +76,11 @@ export class LocationService {
     });
   }
 
-  private getCityByLocation(location: LatLng): void {
-    const url = cityByLocationUrl(location.lat, location.lng);
-    this.http
-      .get(url)
-      .pipe(map((response: any) => response?.city))
-      .subscribe((city: string) => {
-        if (city) {
-          localStorage.setItem('currentCity', city);
-        }
-        this.mapEventService.setMapView(location);
-        this.geolocationSubject.next(city);
-      });
+  private getCityByLocation(location: LatLng): Observable<any> {
+    const url = cityByLocationUrl(49.23599435472236, 28.497092625653238); //location.lat, location.lng);
+    return this.http.get(url).pipe(
+      take(1),
+      map((response: any) => response?.city),
+    );
   }
 }

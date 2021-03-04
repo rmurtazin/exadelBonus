@@ -19,6 +19,7 @@ import { PickComponent } from './pick/pick.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { FooterModule } from '@components/footer/footer.module';
+import { LocationService } from '@services/location.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { FooterModule } from '@components/footer/footer.module';
     RouterModule.forChild([{ path: '', component: HomeComponent }]),
     FooterModule,
   ],
+  providers: [LocationService],
   exports: [HomeComponent, RouterModule],
 })
 export class HomeModule {}

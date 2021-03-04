@@ -16,7 +16,7 @@ import 'leaflet.markercluster';
   selector: 'app-map-container',
   templateUrl: './map-container.component.html',
   styleUrls: ['./map-container.component.scss'],
-  providers: [MarkerModel, LocationService],
+  providers: [MarkerModel],
 })
 export class MapComponent implements OnDestroy {
   private map: Map;
@@ -111,7 +111,7 @@ export class MapComponent implements OnDestroy {
 
   private navigateToMarker(markers: Marker[]): void {
     const [marker] = this.filterMarkersByCity(markers);
-    if (marker) {
+    if (marker && localStorage.getItem('currentCity')) {
       this.setMapView(marker.getLatLng());
     }
     const isRequestedLocation = (currentMarker: Marker) => {

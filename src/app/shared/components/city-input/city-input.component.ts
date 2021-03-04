@@ -62,10 +62,12 @@ export class CityInputComponent implements OnInit, OnDestroy {
 
   private changeLocationObserver(): void {
     this.subscription.add(
-      this.locationService.changeLocationObserver().subscribe((city: string) => {
-        this.cityInputControl.setValue(city);
-        localStorage.setItem('currentCity', city);
-        this.changeCity();
+      this.locationService.changeLocationObserver().subscribe({
+        next: (city: string) => {
+          this.cityInputControl.setValue(city);
+          localStorage.setItem('currentCity', city);
+          this.changeCity();
+        },
       }),
     );
   }

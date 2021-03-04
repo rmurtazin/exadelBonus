@@ -9,7 +9,7 @@
   },
   "popup": {
     "go": "Перейти",
-    "detail": "Детали"
+    "forward": "Перейти"
   },
   "notFound": "Не найдено",
   "addBonus": {
