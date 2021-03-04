@@ -9,14 +9,14 @@
   },
   "popup": {
     "go": "Перейти",
-    "detail": "Детали"
+    "detail": "Детальнее"
   },
   "notFound": "Не найдено",
   "addBonus": {
     "addBonusBtn": "Добавить бонус",
     "goBack": "Назад",
     "saveBonus": "Сохранить",
-    "form" : {
+    "form": {
       "vendorName": "Имя вендора",
       "vendorEmail": "Введите адрес ел. почты вендора",
       "phone": "Номер телефона",
@@ -68,11 +68,11 @@
   },
   "history": {
     "notification": {
-      "applySuccess" : {
+      "applySuccess": {
         "title": "Операция успешна!",
         "message": "Ваша заявка успешно отправлена!"
       },
-      "applyError" : {
+      "applyError": {
         "title": "Ошибка ответа!",
         "message": "Возникли проблемы с сохранением заявки!"
       },
@@ -110,12 +110,16 @@
       "labelSorting": "Сортировка"
     },
     "confirm": {
-    "question": "Вы хотите отправить заявку?",
-    "yes": "Да",
-    "no": "Нет",
-    "description": "Описание: ",
-    "phone": "Телефон: ",
-    "address": "Адрес: "}
+      "question": "Вы хотите отправить заявку?",
+      "yes": "Да",
+      "no": "Нет",
+      "description": "Описание: ",
+      "phone": "Телефон: ",
+      "address": "Адрес: "
+    },
+    "details": "Детально",
+    "edit": "Изменить",
+    "rate": "Оценить"
   },
   "tagsInput": {
     "tags": "Теги",

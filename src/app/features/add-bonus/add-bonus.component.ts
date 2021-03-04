@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { OnInit } from '@angular/core';
+import { ChangeDetectorRef, OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import {
@@ -16,6 +16,7 @@ import { VendorsService } from '@services/vendors.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { BonusComponent } from 'src/app/shared/components/bonus-list-container/bonus/bonus.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-bonus',
@@ -32,8 +33,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public isFormActive = false;
   public bonusFormConfig: IBonusFormConfig;
   public bonusId: string;
-  public bonusButtonLabel =
-    '<img class="update-img" src="assets/images/pencil.png" alt="update bonus" /><span>Edit</span>';
+  public bonusButtonLabel: string;
 
   constructor(
     private bonusAddressService: BonusAddressService,
@@ -41,6 +41,8 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     private bonusesService: BonusesService,
     private route: ActivatedRoute,
     private router: Router,
+    private translate: TranslateService,
+    private changeDetector: ChangeDetectorRef,
   ) {}
 
   public ngOnInit(): void {
@@ -48,10 +50,31 @@ export class AddBonusComponent implements OnInit, OnDestroy {
     this.initialBonusFormConfig();
     this.bonusId = this.route.snapshot.paramMap.get('id');
     this.isFormActive = Boolean(this.bonusId);
+    this.translate.get('home.edit').subscribe((res) => {
+      this.getButtonTemplate(res);
+    });
+
+    this.runChangeDetection();
+    this.subscription.add(
+      this.translate.onLangChange.subscribe(() => {
+        this.translate.get('home.edit').subscribe((res) => {
+          this.getButtonTemplate(res);
+        });
+        this.runChangeDetection();
+      }),
+    );
   }
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private getButtonTemplate(res): void {
+    this.bonusButtonLabel = `<img class="update-img" src="assets/images/pencil.png" alt="update bonus" /><span>${res}</span>`;
+  }
+
+  private runChangeDetection(): void {
+    this.changeDetector.detectChanges();
   }
 
   public initialBonusFormConfig(): void {
