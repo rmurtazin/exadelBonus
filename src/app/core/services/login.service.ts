@@ -40,7 +40,6 @@ export class LoginService {
       tap((response: any) => {
         localStorage.setItem('accessToken', response.value.accessToken);
         localStorage.setItem('refreshToken', response.value.refreshToken);
-        this.getUser();
         return response;
       }),
       catchError((err) => throwError(err)),

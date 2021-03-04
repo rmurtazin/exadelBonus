@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PlaceDetectionMethod } from '@enums/place-detection-method';
 import { IOffice } from '@interfaces/office.interface';
-import { FilterService } from '@services/filter.service';
 import { MapEventsService } from '@services/map-events.service';
 import { OfficesService } from '@services/offices.service';
 import { latLng, LatLng } from 'leaflet';
@@ -18,7 +17,7 @@ export class ChoosePlaceDialogComponent implements OnInit {
   public offices: IOffice[];
   public selectedOffice = 0;
   public selectedPlaceDetection: PlaceDetectionMethod = PlaceDetectionMethod.officeLocation;
-  public placeChoosen = false;
+  public placeChosen = false;
   private subscription = new Subscription();
 
   constructor(
@@ -42,17 +41,15 @@ export class ChoosePlaceDialogComponent implements OnInit {
 
   apply(): void {
     if (Number(this.selectedPlaceDetection) === PlaceDetectionMethod.geolocation) {
-      this.dialogRef.close();
+      this.dialogRef.close(true);
       return;
     }
     const office = this.offices[this.selectedOffice];
-    const location = latLng(office.latitude, office.longitude);
-    this.mapEventsService.zoomToOffice(office);
-    this.dialogRef.close(location);
+    this.dialogRef.close(office);
   }
 
-  public changeFlagPlaceChoosen(): void {
-    this.placeChoosen = true;
+  public changeFlagPlaceChosen(): void {
+    this.placeChosen = true;
   }
 
   public cancel(): void {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { Observable, Subject } from 'rxjs';
 import { BonusesService } from './bonuses.service';
+import { orderByDefault } from './constants';
 
 interface IFilterQueryParams {
   order?: string;
@@ -70,9 +71,7 @@ export class FilterService {
     if (this.queryParams?.end) {
       queriesArray.push(`End=${this.queryParams.end}`);
     }
-    if (this.queryParams?.sortBy) {
-      queriesArray.push(`SortBy=${this.queryParams.sortBy}`);
-    }
+    queriesArray.push(`SortBy=${this.queryParams.sortBy || orderByDefault}`);
     const resultUrl = `?${queriesArray.join('&')}`;
     return encodeURI(resultUrl);
   }

@@ -102,7 +102,9 @@
     "isActive": "Статус",
     "filters": "Фильтры",
     "clear": "Очистить",
-    "apply": "Применить"
+    "apply": "Применить",
+    "vendorName": "Имя компании",
+    "bonusTitle": "Название бонуса"
   },
   "home": {
     "pick": {

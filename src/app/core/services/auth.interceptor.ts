@@ -54,6 +54,7 @@ export class AuthInterceptor {
         }),
         switchMap((value: any) => {
           if (value.accessToken) {
+            this.tokenSubject.next(value.accessToken);
             localStorage.setItem('accessToken', value.accessToken);
             localStorage.setItem('refreshToken', value.refreshToken);
             return next.handle(this.injectToken(req));
@@ -70,7 +71,7 @@ export class AuthInterceptor {
         }),
       );
     } else {
-      this.tokenSubject.pipe(
+      return this.tokenSubject.pipe(
         filter((token: string | null) => token !== null),
         take(1),
         switchMap((token: string) => {
@@ -78,7 +79,6 @@ export class AuthInterceptor {
           return next.handle(this.injectToken(req));
         }),
       );
-      return throwError('refresh already in progress');
     }
   }
 

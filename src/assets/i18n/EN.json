@@ -102,7 +102,9 @@
     "isActive": "Is active",
     "filters": "Filters",
     "clear": "Clear filters",
-    "apply": "Apply filters"
+    "apply": "Apply filters",
+    "vendorName": "Vendor name",
+    "bonusTitle": "Bonus title"
   },
   "home": {
     "pick": {
