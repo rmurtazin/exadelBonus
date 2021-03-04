@@ -29,10 +29,10 @@
   {
     "id": "4",
     "country": "BELARUS",
-    "city": "Brest",
+    "city": "Gomel",
     "address": "ul. Pushkina 2-9,Gomel 246050",
-    "latitude": 52.43372430867304,
-    "longitude": 31.010150276332023,
+    "latitude": 52.4337210381015,
+    "longitude": 31.010177098319925,
     "phone": "+375 23 222 93 19"
   },
   {
@@ -173,8 +173,8 @@
   {
     "id": "19",
     "country": "UKRAINE",
-    "city": "Odessa",
-    "address": "vul. Zhukovskogo 9, Odessa 65014",
+    "city": "Odesa",
+    "address": "vul. Zhukovskogo 9, Odesa 65014",
     "latitude": 46.47927864512445,
     "longitude": 30.74512584047647,
     "phone": "+380 67 939 17 04"
