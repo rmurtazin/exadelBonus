@@ -41,7 +41,6 @@ export class MapComponent implements OnDestroy {
     this.displayOfficesMarkers();
     this.mapViewObserver();
     this.getQueryParams();
-    this.getMarkersSubscription();
     this.officeMarkerClickObserver();
     this.applyFilterSubscription();
     this.applyFilterSubscription();
@@ -87,14 +86,6 @@ export class MapComponent implements OnDestroy {
       this.officeService.getOffices().subscribe((offices: IOffice[]) => {
         const bonusesMarkers = this.markerModel.createOfficesMarkers(offices);
         layerGroup(bonusesMarkers).addTo(this.map);
-      }),
-    );
-  }
-
-  private getMarkersSubscription(): void {
-    this.subscription.add(
-      this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
-        this.displayBonusesMarkers(bonuses);
       }),
     );
   }

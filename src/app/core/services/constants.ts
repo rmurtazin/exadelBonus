@@ -8,7 +8,7 @@ export enum RoleType {
   admin = 'admin',
 }
 
-export const defaultQuery = '?SortBy=Title';
+export const orderByDefault = 'Title';
 
 export const apiLinks = {
   bonus: `${apiUrl}/api/Bonus`,

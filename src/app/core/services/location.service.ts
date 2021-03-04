@@ -77,7 +77,7 @@ export class LocationService {
   }
 
   private getCityByLocation(location: LatLng): Observable<any> {
-    const url = cityByLocationUrl(49.23599435472236, 28.497092625653238); //location.lat, location.lng);
+    const url = cityByLocationUrl(location.lat, location.lng);
     return this.http.get(url).pipe(
       take(1),
       map((response: any) => response?.city),
