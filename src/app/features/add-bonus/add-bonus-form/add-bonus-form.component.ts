@@ -146,14 +146,14 @@ export class AddBonusFormComponent implements OnInit {
     this.myForm = new FormGroup({
       vendorInfo: (this.vendorInfo = new FormGroup({
         name: (this.vendorName = new FormControl('', [Validators.required])),
-        email: (this.vendorEmail = new FormControl('', [Validators.required, Validators.min(12)])),
+        email: (this.vendorEmail = new FormControl('', [Validators.required])),
       })),
       bonusAddress: new FormControl('', [Validators.required]),
       bonusType: new FormControl('', [Validators.required]),
       bonusDescription: new FormControl('', [Validators.required]),
       bonusTags: new FormControl('', [Validators.required]),
       bonusTitle: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(12)]),
+      phone: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
       start: new FormControl('', [Validators.required]),
       end: new FormControl('', [Validators.required]),
     });

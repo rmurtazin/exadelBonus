@@ -66,7 +66,7 @@
     <mat-form-field class="add-bonus-input" appearance="fill" aria-autocomplete="off">
       <mat-label>{{ 'addBonus.form.phone' | translate }}</mat-label>
       <span matPrefix class="phone-prefix">+ &nbsp;</span>
-      <input matInput placeholder="000000000000" formControlName="phone" type="number" />
+      <input matInput placeholder="000000000000" formControlName="phone" minlength="12" maxlength="16"/>
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">
       <mat-label>{{ 'addBonus.form.bonusType' | translate }}</mat-label>
