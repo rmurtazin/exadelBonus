@@ -27,7 +27,7 @@ export class CityInputComponent implements OnInit, OnDestroy {
     private mapEventsService: MapEventsService,
     private locationService: LocationService,
     private loginService: LoginService,
-    private translate: TranslateService
+    private translate: TranslateService,
   ) {}
 
   public ngOnInit(): void {
@@ -55,7 +55,7 @@ export class CityInputComponent implements OnInit, OnDestroy {
   private chooseOfficeObserver(): void {
     this.subscription.add(
       this.mapEventsService.zoomToOfficeObserver().subscribe((office: IOffice) => {
-        this.translate.getTranslation('EN').subscribe(({cities}) => {
+        this.translate.getTranslation('EN').subscribe(({ cities }) => {
           localStorage.setItem('currentCity', cities[office.city]);
           this.cityInputControl.setValue(cities[office.city]);
           this.changeCity();
