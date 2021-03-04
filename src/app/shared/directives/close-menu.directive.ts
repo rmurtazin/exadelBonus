@@ -8,7 +8,7 @@ export class CloseMenuDirective {
   constructor() {}
   @HostListener('click', ['$event'])
   public onClick(e): void {
-    if (e.target.parentElement.classList.value === 'menu-item') {
+    if (e.target.parentElement.classList.contains('menu-item')) {
       this.clickMenuItem.emit();
     }
   }

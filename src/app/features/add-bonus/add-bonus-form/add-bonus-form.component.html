@@ -1,7 +1,7 @@
 <div class="container">
   <div class="form-btn-back-container">
     <button
-      *ngIf="newBonus"
+      *ngIf="newBonus; else updateBonusGoBack"
       class="form-btn-back"
       (click)="goBack()"
       mat-stroked-button
@@ -9,6 +9,11 @@
     >
       &#8656; {{ 'addBonus.goBack' | translate }}
     </button>
+    <ng-template #updateBonusGoBack>
+      <button class="form-btn-back" mat-stroked-button color="primary" [routerLink]="['/bonuses']">
+        &#8656; {{ 'addBonus.goBack' | translate }}
+      </button>
+    </ng-template>
   </div>
   <form class="add-bonus-form" (ngSubmit)="onSubmit()" [formGroup]="myForm">
     <mat-form-field [formGroup]="vendorInfo" class="add-bonus-input" appearance="fill">
@@ -60,11 +65,13 @@
     </button>
     <mat-form-field class="add-bonus-input" appearance="fill" aria-autocomplete="off">
       <mat-label>{{ 'addBonus.form.phone' | translate }}</mat-label>
+      <span matPrefix class="phone-prefix">+ &nbsp;</span>
       <input
         matInput
-        placeholder="+00(000) 000-00-00"
+        placeholder="000000000000"
         formControlName="phone"
-        mask="+00(000) 000-00-00"
+        minlength="12"
+        maxlength="16"
       />
     </mat-form-field>
     <mat-form-field class="add-bonus-input" appearance="fill">

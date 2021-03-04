@@ -1,6 +1,6 @@
 <div>
-  <h1>{{ office.city }}</h1>
-  <button mat-flat-button color="primary" (click)="clickTrigger()">
+  <h1>{{ 'cities.' + office.city | translate }}</h1>
+  <button class="button-go" mat-flat-button color="primary" (click)="clickTrigger()">
     {{ 'popup.go' | translate }}
   </button>
 </div>

@@ -6,6 +6,9 @@ import { BonusesService } from '@services/bonuses.service';
 import { MapEventsService } from '@services/map-events.service';
 import { IOffice } from '@interfaces/office.interface';
 import { LocationService } from '@services/location.service';
+import { LoginService } from '@services/login.service';
+import { IUser } from '@interfaces/loginInterface';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-city-input',
@@ -23,28 +26,52 @@ export class CityInputComponent implements OnInit, OnDestroy {
     private bonusesService: BonusesService,
     private mapEventsService: MapEventsService,
     private locationService: LocationService,
+    private loginService: LoginService,
+    private translate: TranslateService,
   ) {}
 
   public ngOnInit(): void {
-    this.chuseOfficeObserver();
+    const currentCity = localStorage.getItem('currentCity');
+    if (!currentCity) {
+      this.getUserCity();
+    } else {
+      this.cityInputControl.setValue(currentCity);
+      this.changeCity();
+    }
+    this.chooseOfficeObserver();
     this.changeLocationObserver();
     this.getCities();
   }
 
-  private chuseOfficeObserver(): void {
+  private getUserCity(): void {
+    this.subscription.add(
+      this.loginService.getUser().subscribe((user: IUser) => {
+        this.cityInputControl.setValue(user.city);
+        this.changeCity();
+      }),
+    );
+  }
+
+  private chooseOfficeObserver(): void {
     this.subscription.add(
       this.mapEventsService.zoomToOfficeObserver().subscribe((office: IOffice) => {
-        this.cityInputControl.setValue(office.city);
-        this.changeCity();
+        this.translate.getTranslation('EN').subscribe(({ cities }) => {
+          localStorage.setItem('currentCity', cities[office.city]);
+          this.cityInputControl.setValue(cities[office.city]);
+          this.changeCity();
+        });
       }),
     );
   }
 
   private changeLocationObserver(): void {
     this.subscription.add(
-      this.locationService.changeLocationObserver().subscribe((city: string) => {
-        this.cityInputControl.setValue(city);
-        this.changeCity();
+      this.locationService.changeLocationObserver().subscribe({
+        next: (city: string) => {
+          this.cityInputControl.setValue(city);
+          localStorage.setItem('currentCity', city);
+          this.changeCity();
+        },
       }),
     );
   }
@@ -70,6 +97,7 @@ export class CityInputComponent implements OnInit, OnDestroy {
 
   public changeCity(): void {
     const value = this.cityInputControl.value.trim();
+    localStorage.setItem('currentCity', value);
     this.changeCityEvent.emit(value);
   }
 

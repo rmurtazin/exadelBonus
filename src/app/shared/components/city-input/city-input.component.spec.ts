@@ -5,9 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BonusesService } from '@services/bonuses.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
-import { LocationStrategy } from '@angular/common';
 import { LocationService } from '@services/location.service';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
 describe('CityInputComponent', () => {
   let component: CityInputComponent;
@@ -22,6 +22,7 @@ describe('CityInputComponent', () => {
         ToastrModule.forRoot(),
         TranslateModule.forRoot(),
         MatDialogModule,
+        RouterModule.forRoot([]),
       ],
       providers: [BonusesService, LocationService],
     }).compileComponents();

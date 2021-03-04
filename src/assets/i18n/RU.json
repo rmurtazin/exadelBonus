@@ -9,14 +9,14 @@
   },
   "popup": {
     "go": "Перейти",
-    "detail": "Детали"
+    "detail": "Детальнее"
   },
   "notFound": "Не найдено",
   "addBonus": {
     "addBonusBtn": "Добавить бонус",
     "goBack": "Назад",
     "saveBonus": "Сохранить",
-    "form" : {
+    "form": {
       "vendorName": "Имя вендора",
       "vendorEmail": "Введите адрес ел. почты вендора",
       "phone": "Номер телефона",
@@ -68,13 +68,17 @@
   },
   "history": {
     "notification": {
-      "applySuccess" : {
+      "applySuccess": {
         "title": "Операция успешна!",
         "message": "Ваша заявка успешно отправлена!"
       },
-      "applyError" : {
+      "applyError": {
         "title": "Ошибка ответа!",
         "message": "Возникли проблемы с сохранением заявки!"
+      },
+      "noBonuses": {
+        "title": "",
+        "message": "У Вас пока нет бонусов!"
       }
     }
   },
@@ -98,7 +102,9 @@
     "isActive": "Статус",
     "filters": "Фильтры",
     "clear": "Очистить",
-    "apply": "Применить"
+    "apply": "Применить",
+    "vendorName": "Имя компании",
+    "bonusTitle": "Название бонуса"
   },
   "home": {
     "pick": {
@@ -106,12 +112,16 @@
       "labelSorting": "Сортировка"
     },
     "confirm": {
-    "question": "Вы хотите отправить заявку?",
-    "yes": "Да",
-    "no": "Нет",
-    "description": "Описание: ",
-    "phone": "Телефон: ",
-    "address": "Адрес: "}
+      "question": "Вы хотите отправить заявку?",
+      "yes": "Да",
+      "no": "Нет",
+      "description": "Описание: ",
+      "phone": "Телефон: ",
+      "address": "Адрес: "
+    },
+    "details": "Детально",
+    "edit": "Изменить",
+    "rate": "Оценить"
   },
   "tagsInput": {
     "tags": "Теги",
@@ -174,12 +184,41 @@
   },
   "loginErrors": {
     "invalidData": {
-      "title": "Ошыбка входа",
+      "title": "Ошибка входа",
       "message" : "Неверный логин или пароль"
     },
     "serverError": {
-      "title": "Ошыбка входа",
+      "title": "Ошибка входа",
       "message" : "Что-то пошло не так"
     }
+  },
+  "choosePlace": {
+    "geolocation": "Геолокация",
+    "office": "Выберите офис",
+    "cancel": "Отмена",
+    "ok": "Принять"
+  },
+  "cities": {
+    "warsaw": "Варшава",
+    "walnutCreek": "Уолнат-Крик",
+    "boulder": "Боулдер",
+    "brest": "Брест",
+    "gomel": "Гомель",
+    "grodno": "Гродно",
+    "minsk": "Минск",
+    "vitebsk": "Витебск",
+    "klaipėda": "Клайпеда ",
+    "vilnius": "Вильнюс",
+    "bialystock": "Белосток",
+    "szczecin": "Щецин",
+    "poznan": "Познань",
+    "chelyabinsk": "Челябинск",
+    "yekaterinburg": "Екатеринбург",
+    "kharkiv": "Харьков",
+    "kyiv": "Харьков",
+    "lviv": "Львов",
+    "odesa": "Одесса",
+    "vinnytsia": "Винница",
+    "tashkent": "Ташкент"
   }
 }

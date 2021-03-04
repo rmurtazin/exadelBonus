@@ -16,7 +16,7 @@ import 'leaflet.markercluster';
   selector: 'app-map-container',
   templateUrl: './map-container.component.html',
   styleUrls: ['./map-container.component.scss'],
-  providers: [MarkerModel, LocationService],
+  providers: [MarkerModel],
 })
 export class MapComponent implements OnDestroy {
   private map: Map;
@@ -24,7 +24,7 @@ export class MapComponent implements OnDestroy {
   private queryLongitude: string;
   private subscription = new Subscription();
   private markersGroup: MarkerClusterGroup;
-  private markerGroopIsHiden = false;
+  private markerGroupIsHidden = false;
 
   constructor(
     private officeService: OfficesService,
@@ -41,7 +41,6 @@ export class MapComponent implements OnDestroy {
     this.displayOfficesMarkers();
     this.mapViewObserver();
     this.getQueryParams();
-    this.getMarkersSubscription();
     this.officeMarkerClickObserver();
     this.applyFilterSubscription();
     this.applyFilterSubscription();
@@ -49,20 +48,19 @@ export class MapComponent implements OnDestroy {
 
   public onMapZoom(): void {
     if (this.markersGroup) {
-      this.showBonusDependsOnZomm();
+      this.showBonusDependsOnZoom();
     }
   }
 
-  private showBonusDependsOnZomm(): void {
-    return; // TODO: applay when will be applied fetching user
+  private showBonusDependsOnZoom(): void {
     const isHigh = this.map.getZoom() < 12;
-    if (isHigh && !this.markerGroopIsHiden) {
+    if (isHigh && !this.markerGroupIsHidden) {
       this.map.removeLayer(this.markersGroup);
-      this.markerGroopIsHiden = true;
+      this.markerGroupIsHidden = true;
     }
-    if (!isHigh && this.markerGroopIsHiden) {
+    if (!isHigh && this.markerGroupIsHidden) {
       this.markersGroup.addTo(this.map);
-      this.markerGroopIsHiden = false;
+      this.markerGroupIsHidden = false;
     }
   }
 
@@ -92,26 +90,21 @@ export class MapComponent implements OnDestroy {
     );
   }
 
-  private getMarkersSubscription(): void {
-    this.subscription.add(
-      this.bonusesService.getBonuses().subscribe((bonuses: IBonus[]) => {
-        this.displayBonusesMarkers(bonuses);
-      }),
-    );
-  }
-
-  private displayBonusesMarkers(bonuses: IBonus[]): void {
+  public displayBonusesMarkers(bonuses: IBonus[]): void {
     if (this.markersGroup) {
       this.map.removeLayer(this.markersGroup);
     }
     const markers: Marker[] = this.markerModel.createBonusesMarkers(bonuses);
-    this.markersGroup = this.markerModel.createMarkerCluster(markers);
+    this.markersGroup = this.markerModel.createMarkerCluster(this.filterMarkersByCity(markers));
     this.markersGroup.addTo(this.map);
     this.navigateToMarker(markers);
-    this.showBonusDependsOnZomm();
   }
 
   private navigateToMarker(markers: Marker[]): void {
+    const [marker] = this.filterMarkersByCity(markers);
+    if (marker && localStorage.getItem('currentCity')) {
+      this.setMapView(marker.getLatLng());
+    }
     const isRequestedLocation = (currentMarker: Marker) => {
       const { lat, lng } = currentMarker.getLatLng();
       return lng === Number(this.queryLongitude) && lat === Number(this.queryLatitude);
@@ -122,6 +115,7 @@ export class MapComponent implements OnDestroy {
     }
     this.setMapView(targetMarker.getLatLng(), false);
     targetMarker.openPopup();
+    this.showBonusDependsOnZoom();
   }
 
   private officeMarkerClickObserver(): void {
@@ -161,5 +155,13 @@ export class MapComponent implements OnDestroy {
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private filterMarkersByCity(markers: Marker[]): Marker[] {
+    const currentCity = localStorage.getItem('currentCity');
+    if (currentCity) {
+      return markers.filter((el: Marker) => el.options.alt === currentCity);
+    }
+    return markers;
   }
 }

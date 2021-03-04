@@ -172,6 +172,9 @@
     box-shadow: 10px -4px 8px rgba(0, 0, 0, 0.25);
     box-sizing: border-box;
   }
+  .sliding {
+    scroll-snap-align: start;
+  }
   .mobile-visible {
     display: block;
   }

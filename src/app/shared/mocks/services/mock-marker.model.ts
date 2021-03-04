@@ -9,13 +9,13 @@ export class MockMarkerModel extends MarkerModel {
   }
 
   private mockBonusIcon = new DivIcon({ html: '<div>MockBonusMarker</div>' });
-  private mockOffisIcon = new DivIcon({ html: '<div>MockOffisMarker</div>' });
+  private mockOfficeIcon = new DivIcon({ html: '<div>MockOfficeMarker</div>' });
   public createBonusesMarkers(bonuses: IBonus[]): Marker[] {
     return [new Marker(latLng(0, 0), { icon: this.mockBonusIcon })];
   }
 
   public createOfficesMarkers(offices: IOffice[]): Marker<any>[] {
-    return [new Marker(latLng(0, 1), { icon: this.mockOffisIcon })];
+    return [new Marker(latLng(0, 1), { icon: this.mockOfficeIcon })];
   }
 
   public createMarkerCluster(markers: Marker[]): MarkerClusterGroup {

@@ -18,3 +18,12 @@
   height: 15px;
   font-size: 15px;
 }
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.geoButton {
+  width: 45%;
+}

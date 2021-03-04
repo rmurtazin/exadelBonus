@@ -8,6 +8,8 @@ export enum RoleType {
   admin = 'admin',
 }
 
+export const orderByDefault = 'Title';
+
 export const apiLinks = {
   bonus: `${apiUrl}/api/Bonus`,
   cities: `${apiUrl}/api/Bonus/cities`,

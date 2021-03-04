@@ -2,7 +2,7 @@
   {
     "id": "1",
     "country": "USA",
-    "city": "Walnut Creek",
+    "city": "walnutCreek",
     "address": "1340 Treat Blvd. Suite 375, Walnut Creek CA 94597",
     "latitude": 37.92557996786679,
     "longitude": -122.0584078680293,
@@ -11,7 +11,7 @@
   {
     "id": "2",
     "country": "USA",
-    "city": "Boulder",
+    "city": "boulder",
     "address": "1995 57th Court North Suite 200, Boulder CO 80301",
     "latitude": 40.02161103237348,
     "longitude": -105.2215395529247,
@@ -20,7 +20,7 @@
   {
     "id": "3",
     "country": "BELARUS",
-    "city": "Brest",
+    "city": "brest",
     "address": "prospekt Mašerova 6a,Brest 224030",
     "latitude": 52.08635668336722,
     "longitude": 23.67894326097369,
@@ -29,16 +29,16 @@
   {
     "id": "4",
     "country": "BELARUS",
-    "city": "Brest",
+    "city": "gomel",
     "address": "ul. Pushkina 2-9,Gomel 246050",
-    "latitude": 52.43372430867304,
-    "longitude": 31.010150276332023,
+    "latitude": 52.4337210381015,
+    "longitude": 31.010177098319925,
     "phone": "+375 23 222 93 19"
   },
   {
     "id": "5",
     "country": "BELARUS",
-    "city": "Grodno",
+    "city": "grodno",
     "address": "ul. Maxima Gorkogo 1/1,Grodno 230023",
     "latitude": 53.68657681897926,
     "longitude": 23.83109042056094,
@@ -47,7 +47,7 @@
   {
     "id": "6",
     "country": "BELARUS",
-    "city": "Minsk",
+    "city": "minsk",
     "address": "ul. Naturalistov 3,Minsk 220012",
     "latitude": 53.92769187864267,
     "longitude": 27.61733899121872,
@@ -56,7 +56,7 @@
   {
     "id": "7",
     "country": "BELARUS",
-    "city": "Minsk",
+    "city": "minsk",
     "address": "ul. Pritytskogo 156, Minsk 220017",
     "latitude": 53.90899468115062,
     "longitude": 27.430754978242142,
@@ -65,7 +65,7 @@
   {
     "id": "8",
     "country": "BELARUS",
-    "city": "Vitebsk",
+    "city": "vitebsk",
     "address": "ul. Kommunisticheskaya 16, Vitebsk 210026",
     "latitude": 55.202507425639986,
     "longitude": 30.20993797458248,
@@ -74,7 +74,7 @@
   {
     "id": "9",
     "country": "LITHUANIA",
-    "city": "Klaipėda",
+    "city": "klaipėda",
     "address": "Danės g. 6-401, LT-92109 Klaipėda",
     "latitude": 55.71292808029691,
     "longitude": 21.140297534129502,
@@ -83,7 +83,7 @@
   {
     "id": "10",
     "country": "LITHUANIA",
-    "city": "Vilnius",
+    "city": "vilnius",
     "address": "Žalgirio g. 90C, LT-09303 Vilnius",
     "latitude": 54.70382276440894,
     "longitude": 25.27813080525425,
@@ -92,7 +92,7 @@
   {
     "id": "11",
     "country": "POLAND",
-    "city": "Bialystock",
+    "city": "bialystock",
     "address": "Białostocki Park Naukowo-Technologiczny ul. Żurawia 71, 15-540 Białystok",
     "latitude": 53.10706899901733,
     "longitude": 23.193421278211837,
@@ -101,7 +101,7 @@
   {
     "id": "12",
     "country": "POLAND",
-    "city": "Szczecin",
+    "city": "szczecin",
     "address": "ul. Cyfrowa 6, 71-441 Szczecin",
     "latitude": 53.45059172382235,
     "longitude": 14.536673232188344,
@@ -110,7 +110,7 @@
   {
     "id": "13",
     "country": "POLAND",
-    "city": "Warsaw",
+    "city": "warsaw",
     "address": "Warsaw Corporate Center ul. Emilii Plater 28, 00-688 Warszawa",
     "latitude": 52.227863771456086,
     "longitude": 21.00600620516076,
@@ -119,7 +119,7 @@
   {
     "id": "14",
     "country": "POLAND",
-    "city": "Poznan",
+    "city": "poznan",
     "address": "ul. Ogrodowa 18/1, 61-821 Poznan",
     "latitude": 52.40428358705591,
     "longitude": 16.928501564527817,
@@ -128,7 +128,7 @@
   {
     "id": "15",
     "country": "RUSSIA",
-    "city": "Chelyabinsk",
+    "city": "chelyabinsk",
     "address": "ul. Lenina 55a, Chelyabinsk 454091",
     "latitude": 55.15539855937418,
     "longitude": 61.2962663899261,
@@ -137,7 +137,7 @@
   {
     "id": "16",
     "country": "RUSSIA",
-    "city": "Yekaterinburg",
+    "city": "yekaterinburg",
     "address": "ul. Chkalova 3, Yekaterinburg 620102",
     "latitude": 56.81409992127123,
     "longitude": 60.58454544951805,
@@ -146,7 +146,7 @@
   {
     "id": "17",
     "country": "UKRAINE",
-    "city": "Kharkiv",
+    "city": "kharkiv",
     "address": "prospekt Nauky 27b, Kharkiv 61072",
     "latitude": 50.026750755606756,
     "longitude": 36.22037876275294,
@@ -155,7 +155,7 @@
   {
     "id": "18",
     "country": "UKRAINE",
-    "city": "Kyiv",
+    "city": "kyiv",
     "address": "Moscow vul. 8, Kyiv 01029",
     "latitude": 50.44049923608724,
     "longitude": 30.544346591604253,
@@ -164,7 +164,7 @@
   {
     "id": "18",
     "country": "UKRAINE",
-    "city": "Lviv",
+    "city": "lviv",
     "address": "vul. Maksyma Zalizniaka 16, Lviv 79057",
     "latitude": 49.82955286167607,
     "longitude": 23.99813010321859,
@@ -173,7 +173,7 @@
   {
     "id": "19",
     "country": "UKRAINE",
-    "city": "Odesa",
+    "city": "odesa",
     "address": "vul. Zhukovskogo 9, Odesa 65014",
     "latitude": 46.47927864512445,
     "longitude": 30.74512584047647,
@@ -182,7 +182,7 @@
   {
     "id": "20",
     "country": "UKRAINE",
-    "city": "Vinnytsia",
+    "city": "vinnytsia",
     "address": "vul. Bratslavska 103, Vinnytsia 21001",
     "latitude": 49.23468243441238,
     "longitude": 28.48856709824466,
@@ -191,7 +191,7 @@
   {
     "id": "21",
     "country": "UKRAINE",
-    "city": "Tashkent",
+    "city": "tashkent",
     "address": "Mirzo Ulugbek District Tamara Khanun str. 20, 100000 Tashkent",
     "latitude": 41.34818746409392,
     "longitude": 69.34947784030926,

@@ -4,6 +4,7 @@
   [leafletOptions]="options"
   (leafletMapReady)="onMapReady($event)"
   (leafletMapZoom)="onMapZoom()"
+  (leafletMapMoveEnd)="onMapMoveEnd()"
 >
   <button class="change-location-button" (click)="changePlace()" icon>
     <mat-icon>share_location</mat-icon>
