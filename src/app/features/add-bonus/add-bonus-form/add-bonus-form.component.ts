@@ -146,7 +146,7 @@ export class AddBonusFormComponent implements OnInit {
     this.myForm = new FormGroup({
       vendorInfo: (this.vendorInfo = new FormGroup({
         name: (this.vendorName = new FormControl('', [Validators.required])),
-        email: (this.vendorEmail = new FormControl('', [Validators.required])),
+        email: (this.vendorEmail = new FormControl('', [Validators.required, Validators.email])),
       })),
       bonusAddress: new FormControl('', [Validators.required]),
       bonusType: new FormControl('', [Validators.required]),
