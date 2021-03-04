@@ -153,7 +153,7 @@ export class AddBonusFormComponent implements OnInit {
       bonusDescription: new FormControl('', [Validators.required]),
       bonusTags: new FormControl('', [Validators.required]),
       bonusTitle: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
       start: new FormControl('', [Validators.required]),
       end: new FormControl('', [Validators.required]),
     });
