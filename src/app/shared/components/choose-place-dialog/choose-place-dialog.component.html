@@ -20,7 +20,7 @@
     <mat-select appearance="fill" [disabled]="!officeOption.checked" [(ngModel)]="selectedOffice">
       <mat-option *ngFor="let office of offices; index as i" [value]="i">
         <p>
-          {{ office.city }}
+          {{'cities.' + office.city | translate}}
           <small>{{ office.address }}</small>
         </p>
       </mat-option>

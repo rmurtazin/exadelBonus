@@ -197,5 +197,28 @@
     "office": "Выберите офис",
     "cancel": "Отмена",
     "ok": "Принять"
+  },
+  "cities": {
+    "warsaw": "Варшава",
+    "walnutCreek": "Уолнат-Крик",
+    "boulder": "Боулдер",
+    "brest": "Брест",
+    "gomel": "Гомель",
+    "grodno": "Гродно",
+    "minsk": "Минск",
+    "vitebsk": "Витебск",
+    "klaipėda": "Клайпеда ",
+    "vilnius": "Вильнюс",
+    "bialystock": "Белосток",
+    "szczecin": "Щецин",
+    "poznan": "Познань",
+    "chelyabinsk": "Челябинск",
+    "yekaterinburg": "Екатеринбург",
+    "kharkiv": "Харьков",
+    "kyiv": "Харьков",
+    "lviv": "Львов",
+    "odesa": "Одесса",
+    "vinnytsia": "Винница",
+    "tashkent": "Ташкент"
   }
 }

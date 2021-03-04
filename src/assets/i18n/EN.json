@@ -197,5 +197,28 @@
     "office": "Choose office",
     "cancel": "Cancel",
     "ok": "Ok"
+  },
+  "cities": {
+    "warsaw": "Warsaw",
+    "walnutCreek": "Walnut Creek",
+    "boulder": "Boulder",
+    "brest": "Brest",
+    "gomel": "Gomel",
+    "grodno": "Grodno",
+    "minsk": "Minsk",
+    "vitebsk": "Vitebsk",
+    "klaipėda": "Klaipėda",
+    "vilnius": "Vilnius",
+    "bialystock": "Bialystock",
+    "szczecin": "Szczecin",
+    "poznan": "Poznan",
+    "chelyabinsk": "Chelyabinsk",
+    "yekaterinburg": "Yekaterinburg",
+    "kharkiv": "Kharkiv",
+    "kyiv": "Kyiv",
+    "lviv": "Lviv",
+    "odesa": "Odesa",
+    "vinnytsia": "Vinnytsia",
+    "tashkent": "Tashkent"
   }
 }
