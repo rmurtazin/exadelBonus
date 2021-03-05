@@ -3,6 +3,7 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { Observable, Subject } from 'rxjs';
 import { BonusesService } from './bonuses.service';
 import { orderByDefault } from './constants';
+import { format } from 'date-fns';
 
 interface IFilterQueryParams {
   order?: string;
@@ -66,10 +67,12 @@ export class FilterService {
       queriesArray.push(`City=${this.queryParams.city}`);
     }
     if (this.queryParams?.start) {
-      queriesArray.push(`Start=${this.queryParams.start}`);
+      const dateStart = format(new Date(this.queryParams.start), 'yyyy/MM/dd');
+      queriesArray.push(`DateStart=${dateStart}`);
     }
     if (this.queryParams?.end) {
-      queriesArray.push(`End=${this.queryParams.end}`);
+      const dateEnd = format(new Date(this.queryParams.end), 'yyyy/MM/dd');
+      queriesArray.push(`DateEnd=${dateEnd}`);
     }
     queriesArray.push(`SortBy=${this.queryParams.sortBy || orderByDefault}`);
     const resultUrl = `?${queriesArray.join('&')}`;
