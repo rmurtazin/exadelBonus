@@ -56,3 +56,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+
+@media (min-width: 541px), (min-device-width: 541px) {
+  .add-bonus-container .bonus-container,
+  .history .bonus {
+    margin-right: 10px;
+  }
+}
