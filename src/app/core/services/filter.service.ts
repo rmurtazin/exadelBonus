@@ -45,8 +45,8 @@ export class FilterService {
   }
 
   public addDateToQuery(date: any): void {
-    this.queryParams.start = date?.start && new Date(date.start).toLocaleString();
-    this.queryParams.end = date?.end && new Date(date.end).toLocaleString();
+    this.queryParams.start = date?.start && new Date(date.start).toISOString();
+    this.queryParams.end = date?.end && new Date(date.end).toISOString();
     this.sendFilterBonusRequest();
   }
 
@@ -67,12 +67,10 @@ export class FilterService {
       queriesArray.push(`City=${this.queryParams.city}`);
     }
     if (this.queryParams?.start) {
-      const dateStart = format(new Date(this.queryParams.start), 'yyyy/MM/dd');
-      queriesArray.push(`DateStart=${dateStart}`);
+      queriesArray.push(`DateStart=${this.queryParams.start}`);
     }
     if (this.queryParams?.end) {
-      const dateEnd = format(new Date(this.queryParams.end), 'yyyy/MM/dd');
-      queriesArray.push(`DateEnd=${dateEnd}`);
+      queriesArray.push(`DateEnd=${this.queryParams.end}`);
     }
     queriesArray.push(`SortBy=${this.queryParams.sortBy || orderByDefault}`);
     const resultUrl = `?${queriesArray.join('&')}`;
