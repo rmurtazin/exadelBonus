@@ -104,7 +104,6 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   }
 
   public changeDate(date: any): void {
-    console.log(date);
     this.dateStart = date?.start && new Date(date.start).toISOString();
     this.dateEnd = date?.end && new Date(date.end).toISOString();
   }
