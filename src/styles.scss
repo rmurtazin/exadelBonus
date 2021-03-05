@@ -56,7 +56,7 @@ body {
   flex-direction: column;
 }
 
-.footeristic {
+.footer {
   margin-top: auto;
 }
 
@@ -64,5 +64,11 @@ body {
   .add-bonus-container .bonus-container,
   .history .bonus {
     margin-right: 10px;
+  }
+}
+
+@media (max-width: 540px), (max-device-width: 540px) {
+  .home .bonus-container {
+    margin-right: 20px;
   }
 }
