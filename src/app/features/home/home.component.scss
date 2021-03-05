@@ -31,13 +31,6 @@
   padding: 0 20px 70px 0;
 }
 
-.footer {
-  position: absolute;
-  width: 100%;
-  z-index: 1000;
-  top: calc(100% - 50px);
-}
-
 .bonus-list {
   height: 100%;
   overflow: auto;
@@ -86,6 +79,7 @@ h2 {
 @media (max-width: 540px), (max-device-width: 540px) {
   .home {
     height: auto;
+    position: static;
   }
   .bonus-list {
     display: block;
@@ -97,6 +91,7 @@ h2 {
     margin: 0;
     height: auto;
     width: 100% !important;
+    padding-bottom: 0;
   }
   .pick-container {
     width: 100vw !important;
