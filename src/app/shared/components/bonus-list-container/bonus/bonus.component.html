@@ -1,5 +1,5 @@
 <section class="bonus sliding" [ngClass]="{ 'show-form': isForm }">
-  <div class="description-container">
+  <div class="description-container" *ngIf="!isForm">
     <span class="vendor-name">{{ bonus?.company.name }}</span>
     <div class="bonus-name mobile-visible">{{ bonus?.type }}</div>
     <p class="bonus-description">{{ bonus?.description }}</p>

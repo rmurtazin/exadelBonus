@@ -49,3 +49,10 @@ body {
   padding: 20px 0;
   margin-bottom: 80px;
 }
+
+.with-footer-page {
+  min-height: calc(100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
