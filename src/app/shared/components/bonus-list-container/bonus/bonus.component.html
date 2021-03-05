@@ -16,10 +16,18 @@
           <span class="tag" *ngFor="let tag of bonus?.tags">{{ tag }}</span>
         </div>
       </div>
-      <div class="button-container">
-        <button mat-flat-button color="primary" class="apply-button" (click)="bonusButtonClick()">
-          <span [innerHTML]="bonusButtonLabel" class="bonus-button-content"></span>
-        </button>
+      <ng-template #bonusButtonContent>
+        <div class="button-container">
+          <button mat-flat-button color="primary" class="apply-button" (click)="bonusButtonClick()">
+            <span [innerHTML]="bonusButtonLabel" class="bonus-button-content"></span>
+          </button>
+        </div>
+      </ng-template>
+      <div
+        class="button-container"
+        *ngIf="bonus?.isRated && bonus.isRated !== -1; else bonusButtonContent"
+      >
+        Rated
       </div>
     </div>
   </div>
