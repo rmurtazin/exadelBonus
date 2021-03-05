@@ -3,7 +3,6 @@ import { IBonus } from '@interfaces/bonus.interface';
 import { Observable, Subject } from 'rxjs';
 import { BonusesService } from './bonuses.service';
 import { orderByDefault } from './constants';
-import { format } from 'date-fns';
 
 interface IFilterQueryParams {
   order?: string;
