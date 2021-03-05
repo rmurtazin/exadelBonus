@@ -135,6 +135,10 @@ export class StatisticsComponent implements OnInit, OnDestroy {
       (data: IVendor[]) => {
         if (data) {
           this.vendors = data;
+          if (this.vendors.length === 0) {
+            this.toasterService.showError('Vendor not found', 'Some problems with getting vendors');
+            this.filterParams.vendor = '';
+          }
         }
       },
       (err) => this.toasterService.showError(err, 'Some problems with getting vendors'),
