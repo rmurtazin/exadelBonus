@@ -92,7 +92,9 @@ export class AddBonusFormComponent implements OnInit {
     bonus.tags.forEach((tag) => {
       this.bonusTags.push({ name: tag });
     });
-    this.locations = bonus.locations;
+    bonus.locations.forEach((location) => {
+      this.locations.push(location);
+    });
   }
 
   public onVendorNameChange(vendorName: any): void {
