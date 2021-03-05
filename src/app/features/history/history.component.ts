@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IHistoryBonus } from '@interfaces/history.interface';
 import { TranslateService } from '@ngx-translate/core';
