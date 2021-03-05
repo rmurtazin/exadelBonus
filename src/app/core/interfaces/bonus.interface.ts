@@ -25,4 +25,5 @@ export interface IBonus {
   tags: string[];
   company: ICompany;
   title: string;
+  isRated?: number;
 }
