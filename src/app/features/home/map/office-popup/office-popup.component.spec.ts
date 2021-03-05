@@ -35,7 +35,7 @@ describe('OfficePopupComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('shuld display office city', () => {
-    expect(fixture.nativeElement.querySelector('h1').textContent).toEqual('city');
+  it('should display office city', () => {
+    expect(fixture.nativeElement.querySelector('h1').textContent).toEqual('cities.city');
   });
 });

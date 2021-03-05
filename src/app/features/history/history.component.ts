@@ -1,5 +1,4 @@
-import { ChangeDetectorRef } from '@angular/core';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import { IBonus } from '@interfaces/bonus.interface';
 import { IHistoryBonus } from '@interfaces/history.interface';
 import { TranslateService } from '@ngx-translate/core';
@@ -62,7 +61,11 @@ export class HistoryComponent implements OnInit, OnDestroy {
             this.toasterService.showNotification('history.notification.noBonuses', 'success');
           }
           this.historyBonuses = bonuses;
-          this.bonuses = bonuses.map((item) => item.bonusDto);
+          this.bonuses = bonuses.map((item) => {
+            const bonus = item.bonusDto;
+            bonus.isRated = item.rating;
+            return bonus;
+          });
           this.loading = false;
         }),
       );
