@@ -70,13 +70,17 @@ export class BonusesService {
     return this.api.get(this.tagsUrl).pipe(map((res) => res?.value));
   }
 
-  public changeBonusStatus(bonus: IBonus): Observable<IBonus> {
-    return this.api.patch(`${this.bonusUrl}/${bonus.id}/deactivate`, JSON.stringify(bonus)).pipe(
+  public changeBonusStatus(bonus: IBonus): Observable<any> {
+    let statusComand = 'activate';
+    if (!bonus.isActive) {
+      statusComand = 'deactivate';
+    }
+    return this.api.patch(`${this.bonusUrl}/${bonus.id}/${statusComand}`).pipe(
       tap(() =>
-        this.toasterService.showNotification('addBonus.notification.saveUpdateBonus', 'success'),
+        this.toasterService.showNotification('addBonus.notification.saveBonusStatus', 'success'),
       ),
       catchError(async () =>
-        this.toasterService.showNotification('addBonus.notification.UpdateBonusError', 'error'),
+        this.toasterService.showNotification('addBonus.notification.BonusStatusError', 'error'),
       ),
     );
   }

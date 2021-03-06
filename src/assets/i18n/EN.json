@@ -63,6 +63,14 @@
       "saveVendorSuccess": {
         "title": "Successfully!",
         "message": "A new vendor has been saved!"
+      },
+      "saveBonusStatus": {
+        "title": "Successfully!",
+        "message": "Bonus status has been changed!"
+      },
+      "BonusStatusError": {
+        "title": "Update error",
+        "message": "Some problems with changing bonus status!"
       }
     }
   },

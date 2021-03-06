@@ -24,8 +24,8 @@ export class ApiService {
     return this.http.delete(url, options).pipe(catchError(this.errorHandler));
   }
 
-  public patch(url: string, body?: any): Observable<any> {
-    return this.http.patch(url, body, { headers: this.headers }).pipe(catchError(this.errorHandler));
+  public patch(url: string): Observable<any> {
+    return this.http.patch(url, '');
   }
 
   private errorHandler(error: any): ObservableInput<any> {

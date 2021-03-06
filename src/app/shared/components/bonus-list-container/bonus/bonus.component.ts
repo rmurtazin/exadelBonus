@@ -50,10 +50,7 @@ export class BonusComponent implements OnChanges {
   }
 
   public changeStatus(): void {
-    console.log(this.bonus.isActive)
-    console.log(this.bonus.id)
     this.bonus.isActive = !this.bonus.isActive;
-    this.bonusesService.changeBonusStatus(this.bonus);
-    console.log(this.bonus.isActive)
+    this.bonusesService.changeBonusStatus(this.bonus).subscribe();
   }
 }
