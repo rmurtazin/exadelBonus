@@ -69,4 +69,15 @@ export class BonusesService {
   public getBonusesTags(): Observable<string[]> {
     return this.api.get(this.tagsUrl).pipe(map((res) => res?.value));
   }
+
+  public changeBonusStatus(bonus: IBonus): Observable<IBonus> {
+    return this.api.patch(`${this.bonusUrl}/${bonus.id}/deactivate`, JSON.stringify(bonus)).pipe(
+      tap(() =>
+        this.toasterService.showNotification('addBonus.notification.saveUpdateBonus', 'success'),
+      ),
+      catchError(async () =>
+        this.toasterService.showNotification('addBonus.notification.UpdateBonusError', 'error'),
+      ),
+    );
+  }
 }

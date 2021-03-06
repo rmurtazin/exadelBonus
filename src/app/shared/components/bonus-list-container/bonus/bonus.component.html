@@ -18,6 +18,9 @@
       </div>
       <ng-template #bonusButtonContent>
         <div class="button-container">
+          <button *ngIf="visibleChangeStatusBtn" mat-flat-button color="primary" [class.changeStatusBtnColorNotActive]="!bonus.isActive" (click)="changeStatus()">
+            {{ 'home.changeStatus' | translate }}
+          </button>
           <button mat-flat-button color="primary" class="apply-button" (click)="bonusButtonClick()">
             <span [innerHTML]="bonusButtonLabel" class="bonus-button-content"></span>
           </button>

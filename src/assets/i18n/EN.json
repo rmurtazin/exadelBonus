@@ -110,18 +110,19 @@
     "pick": {
       "labelFilter": "Filter",
       "labelSorting": "Sorting"
+      },
+      "confirm": {
+      "question": "Do you want to apply?",
+      "yes": "Yes",
+      "no": "No",
+      "description": "Description: ",
+      "phone": "Phone: ",
+      "address": "Address"
     },
-    "confirm": {
-    "question": "Do you want to apply?",
-    "yes": "Yes",
-    "no": "No",
-    "description": "Description: ",
-    "phone": "Phone: ",
-    "address": "Address"
-  },
-  "details": "Details",
-  "edit": "Edit",
-  "rate": "Rate"
+    "details": "Details",
+    "edit": "Edit",
+    "rate": "Rate",
+    "changeStatus": "Change status"
   },
   "tagsInput": {
     "tags": "Tags",

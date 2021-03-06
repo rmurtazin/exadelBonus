@@ -34,6 +34,7 @@ export class AddBonusComponent implements OnInit, OnDestroy {
   public bonusFormConfig: IBonusFormConfig;
   public bonusId: string;
   public bonusButtonLabel: string;
+  public visibleChangeStatusBtn = true;
 
   constructor(
     private bonusAddressService: BonusAddressService,
