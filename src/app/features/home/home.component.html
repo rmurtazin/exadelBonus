@@ -1,7 +1,7 @@
 <section class="home">
   <section class="left">
     <button (click)="this.ifFindPlaceClick = !this.ifFindPlaceClick">
-     {{ (this.ifFindPlaceClick ?   "home.findPlace" : "home.hideFilter") | translate }} 
+      {{ (this.ifFindPlaceClick ? 'home.findPlace' : 'home.hideFilter') | translate }}
     </button>
     <div [ngStyle]="{ display: this.ifFindPlaceClick ? 'none' : 'block' }">
       <app-pick class="pick-container"></app-pick>
