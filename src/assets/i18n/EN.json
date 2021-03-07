@@ -115,6 +115,8 @@
     "bonusTitle": "Bonus title"
   },
   "home": {
+    "findPlace": "Find place",
+    "hideFilter": "Hide filter and sorting",
     "pick": {
       "labelFilter": "Filter",
       "labelSorting": "Sorting"

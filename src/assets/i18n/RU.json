@@ -115,6 +115,8 @@
     "bonusTitle": "Название бонуса"
   },
   "home": {
+    "findPlace": "Найти место",
+    "hideFilter": "Спрятать фильтр и сортировку",
     "pick": {
       "labelFilter": "Фильтр",
       "labelSorting": "Сортировка"
