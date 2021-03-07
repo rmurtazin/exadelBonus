@@ -24,6 +24,7 @@ export class BonusListViewComponent {
   @Input() bonuses: IBonus[];
   @Input() bonusButtonLabel: string;
   @Input() ifBonusMap: boolean;
+  @Input() visibleChangeStatusBtn: boolean;
 
   @Output() bonusButtonClickedEvent = new EventEmitter<BonusComponent>();
 
