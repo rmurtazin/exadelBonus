@@ -60,6 +60,11 @@ body {
   margin-top: auto;
 }
 
+.update-img {
+  max-height: 29px;
+  margin: auto 0;
+}
+
 @media (min-width: 541px), (min-device-width: 541px) {
   .add-bonus-container .bonus-container,
   .history .bonus {
