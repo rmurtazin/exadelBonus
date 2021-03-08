@@ -101,6 +101,7 @@ h2 {
 @media (max-device-width: 1150px), (max-width: 1150px) {
   .home {
     height: auto;
+    position: static;
     flex-direction: column-reverse;
     top: 55px;
   }
