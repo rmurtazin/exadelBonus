@@ -23,6 +23,7 @@
             mat-flat-button
             color="primary"
             [class.changeStatusBtnColorNotActive]="!bonus.isActive"
+            class="apply-button"
             (click)="changeStatus()"
           >
             {{ 'home.changeStatus' | translate }}
