@@ -3,10 +3,9 @@
 .bonus-content {
   display: block;
   position: relative;
-  width: 325px;
+  flex: 1 1 66.666666%;
   padding: 6px;
   height: 100%;
-  box-sizing: border-box;
 }
 
 .discount-icon {
@@ -19,34 +18,26 @@
 
 .discount-value {
   color: #404040;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   padding: 5px;
   width: 195px;
   display: inline-flex;
-  max-height: 37px;
 }
 
 .bonus-name {
   color: #282828;
-  font-size: 23px;
+  font-size: 27px;
   font-weight: bold;
-  //margin: 8px 0 0 8px;
-}
-
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-  align-content: center;
-  padding-top: 2px;
+  margin: 8px 0 0 8px;
 }
 
 .tags {
-  margin-top: 6px;
-  width: 313px;
-  height: 23px;
-  padding: 1px 0 5px;
-  overflow: auto hidden;
+  margin-top: 15px;
+  width: 320px;
+  height: 28px;
+  padding: 3px;
+  overflow-x: auto;
   &::-webkit-scrollbar {
     width: 0;
     height: 6px;
@@ -61,13 +52,12 @@
     user-select: none;
     border: 1px solid $theme-color;
     border-radius: 30px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     color: #464646;
     padding: 0 7px;
     margin-right: 8px;
     text-transform: lowercase;
-    white-space: nowrap;
   }
 }
 
@@ -86,17 +76,22 @@
 
 .apply-button {
   border-radius: 0;
+  width: 187px;
+  height: 42px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 30px;
-  height: 31px;
+  font-size: 26px;
+  font-weight: 500;
+  float: right;
 }
 
 .show-form .description-container {
   animation-name: hide;
   animation-duration: 1s;
   animation-fill-mode: both;
+}
+
+.show-form .bonus-content {
+  width: 100%;
 }
 
 .show-form {
@@ -145,7 +140,7 @@
 .description-container {
   background-color: $theme-color;
   color: #fff;
-  width: 145px;
+  flex: 1 1 33.33333%;
   font-weight: 500;
   padding: 8px 5px;
   margin-left: -1px;
@@ -162,16 +157,11 @@
     text-decoration: underline;
     font-style: normal;
     font-size: 20px;
-    font-weight: 400;
-    text-align: center;
-    width: 100%;
-    display: inline-block;
   }
   .bonus-description {
-    font-size: 16px;
-    padding-top: 6px;
+    font-size: 18px;
+    padding-top: 10px;
     word-wrap: break-word;
-    font-weight: 400;
   }
 }
 
@@ -181,6 +171,56 @@
     border: 1px solid $theme-color;
     margin-bottom: 10px;
     height: 145px;
+  }
+  .bonus-content {
+    width: 325px;
+    box-sizing: border-box;
+  }
+  .discount-value {
+    font-size: 15px;
+    max-height: 37px;
+  }
+  .bonus-name {
+    font-size: 23px;
+    margin: 0;
+  }
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    padding-top: 2px;
+  }
+  .tags {
+    margin-top: 6px;
+    width: 313px;
+    height: 23px;
+    padding: 1px 0 5px;
+    overflow: auto hidden;
+    .tag {
+      font-size: 16px;
+      white-space: nowrap;
+    }
+  }
+  .apply-button {
+    width: auto;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 30px;
+    height: 31px;
+  }
+  .description-container {
+    width: 145px;
+    .vendor-name {
+      font-weight: 400;
+      text-align: center;
+      width: 100%;
+      display: inline-block;
+    }
+    .bonus-description {
+      font-size: 16px;
+      padding-top: 6px;
+      font-weight: 400;
+    }
   }
 }
 
