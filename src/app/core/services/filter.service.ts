@@ -34,9 +34,9 @@ export class FilterService {
     });
   }
 
-  public resetFilter(): void{
+  public resetFilter(): void {
     const city = this.queryParams?.city;
-    this.queryParams = {...(city ? {city} : {})};
+    this.queryParams = { ...(city ? { city } : {}) };
   }
 
   public addTagsToQuery(tags: string[]): void {

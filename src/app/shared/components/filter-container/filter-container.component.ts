@@ -10,7 +10,7 @@ import { LocationService } from '@services/location.service';
 export class FilterContainerComponent implements OnInit {
   constructor(private filterService: FilterService, private locationService: LocationService) {}
 
-  public ngOnInit(): void{
+  public ngOnInit(): void {
     this.filterService.resetFilter();
   }
 
