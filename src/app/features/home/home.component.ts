@@ -16,6 +16,7 @@ import { ChangeDetectorRef } from '@angular/core';
 export class HomeComponent implements OnDestroy, OnInit {
   public subscription: Subscription = new Subscription();
   public bonusButtonLabel: string;
+  public ifFindPlaceClick = false;
 
   constructor(
     private historyService: HistoryService,

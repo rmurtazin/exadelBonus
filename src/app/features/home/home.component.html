@@ -1,6 +1,11 @@
 <section class="home">
   <section class="left">
-    <app-pick class="pick-container"></app-pick>
+    <button (click)="this.ifFindPlaceClick = !this.ifFindPlaceClick">
+      {{ (this.ifFindPlaceClick ? 'home.findPlace' : 'home.hideFilter') | translate }}
+    </button>
+    <div [ngStyle]="{ display: this.ifFindPlaceClick ? 'none' : 'block' }">
+      <app-pick class="pick-container"></app-pick>
+    </div>
     <app-bonus-list-container
       class="bonus-list"
       [bonusButtonLabel]="bonusButtonLabel"
