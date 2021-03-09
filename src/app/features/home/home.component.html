@@ -1,12 +1,9 @@
 <section class="home">
   <section class="left">
     <mat-accordion class="choice-container">
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            Filters and sorting
-          </mat-panel-title>
+          <mat-panel-title> Filters and sorting </mat-panel-title>
         </mat-expansion-panel-header>
         <app-pick class="pick-container"></app-pick>
       </mat-expansion-panel>

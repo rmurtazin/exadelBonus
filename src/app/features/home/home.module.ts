@@ -20,7 +20,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { FooterModule } from '@components/footer/footer.module';
 import { LocationService } from '@services/location.service';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -34,22 +34,22 @@ import {MatExpansionModule} from '@angular/material/expansion';
     PickComponent,
     ConfirmComponent,
   ],
-    imports: [
-        SharedModule,
-        TranslateModule,
-        MatTabsModule,
-        LeafletModule,
-        BonusListContainerModule,
-        ChoosePlaceDialogModule,
-        FilterContainerModule,
-        SortContainerModule,
-        MatTabsModule,
-        MatDialogModule,
-        FilterContainerModule,
-        RouterModule.forChild([{path: '', component: HomeComponent}]),
-        FooterModule,
-        MatExpansionModule,
-    ],
+  imports: [
+    SharedModule,
+    TranslateModule,
+    MatTabsModule,
+    LeafletModule,
+    BonusListContainerModule,
+    ChoosePlaceDialogModule,
+    FilterContainerModule,
+    SortContainerModule,
+    MatTabsModule,
+    MatDialogModule,
+    FilterContainerModule,
+    RouterModule.forChild([{ path: '', component: HomeComponent }]),
+    FooterModule,
+    MatExpansionModule,
+  ],
   providers: [LocationService],
   exports: [HomeComponent, RouterModule],
 })
