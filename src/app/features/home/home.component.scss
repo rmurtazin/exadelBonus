@@ -103,6 +103,7 @@ h2 {
   }
   .choice-container {
     width: 100vw;
+    box-sizing: border-box;
   }
 }
 
@@ -121,5 +122,6 @@ h2 {
 
   .left {
     width: 100%;
+    margin-left: 0;
   }
 }
