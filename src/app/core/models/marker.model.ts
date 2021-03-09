@@ -12,7 +12,7 @@ import 'leaflet.markercluster';
 @Injectable({ providedIn: 'root' })
 export class MarkerModel {
   constructor(private injector: Injector, private resolver: ComponentFactoryResolver) {}
-  private iconSize: PointExpression = [32, 32];
+  private iconSize: PointExpression = [42, 42];
   private iconAnchor: PointExpression = [32, 32];
   private popupAnchor: PointExpression = [-15, -35];
 
@@ -26,7 +26,7 @@ export class MarkerModel {
   private userMarkerIco = new Icon({
     iconUrl: 'assets/icons/user-marker.png',
     iconAnchor: this.iconAnchor,
-    iconSize: [42, 42],
+    iconSize: this.iconSize,
   });
 
   private bonusMarkerIco(type: string): DivIcon {
