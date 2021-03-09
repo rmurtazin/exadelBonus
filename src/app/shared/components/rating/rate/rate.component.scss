@@ -1,10 +1,14 @@
 @import 'src/styles/variables';
 
+#ratingSlider {
+  padding: 0;
+  height: 40px;
+}
+
 .discount-row:not(.form-stars) {
   display: flex;
   align-items: center;
   position: relative;
-  height: 60px;
   justify-content: space-between;
 }
 
@@ -13,7 +17,6 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 60px;
 }
 
 .rate-button {

@@ -60,6 +60,17 @@ body {
   margin-top: auto;
 }
 
+.update-img {
+  max-height: 29px;
+  margin: auto 0;
+}
+
+@media (max-device-width: 1150px), (max-width: 1150px) {
+  .home .bonus {
+    margin-right: 10px;
+  }
+}
+
 @media (min-width: 541px), (min-device-width: 541px) {
   .add-bonus-container .bonus-container,
   .history .bonus {
