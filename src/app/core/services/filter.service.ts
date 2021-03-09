@@ -12,6 +12,7 @@ interface IFilterQueryParams {
   end?: string;
   sortBy?: string;
 }
+
 @Injectable({ providedIn: 'root' })
 export class FilterService {
   private queryParams: IFilterQueryParams = {};
@@ -31,6 +32,11 @@ export class FilterService {
     this.bonuses.getBonuses(newQueryString).subscribe((bonuses: IBonus[]) => {
       this.applyFilterEvent(bonuses);
     });
+  }
+
+  public resetFilter(): void{
+    const city = this.queryParams?.city;
+    this.queryParams = {...(city ? {city} : {})};
   }
 
   public addTagsToQuery(tags: string[]): void {

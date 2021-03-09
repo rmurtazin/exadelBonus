@@ -34,6 +34,7 @@ export class TagsInputComponent implements OnInit, OnDestroy {
   constructor(private bonusesService: BonusesService) {}
 
   public ngOnInit(): void {
+    
     this.subscription.add(
       this.bonusesService.getBonusesTags().subscribe((tagsList) => {
         this.allTags = tagsList;
