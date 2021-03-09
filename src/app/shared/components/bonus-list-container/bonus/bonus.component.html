@@ -25,7 +25,7 @@
             [class.changeStatusBtnColorNotActive]="!bonus.isActive"
             (click)="changeStatus()"
           >
-            {{ 'home.changeStatus' | translate }}
+            {{ (bonus.isActive ? 'home.activated' : 'home.deactivated') | translate }}
           </button>
           <button mat-flat-button color="primary" class="apply-button" (click)="bonusButtonClick()">
             <span [innerHTML]="bonusButtonLabel" class="bonus-button-content"></span>

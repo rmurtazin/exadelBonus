@@ -132,7 +132,9 @@
     "details": "Детально",
     "edit": "Изменить",
     "rate": "Оценить",
-    "changeStatus": "Изменить статус"
+    "changeStatus": "Изменить статус",
+    "activated": "Активный",
+    "deactivated": "Не активный"
   },
   "tagsInput": {
     "tags": "Теги",
