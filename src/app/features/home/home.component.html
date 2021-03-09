@@ -1,11 +1,16 @@
 <section class="home">
   <section class="left">
-    <button (click)="this.ifFindPlaceClick = !this.ifFindPlaceClick">
-      {{ (this.ifFindPlaceClick ? 'home.findPlace' : 'home.hideFilter') | translate }}
-    </button>
-    <div [ngStyle]="{ display: this.ifFindPlaceClick ? 'none' : 'block' }">
-      <app-pick class="pick-container"></app-pick>
-    </div>
+    <mat-accordion class="choice-container">
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Filters and sorting
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-pick class="pick-container"></app-pick>
+      </mat-expansion-panel>
+    </mat-accordion>
     <app-bonus-list-container
       class="bonus-list"
       [bonusButtonLabel]="bonusButtonLabel"

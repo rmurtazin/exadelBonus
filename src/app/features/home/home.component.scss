@@ -76,6 +76,11 @@ h2 {
   min-height: 270px;
 }
 
+.choice-container {
+  margin-bottom: 15px;
+  border: 1px solid $theme-color;
+}
+
 @media (max-width: 540px), (max-device-width: 540px) {
   .home {
     height: auto;
