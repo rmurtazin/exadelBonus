@@ -92,7 +92,8 @@
     "rateForm": {
       "backButton": "Назад",
       "applyButton": "Отправить"
-    }
+    },
+    "ratedLabel": "Оценено"
   },
   "loginPage": {
     "login": "Введите логин пользователя",

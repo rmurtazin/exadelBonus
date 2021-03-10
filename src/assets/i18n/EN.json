@@ -92,7 +92,8 @@
     "rateForm": {
       "backButton": "Back",
       "applyButton": "Apply"
-    }
+    },
+    "ratedLabel": "Rated"
   },
   "loginPage": {
     "login": "Enter your login",
