@@ -1,5 +1,5 @@
 import { FilterService } from '@services/filter.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocationService } from '@services/location.service';
 
 @Component({
@@ -7,8 +7,12 @@ import { LocationService } from '@services/location.service';
   templateUrl: './filter-container.component.html',
   styleUrls: ['./filter-container.component.scss'],
 })
-export class FilterContainerComponent {
+export class FilterContainerComponent implements OnInit {
   constructor(private filterService: FilterService, private locationService: LocationService) {}
+
+  public ngOnInit(): void {
+    this.filterService.resetFilter();
+  }
 
   public changeCity(city: string): void {
     this.filterService.addCityToQuery(city);
