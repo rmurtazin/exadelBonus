@@ -81,6 +81,23 @@ h2 {
   border: 1px solid $theme-color;
 }
 
+@media (min-width: 2150px), (min-device-width: 2150px) {
+  .left {
+    min-width: 1000px;
+  }
+  .bonus-list {
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 8px;
+      opacity: 0;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $theme-color;
+      border-radius: 10px;
+    }
+  }
+}
+
 @media (max-width: 540px), (max-device-width: 540px) {
   .home {
     height: auto;

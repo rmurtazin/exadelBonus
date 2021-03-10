@@ -10,6 +10,9 @@
   @media screen and (min-width: 1280px) {
     width: 400px;
   }
+  @media screen and (min-width: 2150px), screen and (min-device-width: 2150px) {
+    width: 700px;
+  }
 }
 
 .add-bonus-button {
@@ -17,6 +20,10 @@
   @media screen and (min-width: 1280px) {
     width: 150px;
     font-size: 18px;
+  }
+  @media screen and (min-width: 2150px), screen and (min-device-width: 2150px) {
+    width:  250px;
+    font-size: 20px;
   }
 }
 
@@ -32,6 +39,9 @@
 
   @media screen and (min-width: 1280px) {
     width: 400px;
+  }
+  @media screen and (min-width: 2150px), screen and (min-device-width: 2150px) {
+    width: 700px;
   }
 }
 

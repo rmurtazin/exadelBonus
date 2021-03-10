@@ -86,3 +86,12 @@ body {
     padding: 0 !important;
   }
 }
+
+@media (min-width: 2150px), (min-device-width: 2150px) {
+  .bonus-container {
+    margin-right: 20px;
+  }
+  .bonuses {
+    justify-content: center;
+  }
+}
