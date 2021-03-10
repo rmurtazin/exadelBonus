@@ -29,7 +29,8 @@
 .rate-form {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  min-width: 200px;
+  width: 250px;
   margin: 0 auto;
 }
 
@@ -97,12 +98,14 @@
 
 .buttons-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .rate-form-button {
-  width: 45%;
   font-size: 18px;
+  &:first-of-type {
+    width: 80px;
+  }
 }
 
 .slider-value {

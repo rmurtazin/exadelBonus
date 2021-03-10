@@ -37,7 +37,7 @@
         class="button-container"
         *ngIf="bonus?.isRated && bonus.isRated !== -1; else bonusButtonContent"
       >
-        <span class="rated-label">Rated</span>
+        <span class="rated-label">{{ 'history.ratedLabel' | translate }}</span>
       </div>
     </div>
   </div>
