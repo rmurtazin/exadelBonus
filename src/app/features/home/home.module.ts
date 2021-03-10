@@ -20,6 +20,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { FooterModule } from '@components/footer/footer.module';
 import { LocationService } from '@services/location.service';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { LocationService } from '@services/location.service';
     FilterContainerModule,
     RouterModule.forChild([{ path: '', component: HomeComponent }]),
     FooterModule,
+    MatExpansionModule,
   ],
   providers: [LocationService],
   exports: [HomeComponent, RouterModule],

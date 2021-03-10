@@ -17,6 +17,7 @@ export class HomeComponent implements OnDestroy, OnInit {
   public subscription: Subscription = new Subscription();
   public bonusButtonLabel: string;
   public ifFindPlaceClick = false;
+  public panelOpenState = false;
 
   constructor(
     private historyService: HistoryService,
