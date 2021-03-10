@@ -132,7 +132,9 @@
     "details": "Details",
     "edit": "Edit",
     "rate": "Rate",
-    "changeStatus": "Change status"
+    "changeStatus": "Change status",
+    "activated": "Active",
+    "deactivated": "Not active"
   },
   "tagsInput": {
     "tags": "Tags",
