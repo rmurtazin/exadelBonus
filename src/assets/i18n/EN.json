@@ -88,6 +88,10 @@
         "title": "",
         "message": "You don't have any bonuses yet!"
       }
+    },
+    "rateForm": {
+      "backButton": "Back",
+      "applyButton": "Apply"
     }
   },
   "loginPage": {

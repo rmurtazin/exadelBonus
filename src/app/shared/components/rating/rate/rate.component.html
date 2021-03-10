@@ -16,7 +16,7 @@
   </mat-slider>
   <div class="buttons-container">
     <button class="rate-form-button" (click)="backToBonus()" color="primary" mat-raised-button>
-      Back
+      {{ 'history.rateForm.backButton' | translate }}
     </button>
     <button
       class="rate-form-button"
@@ -26,7 +26,7 @@
       [disabled]="disableButton"
     >
       <span class="rate-button">
-        Apply
+        {{ 'history.rateForm.applyButton' | translate }}
         <mat-spinner
           diameter="20"
           *ngIf="animationStart"
