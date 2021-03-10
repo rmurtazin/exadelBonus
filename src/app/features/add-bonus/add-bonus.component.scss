@@ -13,3 +13,26 @@
 .spinner {
   margin: auto;
 }
+
+@media (min-width: 2150px), (min-device-width: 2150px) {
+  .bonus-list {
+    width: 80%;
+  }
+  .bonus-btn {
+    padding-bottom: 1.34375em;
+    flex: 0 1 22%;
+  }
+  .search-input {
+    display: inline-block;
+    flex: 0 1 70%;
+  }
+  .search-button-container {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row-reverse;
+
+  }
+}
