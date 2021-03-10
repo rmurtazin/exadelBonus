@@ -3,7 +3,7 @@
   <app-stars [widthValue]="bonus?.rating * 10"></app-stars>
 </div>
 <div *ngIf="isForm" class="rate-form">
-  <span class="slider-value">{{ bonus.rating }}</span>
+  <span class="slider-value">{{ bonus.rating | round }}</span>
   <mat-slider
     id="ratingSlider"
     class="slider"
