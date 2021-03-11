@@ -14,3 +14,9 @@
 .spinner {
   margin: auto;
 }
+
+@media (min-width: 2150px), (min-device-width: 2150px) {
+  .bonus-list {
+    width: 80%;
+  }
+}

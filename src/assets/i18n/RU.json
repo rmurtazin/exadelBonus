@@ -88,7 +88,12 @@
         "title": "",
         "message": "У Вас пока нет бонусов!"
       }
-    }
+    },
+    "rateForm": {
+      "backButton": "Назад",
+      "applyButton": "Отправить"
+    },
+    "ratedLabel": "Оценено"
   },
   "loginPage": {
     "login": "Введите логин пользователя",

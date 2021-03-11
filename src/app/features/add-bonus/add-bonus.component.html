@@ -1,11 +1,14 @@
 <div class="add-bonus-container">
   <div *ngIf="!isFormActive">
-    <app-add-bonus-button (openForm)="openForm()"></app-add-bonus-button>
-    <app-bonus-searcher
-      [bonusFormConfig]="bonusFormConfig"
-      [vendors]="vendors"
-      (getBonusesByVendorId)="getBonusesByVendorId($event)"
-    ></app-bonus-searcher>
+    <div class="search-button-container">
+      <app-add-bonus-button (openForm)="openForm()" class="bonus-btn"></app-add-bonus-button>
+      <app-bonus-searcher
+        [bonusFormConfig]="bonusFormConfig"
+        [vendors]="vendors"
+        (getBonusesByVendorId)="getBonusesByVendorId($event)"
+        class="search-input"
+      ></app-bonus-searcher>
+    </div>
     <div class="bonus-container">
       <app-bonus-list-view
         *ngIf="!loading; else loadingBlock"

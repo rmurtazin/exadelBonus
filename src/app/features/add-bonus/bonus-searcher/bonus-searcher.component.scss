@@ -9,3 +9,10 @@
     width: 220px;
   }
 }
+
+@media (min-width: 2150px), (min-device-width: 2150px) {
+  .bonus-searcher-input {
+    width: 100%;
+  }
+
+}

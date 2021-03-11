@@ -15,3 +15,10 @@
     width: 220px;
   }
 }
+
+@media (min-width: 2150px), (min-device-width: 2150px) {
+  .add-btn {
+    margin: 0;
+    width: 100%;
+  }
+}

@@ -3,7 +3,7 @@
   <app-stars [widthValue]="bonus?.rating * 10"></app-stars>
 </div>
 <div *ngIf="isForm" class="rate-form">
-  <span class="slider-value">{{ bonus.rating }}</span>
+  <span class="slider-value">{{ bonus.rating | round }}</span>
   <mat-slider
     id="ratingSlider"
     class="slider"
@@ -16,7 +16,7 @@
   </mat-slider>
   <div class="buttons-container">
     <button class="rate-form-button" (click)="backToBonus()" color="primary" mat-raised-button>
-      Back
+      {{ 'history.rateForm.backButton' | translate }}
     </button>
     <button
       class="rate-form-button"
@@ -26,7 +26,7 @@
       [disabled]="disableButton"
     >
       <span class="rate-button">
-        Apply
+        {{ 'history.rateForm.applyButton' | translate }}
         <mat-spinner
           diameter="20"
           *ngIf="animationStart"
