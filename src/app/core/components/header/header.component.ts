@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public logout(): void {
-    this.logoutSubscription =  this.loginService.logout().subscribe();
+    this.logoutSubscription = this.loginService.logout().subscribe();
   }
 
   public hasRole(role: string): boolean {

@@ -25,10 +25,9 @@ export class LoginService {
     const token = this.getToken();
     let jwtDecoded: IJwtDecoded;
     if (token) {
-      try{
+      try {
         jwtDecoded = jwt_decode(token);
-      }
-      catch (err){
+      } catch (err) {
         throwError(err);
         return null;
       }
@@ -60,8 +59,7 @@ export class LoginService {
           this.route.navigate(['/login']);
           localStorage.clear();
           return response;
-        }
-        ),
+        }),
         catchError((err) => {
           this.route.navigate(['/login']);
           localStorage.clear();
