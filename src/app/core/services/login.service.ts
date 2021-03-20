@@ -23,8 +23,14 @@ export class LoginService {
 
   public getRole(): string {
     const token = this.getToken();
+    let jwtDecoded: IJwtDecoded;
     if (token) {
-      const jwtDecoded: IJwtDecoded = jwt_decode(token);
+      try {
+        jwtDecoded = jwt_decode(token);
+      } catch (err) {
+        throwError(err);
+        return null;
+      }
       const [role] = jwtDecoded.role;
       return role.toLowerCase();
     }
@@ -50,16 +56,19 @@ export class LoginService {
     if (this.getToken()) {
       return this.http.post(this.logoutUrl, {}).pipe(
         tap((response) => {
+          this.route.navigate(['/login']);
           localStorage.clear();
           return response;
         }),
         catchError((err) => {
+          this.route.navigate(['/login']);
           localStorage.clear();
           return throwError(err);
         }),
       );
     }
     localStorage.clear();
+    this.route.navigate(['/login']);
     return of(null);
   }
 
@@ -70,7 +79,7 @@ export class LoginService {
         return response.value;
       }),
       catchError((err: HttpErrorResponse) => {
-        if (err.status === 401) {
+        if (err.status === 401 || err.status === 400) {
           this.logout();
           this.route.navigate(['login']);
         }

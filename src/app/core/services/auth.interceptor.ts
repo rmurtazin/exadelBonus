@@ -38,10 +38,10 @@ export class AuthInterceptor {
     }
     throw throwError(error);
   }
-
   private handle400Error(error: HttpErrorResponse): Observable<any> {
+    localStorage.clear();
     this.loginService.logout();
-    return throwError(error);
+    return throwError('Trouble with authorization');
   }
 
   private handle401Error(req: HttpRequest<any>, next: HttpHandler): Observable<any> {

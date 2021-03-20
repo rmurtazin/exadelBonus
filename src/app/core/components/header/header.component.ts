@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isMenuHide = true;
   public user: IUser;
   private userSubscription: Subscription;
+  private logoutSubscription: Subscription;
   public roleType = RoleType;
 
   constructor(
@@ -66,12 +67,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public logout(): void {
-    this.loginService.logout().subscribe(
-      () => {
-        this.route.navigate(['/login']);
-      },
-      () => this.route.navigate(['/login']),
-    );
+    this.logoutSubscription = this.loginService.logout().subscribe();
   }
 
   public hasRole(role: string): boolean {
@@ -80,5 +76,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
+    this.logoutSubscription.unsubscribe();
   }
 }
