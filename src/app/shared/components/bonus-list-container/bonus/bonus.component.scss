@@ -165,8 +165,9 @@
   }
 }
 
-.apply-button {
+.apply-button:last-of-type {
   margin-left: 10px;
+  text-align: center;
 }
 
 @media (min-width: 541px), (min-device-width: 541px) {
@@ -207,7 +208,7 @@
   }
   .apply-button {
     width: auto;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 30px;
     height: 31px;
@@ -277,7 +278,7 @@
     width: auto;
     height: auto;
     border-radius: 4px;
-    font-size: 22px;
+    font-size: 20px;
   }
   .discount-value {
     width: 60%;
